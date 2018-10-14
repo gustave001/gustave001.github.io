@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://www.kikfan.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -78,11 +78,23 @@ theme: material
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@github.com:kikyou93/kikyou93.github.io.git
   branch: master
   message: myblog
-  
+#- type: baidu_url_submitter
+#
+#baidu_url_submitter:
+#  count: 10
+#  host: kikfan.com
+#  token: Zy4qRVqczbQv8btc
+#  path: baidu_urls.txt
+
+search:
+  path: search.xml
+  field: all
+  content: true
+
 feed:
   type: atom
   path: atom.xml
@@ -96,13 +108,13 @@ jsonContent:
     date: true
     path: true
     text: true
-    raw: false
-    content: false
+    raw: true
+    content: true
     slug: false
     updated: false
     comments: false
     link: false
     permalink: false
     excerpt: false
-    categories: false
+    categories: true
     tags: true

@@ -214,6 +214,10 @@ sidebar:
         icon: chrome_reader_mode
         divider: false
     pages:
+        标签:
+            link: "/tags"
+            icon: bookmark
+            divider: false
         友链:
             link: "/links"
             icon: person
@@ -254,7 +258,7 @@ comment:
     valine_notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
     valine_verify: false # valine verify code (true/false)
     valine_pageSize: 10 # comment list page size
-    valine_avatar: identicon# gravatar style https://valine.js.org/#/avatar
+    valine_avatar: identicon # gravatar style https://valine.js.org/#/avatar
     valine_lang: zh-cn # i18n
     valine_placeholder: ヾﾉ≧∀≦)o来啊，快活啊! # valine comment input placeholder(like: Please leave your footprints )
     valine_guest_info: nick,mail,link #valine comment header info
@@ -290,7 +294,7 @@ analytics:
 
 # Leancloud Views
 leancloud:
-    enable: true
+    enable: false
     app_id: y342POhWCRR95vOhfnvm8JmU-gzGzoHsz #你的 app_id
     app_key: LYAWA6Xx4eiYgbghbg6uxeuB #你的 app_key
     av_core_mini: "https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"

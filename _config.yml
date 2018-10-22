@@ -8,7 +8,7 @@ subtitle:
 description: 偏安一隅
 keywords:
 author: Gustave
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -40,8 +40,8 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
-  auto_detect: false
+  line_number: false
+  auto_detect: true
   tab_replace:
   
 # Home page setting
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: material
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

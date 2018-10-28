@@ -4,7 +4,7 @@ tags: [java,Cookie]
 categories: 实用工具
 date: 2018-10-22 22:34:05
 ---
-# CookieUtils
+# CookieUtils <!--more-->
 ```java
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-
 /**
  * @Author: Gustave
  * @Description:
@@ -28,7 +27,6 @@ public class CookieUtils {
     public static String getCookieValue(HttpServletRequest request, String cookieName) {
         return getCookieValue(request, cookieName, false);
     }
-
     /**
      * 得到Cookie的值,
      *

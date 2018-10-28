@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: kikfans
+title: kikfan
 subtitle:
 description: 偏安一隅
 keywords:
@@ -40,7 +40,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: false
+  line_number: true
   auto_detect: true
   tab_replace:
   
@@ -81,7 +81,7 @@ deploy:
 - type: git
   repo: git@github.com:kikyou93/kikyou93.github.io.git
   branch: master
-  message: myblog
+  message: update
 #- type: baidu_url_submitter
 #
 #baidu_url_submitter:
@@ -92,29 +92,13 @@ deploy:
 
 search:
   path: search.xml
-  field: all
-  content: true
+  field: post
+  format: html
+  limit: 10000
 
 feed:
   type: atom
   path: atom.xml
-  limit: 0
-  
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: true
-    raw: true
-    content: true
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true
+  limit: 20
+  hub:
+  content:

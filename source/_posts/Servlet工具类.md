@@ -4,7 +4,7 @@ tags: [java,Servlet]
 categories: 实用工具
 date: 2018-10-22 22:37:55
 ---
-# HttpServletUtils
+# HttpServletUtils <!--more-->
 ```java
 import org.apache.commons.lang3.StringUtils;
 import javax.servlet.http.HttpServletRequest;

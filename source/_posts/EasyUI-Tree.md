@@ -8,13 +8,14 @@ update: 2018-10-29 00:58:55
 # EasyUi Tree
  **树的初始化，以及数据格式** 
 <!--more-->
-- 树的数据格式
+1. 树的数据格式
   + id：节点的 id，它对于加载远程数据很重要。
   + text：要显示的节点文本。
   + state：节点状态，'open' 或 'closed'，默认是 'open'。当设置为 'closed' 时，该节点有子节点，并且将从远程站点加载它们。
   + checked：指示节点是否被选中。
   + attributes：给一个节点添加的自定义属性。
   + children：定义了一些子节点的节点数组。
+
 ```json
     [{
         "id":1,
@@ -49,7 +50,8 @@ update: 2018-10-29 00:58:55
         }]
     }]
 ```
-- 初始化
+2. 初始化树
+
 ```javascript
     $(".tt").tree({
         data: treeData,

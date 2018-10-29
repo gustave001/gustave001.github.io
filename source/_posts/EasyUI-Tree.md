@@ -17,6 +17,7 @@ update: 2018-10-29 00:58:55
   + children：定义了一些子节点的节点数组。
 
 ```json
+
     [{
         "id":1,
         "text":"Folder1",
@@ -53,6 +54,7 @@ update: 2018-10-29 00:58:55
 2. 初始化树
 
 ```javascript
+
     $(".tt").tree({
         data: treeData,
         onClick: function (node) {

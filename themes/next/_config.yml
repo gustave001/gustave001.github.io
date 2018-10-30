@@ -810,3 +810,8 @@ images: images
 
 # Theme version
 version: 5.1.4
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml

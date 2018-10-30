@@ -197,7 +197,7 @@ sidebar:
   scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
-  onmobile: false
+  onmobile: true
 
 
 # ---------------------------------------------------------------
@@ -231,9 +231,9 @@ post_meta:
 post_wordcount:
   item_text: true
   wordcount: true
-  min2read: true
+  min2read: false
   totalcount: true
-  separated_meta: true
+  separated_meta: false
 
 # Wechat Subscriber
 #wechat_subscriber:
@@ -571,7 +571,7 @@ busuanzi_count:
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
-baidu_push: false
+baidu_push: true
 
 # Google Calendar
 # Share your recent schedule to others via calendar page
@@ -654,7 +654,7 @@ tabs:
 # Use velocity to animate everything.
 motion:
   enable: true
-  async: false
+  async: true
   transition:
     # Transition variants:
     # fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut

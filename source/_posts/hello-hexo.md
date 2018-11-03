@@ -39,3 +39,5 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+hexo  [模板写法](https://www.jianshu.com/p/a142eb105279)

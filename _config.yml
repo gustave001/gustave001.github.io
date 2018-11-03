@@ -102,3 +102,17 @@ feed:
   limit: 20
   hub:
   content:
+
+
+live2d:
+  enable: true
+  pluginModelPath: assets/
+  model:
+    use: live2d-widget-model-hijiki  #模板目录，在node_modules里
+  display:
+    position: left
+    width: 150
+    height: 300
+  mobile:
+    show: false  #是否在手机进行显示
+

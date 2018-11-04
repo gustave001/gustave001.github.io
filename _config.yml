@@ -108,11 +108,20 @@ live2d:
   enable: true
   pluginModelPath: assets/
   model:
-    use: live2d-widget-model-hijiki  #模板目录，在node_modules里
+    use: live2d-widget-model-waifu  #模板目录，在node_modules里
+    scale: 1
+    hHeadPos: 0.5
+    vHeadPos: 0.618
   display:
+    superSample: 2
     position: left
     width: 150
     height: 300
+    hOffset: -30
+    vOffset: -20
   mobile:
     show: false  #是否在手机进行显示
+  react:
+    opacityDefault: 0.7
+    opacityOnHover: 0.2
 

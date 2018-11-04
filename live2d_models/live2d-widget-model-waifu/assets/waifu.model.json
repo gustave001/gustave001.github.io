@@ -1,0 +1,47 @@
+{
+  "version": "Sample 1.0.0",
+  "model": "moc/waifu.moc",
+  "textures": ["moc/waifu.2048/default-costume.png"],
+  "name": "waifu",
+  "pose": "waifu.pose.json",
+  "motions": {
+    "idle":[
+      {"file":"mtn/WakeUp.mtn"},
+      {"file":"mtn/Breath1.mtn"},
+      {"file":"mtn/Breath2.mtn"},
+      {"file":"mtn/Breath3.mtn"},
+      {"file":"mtn/Breath5.mtn"},
+      {"file":"mtn/Breath7.mtn"},
+      {"file":"mtn/Breath8.mtn"}
+    ],
+    "":[
+      {"file":"mtn/Breath1.mtn"},
+      {"file":"mtn/Breath2.mtn"},
+      {"file":"mtn/Breath3.mtn"},
+      {"file":"mtn/Breath4.mtn"},
+      {"file":"mtn/Breath5.mtn"},
+      {"file":"mtn/Breath6.mtn"},
+      {"file":"mtn/Breath7.mtn"},
+      {"file":"mtn/Breath8.mtn"},
+      {"file":"mtn/Fail.mtn"},
+      {"file":"mtn/Sleeping.mtn"},
+      {"file":"mtn/Success.mtn"},
+      {"file":"mtn/Sukebei1.mtn"},
+      {"file":"mtn/Sukebei2.mtn"},
+      {"file":"mtn/Sukebei3.mtn"},
+      {"file":"mtn/Touch Dere1.mtn"},
+      {"file":"mtn/Touch Dere2.mtn"},
+      {"file":"mtn/Touch Dere3.mtn"},
+      {"file":"mtn/Touch Dere4.mtn"},
+      {"file":"mtn/Touch Dere5.mtn"},
+      {"file":"mtn/Touch Dere6.mtn"},
+      {"file":"mtn/Touch1.mtn"},
+      {"file":"mtn/Touch2.mtn"},
+      {"file":"mtn/Touch3.mtn"},
+      {"file":"mtn/Touch4.mtn"},
+      {"file":"mtn/Touch5.mtn"},
+      {"file":"mtn/Touch6.mtn"},
+      {"file":"mtn/WakeUp.mtn"}
+    ]
+  }
+}

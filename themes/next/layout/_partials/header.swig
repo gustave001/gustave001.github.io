@@ -50,6 +50,22 @@
         </li>
       {% endfor %}
 
+
+        {% if hasSearch %}
+          <li class="menu-item menu-item-search">
+            {% if theme.swiftype_key %}
+              <a href="javascript:;" class="st-search-show-outputs">
+            {% elseif theme.local_search.enable || theme.algolia_search.enable %}
+              <a href="javascript:;" class="popup-trigger">
+            {% endif %}
+              {% if theme.menu_icons.enable %}
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              {% endif %}
+              {{ __('menu.search') }}
+            </a>
+          </li>
+        {% endif %}
+
         <li class="menu-item menu-item-briefcase">
             <a href="javascript:;" class="st-briefcase-show-outputs">
             <a id="briefcase" href="#">
@@ -232,20 +248,6 @@
           </ul>
         </li>
 
-      {% if hasSearch %}
-        <li class="menu-item menu-item-search">
-          {% if theme.swiftype_key %}
-            <a href="javascript:;" class="st-search-show-outputs">
-          {% elseif theme.local_search.enable || theme.algolia_search.enable %}
-            <a href="javascript:;" class="popup-trigger">
-          {% endif %}
-            {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            {% endif %}
-            {{ __('menu.search') }}
-          </a>
-        </li>
-      {% endif %}
     </ul>
   {% endif %}
 
@@ -260,49 +262,24 @@
 
 <script>
 $('.menu > li > ul').each(function() {
-            var $window          = $(window);
-            var dropDown         = $(this);
-            var menu             = dropDown.offset();
-            var farRight         = menu.left + dropDown.outerWidth(true);
-            var windowWidth      = $window.width();
-            var multiColumn      = dropDown.hasClass('multi-column');
+  var $window          = $(window);
+  var dropDown         = $(this);
+  var menu             = dropDown.offset();
+  var farRight         = menu.left + dropDown.outerWidth(true);
+  var windowWidth      = $window.width();
+  var multiColumn      = dropDown.hasClass('multi-column');
 
-            if (farRight > windowWidth && !multiColumn) {
-                dropDown.addClass('make-right');
-            } else if (farRight > windowWidth && multiColumn) {
-                var difference = farRight - windowWidth;
-                dropDown.css('margin-left', -(difference));
-            }
-        });
+  if (farRight > windowWidth && !multiColumn) {
+      dropDown.addClass('make-right');
+  } else if (farRight > windowWidth && multiColumn) {
+      var difference = farRight - windowWidth;
+      dropDown.css('margin-left', -(difference));
+  }
+});
 
-        $('.module-applet').on('click', function(){
-            $(this).toggleClass('active');
-        });
+$('.module-applet').on('click', function(){
+    $(this).toggleClass('active');
+});
 
-        $('.module-applet__body').each(function(){
-            var moduleBody = $(this);
-            var farRight = moduleBody.offset().left + moduleBody.outerWidth();
-            if(farRight > $(window).width()){
-                moduleBody.addClass('pos-right');
-            }
-        });
-
-          $('.menu li').on('click', function(ev){
-                    var navItem = $(this),
-                        e       = ev || window.event;
-
-                    e.stopPropagation();
-                    if (navItem.find('ul').length) {
-                        navItem.toggleClass('active');
-                    } else {
-                        navItem.parents('.active').removeClass('active');
-                    }
-                });
-
-
-                $('#briefcase').on('mouseover',function(){
-                $(this).parent().find('ul').css('display','block');
-
-                });
  </script>
 

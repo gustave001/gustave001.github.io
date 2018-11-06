@@ -815,3 +815,13 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+
+menu_tool:
+  enable: true
+
+tool_detail:
+  在线编辑:
+    JSON编辑: https://www.bejson.com/jsoneditoronline
+  在线服务:
+    百度: http://www.baidu.com

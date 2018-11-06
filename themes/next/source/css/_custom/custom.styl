@@ -55,23 +55,21 @@ code {
 
  //分割线
 
-
 /*四级菜单导航CSS*/
 ul{padding:0px;}
 .menuTool{
   position:relative;
-  //margin-top:5px;
-  //margin-bottom:5px;
 }
-.menuTool ul{list-style-type:none;}
-.menuTool li{float:left;position:relative;text-align:center;/*margin-left:5px;*/}
+.menuTool ul{list-style-type:none;z-index:99999999;}
+.menuTool li{float:left;position:relative;text-align:center;z-index:99999999;}
 .menuTool ul ul{
   visibility:hidden;
   position:absolute;
   left:-23px;
   top:35px;
+  z-index:99999999;
 }
-.menuTool ul ul ul{visibility:hidden;position:absolute;left:122px;top:0px;}
+.menuTool ul ul ul{visibility:hidden;position:absolute;left:122px;top:0px;z-index:99999999;}
 .menuTool table{position:absolute;top:0;left:0;}
 .menuTool ul li:hover ul,.menuTool ul a:hover ul{visibility:visible;}
 .menuTool a{display:block;padding:2px 10px;text-decoration:none;height:35px;line-height:35px;}
@@ -100,7 +98,7 @@ ul{padding:0px;}
   visibility:visible
   /*一级二级三级hover时，设置四级菜单可见*/
 }
-.menuTool ul ul ul a{background:#46537C;}
-.menuTool ul ul ul a:hover{background:#F00;}
-.menuTool ul ul ul ul a{background:#46537C;}
-.menuTool ul ul ul ul a:hover{background: #F00;}
+//.menuTool ul ul ul a{background:#46537C !important;}
+//.menuTool ul ul ul a:hover{background:#F00 !important;}
+//.menuTool ul ul ul ul a{background:#46537C !important;}
+//.menuTool ul ul ul ul a:hover{background: #F00 !important;}

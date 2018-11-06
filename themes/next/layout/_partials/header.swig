@@ -67,26 +67,32 @@
         {% endif %}
 
     {% if theme.menu_tool.enable %}
-        <li class="menu-item menu-item-briefcase">
-           <a  href="#">
-              <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br />
-            {{ __('工具') }}
-          </a>
-          <ul>
-            {% for name in theme.tool_detail %}
-              <li class="dropdown">
-                <a href="#">{{name}}</a>
+      <li class="menu-item menu-item-briefcase">
+        <a  href="#">
+          <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br />
+          {{ __('工具') }}
+        </a>
+        <ul>
+          {% for obj in theme.tool_detail %}
+            <li class="dropdown">
+              {% for name,value in obj %}
+                {% if name=='key' %}
+                  <a href="#" >{{value}}</a>
+                {% endif %}
+              {% endfor %}
                 <ul>
-                   {% for key,url in theme.tool_detail.name %}
-                     <li>
-                          <a href={{url}} target="_blank">{{theme.tool_detail.name.key}}</a>
-                     </li>
-                   {% endfor %}
+                  {% for name,path in obj %}
+                    {% if name!='key' %}
+                      <li>
+                        <a href={{path}} target="_blank">{{name}}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
                 </ul>
-              </li>
-            {% endfor %}
-          </ul>
-        </li>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
     {% endif %}
 
     </ul>

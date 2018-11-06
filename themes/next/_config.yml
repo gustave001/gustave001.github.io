@@ -821,7 +821,31 @@ menu_tool:
   enable: true
 
 tool_detail:
-  在线编辑:
-    JSON编辑: https://www.bejson.com/jsoneditoronline
+  工具类:
+    key: 我的工具
+    MapperUtils: /2018/10/22/Jackson工具类/
+    CookieUtils: /2018/10/22/Cookie工具类/
+  在线工具:
+    key: 在线编辑
+    JSON编辑器: https://www.bejson.com/jsoneditoronline
+    MD表格生成: https://www.bejson.com/jsoneditoronline
+    CRON表达式: http://cron.qqe2.com
+    代码格式化: http://tool.oschina.net/codeformat/html
+    公式编辑器: https://zh.numberempire.com/latexequationeditor.php
+    二维码生成器: https://cli.im/
+    在线编码转换: http://tool.chinaz.com/tools/native_ascii.aspx
+    YAML转换: http://www.toyaml.com
   在线服务:
-    百度: http://www.baidu.com
+    key: 在线服务
+    vue: https://cn.vuejs.org/v2/api/
+    vuex: https://vuex.vuejs.org/zh/api/#vuex-store
+    谷歌趋势: https://trends.google.com/trends/?geo=US
+    百度指数: http://index.baidu.com/#/
+    百度流量研究院: https://tongji.baidu.com/data/browser
+  高频网站:
+    key: 高频网站
+    GitHub: https://github.com/kikyou93/kikyou93.github.io
+    DockerHub: https://hub.docker.com/search/
+    知乎: https://www.zhihu.com/explore
+    B站: https://www.bilibili.com/
+    Youtube: https://www.youtube.com/

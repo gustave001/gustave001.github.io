@@ -53,354 +53,54 @@ code {
 }
 
 
-
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-}
-
-.menu > li ul {
-  white-space: nowrap;
-  background: #232323;
-  margin-top: 3px;
-  transition: 0.2s linear;
-  -webkit-transition: 0.2s linear;
-  -moz-transition: 0.2s linear;
-  padding: 1.625em;
-  min-width: 16em;
-}
+ //分割线
 
 
-.menu > li ul {
-  left: 0;
-  margin: 0;
-  line-height: 1.625em !important;
-  padding: 1em 0;
-  background: none;
-  opacity: 0;
-  visibility: hidden ;
-  position: absolute;
-  min-width: 13em !important;
-  float: left;
+/*四级菜单导航CSS*/
+ul{padding:0px;}
+.menuTool{
+  position:relative;
+  //margin-top:5px;
+  //margin-bottom:5px;
 }
-
-
-.menu > li:hover> ul{
-  display: block
-  opacity: 1;
-  visibility: visible;
+.menuTool ul{list-style-type:none;}
+.menuTool li{float:left;position:relative;text-align:center;/*margin-left:5px;*/}
+.menuTool ul ul{
+  visibility:hidden;
+  position:absolute;
+  left:-23px;
+  top:35px;
 }
-
-.menu > li> ul > li:hover>ul{
-  display: block;
-  opacity: 1;
-  visibility: visible;
+.menuTool ul ul ul{visibility:hidden;position:absolute;left:122px;top:0px;}
+.menuTool table{position:absolute;top:0;left:0;}
+.menuTool ul li:hover ul,.menuTool ul a:hover ul{visibility:visible;}
+.menuTool a{display:block;padding:2px 10px;text-decoration:none;height:35px;line-height:35px;}
+.menuTool ul ul li{clear:both;text-align:center;margin-top:2px;}
+.menuTool ul ul li a{display:block;width:100px;height:15px;height:35px;}
+.menuTool ul ul li a:hover{background: #F00;}
+.menuTool ul ul ul li a{clear:both;text-align:left;}
+.menuTool ul li:hover ul{visibility:visible;}
+.menuTool ul a:hover ul{
+  visibility:visible;
+  /*一级的li，a的hover时，设置二级菜单可见*/
 }
-
-
-
-ul, ol {
-  list-style: none;
+.menuTool ul :hover ul ul{
+  visibility:hidden;
+  /*一级的li，a的hover时，设置二级,三级菜单隐藏*/
 }
-
-ul, menu, dir {
-  display: block;
-  list-style-type: disc;
-  -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 40px;
+.menuTool ul :hover ul :hover ul ul{
+  visibility:hidden;
+  /*一级和二级的li，a的hover时，设置三级和四级级菜单隐藏*/
 }
-
-.menu > li {
-  position: relative;
-  float: left;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0px;
-  font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+.menuTool ul :hover ul :hover ul{
+  visibility:visible;
+  /*一级二级菜单hover时，设定3级菜单可见*/
 }
-
-
-
-p,
-ul,
-ol,
-pre,
-table,
-blockquote {
-  margin-bottom: 1.625em;
+.menuTool ul :hover ul :hover ul :hover ul{
+  visibility:visible
+  /*一级二级三级hover时，设置四级菜单可见*/
 }
-ul,
-ol {
-  list-style: none;
-}
-ul:not(.menu):not(.slides):not(.accordion):not(.tabs):not(.tabs-content),
-ol:not(.menu):not(.slides):not(.accordion):not(.tabs):not(.tabs-content) {
-  line-height: 2.34375em;
-}
-ul.bullets {
-  list-style: inside;
-}
-ol {
-  list-style-type: upper-roman;
-  list-style-position: inside;
-}
-
-@media all and (max-width: 990px) {
-  .nav-bar {
-    padding: 0 15px;
-  }
-  .nav-bar .nav-module.right:not(.logo-module):not(.menu-module) {
-    padding: 0;
-    margin-bottom: 0.8125em;
-  }
-}
-
-.menu > li {
-  transition: 0.3s linear;
-  -webkit-transition: 0.3s linear;
-  -moz-transition: 0.3s linear;
-}
-.menu > li:hover > a {
-  opacity: .6;
-}
-.menu > li a {
-  color: #232323;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-  transition: 0.2s linear;
-  -webkit-transition: 0.2s linear;
-  -moz-transition: 0.2s linear;
-}
-.menu > li ul {
-  white-space: nowrap;
-  background: #232323;
-  margin-top: 3px;
-  transition: 0.2s linear;
-  -webkit-transition: 0.2s linear;
-  -moz-transition: 0.2s linear;
-  padding: 1.625em;
-  min-width: 16em;
-}
-.menu > li ul li {
-  padding-left: 0.42307692307692em;
-}
-.menu > li ul li a {
-  padding-left: 0;
-  width: 100%;
-  color: #fff;
-}
-.menu > li ul li a:hover {
-  transform: translate3d(5px, 0, 0);
-  -webkit-transform: translate3d(5px, 0, 0);
-}
-.menu > li > ul {
-  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.05);
-}
-.menu > li > ul:not(.multi-column) > li.dropdown > a:after {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  right: 0;
-  top: 4px;
-  opacity: .4;
-  transition: 0.4s ease;
-  -webkit-transition: 0.4s ease;
-  -moz-transition: 0.4s ease;
-  transform: translate3d(-10px, 0, 0);
-  -webkit-transform: translate3d(-10px, 0, 0);
-}
-.menu > li > ul:not(.multi-column) > li.dropdown:hover > a {
-  transform: translate3d(5px, 0, 0);
-  -webkit-transform: translate3d(5px, 0, 0);
-  opacity: 1;
-}
-.menu > li > ul:not(.multi-column) > li.dropdown:hover > a:after {
-  opacity: 1;
-  transform: translate3d(-3px, 0, 0);
-  -webkit-transform: translate3d(-3px, 0, 0);
-}
-
-.menu > li > ul ul {
-  left: calc(-100%);
-}
-.menu > li > ul a {
-  padding: 0 1em 1.3em 1em;
-  transition: 0.2s linear;
-  -webkit-transition: 0.2s linear;
-  -moz-transition: 0.2s linear;
-  opacity: .5;
-}
-.menu > li > ul a:hover {
-  opacity: 1;
-}
-
-
-
-
-
-
-
-.multi-column {
-  width: auto !important;
-  white-space: nowrap;
-}
-.multi-column li {
-  width: 13em;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
-}
-.multi-column li ul {
-  position: relative;
-}
-.multi-column ul li {
-  float: none;
-  display: block;
-}
-.module-applet {
-  position: relative;
-  padding: 0 1em;
-}
-.module-applet__handle {
-  cursor: pointer;
-  position: relative;
-}
-.module-applet__body {
-  position: absolute;
-  width: 26em;
-  background: none;
-  z-index: 10;
-  padding: 1em;
-  visibility: hidden;
-  opacity: 0;
-}
-.module-applet__body * {
-  line-height: 1.625em;
-}
-.module-applet:hover .module-applet__body {
-  opacity: 1;
-  visibility: visible;
-}
-.nav-mobile-toggle {
-  position: absolute;
-  top: 0;
-  right: 15px;
-  z-index: 99;
-  cursor: pointer;
-  line-height: 62px;
-  padding: 0 1em;
-  user-select: none;
-  -webkit-user-select: none;
-}
-@media all and (max-width: 990px) {
-  .nav-bar {
-    height: auto;
-    overflow: hidden;
-  }
-  .nav-bar .nav-module.left,
-  .nav-bar .nav-module.right {
-    float: none;
-    display: block;
-  }
-  .nav-bar .nav-module {
-    padding: 0;
-  }
-  .nav-bar .nav-module:not(.logo-module) {
-    height: auto;
-    line-height: 2em;
-  }
-  .menu {
-    height: auto;
-  }
-  .menu li {
-    float: none;
-    width: 100%;
-  }
-  .menu > li > a {
-    padding: 0;
-  }
-  .menu > li ul {
-    position: relative;
-    float: none;
-    display: none;
-    width: 100%;
-  }
-  .menu > li ul ul {
-    left: 0 !important;
-    padding-left: 2em;
-  }
-  .menu > li > ul:not(.multi-column) ul {
-    padding-top: 0;
-    padding-bottom: 1.5em;
-  }
-  .menu li.active > ul,
-  .menu li.active .multi-column ul {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }
-  .menu .multi-column {
-    white-space: initial;
-  }
-  .menu .multi-column ul {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .menu .multi-column ul li a {
-    padding-left: 0;
-  }
-  .menu .multi-column ul li:last-child a {
-    padding-bottom: 1.625em;
-  }
-  .module-applet {
-    padding: 0;
-  }
-  .module-applet .module-applet__body {
-    position: relative;
-    display: none;
-    padding: 1em 0;
-    opacity: 1;
-    visibility: visible;
-  }
-  .module-applet.active .module-applet__body {
-    display: block;
-  }
-}
-.nav-open .nav-bar {
-  max-height: 100000px !important;
-}
-.nav--fixed,
-.nav--absolute {
-  width: 100%;
-  z-index: 99;
-}
-.nav--fixed {
-  position: fixed;
-}
-.nav--absolute {
-  position: absolute;
-}
-.nav--transparent:not(.nav--fixed) {
-  background: none !important;
-}
-nav:not(.nav--fixed):not(.nav--absolute) {
-  position: relative;
-}
-@media all and (max-width: 990px) {
-  .nav-bar.nav--absolute,
-  .nav-bar.nav--fixed {
-    position: relative;
-  }
-  .nav-bar.nav--absolute + .nav-mobile-toggle,
-  .nav-bar.nav--fixed + .nav-mobile-toggle {
-    position: absolute;
-  }
-}
+.menuTool ul ul ul a{background:#46537C;}
+.menuTool ul ul ul a:hover{background:#F00;}
+.menuTool ul ul ul ul a{background:#46537C;}
+.menuTool ul ul ul ul a:hover{background: #F00;}

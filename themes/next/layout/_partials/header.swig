@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<nav class="site-nav">
+<nav class="site-nav menuTool">
   {% set hasSearch = theme.swiftype_key || theme.algolia_search.enable || theme.tinysou_Key || theme.local_search.enable %}
 
   {% if theme.menu %}
@@ -67,8 +67,7 @@
         {% endif %}
 
         <li class="menu-item menu-item-briefcase">
-            <a href="javascript:;" class="st-briefcase-show-outputs">
-            <a id="briefcase" href="#">
+           <a  href="#">
               <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br />
             {{ __('工具') }}
           </a>
@@ -126,7 +125,7 @@
 
                       <li>
                           <a href="http://www.toyaml.com" target="_blank">
-                              YAML &lt;-&gt; Properties
+                              YAML &lt;-&gt; Prop
                           </a>
                       </li>
 
@@ -260,26 +259,4 @@
 
 {% include '../_custom/header.swig' %}
 
-<script>
-$('.menu > li > ul').each(function() {
-  var $window          = $(window);
-  var dropDown         = $(this);
-  var menu             = dropDown.offset();
-  var farRight         = menu.left + dropDown.outerWidth(true);
-  var windowWidth      = $window.width();
-  var multiColumn      = dropDown.hasClass('multi-column');
-
-  if (farRight > windowWidth && !multiColumn) {
-      dropDown.addClass('make-right');
-  } else if (farRight > windowWidth && multiColumn) {
-      var difference = farRight - windowWidth;
-      dropDown.css('margin-left', -(difference));
-  }
-});
-
-$('.module-applet').on('click', function(){
-    $(this).toggleClass('active');
-});
-
- </script>
 

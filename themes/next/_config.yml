@@ -828,7 +828,7 @@ tool_detail:
   在线工具:
     key: 在线编辑
     JSON编辑器: https://www.bejson.com/jsoneditoronline
-    MD表格生成: https://www.bejson.com/jsoneditoronline
+    MD表格生成: https://tool.lu/tables/
     CRON表达式: http://cron.qqe2.com
     代码格式化: http://tool.oschina.net/codeformat/html
     公式编辑器: https://zh.numberempire.com/latexequationeditor.php

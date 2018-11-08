@@ -845,6 +845,7 @@ tool_detail:
   高频网站:
     key: 高频网站
     GitHub: https://github.com/kikyou93/kikyou93.github.io
+    MavenRepo: https://mvnrepository.com/
     DockerHub: https://hub.docker.com/search/
     知乎: https://www.zhihu.com/explore
     B站: https://www.bilibili.com/

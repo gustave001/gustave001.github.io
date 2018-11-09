@@ -2,7 +2,6 @@ language: node_js
 node_js: stable
 
 cache:
-  apt: true
   directories:
     - node_modules # 缓存不经常更改的内容
 
@@ -12,7 +11,7 @@ before_install:
 # S: Build Lifecycle
 install:
   - npm cache clean --force
-  - npm install
+  - npm install hexo-cli -g
 
 
 #before_script:

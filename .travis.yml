@@ -11,6 +11,7 @@ before_install:
 
 # S: Build Lifecycle
 install:
+  - npm cache clean --force
   - npm install --registry=https://registry.npm.taobao.org
 
 

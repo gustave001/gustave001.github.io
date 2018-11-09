@@ -19,7 +19,7 @@ gulp.task('minify-html', function() {
 });
 // 压缩css
 gulp.task('minify-css', function() {
-    return gulp.src('./public/**/*.css')
+    return gulp.src('./public/css/**/*.css')
         .pipe(minifycss({
             compatibility: 'ie8'
         }))
@@ -27,7 +27,7 @@ gulp.task('minify-css', function() {
 });
 // 压缩js
 gulp.task('minify-js', function() {
-    return gulp.src('./public/js/**/*.js')
+    return gulp.src('./public/js/src/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('./public'));
 });

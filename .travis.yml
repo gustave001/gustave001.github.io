@@ -9,9 +9,9 @@ before_install:
   - export TZ='Asia/Shanghai' # 更改时区
 
 # S: Build Lifecycle
-install:
-  - npm cache clean --force
-  - npm install hexo-cli -g
+install: npm install
+#  - npm cache clean --force
+#  -
 
 
 #before_script:

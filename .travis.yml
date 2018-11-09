@@ -9,9 +9,9 @@ before_install:
   - export TZ='Asia/Shanghai' # 更改时区
 
 # S: Build Lifecycle
-install: npm install
-#  - npm cache clean --force
-#  -
+install:
+  - npm cache clean --force
+  - npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 
 #before_script:

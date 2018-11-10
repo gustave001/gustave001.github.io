@@ -844,7 +844,7 @@ tool_detail:
     百度流量研究院: https://tongji.baidu.com/data/browser
   高频网站:
     key: 高频网站
-    GitHub: https://github.com/kikyou93/kikyou93.github.io/tree/source
+    GitHub: https://github.com/kikyou93/kikyou93.github.io/
     Travis CI: https://www.travis-ci.org/kikyou93/kikyou93.github.io/settings
     MavenRepo: https://mvnrepository.com/
     DockerHub: https://hub.docker.com/search/

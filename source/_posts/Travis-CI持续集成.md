@@ -63,6 +63,6 @@ notifications:
   on_success: change
   on_failure: always
 
-
-
 ```
+
+- 持续集成了就是方便，哈哈

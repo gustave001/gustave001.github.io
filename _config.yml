@@ -79,6 +79,13 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+
+baidu_url_submit:
+  count: 10
+  host: www.kikfan.com
+  token: Zy4qRVqczbQv8btc
+  path: baidu_urls.txt
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -90,11 +97,6 @@ deploy:
   message: update
 - type: baidu_url_submitter
 
-baidu_url_submitter:
-  count: 10
-  host: kikfan.com
-  token: Zy4qRVqczbQv8btc
-  path: baidu_urls.txt
 
 search:
   path: search.xml

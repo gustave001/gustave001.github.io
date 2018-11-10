@@ -90,4 +90,4 @@ notifications:
 - Git commit的问题也是心累
 - 全都保留提交记录，舒服！！
 - Bingo,问题都铲除了就是爽
-- hexo g -d呢
+- hexo g -d呢,摸不着头脑

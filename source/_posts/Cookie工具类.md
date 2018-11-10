@@ -1,7 +1,10 @@
 ---
 title: Cookie工具类
-tags: [java,Cookie]
+tags:
+  - java
+  - Cookie
 categories: 实用工具
+abbrlink: b1e39e23
 date: 2018-10-22 22:34:05
 ---
 # CookieUtils <!--more-->

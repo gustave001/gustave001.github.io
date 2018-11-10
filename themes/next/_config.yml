@@ -823,8 +823,8 @@ menu_tool:
 tool_detail:
   工具类:
     key: 我的工具
-    MapperUtils: /2018/10/22/Jackson工具类/
-    CookieUtils: /2018/10/22/Cookie工具类/
+    MapperUtils: /archives/80084445.html
+    CookieUtils: /archives/b1e39e23.html
   在线工具:
     key: 在线编辑
     JSON编辑器: https://www.bejson.com/jsoneditoronline

@@ -1,7 +1,10 @@
 ---
 title: Travis-CI持续集成
-tags: [Travis CI,持续集成]
+tags:
+  - Travis CI
+  - 持续集成
 categories: 博客搭建
+abbrlink: d4ce3f58
 date: 2018-11-10 01:20:34
 ---
 # 生命不息，折腾不止

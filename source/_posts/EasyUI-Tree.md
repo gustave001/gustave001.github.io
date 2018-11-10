@@ -1,7 +1,11 @@
 ---
 title: EasyUI_Tree
-tags: [easyUI,tree,前端]
+tags:
+  - easyUI
+  - tree
+  - 前端
 categories: 天涯海角
+abbrlink: 5d3df5f4
 date: 2018-10-29 00:49:59
 update: 2018-10-29 00:58:55
 ---

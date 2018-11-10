@@ -15,8 +15,12 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://www.kikfan.com
 root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
+#permalink: :year/:month/:day/:title/
+#permalink_defaults:
+permalink: archives/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 
 # Directory
 source_dir: source
@@ -79,7 +83,9 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: git@github.com:kikyou93/kikyou93.github.io.git
+  repo:
+  - git@github.com:kikyou93/kikyou93.github.io.git
+  - git@git.coding.net:kikfan/kikfan.coding.me.git
   branch: master
   message: update
 #- type: baidu_url_submitter

@@ -1,7 +1,9 @@
 ---
 title: 感谢IG
-tags: [游戏]
+tags:
+  - 游戏
 categories: 风轻云淡
+abbrlink: a6ddf20d
 date: 2018-11-03 19:46:19
 ---
 # 七年，终于等到了

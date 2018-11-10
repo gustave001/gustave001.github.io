@@ -1,7 +1,9 @@
 ---
 title: '关于RNG,关于LOL'
-tags: [游戏人生]
+tags:
+  - 游戏人生
 categories: 风轻云淡
+abbrlink: 587eb1e3
 date: 2018-10-21 01:51:33
 ---
 # 游戏而已

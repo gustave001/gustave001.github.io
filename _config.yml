@@ -88,13 +88,13 @@ deploy:
   - git@git.coding.net:kikfan/kikfan.coding.me.git
   branch: master
   message: update
-#- type: baidu_url_submitter
-#
-#baidu_url_submitter:
-#  count: 10
-#  host: kikfan.com
-#  token: Zy4qRVqczbQv8btc
-#  path: baidu_urls.txt
+- type: baidu_url_submitter
+
+baidu_url_submitter:
+  count: 10
+  host: kikfan.com
+  token: Zy4qRVqczbQv8btc
+  path: baidu_urls.txt
 
 search:
   path: search.xml

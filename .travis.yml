@@ -22,19 +22,31 @@ script:
   - hexo g && gulp  #生成
 
 after_script:
-#  - git clone https://${GH_REF} .deploy_git  # GH_REF是最下面配置的仓库地址
-#  - cd .deploy_git
-#  - git checkout master
-#  - cd ../
-#  - mv .deploy_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - git clone https://${GH_REF} .github_git  # GH_REF是下面配置的GitHub仓库地址
+  - cd .github_git
+  - git checkout master
+  - cd ../
+  - mv .github_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
   - cd ./public
-  - git init
+#  - git init
   - git config user.name "Gustave"
   - git config user.email "1014016816@qq.com"
   - git add .
-  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
+  - git commit -m "Travis CI Auto Builder For Github Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
   # GitHub
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - rm -fr .git/
+  - cd ../
+  - git clone https://${CO_REF} .coding_git  # CO_REF是最下面配置Coding的仓库地址
+  - cd .coding_git
+  - git checkout master
+  - cd ../
+  - mv .coding_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - cd ./public
+  - git config user.name "Gustave"
+  - git config user.email "1014016816@qq.com"
+  - git add .
+  - git commit -m "Travis CI Auto Builder For Coding Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
   # Coding Pages
   - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
 # E: Build LifeCycle
@@ -55,5 +67,3 @@ notifications:
     - 1014016816@qq.com
   on_success: change
   on_failure: always
-
-

@@ -37,17 +37,33 @@ script:
   - hexo g && gulp  #生成
 
 after_script:
-  - git clone https://${GH_REF} .deploy_git  # GH_REF是最下面配置的仓库地址
-  - cd .deploy_git
+  - git clone https://${GH_REF} .github_git  # GH_REF是下面配置的GitHub仓库地址
+  - cd .github_git
   - git checkout master
   - cd ../
-  - mv .deploy_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - mv .github_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
+  - cd ./public
+#  - git init
+  - git config user.name "Gustave"
+  - git config user.email "1014016816@qq.com"
+  - git add .
+  - git commit -m "Travis CI Auto Builder For Github Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
+  # GitHub
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - rm -fr .git/
+  - cd ../
+  - git clone https://${CO_REF} .coding_git  # CO_REF是最下面配置Coding的仓库地址
+  - cd .coding_git
+  - git checkout master
+  - cd ../
+  - mv .coding_git/.git/ ./public/   # 这一步之前的操作是为了保留master分支的提交记录，不然每次git init的话只有1条commit
   - cd ./public
   - git config user.name "Gustave"
   - git config user.email "1014016816@qq.com"
   - git add .
-  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git commit -m "Travis CI Auto Builder For Coding Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
+  # Coding Pages
+  - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
 # E: Build LifeCycle
 
 branches:
@@ -56,6 +72,7 @@ branches:
 env:
   global:
     - GH_REF: github.com/kikyou93/kikyou93.github.io.git
+    - CO_REF: git.coding.net/kikfan/kikfan.coding.me.git
 
 # configure notifications (email, IRC, campfire etc)
 # please update this section to your needs!
@@ -65,8 +82,8 @@ notifications:
     - 1014016816@qq.com
   on_success: change
   on_failure: always
-
 ```
 
 - 持续集成了就是方便，哈哈
-- 添加Coding Pages试试，百度爬虫啊，心累
+- 添加Coding Pages试试，百度爬虫啊，心累!Git commit的问题也是心累啊
+- 全都保留提交记录，舒服！！

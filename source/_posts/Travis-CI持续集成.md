@@ -83,7 +83,9 @@ notifications:
   on_success: change
   on_failure: always
 ```
-
 - 持续集成了就是方便，哈哈
-- 添加Coding Pages试试，百度爬虫啊，心累!Git commit的问题也是心累啊
+- 添加Coding Pages试试
+- 百度爬虫啊，心累!
+- Git commit的问题也是心累
 - 全都保留提交记录，舒服！！
+- Bingo,问题都铲除了就是爽

@@ -50,7 +50,8 @@ after_script:
   - git commit -m "Travis CI Auto Builder For Coding Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
   # Coding Pages
   - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
-# E: Build LifeCycle
+  # baidu_url_submit
+  - curl -H 'Content-Type:text/plain' --data-binary @baidu_urls.txt "http://data.zz.baidu.com/urls?site=https://www.kikfan.com&token=Zy4qRVqczbQv8btc"
 
 branches:
   only:

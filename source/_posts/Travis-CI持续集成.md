@@ -69,3 +69,4 @@ notifications:
 ```
 
 - 持续集成了就是方便，哈哈
+- 添加Coding Pages试试，百度爬虫啊，心累

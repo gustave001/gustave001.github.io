@@ -10,6 +10,7 @@ date: 2018-11-10 01:20:34
 # 生命不息，折腾不止
 - 还是没忍住捣腾了下Travis CI的持续集成，一开始因为墙的问题，node-sass下不来，折腾挺久，坑啊！！
 - 解决办法就是cnpm！！
+- 持续集成Coding和Github
 <!--more-->
 .travis.yml的配置文件如下
 ```yaml

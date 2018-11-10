@@ -33,10 +33,10 @@ after_script:
   - git config user.email "1014016816@qq.com"
   - git add .
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
-  # Coding Pages
-  - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
   # GitHub
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  # Coding Pages
+  - git push --force --quiet "https://${CO_TOKEN}@${CO_REF}" master:master
 # E: Build LifeCycle
 
 branches:

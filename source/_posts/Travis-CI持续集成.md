@@ -6,6 +6,7 @@ tags:
 categories: 博客搭建
 abbrlink: d4ce3f58
 date: 2018-11-10 01:20:34
+update: 2018-11-11 01:20:34
 ---
 # 生命不息，折腾不止
 - 还是没忍住捣腾了下Travis CI的持续集成，一开始因为墙的问题，node-sass下不来，折腾挺久，坑啊！！

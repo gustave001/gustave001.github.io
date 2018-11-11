@@ -23,7 +23,7 @@ script:
   - hexo g && gulp  #生成
 
 after_script:
-  - git clone https://${GH_REF} .github_git --depth=5  # GH_REF是下面配置的GitHub仓库地址
+  - git clone --depth=5 https://${GH_REF} .github_git   # GH_REF是下面配置的GitHub仓库地址
   - cd .github_git
   - git checkout master
   - cd ../
@@ -38,7 +38,7 @@ after_script:
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
   - rm -fr .git/
   - cd ../
-  - git clone https://${CO_REF} .coding_git --depth=5  # CO_REF是最下面配置Coding的仓库地址
+  - git clone --depth=5 https://${CO_REF} .coding_git   # CO_REF是最下面配置Coding的仓库地址
   - cd .coding_git
   - git checkout master
   - cd ../

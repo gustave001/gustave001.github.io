@@ -7,7 +7,7 @@ tags:
 categories: 天涯海角
 abbrlink: 5d3df5f4
 date: 2018-10-29 00:49:59
-update: 2018-10-29 00:58:55
+updated: 2018-10-29 00:58:55
 ---
 # EasyUi Tree
  **树的初始化，以及数据格式** 

@@ -3,5 +3,5 @@ title: {{ title }}
 tags: []
 categories: 博客搭建
 date: {{ date }}
-update: {{ date }}
+updated: {{ date }}
 ---

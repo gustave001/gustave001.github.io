@@ -92,3 +92,4 @@ notifications:
 - Bingo,问题都铲除了就是爽
 - hexo g -d呢,摸不着头脑
 - 双十一买什么,头疼
+- 手机编辑试试

@@ -9,7 +9,7 @@ description: 偏安一隅
 keywords:
 author: Gustave
 language: zh-Hans
-timezone:
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -94,9 +94,8 @@ deploy:
   - git@github.com:kikyou93/kikyou93.github.io.git
   - git@git.coding.net:kikfan/kikfan.coding.me.git
   branch: master
-  message: update
+  message: Updated By Hexo
 - type: baidu_url_submitter
-
 
 search:
   path: search.xml

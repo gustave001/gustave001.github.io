@@ -850,7 +850,7 @@ tool_detail:
   高频网站:
     key: 高频网站
     GitHub: https://github.com/kikyou93/kikyou93.github.io/tree/source
-    Travis CI: https://www.travis-ci.org/kikyou93/kikyou93.github.io/settings
+    Travis CI: https://www.travis-ci.org/kikyou93/kikyou93.github.io/
     Coding Pages: https://dev.tencent.com/u/kikfan/p/kikfan.coding.me/git
     MavenRepo: https://mvnrepository.com/
     DockerHub: https://hub.docker.com/search/

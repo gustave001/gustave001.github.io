@@ -51,7 +51,6 @@ after_script:
   # Coding Pages
   - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
 #  - curl www.baidu.com
-  - curl https://api.live.bilibili.com/ajax/feed/count
   # baidu_url_submit
   - curl -H 'Content-Type:text/plain' --data-binary @baidu_urls.txt "http://data.zz.baidu.com/urls?site=https://www.kikfan.com&token=Zy4qRVqczbQv8btc"
 

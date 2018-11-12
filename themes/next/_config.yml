@@ -826,6 +826,10 @@ tool_detail:
     MapperUtils: /archives/80084445.html
     CookieUtils: /archives/b1e39e23.html
     Payne: https://qinyuanpei.github.io/
+  我的收藏:
+    key: 我的收藏
+    个人空间: http://space.kikfan.com:5000/
+    百度站长: https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/
   在线工具:
     key: 在线编辑
     JSON编辑器: https://www.bejson.com/jsoneditoronline

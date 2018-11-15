@@ -127,7 +127,7 @@ live2d:
     hOffset: -30
     vOffset: -20
   mobile:
-    show: false  #是否在手机进行显示
+    show: true  #是否在手机进行显示
   react:
     opacityDefault: 0.7
     opacityOnHover: 0.2

@@ -19,3 +19,5 @@ public class HelloAction extends AnAction {
 }
 ```
 ![IDEA插件](https://note.youdao.com/yws/public/resource/7fe8e401352a5a9cbdeac81cafe1f9e1/xmlnote/D737BB17BA134BEF9778D78A2E7EC622/2706)
+# 心情的起伏
+人生总是很难一帆风顺，总会磕磕绊绊，所以是否能够不受影响，坚定地去做自己想做的事就显得尤为重要！

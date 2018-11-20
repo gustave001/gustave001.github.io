@@ -825,14 +825,13 @@ tool_detail:
     key: 我的工具
     MapperUtils: /archives/80084445.html
     CookieUtils: /archives/b1e39e23.html
-    Payne: https://qinyuanpei.github.io/
-    站点配置: https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml
+    IDEA快捷键: https://blog.csdn.net/yangwei256/article/details/82683140
+    Config.yml: https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml
   我的收藏:
     key: 我的收藏
     个人空间: http://space.kikfan.com:5000/
     百度站长: https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/
     WeUI: https://weui.io/#navbar
-    IDEA插件: https://cloud.tencent.com/developer/article/1348741
     IDEA插件官方: http://www.jetbrains.org/intellij/sdk/docs/welcome.html
     搜索插件: https://blog.csdn.net/O4dC8OjO7ZL6/article/details/79722289
     Python工具: https://blog.csdn.net/pdcfighting/article/details/82052055

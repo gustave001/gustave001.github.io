@@ -3,7 +3,7 @@ title: IDEA插件开发小试牛刀
 tags: [IDEA,插件]
 categories: 好奇尚异
 date: 2018-11-19 02:01:57
-updated: 2018-11-22 22:02:09
+updated: 2018-11-22 23:18:25
 ---
 下了个社区版，先试试 `Hello World` ，后续尝试更多花样
 ```java

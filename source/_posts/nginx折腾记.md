@@ -19,7 +19,7 @@ services:
      - "80:80"
 ```
 - nginx.conf
-```
+```jenkins
 user  nginx;
 worker_processes  1;
 

@@ -3,7 +3,7 @@ title: nginx折腾记
 tags: [nginx,折腾]
 categories: 好奇尚异
 date: 2018-11-23 19:16:12
-updated: 2018-11-23 19:16:12
+updated: 2018-11-23 22:44:50
 ---
 - docker-compose.yml
 ```yaml

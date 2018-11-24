@@ -1,7 +1,10 @@
 ---
 title: IDEA插件开发小试牛刀
-tags: [IDEA,插件]
+tags:
+  - IDEA
+  - 插件
 categories: 好奇尚异
+abbrlink: 89d150c
 date: 2018-11-19 02:01:57
 updated: 2018-11-22 23:18:25
 ---

@@ -1,9 +1,12 @@
 ---
 title: nginx折腾记
-tags: [nginx,折腾]
+tags:
+  - nginx
+  - 折腾
 categories: 好奇尚异
+abbrlink: c2e234dc
 date: 2018-11-23 19:16:12
-updated: 2018-11-23 22:44:50
+updated: 2018-11-24 12:07:18
 ---
 - docker-compose.yml
 ```yaml

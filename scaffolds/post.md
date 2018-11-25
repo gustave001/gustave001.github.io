@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 tags: []
-categories: 博客搭建
+categories: 
 date: {{ date }}
 updated: {{ date }}
 ---

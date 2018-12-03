@@ -1,9 +1,10 @@
 ---
 title: hexo模板
 tags: []
+categories: 博客搭建
+abbrlink: 72c6fac0
 date: 2018-11-26 00:02:30
 updated: 2018-12-01 23:49:07
-categories: 博客搭建
 ---
 寻觅有意思的，禁得起研究的东西中...
 迅速调整，始终保持一颗前行的心，方为根本  

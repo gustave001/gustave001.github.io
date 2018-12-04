@@ -7,7 +7,7 @@ tags:
 categories: 实用工具
 abbrlink: afc449e8
 date: 2018-12-03 22:08:52
-updated: 2018-12-03 23:15:52
+updated: 2018-12-05 01:23:28
 ---
 # Idea快捷键一览
  Ctrl+Shift + Enter，语句完成
@@ -191,4 +191,7 @@ updated: 2018-12-03 23:15:52
  
  # chrome快捷键
  
+ 
 [https://blog.csdn.net/xjz729827161/article/details/78846175](https://blog.csdn.net/xjz729827161/article/details/78846175)
+
+状态略不好，警惕啊

@@ -194,4 +194,6 @@ updated: 2018-12-05 01:23:28
  
 [https://blog.csdn.net/xjz729827161/article/details/78846175](https://blog.csdn.net/xjz729827161/article/details/78846175)
 
-状态略不好，警惕啊
+状态略不好，警惕啊  
+
+一件事攒着就成梦魇了，一步步分解，不怕解决不掉！！

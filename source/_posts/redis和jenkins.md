@@ -1,9 +1,12 @@
 ---
 title: redis和jenkins
-tags: [redis,jenkins]
+tags:
+  - redis
+  - jenkins
+categories: 好奇尚异
+abbrlink: 9494c549
 date: 2018-12-08 21:58:54
 updated: 2018-12-13 23:53:38
-categories: 好奇尚异
 ---
 time flies
 # redis

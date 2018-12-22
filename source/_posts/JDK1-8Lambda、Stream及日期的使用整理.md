@@ -1,9 +1,13 @@
 ---
 title: JDK1.8Lambda、Stream及日期的使用整理
-tags: [Java,Lambda,Stream]
-date: 2018-12-22 09:22:26
-updated: 2018-12-22 09:22:26
+tags:
+  - Java
+  - Lambda
+  - Stream
 categories: Java
+abbrlink: a6c4b5fd
+date: 2018-12-22 09:22:26
+updated: 2018-12-22 19:33:37
 ---
 # 前言
 本篇主要讲述是Java中JDK1.8的一些新语法特性使用，主要是Lambda、Stream和LocalDate日期的一些使用讲解。
@@ -26,7 +30,7 @@ Lambda 表达式的使用
 
 比如我们对Map 的遍历
 传统方式遍历如下:
-
+```java
         Map<String, String> map = new HashMap<>();
         map.put("a", "a");
         map.put("b", "b");
@@ -37,14 +41,16 @@ Lambda 表达式的使用
         for (String key : map.keySet()) {
             System.out.println("k=" + key + "，v=" + map.get(key));
         }
+```
 使用Lambda进行遍历:
-
+```java
         System.out.println("map拉姆达表达式遍历:");
         map.forEach((k, v) -> {
             System.out.println("k=" + k + "，v=" + v);
     });
+```
 List也同理，不过List还可以通过双冒号运算符遍历:
-
+```java
         List<String> list = new ArrayList<String>();
         list.add("a");
         list.add("bb");
@@ -56,7 +62,10 @@ List也同理，不过List还可以通过双冒号运算符遍历:
         });
         System.out.println("list双冒号运算符遍历:");
         list.forEach(System.out::println);
+
+```
 输出结果:
+```java
 
     map普通方式遍历:
     k=a，v=a
@@ -78,8 +87,10 @@ List也同理，不过List还可以通过双冒号运算符遍历:
     bb
     ccc
     dddd
+```
 Lambda除了在for循环遍历中使用外，它还可以代替匿名的内部类。
 比如下面这个例子的线程创建:
+```java
 
     //使用普通的方式创建
     Runnable r1 = new Runnable() {
@@ -91,6 +102,7 @@ Lambda除了在for循环遍历中使用外，它还可以代替匿名的内部�
     
     //使用拉姆达方式创建
     Runnable r2 = ()-> System.out.println("拉姆达方式创建!");
+```
 注: 这个例子中使用Lambda表达式的时候，编译器会自动推断：根据线程类的构造函数签名 Runnable r { }，将该 Lambda 表达式赋Runnable 接口。
 
 Lambda 表达式与匿名类的区别
@@ -120,6 +132,7 @@ Stream使用
 在开发中，我们有时需要对一些数据进行过滤，如果是传统的方式，我们需要对这批数据进行遍历过滤，会显得比较繁琐，如果使用steam流方式的话，那么可以很方便的进行处理。
 
 首先通过普通的方式进行过滤:
+```java
 
 List<String> list = Arrays.asList("张三", "李四", "王五", "xuwujing");
     System.out.println("过滤之前:" + list);
@@ -134,6 +147,7 @@ List<String> list = Arrays.asList("张三", "李四", "王五", "xuwujing");
 
 List<String> result2 = list.stream().filter(str -> !"李四".equals(str)).collect(Collectors.toList());
 System.out.println("stream 过滤之后:" + result2);
+```
 输出结果:
 
 过滤之前:[张三, 李四, 王五, xuwujing]
@@ -143,6 +157,7 @@ stream 过滤之后:[张三, 王五, xuwujing]
 其实Stream流还有更多的使用方法，filter只是其中的一角而已。那么在这里我们就来学习了解下这些用法吧。
 
 # 1.构造Stream流的方式
+```java
 
     Stream stream = Stream.of("a", "b", "c");
     String[] strArray = new String[] { "a", "b", "c" };
@@ -150,9 +165,11 @@ stream 过滤之后:[张三, 王五, xuwujing]
     stream = Arrays.stream(strArray);
     List<String> list = Arrays.asList(strArray);
     stream = list.stream();
+```
 # 2.Stream流的之间的转换
 
 注意:一个Stream流只可以使用一次，这段代码为了简洁而重复使用了数次，因此会抛出 stream has already been operated upon or closed 异常。
+```java
 
 try {
         Stream<String> stream2 = Stream.of("a", "b", "c");
@@ -170,9 +187,11 @@ try {
     } catch (Exception e) {
         e.printStackTrace();
     }
+```
 # 3.Stream流的map使用
 
 map方法用于映射每个元素到对应的结果，一对一。
+```java
 
 示例一：转换大写
 
@@ -194,9 +213,11 @@ map方法用于映射每个元素到对应的结果，一对一。
     List<Integer> list6 = list5.stream().map(n -> n * n).collect(Collectors.toList());
     System.out.println("平方的数据:" + list6);
     // [1, 4, 9, 16, 25]
+```
 # 4.Stream流的filter使用
 
 filter方法用于通过设置的条件过滤出元素。
+```java
 
 示例二：通过与 findAny 得到 if/else 的值
 
@@ -220,9 +241,11 @@ System.out.println("stream 过滤之后 3:" + result4);
 
     System.out.println("计算结果:" + sum); 
     // 7
+```
 # 5.Stream流的flatMap使用
 
 flatMap 方法用于映射每个元素到对应的结果，一对多。
+```java
 
 示例:从句子中得到单词
 
@@ -239,9 +262,11 @@ flatMap 方法用于映射每个元素到对应的结果，一对多。
     // of 
     // the 
     // future
+```
 # 6.Stream流的limit使用
 
 limit 方法用于获取指定数量的流。
+```java
 
 示例一：获取前n条数的数据
 
@@ -271,10 +296,12 @@ List<User> list9 = new ArrayList<User>();
     //      姓名:pancm3
     //      截取之后的数据:[pancm3]
 注:User实体类中 getName 方法会打印姓名。
+```
 
 # 7.Stream流的sort使用
 
 sorted方法用于对流进行升序排序。
+```java
 
 示例一：随机取值排序
 
@@ -299,10 +326,12 @@ tips:先获取在排序效率会更高!
     System.out.println("优化排序之后的数据:" + list12);
     //排序之后的数据:[{"id":1,"name":"pancm1"}, {"id":2,"name":"pancm2"}, {"id":3,"name":"pancm3"}]
     //优化排序之后的数据:[{"id":1,"name":"pancm1"}, {"id":2,"name":"pancm2"}, {"id":3,"name":"pancm3"}]
+```
     
 # 8.Stream流的peek使用
 
 peek对每个元素执行操作并返回一个新的Stream
+```java
 
 示例:双重操作
 
@@ -314,9 +343,11 @@ peek对每个元素执行操作并返回一个新的Stream
     //  转换之后: THREE
     //  转换之前: four
     //  转换之后: FOUR
+```
 # 9.Stream流的parallel使用
 
 parallelStream 是流并行处理程序的代替方法。
+```java
 
 示例:获取空字符串的数量
 
@@ -324,7 +355,9 @@ parallelStream 是流并行处理程序的代替方法。
     // 获取空字符串的数量
     long count =  strings.parallelStream().filter(string -> string.isEmpty()).count();
     System.out.println("空字符串的个数:"+count);
+```
 # 10.Stream流的max/min/distinct使用
+```java
 
 示例一：得到最大最小值
 
@@ -342,11 +375,14 @@ parallelStream 是流并行处理程序的代替方法。
             .map(String::toLowerCase).distinct().sorted().collect(Collectors.toList());
     System.out.println("去重复之后:" + words);
     //去重复之后:[day, good, study, up]
+```
 # 11.Stream流的Match使用
 
 allMatch：Stream 中全部元素符合则返回 true ;
 anyMatch：Stream 中只要有一个元素符合则返回 true;
 noneMatch：Stream 中没有一个元素符合则返回 true。
+```java
+
 示例:数据是否符合
 
     boolean all = lists.stream().allMatch(u -> u.getId() > 3);
@@ -358,9 +394,11 @@ noneMatch：Stream 中没有一个元素符合则返回 true。
     //  是否都大于3:false
     //  是否有一个大于3:true
     //  是否没有一个大于3的:false
+```
 # 12.Stream流的reduce使用
 
 reduce 主要作用是把 Stream 元素组合起来进行操作。
+```java
 
 示例一：字符串连接
 
@@ -386,10 +424,12 @@ System.out.println("字符串拼接:" + concat);
 concat = Stream.of("a", "B", "c", "D", "e", "F").filter(x -> x.compareTo("Z") > 0).reduce("", String::concat);
 System.out.println("过滤和字符串连接:" + concat);
     //过滤和字符串连接:ace
+```
     
 # 13.Stream流的iterate使用
 
 iterate 跟 reduce 操作很像，接受一个种子值，和一个UnaryOperator（例如 f）。 然后种子值成为 Stream 的第一个元素，f(seed) 为第二个，f(f(seed)) 第三个，以此类推。 在 iterate 时候管道必须有 limit 这样的操作来限制 Stream 大小。
+```java
 
 示例:生成一个等差队列
 
@@ -397,11 +437,13 @@ iterate 跟 reduce 操作很像，接受一个种子值，和一个UnaryOperator
     Stream.iterate(2, n -> n + 2).limit(5).forEach(x -> System.out.print(x + " "));
     // 从2开始生成一个等差队列:
     // 2 4 6 8 10
+```
 # 14.Stream流的Supplier使用
 
 通过实现Supplier类的方法可以自定义流计算规则。
 
 示例：随机获取两条用户信息
+```java
 
     System.out.println("自定义一个流进行计算输出:");
     Stream.generate(new UserSupplier()).limit(2).forEach(u -> System.out.println(u.getId() + ", " + u.getName()));
@@ -421,7 +463,6 @@ iterate 跟 reduce 操作很像，接受一个种子值，和一个UnaryOperator
     //10, pancm4
     //11, pancm8
 
-
 class UserSupplier implements Supplier<User> {
     private int index = 10;
     private Random random = new Random();
@@ -430,11 +471,15 @@ class UserSupplier implements Supplier<User> {
     public User get() {
         return new User(index++, "pancm" + random.nextInt(10));
     }
+```
+
 }
 # 15.Stream流的groupingBy/partitioningBy使用
 
 groupingBy：分组排序；
 partitioningBy：分区排序。
+```java
+
 示例一：分组排序
 
     System.out.println("通过id进行分组排序:");
@@ -483,9 +528,11 @@ partitioningBy：分区排序。
             return new User(index++, "pancm" + random.nextInt(10));
         }
     }
+```
 # 16.Stream流的summaryStatistics使用
 
 IntSummaryStatistics 用于收集统计信息(如count、min、max、sum和average)的状态对象。
+```java
 
 示例:得到最大、最小、之和以及平均数。
 
@@ -501,6 +548,7 @@ IntSummaryStatistics 用于收集统计信息(如count、min、max、sum和avera
     //  列表中最小的数 : 1
     //  所有数之和 : 25
     //  平均数 : 5.0
+```
 Stream 介绍就到这里了，JDK1.8中的Stream流其实还有很多很多用法，更多的用法则需要大家去查看JDK1.8的API文档了。
 
 # LocalDateTime
@@ -517,6 +565,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 # 1.获取当前的日期时间
 
 通过静态工厂方法now()来获取当前时间。
+```java
 
     //本地日期,不包括时分秒
     LocalDate nowDate = LocalDate.now();
@@ -526,9 +575,11 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
     System.out.println("当前时间:"+nowDateTime);
     //  当前时间:2018-12-19
     //  当前时间:2018-12-19T15:24:35.822
+```
 # 2.获取当前的年月日时分秒
 
 获取时间之后，直接get获取年月日时分秒。
+```java
 
      //获取当前的时间，包括毫秒
      LocalDateTime ldt = LocalDateTime.now();
@@ -544,17 +595,21 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
     //       当前时:15
     //       当前分:24
     //       当前时间:2018-12-19T15:24:35.833
+```
 # 3.格式化时间
 
 格式时间格式需要用到DateTimeFormatter类。
+```java
 
 LocalDateTime ldt = LocalDateTime.now();
 System.out.println("格式化时间: "+ ldt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
 //格式化时间:2018-12-19 15:37:47.119
+```
      
 # 4.时间增减
 
 在指定的时间进行增加/减少年月日时分秒。
+```java
 
      LocalDateTime ldt = LocalDateTime.now();
      System.out.println("后5天时间:"+ldt.plusDays(5));
@@ -567,28 +622,34 @@ System.out.println("格式化时间: "+ ldt.format(DateTimeFormatter.ofPattern("
     //      前一个月的时间:201712
     //      后一个月的时间:2018-02-04T09:19:29.499
     //      指定2099年的当前时间:2099-12-19T15:50:37.508
+```
 # 5.创建指定时间
 
 通过指定年月日来创建。
+```java
 
     LocalDate ld3=LocalDate.of(2017, Month.NOVEMBER, 17);
     LocalDate ld4=LocalDate.of(2018, 02, 11);
+```
 # 6.时间相差比较
 
 比较相差的年月日时分秒。
 
-# 示例一: 具体相差的年月日
+示例一: 具体相差的年月日
+```java
 
     LocalDate ld=LocalDate.parse("2017-11-17");
     LocalDate ld2=LocalDate.parse("2018-01-05");
     Period p=Period.between(ld, ld2);
     System.out.println("相差年: "+p.getYears()+" 相差月 :"+p.getMonths() +" 相差天:"+p.getDays());
     // 相差年: 0 相差月 :1 相差天:19
+```
 注:这里的月份是不满足一年，天数是不满足一个月的。这里实际相差的是1月19天，也就是49天。
 
-# 示例二：相差总数的时间
+示例二：相差总数的时间
 
 ChronoUnit 日期周期单位的标准集合。
+```java
 
         LocalDate startDate = LocalDate.of(2017, 11, 17);
         LocalDate endDate = LocalDate.of(2018, 01, 05);
@@ -596,11 +657,13 @@ ChronoUnit 日期周期单位的标准集合。
         System.out.println("两月之间的相差的天数   : " + ChronoUnit.DAYS.between(startDate, endDate));
         //         相差月份:1
         //         两天之间的差在天数   : 49
+```
 注:ChronoUnit也可以计算相差时分秒。
 
-# 示例三：精度时间相差
+示例三：精度时间相差
 
 Duration 这个类以秒和纳秒为单位建模时间的数量或数量。
+```java
 
     Instant inst1 = Instant.now();
     System.out.println("当前时间戳 : " + inst1);
@@ -612,7 +675,9 @@ Duration 这个类以秒和纳秒为单位建模时间的数量或数量。
     //  增加之后的时间 : 2018-12-19T08:14:31.675Z
     //  相差毫秒 : 10000
     //  相毫秒 : 10
-# 示例四：时间大小比较
+```
+示例四：时间大小比较
+```java
 
      LocalDateTime ldt4 = LocalDateTime.now();
      LocalDateTime ldt5 = ldt4.plusMinutes(10);
@@ -620,6 +685,7 @@ Duration 这个类以秒和纳秒为单位建模时间的数量或数量。
      System.out.println("当前时间是否小于"+ldt4.isBefore(ldt5));
      // false
      // true
+```
 # 7.时区时间计算
 
 得到其他时区的时间。
@@ -627,6 +693,7 @@ Duration 这个类以秒和纳秒为单位建模时间的数量或数量。
 示例一:通过Clock时钟类获取计算
 
 Clock时钟类用于获取当时的时间戳，或当前时区下的日期时间信息。
+```java
 
      Clock clock = Clock.systemUTC();
      System.out.println("当前时间戳 : " + clock.millis());
@@ -637,7 +704,9 @@ Clock时钟类用于获取当时的时间戳，或当前时区下的日期时间
      //  当前时间戳 : 1545209277657
      //  亚洲上海此时的时间戳:1545209277657
      //  美国纽约此时的时间戳:1545209277658
+```
 示例二:通过ZonedDateTime类和ZoneId
+```java
 
      ZoneId zoneId= ZoneId.of("America/New_York");
      ZonedDateTime dateTime=ZonedDateTime.now(zoneId);
@@ -645,6 +714,7 @@ Clock时钟类用于获取当时的时间戳，或当前时区下的日期时间
      System.out.println("美国纽约此时的时间 和时区: " + dateTime);
      //  美国纽约此时的时间 : 2018-12-19 03:52:22.494
      // 美国纽约此时的时间 和时区: 2018-12-19T03:52:22.494-05:00[America/New_York]
+```
 Java 8日期时间API总结:
 
 提供了javax.time.ZoneId 获取时区。

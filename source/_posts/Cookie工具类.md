@@ -1,7 +1,7 @@
 ---
 title: Cookie工具类
 tags:
-  - java
+  - Java
   - Cookie
 categories: 实用工具
 abbrlink: b1e39e23

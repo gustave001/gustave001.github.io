@@ -1,7 +1,7 @@
 ---
 title: Servlet工具类
 tags:
-  - java
+  - Java
   - Servlet
 categories: 实用工具
 abbrlink: 951131f0

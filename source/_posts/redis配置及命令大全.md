@@ -160,7 +160,7 @@ redis.database=6
 - move(key, dbindex)：移动当前数据库中的 key 到 dbindex 数据库
 - flushdb：删除当前选择数据库中的所有 key
 - flushall：删除所有数据库中的所有 key
-- # 对 String 操作的命令
+## 对 String 操作的命令
 - set(key, value)：给数据库中名称为 key 的 string 赋予值 value
 - get(key)：返回数据库中名称为 key 的 string 的 value
 - getset(key, value)：给名称为 key 的 string 赋予上一次的 value

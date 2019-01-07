@@ -161,7 +161,7 @@ customresourcedefinition.apiextensions.k8s.io "networkpolicies.crd.projectcalico
 serviceaccount "canal" created
 
 ```
-- 执行如下命令，可以就可以查看canal的安装状态了
+## 执行如下命令，可以就可以查看canal的安装状态了
 ```jshelllanguage
 root@k8s-master:~# kubectl get pod -n kube-system -o wide
 NAME                                 READY   STATUS    RESTARTS   AGE   IP                NODE         NOMINATED NODE   READINESS GATES
@@ -175,6 +175,10 @@ kube-controller-manager-k8s-master   1/1     Running   0          69m   192.168.
 kube-proxy-fknxh                     1/1     Running   0          50m   192.168.213.131   k8s-slave    <none>           <none>
 kube-proxy-pvt8w                     1/1     Running   0          69m   192.168.213.130   k8s-master   <none>           <none>
 kube-scheduler-k8s-master            1/1     Running   0          69m   192.168.213.130   k8s-master   <none>           <none>
+```
+## 查看节点
+```jshelllanguage
+kubectl get nodes
 ```
 # slave节点在集群中的操作
 ## 增加新的Node节点到你的集群的命令如下：

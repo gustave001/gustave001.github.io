@@ -2,13 +2,13 @@
 title: 'Redis,Sentinel高可用'
 tags: [Redis,Sentinel,Docker]
 date: 2019-01-11 03:22:29
-updated: 2019-01-11 03:22:29
+updated: 2019-01-11 03:38:37
 categories: 好奇尚异
 ---
 - redis,sentinel的高可用,必须允许sentinel更改配置文件
 - 查找资料，分析原因，问题在于使用了Docker之后，不在同一网段
 - 解决办法，使用host网络模式即可
-- 借此，需要研究Docker-Compose的各项命令，及网络模式的研究
+- 借此，引申需要研究Docker-Compose的各项命令，网络模式的研究
 
 # redis.yml配置
 ```yaml

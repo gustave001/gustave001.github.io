@@ -26,7 +26,7 @@ a ^= 0x01;（ a与0x01 按位异或，并把按位异或的结果重新赋值给
     }
 ```
 
-# 扩展的bitmap,最高通缉次数为15次
+# 扩展的bitmap,最高统计次数为15次
 ```java
 package com.gustave.practice.hobby.interest;
 

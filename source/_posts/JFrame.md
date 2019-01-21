@@ -7,6 +7,7 @@ categories: Java
 ---
 
 # WindowMenu
+<!--more-->
 ```java
 package com.gustave.practice.jframe;
 

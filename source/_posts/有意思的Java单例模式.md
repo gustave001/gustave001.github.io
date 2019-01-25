@@ -36,7 +36,7 @@ public class SingletonA1 {
 
     public static SingletonA1 getInstance(){
         if (INSTANCE == null) {
-            return new SingletonA1();
+            INSTANCE = new SingletonA1();
         }
         return INSTANCE;
     }
@@ -56,7 +56,7 @@ public class SingletonA2 {
 
     public static synchronized SingletonA2 getInstance(){
         if (INSTANCE == null) {
-            return new SingletonA2();
+            INSTANCE = new SingletonA2();
         }
         return INSTANCE;
     }
@@ -78,7 +78,7 @@ public class SingletonA3 {
         if (INSTANCE == null) {
             synchronized (SingletonA3.class) {
                 if (INSTANCE == null) {
-                    return new SingletonA3();
+                    INSTANCE = new SingletonA3();
                 }
             }
         }
@@ -132,7 +132,7 @@ public class SingletonA4 {
         if (INSTANCE == null) {
             synchronized (SingletonA4.class) {
                 if (INSTANCE == null) {
-                    return new SingletonA4();
+                    INSTANCE = new SingletonA4();
                 }
             }
         }

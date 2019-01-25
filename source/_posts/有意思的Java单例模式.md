@@ -2,7 +2,7 @@
 title: 有意思的Java单例模式
 tags: [Java,单例模式]
 date: 2019-01-25 17:26:18
-updated: 2019-01-25 17:26:18
+updated: 2019-01-25 22:19:46
 categories: 好奇尚异
 ---
 # 前言
@@ -88,7 +88,7 @@ public class SingletonA3 {
 ```
 双检法，当实例为null的时候，才加锁，相对于v2版本，只针对那1%的时候，进行同步处理  
 到了这里，基本就是完美的了，然而事情并没有这么简单！！！
-`return new SingletonA3();`即为`INSTANCE = new SingletonA3();`该语句并非是原子性的（不可分割）  
+`INSTANCE = new SingletonA3();`该语句并非是原子性的（不可分割）  
 细分之后为1.INSTANCE分配内存2.SingletonA3调用构造器在堆中构建实例3.将INSTANCE指向堆中的实例  
 而Java有指令重排的机制，并非一定是123的顺序，如果是132的顺序时，刚执行完13，此时恰好，有另外的线程在进行  
 第一个`if (INSTANCE == null)`的判断，此时判断INSTANCE是非null的，则会直接返回，然而实际上它并没有正确指向堆，  
@@ -140,7 +140,7 @@ public class SingletonA4 {
     }
 }
 ```
-volatile关键字的作用在于，在写之前即`return new SingletonA4();`操作之前，不会进行读操作，即`if (INSTANCE == null)`操作  
+volatile关键字的作用在于，在写之前即`INSTANCE = new SingletonA4();`操作之前，不会进行读操作，即`if (INSTANCE == null)`操作  
 这是双检法的终极版本，要说缺点的话，就是写法太复杂了
 
 # 静态内部类法

@@ -7,5 +7,6 @@ categories: 好奇尚异
 ---
 
 ![MOSFET](../images/PN.gif)
+![MOSFET2](https://www.kikfan.com/images/PN.gif)
 
 

@@ -6,7 +6,7 @@ updated: 2019-01-31 17:29:50
 categories: 好奇尚异
 ---
 
+- 热泪盈眶，大学学的东西，终于能起到点桥梁作用了
 ![MOSFET](../images/PN.gif)
-![MOSFET2](https://www.kikfan.com/images/PN.gif)
 
 

@@ -6,4 +6,6 @@ updated: 2019-01-31 17:29:50
 categories: 好奇尚异
 ---
 
+![MOSFET](../images/PN.gif)
+
 

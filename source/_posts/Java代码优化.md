@@ -302,7 +302,7 @@ private final AtomicLong seed;
 ```
 多个线程同时获取随机数的时候，会竞争同一个seed，导致了效率的降低。
 
-转自：![五月的仓颉](http://www.cnblogs.com/xrq730/p/4865416.html)
+转自：[五月的仓颉](http://www.cnblogs.com/xrq730/p/4865416.html)
 
 - 谨此祭奠过去N多年来逃避现实的自己
 - 永远对这个世界保持好奇心！

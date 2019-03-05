@@ -20,7 +20,7 @@ install:
 
 script:
   - hexo clean  #清除
-  - hexo g && gulp  #生成
+  - hexo g  #生成
 
 after_script:
   - git clone --depth=5 https://${GH_REF} .github_git   # GH_REF是下面配置的GitHub仓库地址

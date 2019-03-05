@@ -1,9 +1,12 @@
 ---
 title: Java代码优化
-tags: [Java,代码优化]
+tags:
+  - Java
+  - 代码优化
+categories: Java
+abbrlink: a2337e7d
 date: 2019-02-14 22:51:26
 updated: 2019-02-15 00:58:14
-categories: Java
 ---
 
 # 尽量指定类、方法的final修饰符

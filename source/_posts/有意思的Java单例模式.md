@@ -1,9 +1,12 @@
 ---
 title: 有意思的Java单例模式
-tags: [Java,单例模式]
+tags:
+  - Java
+  - 单例模式
+categories: 好奇尚异
+abbrlink: e95c6f09
 date: 2019-01-25 17:26:18
 updated: 2019-01-25 22:19:46
-categories: 好奇尚异
 ---
 # 前言
 Java的单例模式号称最简单的设计模式，然后其实并没有那么简单，下面来研究研究单例模式的具体实现

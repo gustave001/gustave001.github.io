@@ -1,9 +1,11 @@
 ---
 title: jenkins配置及使用
-tags: [jenkins]
+tags:
+  - jenkins
+categories: 好奇尚异
+abbrlink: adddc8ee
 date: 2019-01-01 13:49:43
 updated: 2019-01-05 01:32:03
-categories: 好奇尚异
 ---
 
 # 关于/var/run/docker.sock

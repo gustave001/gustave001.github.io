@@ -1,9 +1,11 @@
 ---
 title: Netty
-tags: [Netty]
+tags:
+  - Netty
+categories: 好奇尚异
+abbrlink: 1c6ba3e2
 date: 2019-02-09 00:33:02
 updated: 2019-02-19 01:15:29
-categories: 好奇尚异
 ---
 
 - 前进的脚步不停，才是彷徨迷惘的唯一解药

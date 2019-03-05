@@ -1,9 +1,11 @@
 ---
 title: 'bitmap,有点意思'
-tags: [bitmap]
+tags:
+  - bitmap
+categories: 好奇尚异
+abbrlink: 78236c9b
 date: 2019-01-20 13:17:00
 updated: 2019-01-20 13:17:00
-categories: 好奇尚异
 ---
 
 # 位移操作的基本概念与逻辑运算

@@ -1,9 +1,12 @@
 ---
 title: Java设计模式
-tags: [Java,设计模式]
+tags:
+  - Java
+  - 设计模式
+categories: Java
+abbrlink: 41e00c03
 date: 2019-02-09 00:42:38
 updated: 2019-02-09 14:58:28
-categories: Java
 ---
 
 # 简单工厂模式

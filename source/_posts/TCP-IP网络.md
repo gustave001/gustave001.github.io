@@ -1,9 +1,13 @@
 ---
 title: TCP/IP网络
-tags: [网络基础,TCP,IP]
+tags:
+  - 网络基础
+  - TCP
+  - IP
+categories: 好奇尚异
+abbrlink: 4e962cde
 date: 2019-01-14 11:53:10
 updated: 2019-01-14 11:53:10
-categories: 好奇尚异
 ---
 # 网络地址
 - 在网络层和传输层，寻址是通过IP地址和MAC地址，但是IP地址具有层次性，而MAC地址虽为最终通信地址，但不具有层次

@@ -1,9 +1,12 @@
 ---
 title: Kubernates(k8s)
-tags: [k8s,Kubernates]
+tags:
+  - k8s
+  - Kubernates
+categories: 好奇尚异
+abbrlink: 5c5aaca6
 date: 2019-01-07 01:54:23
 updated: 2019-01-07 01:54:23
-categories: 好奇尚异
 ---
 # 搭建k8s集群
 ## 主机名映射

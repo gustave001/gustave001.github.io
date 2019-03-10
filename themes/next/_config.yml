@@ -829,7 +829,6 @@ tool_detail:
     Config.yml: https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml
   我的收藏:
     key: 我的收藏
-    个人空间: http://space.kikfan.com:5000/
     百度站长: https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/
     WeUI: https://weui.io/#navbar
     IDEA快捷键: https://blog.csdn.net/ijavaweb/article/details/16963725
@@ -837,7 +836,7 @@ tool_detail:
     Vim快捷键: https://blog.csdn.net/donahue_ldz/article/details/17139361
     doub.io: https://doub.io/brook-jc1/
     MySQL索引: https://blog.csdn.net/waeceo/article/details/78702584
-    MOS管: https://blog.csdn.net/techexchangeischeap/article/details/71430330
+    阮一峰: http://www.ruanyifeng.com/blog/
   在线工具:
     key: 在线编辑
     JSON编辑器: https://www.bejson.com/jsoneditoronline

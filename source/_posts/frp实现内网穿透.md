@@ -118,3 +118,6 @@ nohup ./frpc -c ./frpc.ini &
 
 -  [原文链接](https://www.jianshu.com/p/e8e26bcc6fe6)
 -  [GitHub](https://github.com/fatedier/frp/blob/master/README_zh.md)
+
+# ngrok自建服务器穿透
+- [ngrok](https://www.jianshu.com/p/b81bb6a3c0b9)

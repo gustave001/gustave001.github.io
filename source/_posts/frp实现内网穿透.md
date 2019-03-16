@@ -2,7 +2,7 @@
 title: frp实现内网穿透
 tags: [frp,内网穿透]
 date: 2019-03-16 10:23:33
-updated: 2019-03-16 10:23:33
+updated: 2019-03-17 02:37:22
 categories: 好奇尚异
 ---
 
@@ -115,3 +115,6 @@ nohup ./frpc -c ./frpc.ini &
 ```
 
 这样就成功让frp在后台运行了。
+
+-  [原文链接](https://www.jianshu.com/p/e8e26bcc6fe6)
+-  [GitHub](https://github.com/fatedier/frp/blob/master/README_zh.md)

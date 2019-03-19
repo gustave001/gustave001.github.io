@@ -151,3 +151,30 @@ DELETE t1 FROM t1 LEFT JOIN T2 ON t1.id=t2.id WHERE t2.id IS NULL
 
 DELETE  FROM t1 USING t1 LEFT JOIN T2 ON t1.id=t2.id WHERE t2.id IS NULL 
 ```
+
+# 185.部门工资前三高的员工
+```sql
+select 
+ d.Name as Department, e.Name as Employee,e.Salary
+from Employee e inner join Department d
+on e.DepartmentId = d.Id
+where (select count(distinct e2.Salary) from Employee e2 where
+       e.DepartmentId = e2.DepartmentId and e2.Salary > e.Salary)
+< 3 order by d.Id asc,e.Salary desc
+```
+- where条件和所选的字段其实都是可以使用该种子查询的方式的
+
+```sql
+select 
+ d.Name as Department, tmp.Name as Employee,tmp.Salary
+from
+(select 
+e1.Name,e1.Salary,e1.DepartmentId
+from Employee e1 inner join Employee e2 on e1.DepartmentId = e2.DepartmentId
+where e2.Salary >= e1.Salary
+group by e1.Id having count(distinct e2.Salary) <=3) tmp
+inner join Department d
+on tmp.DepartmentId = d.Id
+order by d.Id asc,tmp.Salary desc
+```
+- 使用了group by和having的处理方式，效率方面更高，可以看出子查询的局限性

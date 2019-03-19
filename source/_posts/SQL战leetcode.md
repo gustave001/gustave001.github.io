@@ -115,3 +115,16 @@ order by Salary desc
 limit 1,1),null) as SecondHighestSalary
 ```
 ## 需要第N高使用limit N-1,1是最直接的，如果没有需要返回null，那么在外面再套一层就是了
+
+# 262.行程和用户
+```sql
+select 
+t.Request_at as Day,
+round((sum(case when t.Status <> 'completed' then 1 else 0 end)/count(*)),2) as 'Cancellation Rate'
+from Trips t
+inner join Users u on t.Client_Id = u.Users_Id and u.Banned = 'No'
+inner join Users u2 on t.Driver_Id = u2.Users_Id and u2.Banned = 'No'
+where t.Request_at between '2013-10-01' and '2013-10-03'
+group by t.Request_at order by t.Request_at asc
+```
+- 1.非禁止用户这是一个坑2.round的用法

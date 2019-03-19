@@ -195,3 +195,9 @@ group by diff having count(*) >=3) tt
 where find_in_set(id,tt.ids) >0
 ```
 - 也可以使用min和max然后使用between and的方式
+
+# 627.交换性别
+```sql
+update salary set sex = if(sex = 'm','f','m')
+```
+- 简单题，考察sql里面if的用法

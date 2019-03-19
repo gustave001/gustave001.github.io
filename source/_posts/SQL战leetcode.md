@@ -76,3 +76,42 @@ BEGIN
   );
   END
 ```
+
+# 177.上升的温度
+```sql
+select 
+w1.Id
+from Weather w1 inner join Weather w2 
+# on w1.RecordDate = date_add(w2.RecordDate,interval 1 Day)
+on datediff(w1.RecordDate,w2.RecordDate) = 1
+and w1.Temperature > w2.Temperature
+```
+- inner join当中，where和on的效果貌似没什么区别
+
+# 176.第二高的薪水
+- 这里就看出写法的问题了
+```sql
+select 
+case when count(*) = 1 then Salary
+else null end as SecondHighestSalary
+from
+(select Salary,@rownum := @rownum + 1 as rownum from
+(select Salary 
+from Employee group by Salary order by Salary desc) tmp,(select @rownum := 0) r) t
+where rownum = 2
+```
+- 个人第二种解法
+```sql
+select 
+case when count(*) > 0 then Salary
+else null end as SecondHighestSalary
+from Employee e1 where (select count(distinct Salary) from Employee e2 where e2.Salary > e1.Salary) =1
+```
+- 丫的还有这种玩法,外面再套一层的方式
+```sql
+select IFNULL((select distinct(Salary) 
+from Employee
+order by Salary desc
+limit 1,1),null) as SecondHighestSalary
+```
+## 需要第N高使用limit N-1,1是最直接的，如果没有需要返回null，那么在外面再套一层就是了

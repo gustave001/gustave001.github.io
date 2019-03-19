@@ -128,3 +128,21 @@ where t.Request_at between '2013-10-01' and '2013-10-03'
 group by t.Request_at order by t.Request_at asc
 ```
 - 1.非禁止用户这是一个坑2.round的用法
+
+# 196.删除重复的邮箱
+```sql
+delete Person from Person
+left join (select 
+min(Id) as mId
+from Person group by Email ) tmp
+on Id = tmp.mId where tmp.mId is null
+```
+- delete 后面的table不能使用别名
+## 扩展，delete连表的语句
+- 不可别名
+- USING的使用
+```sql
+DELETE t1 FROM t1 LEFT JOIN T2 ON t1.id=t2.id WHERE t2.id IS NULL 
+
+DELETE  FROM t1 USING t1 LEFT JOIN T2 ON t1.id=t2.id WHERE t2.id IS NULL 
+```

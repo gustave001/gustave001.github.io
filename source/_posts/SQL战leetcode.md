@@ -178,3 +178,20 @@ on tmp.DepartmentId = d.Id
 order by d.Id asc,tmp.Salary desc
 ```
 - 使用了group by和having的处理方式，效率方面更高，可以看出子查询的局限性
+
+# 601.体育馆的人流量
+- 初步想法，用到了find_in_set这个函数
+```sql
+select stadium.* from stadium,
+(select 
+group_concat(t.id) as ids
+from
+(select tmp.*,@rownum := @rownum + 1,tmp.id - @rownum as diff
+ from
+(select 
+*
+from stadium where people >=100) tmp,(select @rownum := 0) r) t
+group by diff having count(*) >=3) tt
+where find_in_set(id,tt.ids) >0
+```
+- 也可以使用min和max然后使用between and的方式

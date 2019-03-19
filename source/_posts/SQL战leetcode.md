@@ -137,9 +137,14 @@ min(Id) as mId
 from Person group by Email ) tmp
 on Id = tmp.mId where tmp.mId is null
 ```
+- 亦可使用该种方式
+```sql
+delete p1 from Person p1 ,Person p2
+where p1.Email =p2.Email and p1.Id > p2.Id
+```
 - delete 后面的table不能使用别名
 ## 扩展，delete连表的语句
-- 不可别名
+- 不可别名或者使用了别名需要别名对应
 - USING的使用
 ```sql
 DELETE t1 FROM t1 LEFT JOIN T2 ON t1.id=t2.id WHERE t2.id IS NULL 

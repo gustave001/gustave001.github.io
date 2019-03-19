@@ -47,3 +47,32 @@ SELECT s1.Score,(SELECT count(DISTINCT s2.Score)+1 FROM Scores s2 WHERE s2.Score
        FROM Scores s1 order by Score desc
 ```
 - 子查询，看起来写法是简单了，但是实质上性能差了不少
+
+# 177.第N高的薪水
+- 要求如果不存在的话返回null
+- 下方为自己的解法,判断null的问题居然还是多余的。。。
+```sql
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  RETURN (
+      # Write your MySQL query statement below.
+      select
+      case when count(*) = 1 then Salary
+      else null end
+      from
+      (select e.Salary,@rownum := @rownum + 1 as rownum from
+      (select Salary from Employee group by Salary order by Salary desc) e,(select @rownum := 0) r) tmp where rownum = N
+  );
+END
+```
+- 看起来简洁写法
+```sql
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+      # Write your MySQL query statement below.
+          set N = N-1;
+  RETURN (
+    select distinct ifnull(salary,null) from  employee order by salary desc limit N,1 
+  );
+  END
+```

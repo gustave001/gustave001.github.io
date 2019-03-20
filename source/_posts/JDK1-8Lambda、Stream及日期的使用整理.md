@@ -740,11 +740,16 @@ DateTimeFormatter 类用来格式化和解析时间。与SimpleDateFormat不同�
             course.setScore(nums[i][2]);
             list.add(course);
         }
-        list.sort(Comparator.comparing(StudentCourse::getSid)
+        list.sort(Comparator.comparing(StudentCourse::getSid).reversed()
                 .thenComparing((s1,s2)->s2.getCid().compareTo(s1.getCid()))
                 .thenComparing(StudentCourse::getScore));
         list.forEach(System.out::println);
     }
 ```
-
+```java
+StudentCourse(sid=8, cid=4, score=7)
+StudentCourse(sid=8, cid=2, score=9)
+StudentCourse(sid=8, cid=2, score=88)
+StudentCourse(sid=1, cid=4, score=88)
+```
 转自: [http://www.cnblogs.com/xuwujing](http://www.cnblogs.com/xuwujing)

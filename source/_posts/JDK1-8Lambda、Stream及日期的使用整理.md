@@ -7,7 +7,7 @@ tags:
 categories: Java
 abbrlink: a6c4b5fd
 date: 2018-12-22 09:22:26
-updated: 2018-12-22 19:33:37
+updated: 2019-03-20 17:13:23
 ---
 # 前言
 本篇主要讲述是Java中JDK1.8的一些新语法特性使用，主要是Lambda、Stream和LocalDate日期的一些使用讲解。
@@ -725,5 +725,26 @@ Java 8 的所有日期和时间API都是不可变类并且线程安全，而现�
 OffsetDateTime类实际上组合了LocalDateTime类和ZoneOffset类。用来表示包含和格林威治或UTC时差的完整日期（年、月、日）和时间（时、分、秒、纳秒）信息。
 DateTimeFormatter 类用来格式化和解析时间。与SimpleDateFormat不同，这个类不可变并且线程安全，需要时可以给静态常量赋值。 DateTimeFormatter类提供了大量的内置格式化工具，同时也允许你自定义。在转换方面也提供了parse()将字符串解析成日期，如果解析出错会抛出DateTimeParseException。DateTimeFormatter类同时还有format()用来格式化日期，如果出错会抛出DateTimeException异常。
 再补充一点，日期格式“MMM d yyyy”和“MMM dd yyyy”有一些微妙的不同，第一个格式可以解析“Jan 2 2014”和“Jan 14 2014”，而第二个在解析“Jan 2 2014”就会抛异常，因为第二个格式里要求日必须是两位的。如果想修正，你必须在日期只有个位数时在前面补零，就是说“Jan 2 2014”应该写成 “Jan 02 2014”。
+
+# 利用lambda以及Compartor接口进行排序
+- 对于有多个字段得排序，这样的方式就更加方便一点
+```java
+@Test
+    public void testLambda(){
+        List<StudentCourse> list = new ArrayList<>();
+        int[][] nums = new int[][]{{1, 4, 88}, {8, 4, 7}, {8, 2, 9}, {8, 2, 88}};
+        for (int i = 0; i < nums.length; i++) {
+            StudentCourse course = new StudentCourse();
+            course.setSid(nums[i][0]);
+            course.setCid(nums[i][1]);
+            course.setScore(nums[i][2]);
+            list.add(course);
+        }
+        list.sort(Comparator.comparing(StudentCourse::getSid)
+                .thenComparing((s1,s2)->s2.getCid().compareTo(s1.getCid()))
+                .thenComparing(StudentCourse::getScore));
+        list.forEach(System.out::println);
+    }
+```
 
 转自: [http://www.cnblogs.com/xuwujing](http://www.cnblogs.com/xuwujing)

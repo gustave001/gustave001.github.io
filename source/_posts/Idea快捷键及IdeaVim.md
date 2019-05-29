@@ -185,6 +185,12 @@ updated: 2018-12-07 23:43:16
  32.Alt＋F8是计算变量值
  
  
+ Ctrl + Shift +F11 标记该行代码，加入书签
+ Shift + F11 打开书签
+ Ctrl + Shift + Alt + F11 有符号的标记
+ Ctrl+ 刚刚选择的标记   跳转到相应标记处
+ 
+  
  # IdeaVim操作
  
  [http://kidneyball.iteye.com/blog/1828427](http://kidneyball.iteye.com/blog/1828427)

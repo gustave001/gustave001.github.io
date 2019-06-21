@@ -2,7 +2,7 @@
 title: List排序
 tags: [List,Java]
 date: 2019-05-24 12:28:32
-updated: 2019-05-24 12:28:32
+updated: 2019-06-21 11:10:25
 categories: Java
 ---
 
@@ -41,4 +41,9 @@ list.sort(Comparator.comparing(StudentCourse::getSid).reversed());
         list.sort(Comparator.comparing(StudentCourse::getSid).reversed()
                 .thenComparing((s1, s2) -> s2.getCid().compareTo(s1.getCid()))
                 .thenComparing(StudentCourse::getScore));
+```
+
+# 将A List的元素以B List的排序规则进行排序
+```java
+        entities.sort(Comparator.comparing((o) -> bookIds.indexOf(o.getReadingBookId())));
 ```

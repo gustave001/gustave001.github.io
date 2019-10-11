@@ -35,6 +35,12 @@ Shell 传递参数实例！
  相同点：都是引用所有参数。
  不同点：只有在双引号中体现出来。假设在脚本运行时写了三个参数 1、2、3，，则 " * " 等价于 "1 2 3"（传递了一个参数），而 "@" 等价于 "1" "2" "3"（传递了三个参数）。
 
-
+- 运算符
+eq：equal to。
+ne：not equal to。
+gt：greater than。
+ge：greater than or equal to。
+lt：less than。
+le：less than or equal to。
 
 

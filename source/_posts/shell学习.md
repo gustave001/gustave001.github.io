@@ -51,5 +51,20 @@ le：less than or equal to。
 - shell语句中的case when 用法
 ![shell 中的case when](../images/case-when.png)
 
-
+- shell脚本求解一元二次方程
+不熟悉的东西，坑也是众多
+```jshelllanguage
+#!/bin/bash
+while read nums
+do
+   array=($nums)
+        a=${array[0]};b=${array[1]};c=${array[2]}
+echo $a;echo $b;echo $c;
+tmp=$(scale=2;echo "sqrt($b*$b-4*$a*$c)"|bc);
+echo $tmp;
+echo "scale=2;$b+$tmp"|bc
+echo "scale=2;(-($b)+$tmp)/(2*$a)"|bc
+echo "scale=2;(-($b)-$tmp)/(2*$a)"|bc
+done
+```
 

@@ -43,4 +43,13 @@ ge：greater than or equal to。
 lt：less than。
 le：less than or equal to。
 
+- shell脚本还是有点意思，可以方便地传变量
+
+- shell里如果是赋值那么算式那么等号两边不能有空格
+而如果是进行比较等算式，则必须要有空格在两边
+
+- shell语句中的case when 用法
+![shell 中的case when](../images/case-when.png)
+
+
 

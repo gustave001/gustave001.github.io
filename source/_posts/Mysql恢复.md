@@ -7,7 +7,7 @@ categories: Mysql
 ---
 
 # 物理备份的恢复
-![官方链接](https://help.aliyun.com/knowledge_detail/41817.html?spm=5176.10695662.1996646101.searchclickresult.4aca2e25JZhG1n&aly_as=OF-4wSKB)
+[官方链接](https://help.aliyun.com/knowledge_detail/41817.html?spm=5176.10695662.1996646101.searchclickresult.4aca2e25JZhG1n&aly_as=OF-4wSKB)
 
 - 存在问题，因为我们是要恢复到docker上的自建数据库，使用mysqld_safe命令启动，我们不好操作
 

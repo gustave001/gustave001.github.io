@@ -56,3 +56,5 @@ services:
       - /home/mysql/data:/var/lib/mysql
       - /home/mysql/data/backup-my.cnf:/etc/my.cnf
 ```
+
+- 自己测试数据库的备份和恢复，包括逻辑备份以及binlog的恢复

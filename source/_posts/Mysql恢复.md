@@ -2,7 +2,7 @@
 title: Mysql物理备份恢复
 tags: [SQL]
 date: 2019-10-16 11:16:30
-updated: 2019-10-16 11:16:30
+updated: 2019-10-24 11:13:46
 categories: SQL
 ---
 
@@ -58,3 +58,12 @@ services:
 ```
 
 - 自己测试数据库的备份和恢复，包括逻辑备份以及binlog的恢复
+# mysqlbinlog的恢复
+- 直接获取到的binlog的日志是通过base64加密的，需要查看的话，需要通过解密
+ `mysqlbinlog --base64-output=decode-rows -v mysql-bin.000001`
+
+- 通过position恢复的命令
+`mysqlbinlog --start-position="230" --stop-position="689" binlog.000004 |mysql -uroot -p`
+
+- 通过时间点来进行恢复
+`mysqlbinlog --start-datetime="2019-10-24 3:21:26" --stop-datetime="2019-10-24 3:21:29" binlog.000004 |mysql -uroot -p`

@@ -1,9 +1,11 @@
 ---
 title: shell学习
-tags: [shell]
+tags:
+  - shell
+categories: 好奇尚异
+abbrlink: f8d5cfbe
 date: 2019-10-11 16:26:32
 updated: 2019-10-11 16:26:32
-categories: 好奇尚异
 ---
 
 # shell脚本学习

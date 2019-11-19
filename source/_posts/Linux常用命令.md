@@ -1,9 +1,11 @@
 ---
 title: Linux常用命令
-tags: [Linux]
+tags:
+  - Linux
+categories: Java
+abbrlink: d0edc1ed
 date: 2019-08-07 12:17:13
 updated: 2019-08-07 12:17:13
-categories: Java
 ---
 1.查看日志常用命令
     tail:  

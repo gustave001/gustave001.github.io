@@ -1,9 +1,11 @@
 ---
 title: Mysql物理备份恢复
-tags: [SQL]
+tags:
+  - SQL
+categories: SQL
+abbrlink: '29644176'
 date: 2019-10-16 11:16:30
 updated: 2019-10-24 11:13:46
-categories: SQL
 ---
 
 # 物理备份的恢复

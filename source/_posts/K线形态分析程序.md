@@ -1,9 +1,14 @@
 ---
 title: K线形态分析程序
-tags: [股票]
+tags:
+  - 股票
+categories: 好奇尚异
+abbrlink: 728ca17
 date: 2019-09-29 18:26:42
 updated: 2019-09-29 18:26:42
-categories: 好奇尚异
+password: cheer_up
+abstract: 欢迎访问
+message: Welcome, enter password to read this
 ---
 
 # 懈怠

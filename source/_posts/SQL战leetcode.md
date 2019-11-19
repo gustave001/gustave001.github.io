@@ -1,9 +1,12 @@
 ---
 title: SQL战leetcode
-tags: [SQL,leetcode]
+tags:
+  - SQL
+  - leetcode
+categories: SQL
+abbrlink: 7c4ba2e7
 date: 2019-03-19 01:15:14
 updated: 2019-03-20 02:15:23
-categories: SQL
 ---
  
 #  180.连续出现的数字

@@ -1,9 +1,11 @@
 ---
 title: Git使用
-tags: [git]
+tags:
+  - git
+categories: 实用工具
+abbrlink: ca675cd4
 date: 2019-06-19 12:31:03
 updated: 2019-06-19 12:31:03
-categories: 实用工具
 ---
 
 # git reset --hard --soft --mixed区别

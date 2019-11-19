@@ -1,9 +1,12 @@
 ---
 title: frp实现内网穿透
-tags: [frp,内网穿透]
+tags:
+  - frp
+  - 内网穿透
+categories: 好奇尚异
+abbrlink: f51df9f4
 date: 2019-03-16 10:23:33
 updated: 2019-03-17 02:37:22
-categories: 好奇尚异
 ---
 
 # 什么是frp

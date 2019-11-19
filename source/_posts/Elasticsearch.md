@@ -1,9 +1,11 @@
 ---
 title: Elasticsearch
-tags: [Elasticsearch]
+tags:
+  - Elasticsearch
+categories: 好奇尚异
+abbrlink: d32d37e5
 date: 2019-03-27 10:19:12
 updated: 2019-04-14 23:32:17
-categories: 好奇尚异
 ---
 
 # 安装ES

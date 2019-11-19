@@ -135,3 +135,8 @@ live2d:
 encrypt:
   enable: true
 
+
+self:
+  password: cheer_up
+  abstract: 欢迎访问
+  message: 欢迎访问

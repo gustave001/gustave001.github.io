@@ -1,9 +1,12 @@
 ---
 title: List排序
-tags: [List,Java]
+tags:
+  - List
+  - Java
+categories: Java
+abbrlink: b8b2cf67
 date: 2019-05-24 12:28:32
 updated: 2019-06-21 11:10:25
-categories: Java
 ---
 
 - 最近懈怠较重，急需正反馈

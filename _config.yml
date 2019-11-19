@@ -132,3 +132,6 @@ live2d:
     opacityDefault: 0.7
     opacityOnHover: 0.2
 
+encrypt:
+  enable: true
+

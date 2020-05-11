@@ -1,9 +1,9 @@
 language: node_js
 node_js: stable
 
-cache:
-  directories:
-    - node_modules # 缓存不经常更改的内容
+#cache:
+#  directories:
+#    - node_modules # 缓存不经常更改的内容
 
 before_install:
   - export TZ='Asia/Shanghai' # 更改时区

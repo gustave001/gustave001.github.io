@@ -112,7 +112,7 @@ feed:
 
 
 live2d:
-  enable: true
+  enable: false
   pluginModelPath: assets/
   model:
     use: live2d-widget-model-waifu  #模板目录，在node_modules里

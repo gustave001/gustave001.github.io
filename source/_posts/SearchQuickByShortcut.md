@@ -1,5 +1,5 @@
 ---
-title: SeachQuickByShortcut
+title: SearchQuickByShortcut
 tags: [IDEA,Plugin]
 date: 2020-06-05 11:11:58
 updated: 2020-06-05 11:11:58

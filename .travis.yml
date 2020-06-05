@@ -32,6 +32,7 @@ after_script:
   - git commit -m "Travis CI Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
+
 #  - git clone --depth=5 https://${GH_REF} .github_git   # GH_REF是下面配置的GitHub仓库地址
 #  - cd .github_git
 ##  - git checkout master
@@ -44,7 +45,7 @@ after_script:
 #  - git add .
 #  - git commit -m "Travis CI Auto Builder For Github Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
 #  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-  # GitHub
+#   GitHub
 #  - rm -fr .git/
 #  - cd ../
 #  - git clone --depth=5 https://${CO_REF} .coding_git   # CO_REF是最下面配置Coding的仓库地址
@@ -58,7 +59,7 @@ after_script:
 #  - git add .
 #  - git commit -m "Travis CI Auto Builder For Coding Pages at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
 #  - git push --force --quiet "https://kikfan:${CO_TOKEN}@${CO_REF}" master:master
-  # Coding Pages
+#   Coding Pages
 #  - curl -H 'Content-Type:text/plain' --data-binary @baidu_urls.txt "http://data.zz.baidu.com/urls?site=https://www.kikfan.com&token=Zy4qRVqczbQv8btc"
 
 #deploy:
@@ -86,3 +87,18 @@ notifications:
     - 1014016816@qq.com
   on_success: change
   on_failure: always
+
+
+
+version: '3.1'
+services:
+  svn:
+    image: elleflorio/svn-server:ui
+    restart: always
+    container_name: svn
+    volumes:
+      - /usr/local/docker/svn/svn_repo/:/home/svn/
+      - /usr/local/docker/svn/svn_config/:/etc/subversion/
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "80:80"

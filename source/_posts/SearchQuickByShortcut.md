@@ -10,7 +10,7 @@ categories: 好奇尚异
 - 作为码农，总免不了开心地撸着代码的时候需要查下谷歌、stackoverflow等，那就得切到浏览器->输入网址->搜索，那就很烦，这款插件应运而生
 
 # 使用
-- IDEA marketplace 中搜索 SeachQuickByShortcut，安装
+- IDEA marketplace 中搜索 SearchQuickByShortcut，安装
 - 选中或不选中文字，按对应快捷键跳转进行搜索，当然你也可以在keymap中自定义
 - 以下为对应网址的默认快捷键
 ### alt + B

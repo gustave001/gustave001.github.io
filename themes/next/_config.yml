@@ -828,9 +828,7 @@ tool_detail:
     IDEA快捷键: https://blog.csdn.net/yangwei256/article/details/82683140
     Config.yml: https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml
     Jrebel: https://tools.hexianwei.com/#/tools/jrebel
-    浮沉: http://211.159.182.106
-    缠中说禅: http://blog.sina.com.cn/s/articlelist_1215172700_10_2.html
-    江恩: http://www.yingjia360.com/chanlun/index.html
+    IDEA-Tool-tips: https://github.com/xiaoxiunique/tool-tips
   我的收藏:
     key: 我的收藏
     百度站长: https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/
@@ -841,9 +839,9 @@ tool_detail:
     doub.io: https://doub.io/brook-jc1/
     MySQL索引: https://blog.csdn.net/waeceo/article/details/78702584
     阮一峰: http://www.ruanyifeng.com/blog/
-    IDEA注册码: https://blog.csdn.net/zhw0596/article/details/81394870
-    股海浮沉: https://www.jianshu.com/p/a3e56cb0a2aa
-    K线: https://www.jianshu.com/p/5fe1ae624d3d
+    站长工具: http://tool.chinaz.com/Tools/subnetmask
+    IDEA Plugins: https://plugins.jetbrains.com/
+    Kubernetes: http://docs.kubernetes.org.cn/227.html
   在线工具:
     key: 在线编辑
     JSON编辑器: https://www.bejson.com/jsoneditoronline
@@ -854,8 +852,6 @@ tool_detail:
     二维码生成器: https://cli.im/
     在线编码转换: http://tool.chinaz.com/tools/native_ascii.aspx
     YAML转换: http://www.toyaml.com
-    站长工具: http://tool.chinaz.com/Tools/subnetmask
-    IDEA Plugins: https://plugins.jetbrains.com/
   在线服务:
     key: 在线服务
     vue: https://cn.vuejs.org/v2/api/

@@ -14,6 +14,7 @@ wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
 
 # frp
 ###### - 站在巨人的肩膀上，同样简单操作，注意需要配置服务以防频繁掉（linux 配置系统服务）
+`vi /lib/systemd/system/frpc.service`
 ```shell script
 [Unit]
   
@@ -34,6 +35,9 @@ ExecStart=/root/frp_0.33.0_linux_amd64/frpc -c /root/frp_0.33.0_linux_amd64/frpc
 WantedBy=multi-user.target
 
 ```
+`systemctl enable frpc`
+
+`systemctl start frpc`
 - 配置frp的过程中有个小坑，frpc的映射必须填所在网段的地址
 ```shell script
 [vpn]

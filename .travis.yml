@@ -88,16 +88,3 @@ notifications:
   on_failure: always
 
 
-
-version: '3.1'
-services:
-  svn:
-    image: elleflorio/svn-server:ui
-    restart: always
-    container_name: svn
-    volumes:
-      - /usr/local/docker/svn/svn_repo/:/home/svn/
-      - /usr/local/docker/svn/svn_config/:/etc/subversion/
-      - /etc/localtime:/etc/localtime:ro
-    ports:
-      - "80:80"

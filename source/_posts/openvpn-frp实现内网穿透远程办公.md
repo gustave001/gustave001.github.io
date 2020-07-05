@@ -1,9 +1,13 @@
 ---
 title: openvpn+frp实现内网穿透远程办公
-tags: [openvpn,frp,内网穿透]
+tags:
+  - openvpn
+  - frp
+  - 内网穿透
+categories: 好奇尚异
+abbrlink: 87304ffa
 date: 2020-06-04 04:48:04
 updated: 2020-06-04 04:48:04
-categories: 好奇尚异
 ---
 
 # openvpn

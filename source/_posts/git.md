@@ -35,5 +35,6 @@ categories: 实用工具
    x, exec = run command (the rest of the line) using shell
    d, drop = remove commit
 
-
+# merge 与 rebase的选择
+- 不要在公共分支上使用rebase，因为rebase会修改提交记录，否则会造成回溯的困难
 

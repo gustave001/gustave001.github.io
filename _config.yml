@@ -19,8 +19,8 @@ root: /
 #permalink_defaults:
 permalink: archives/:abbrlink.html
 abbrlink:
-  alg: crc32  # 算法：crc16(default) and crc32
-  rep: hex    # 进制：dec(default) and hex
+  alg: crc16  # 算法：crc16(default) and crc32
+  rep: dec    # 进制：dec(default) and hex
 
 # Directory
 source_dir: source

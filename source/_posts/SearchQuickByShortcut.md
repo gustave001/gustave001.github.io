@@ -1,9 +1,12 @@
 ---
 title: SearchQuickByShortcut
-tags: [IDEA,Plugin]
+tags:
+  - IDEA
+  - Plugin
+categories: 好奇尚异
+abbrlink: 137c7eea
 date: 2020-06-05 11:11:58
 updated: 2020-06-05 11:11:58
-categories: 好奇尚异
 ---
 
 # 前言

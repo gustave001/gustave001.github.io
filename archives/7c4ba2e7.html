@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SQL,leetcode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kikfan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="180.连续出现的数字1234567select distinct tmp.ConsecutiveNums from(select Num as ConsecutiveNums, case when @prev = Num then @count := @count+1 when @prev :=Num then @count :=1 end as count from Logs,(select">
+<meta name="keywords" content="SQL,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL战leetcode">
+<meta property="og:url" content="https://www.kikfan.com/archives/7c4ba2e7.html">
+<meta property="og:site_name" content="kikfan">
+<meta property="og:description" content="180.连续出现的数字1234567select distinct tmp.ConsecutiveNums from(select Num as ConsecutiveNums, case when @prev = Num then @count := @count+1 when @prev :=Num then @count :=1 end as count from Logs,(select">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-19T18:15:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL战leetcode">
+<meta name="twitter:description" content="180.连续出现的数字1234567select distinct tmp.ConsecutiveNums from(select Num as ConsecutiveNums, case when @prev = Num then @count := @count+1 when @prev :=Num then @count :=1 end as count from Logs,(select">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.kikfan.com/archives/7c4ba2e7.html">
+
+
+
+
+
+  <title>SQL战leetcode | kikfan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kikfan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">lack is rich, self-discipline to produce joy!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav menuTool">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+
+        
+          <li class="menu-item menu-item-search">
+            
+              <a href="javascript:;" class="popup-trigger">
+            
+              
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              
+              搜索
+            </a>
+          </li>
+        
+
+    
+      <li class="menu-item menu-item-briefcase">
+        <a href="#">
+          <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br>
+          工具
+        </a>
+        <ul>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的工具</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/80084445.html" target="_blank">MapperUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/b1e39e23.html" target="_blank">CookieUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/yangwei256/article/details/82683140" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml" target="_blank">Config.yml</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tools.hexianwei.com/#/tools/jrebel" target="_blank">Jrebel</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/xiaoxiunique/tool-tips" target="_blank">IDEA-Tool-tips</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的收藏</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/" target="_blank">百度站长</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://weui.io/#navbar" target="_blank">WeUI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/ijavaweb/article/details/16963725" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://kidneyball.iteye.com/blog/1828427" target="_blank">IDEAVim</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/donahue_ldz/article/details/17139361" target="_blank">Vim快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://doub.io/brook-jc1/" target="_blank">doub.io</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/waeceo/article/details/78702584" target="_blank">MySQL索引</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/Tools/subnetmask" target="_blank">站长工具</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://plugins.jetbrains.com/" target="_blank">IDEA Plugins</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://docs.kubernetes.org.cn/227.html" target="_blank">Kubernetes</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线编辑</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.bejson.com/jsoneditoronline" target="_blank">JSON编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tool.lu/tables/" target="_blank">MD表格生成</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://cron.qqe2.com" target="_blank">CRON表达式</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.oschina.net/codeformat/html" target="_blank">代码格式化</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://zh.numberempire.com/latexequationeditor.php" target="_blank">公式编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cli.im/" target="_blank">二维码生成器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/tools/native_ascii.aspx" target="_blank">在线编码转换</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.toyaml.com" target="_blank">YAML转换</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线服务</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cn.vuejs.org/v2/api/" target="_blank">vue</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://vuex.vuejs.org/zh/api/#vuex-store" target="_blank">vuex</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://trends.google.com/trends/?geo=US" target="_blank">谷歌趋势</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://index.baidu.com/#/" target="_blank">百度指数</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tongji.baidu.com/data/browser" target="_blank">百度流量研究院</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">高频网站</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/tree/source" target="_blank">GitHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.travis-ci.org/kikyou93/kikyou93.github.io/" target="_blank">Travis CI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://billing.virmach.com/clientarea.php?action=services" target="_blank">Virmach</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://dev.tencent.com/u/kikfan/p/kikfan.coding.me/git" target="_blank">Coding Pages</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://mvnrepository.com/" target="_blank">MavenRepo</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://hub.docker.com/search/" target="_blank">DockerHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+        </ul>
+      </li>
+    
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.kikfan.com/archives/7c4ba2e7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gustave">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kikfan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL战leetcode</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T01:15:14+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-20T02:15:23+08:00">
+                2019-03-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/7c4ba2e7.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/7c4ba2e7.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="180-连续出现的数字"><a href="#180-连续出现的数字" class="headerlink" title="180.连续出现的数字"></a>180.连续出现的数字</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> tmp.ConsecutiveNums <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">Num</span> <span class="keyword">as</span> ConsecutiveNums,</span><br><span class="line"> <span class="keyword">case</span> <span class="keyword">when</span> @prev = <span class="keyword">Num</span> <span class="keyword">then</span> @<span class="keyword">count</span> := @<span class="keyword">count</span>+<span class="number">1</span></span><br><span class="line"> <span class="keyword">when</span> @prev :=<span class="keyword">Num</span> <span class="keyword">then</span> @<span class="keyword">count</span> :=<span class="number">1</span></span><br><span class="line"> <span class="keyword">end</span> <span class="keyword">as</span> <span class="keyword">count</span></span><br><span class="line"> <span class="keyword">from</span> <span class="keyword">Logs</span>,(<span class="keyword">select</span> @prev :=<span class="literal">null</span>,@<span class="keyword">count</span> :=<span class="literal">null</span>) pc) tmp</span><br><span class="line"> <span class="keyword">where</span> tmp.count &gt;=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其实不够严谨，没有考虑Num为0的情况，应当把<br><code>when @prev :=Num then @count :=1</code>改为<code>when (@prev :=Num) is not null then @count :=1</code></li>
+</ul>
+<h1 id="184-部门工资最高的员工"><a href="#184-部门工资最高的员工" class="headerlink" title="184.部门工资最高的员工"></a>184.部门工资最高的员工</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> d.Name <span class="keyword">as</span> Department,e.Name <span class="keyword">as</span> Employee,e.Salary</span><br><span class="line"><span class="keyword">from</span> Employee e <span class="keyword">inner</span> <span class="keyword">join</span> Department d <span class="keyword">on</span> e.DepartmentId = d.Id</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> </span><br><span class="line">DepartmentId,<span class="keyword">Max</span>(Salary) <span class="keyword">as</span> maxSalary</span><br><span class="line"><span class="keyword">from</span> Employee</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> DepartmentId) tmp</span><br><span class="line"><span class="keyword">on</span> e.DepartmentId = tmp.DepartmentId <span class="keyword">and</span> e.Salary = tmp.maxSalary</span><br></pre></td></tr></table></figure>
+<h1 id="178-分数排名"><a href="#178-分数排名" class="headerlink" title="178.分数排名"></a>178.分数排名</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> tmp.Score,</span><br><span class="line">       <span class="keyword">CASE</span></span><br><span class="line">         <span class="keyword">WHEN</span> tmp.Score = @prev <span class="keyword">THEN</span> <span class="keyword">convert</span>(@<span class="keyword">rank</span>,<span class="keyword">UNSIGNED</span> )</span><br><span class="line">         <span class="keyword">WHEN</span> (@prev := tmp.Score) <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">THEN</span> <span class="keyword">convert</span>(@<span class="keyword">rank</span> := @<span class="keyword">rank</span> + <span class="number">1</span>,<span class="keyword">UNSIGNED</span> )</span><br><span class="line">           <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">Rank</span></span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> Score <span class="keyword">FROM</span> Scores <span class="keyword">ORDER</span> <span class="keyword">BY</span> Score <span class="keyword">DESC</span>) tmp,</span><br><span class="line">     (<span class="keyword">SELECT</span> @prev := <span class="literal">NULL</span>, @<span class="keyword">rank</span> := <span class="number">0</span>) pr</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>也是注意这里when后面的用法问题</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> s1.Score,(<span class="keyword">SELECT</span> <span class="keyword">count</span>(<span class="keyword">DISTINCT</span> s2.Score)+<span class="number">1</span> <span class="keyword">FROM</span> Scores s2 <span class="keyword">WHERE</span> s2.Score &gt;s1.Score ) <span class="keyword">as</span> <span class="keyword">Rank</span></span><br><span class="line">       <span class="keyword">FROM</span> Scores s1 <span class="keyword">order</span> <span class="keyword">by</span> Score <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子查询，看起来写法是简单了，但是实质上性能差了不少</p>
+</li>
+</ul>
+<h1 id="177-第N高的薪水"><a href="#177-第N高的薪水" class="headerlink" title="177.第N高的薪水"></a>177.第N高的薪水</h1><ul>
+<li>要求如果不存在的话返回null</li>
+<li><p>下方为自己的解法,判断null的问题居然还是多余的。。。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> getNthHighestSalary(N <span class="built_in">INT</span>) <span class="keyword">RETURNS</span> <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">RETURN</span> (</span><br><span class="line">      <span class="comment"># Write your MySQL query statement below.</span></span><br><span class="line">      <span class="keyword">select</span></span><br><span class="line">      <span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">count</span>(*) = <span class="number">1</span> <span class="keyword">then</span> Salary</span><br><span class="line">      <span class="keyword">else</span> <span class="literal">null</span> <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">from</span></span><br><span class="line">      (<span class="keyword">select</span> e.Salary,@<span class="keyword">rownum</span> := @<span class="keyword">rownum</span> + <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">rownum</span> <span class="keyword">from</span></span><br><span class="line">      (<span class="keyword">select</span> Salary <span class="keyword">from</span> Employee <span class="keyword">group</span> <span class="keyword">by</span> Salary <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">desc</span>) e,(<span class="keyword">select</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) r) tmp <span class="keyword">where</span> <span class="keyword">rownum</span> = N</span><br><span class="line">  );</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>看起来简洁写法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> getNthHighestSalary(N <span class="built_in">INT</span>) <span class="keyword">RETURNS</span> <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">      <span class="comment"># Write your MySQL query statement below.</span></span><br><span class="line">          <span class="keyword">set</span> N = N<span class="number">-1</span>;</span><br><span class="line">  RETURN (</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">distinct</span> <span class="keyword">ifnull</span>(salary,<span class="literal">null</span>) <span class="keyword">from</span>  employee <span class="keyword">order</span> <span class="keyword">by</span> salary <span class="keyword">desc</span> <span class="keyword">limit</span> N,<span class="number">1</span> </span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="177-上升的温度"><a href="#177-上升的温度" class="headerlink" title="177.上升的温度"></a>177.上升的温度</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">w1.Id</span><br><span class="line"><span class="keyword">from</span> Weather w1 <span class="keyword">inner</span> <span class="keyword">join</span> Weather w2 </span><br><span class="line"><span class="comment"># on w1.RecordDate = date_add(w2.RecordDate,interval 1 Day)</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">datediff</span>(w1.RecordDate,w2.RecordDate) = <span class="number">1</span></span><br><span class="line"><span class="keyword">and</span> w1.Temperature &gt; w2.Temperature</span><br></pre></td></tr></table></figure>
+<ul>
+<li>inner join当中，where和on的效果貌似没什么区别</li>
+</ul>
+<h1 id="176-第二高的薪水"><a href="#176-第二高的薪水" class="headerlink" title="176.第二高的薪水"></a>176.第二高的薪水</h1><ul>
+<li><p>这里就看出写法的问题了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">count</span>(*) = <span class="number">1</span> <span class="keyword">then</span> Salary</span><br><span class="line"><span class="keyword">else</span> <span class="literal">null</span> <span class="keyword">end</span> <span class="keyword">as</span> SecondHighestSalary</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> Salary,@<span class="keyword">rownum</span> := @<span class="keyword">rownum</span> + <span class="number">1</span> <span class="keyword">as</span> <span class="keyword">rownum</span> <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> Salary </span><br><span class="line"><span class="keyword">from</span> Employee <span class="keyword">group</span> <span class="keyword">by</span> Salary <span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">desc</span>) tmp,(<span class="keyword">select</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) r) t</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">rownum</span> = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>个人第二种解法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">count</span>(*) &gt; <span class="number">0</span> <span class="keyword">then</span> Salary</span><br><span class="line"><span class="keyword">else</span> <span class="literal">null</span> <span class="keyword">end</span> <span class="keyword">as</span> SecondHighestSalary</span><br><span class="line"><span class="keyword">from</span> Employee e1 <span class="keyword">where</span> (<span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> Salary) <span class="keyword">from</span> Employee e2 <span class="keyword">where</span> e2.Salary &gt; e1.Salary) =<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>丫的还有这种玩法,外面再套一层的方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">IFNULL</span>((<span class="keyword">select</span> <span class="keyword">distinct</span>(Salary) </span><br><span class="line"><span class="keyword">from</span> Employee</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> Salary <span class="keyword">desc</span></span><br><span class="line"><span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span>),<span class="literal">null</span>) <span class="keyword">as</span> SecondHighestSalary</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="需要第N高使用limit-N-1-1是最直接的，如果没有需要返回null，那么在外面再套一层就是了"><a href="#需要第N高使用limit-N-1-1是最直接的，如果没有需要返回null，那么在外面再套一层就是了" class="headerlink" title="需要第N高使用limit N-1,1是最直接的，如果没有需要返回null，那么在外面再套一层就是了"></a>需要第N高使用limit N-1,1是最直接的，如果没有需要返回null，那么在外面再套一层就是了</h2><h1 id="262-行程和用户"><a href="#262-行程和用户" class="headerlink" title="262.行程和用户"></a>262.行程和用户</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">t.Request_at <span class="keyword">as</span> <span class="keyword">Day</span>,</span><br><span class="line"><span class="keyword">round</span>((<span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> t.Status &lt;&gt; <span class="string">'completed'</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>)/<span class="keyword">count</span>(*)),<span class="number">2</span>) <span class="keyword">as</span> <span class="string">'Cancellation Rate'</span></span><br><span class="line"><span class="keyword">from</span> Trips t</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">Users</span> u <span class="keyword">on</span> t.Client_Id = u.Users_Id <span class="keyword">and</span> u.Banned = <span class="string">'No'</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">Users</span> u2 <span class="keyword">on</span> t.Driver_Id = u2.Users_Id <span class="keyword">and</span> u2.Banned = <span class="string">'No'</span></span><br><span class="line"><span class="keyword">where</span> t.Request_at <span class="keyword">between</span> <span class="string">'2013-10-01'</span> <span class="keyword">and</span> <span class="string">'2013-10-03'</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> t.Request_at <span class="keyword">order</span> <span class="keyword">by</span> t.Request_at <span class="keyword">asc</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>1.非禁止用户这是一个坑2.round的用法</li>
+</ul>
+<h1 id="196-删除重复的邮箱"><a href="#196-删除重复的邮箱" class="headerlink" title="196.删除重复的邮箱"></a>196.删除重复的邮箱</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> Person <span class="keyword">from</span> Person</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> </span><br><span class="line"><span class="keyword">min</span>(<span class="keyword">Id</span>) <span class="keyword">as</span> <span class="keyword">mId</span></span><br><span class="line"><span class="keyword">from</span> Person <span class="keyword">group</span> <span class="keyword">by</span> Email ) tmp</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">Id</span> = tmp.mId <span class="keyword">where</span> tmp.mId <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>亦可使用该种方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> p1 <span class="keyword">from</span> Person p1 ,Person p2</span><br><span class="line"><span class="keyword">where</span> p1.Email =p2.Email <span class="keyword">and</span> p1.Id &gt; p2.Id</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>delete 后面的table不能使用别名</p>
+<h2 id="扩展，delete连表的语句"><a href="#扩展，delete连表的语句" class="headerlink" title="扩展，delete连表的语句"></a>扩展，delete连表的语句</h2></li>
+<li>不可别名或者使用了别名需要别名对应</li>
+<li>USING的使用<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> t1 <span class="keyword">FROM</span> t1 <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> T2 <span class="keyword">ON</span> t1.id=t2.id <span class="keyword">WHERE</span> t2.id <span class="keyword">IS</span> <span class="literal">NULL</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span>  <span class="keyword">FROM</span> t1 <span class="keyword">USING</span> t1 <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> T2 <span class="keyword">ON</span> t1.id=t2.id <span class="keyword">WHERE</span> t2.id <span class="keyword">IS</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="185-部门工资前三高的员工"><a href="#185-部门工资前三高的员工" class="headerlink" title="185.部门工资前三高的员工"></a>185.部门工资前三高的员工</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"> d.Name <span class="keyword">as</span> Department, e.Name <span class="keyword">as</span> Employee,e.Salary</span><br><span class="line"><span class="keyword">from</span> Employee e <span class="keyword">inner</span> <span class="keyword">join</span> Department d</span><br><span class="line"><span class="keyword">on</span> e.DepartmentId = d.Id</span><br><span class="line"><span class="keyword">where</span> (<span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> e2.Salary) <span class="keyword">from</span> Employee e2 <span class="keyword">where</span></span><br><span class="line">       e.DepartmentId = e2.DepartmentId <span class="keyword">and</span> e2.Salary &gt; e.Salary)</span><br><span class="line">&lt; <span class="number">3</span> <span class="keyword">order</span> <span class="keyword">by</span> d.Id <span class="keyword">asc</span>,e.Salary <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>where条件和所选的字段其实都是可以使用该种子查询的方式的</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"> d.Name <span class="keyword">as</span> Department, tmp.Name <span class="keyword">as</span> Employee,tmp.Salary</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> </span><br><span class="line">e1.Name,e1.Salary,e1.DepartmentId</span><br><span class="line"><span class="keyword">from</span> Employee e1 <span class="keyword">inner</span> <span class="keyword">join</span> Employee e2 <span class="keyword">on</span> e1.DepartmentId = e2.DepartmentId</span><br><span class="line"><span class="keyword">where</span> e2.Salary &gt;= e1.Salary</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> e1.Id <span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> e2.Salary) &lt;=<span class="number">3</span>) tmp</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> Department d</span><br><span class="line"><span class="keyword">on</span> tmp.DepartmentId = d.Id</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> d.Id <span class="keyword">asc</span>,tmp.Salary <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用了group by和having的处理方式，效率方面更高，可以看出子查询的局限性</li>
+</ul>
+<h1 id="601-体育馆的人流量"><a href="#601-体育馆的人流量" class="headerlink" title="601.体育馆的人流量"></a>601.体育馆的人流量</h1><ul>
+<li><p>初步想法，用到了find_in_set这个函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> stadium.* <span class="keyword">from</span> stadium,</span><br><span class="line">(<span class="keyword">select</span> </span><br><span class="line"><span class="keyword">group_concat</span>(t.id) <span class="keyword">as</span> ids</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> tmp.*,@<span class="keyword">rownum</span> := @<span class="keyword">rownum</span> + <span class="number">1</span>,tmp.id - @<span class="keyword">rownum</span> <span class="keyword">as</span> diff</span><br><span class="line"> <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> </span><br><span class="line">*</span><br><span class="line"><span class="keyword">from</span> stadium <span class="keyword">where</span> people &gt;=<span class="number">100</span>) tmp,(<span class="keyword">select</span> @<span class="keyword">rownum</span> := <span class="number">0</span>) r) t</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> diff <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt;=<span class="number">3</span>) tt</span><br><span class="line"><span class="keyword">where</span> find_in_set(<span class="keyword">id</span>,tt.ids) &gt;<span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以使用min和max然后使用between and的方式</p>
+</li>
+</ul>
+<h1 id="627-交换性别"><a href="#627-交换性别" class="headerlink" title="627.交换性别"></a>627.交换性别</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary <span class="keyword">set</span> sex = <span class="keyword">if</span>(sex = <span class="string">'m'</span>,<span class="string">'f'</span>,<span class="string">'m'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>简单题，考察sql里面if的用法</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Gustave
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.kikfan.com/archives/7c4ba2e7.html" title="SQL战leetcode">https://www.kikfan.com/archives/7c4ba2e7.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/d32d37e5.html" rel="prev" title="Elasticsearch">
+                <i class="fa fa-chevron-left"></i> Elasticsearch
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/f51df9f4.html" rel="next" title="frp实现内网穿透">
+                frp实现内网穿透 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Gustave">
+            
+              <p class="site-author-name" itemprop="name">Gustave</p>
+              <p class="site-description motion-element" itemprop="description">偏安一隅</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kikyou93" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://locenes.com/" title="locenes" target="_blank">locenes</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#180-连续出现的数字"><span class="nav-number">1.</span> <span class="nav-text">180.连续出现的数字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#184-部门工资最高的员工"><span class="nav-number">2.</span> <span class="nav-text">184.部门工资最高的员工</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#178-分数排名"><span class="nav-number">3.</span> <span class="nav-text">178.分数排名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#177-第N高的薪水"><span class="nav-number">4.</span> <span class="nav-text">177.第N高的薪水</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#177-上升的温度"><span class="nav-number">5.</span> <span class="nav-text">177.上升的温度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#176-第二高的薪水"><span class="nav-number">6.</span> <span class="nav-text">176.第二高的薪水</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要第N高使用limit-N-1-1是最直接的，如果没有需要返回null，那么在外面再套一层就是了"><span class="nav-number">6.1.</span> <span class="nav-text">需要第N高使用limit N-1,1是最直接的，如果没有需要返回null，那么在外面再套一层就是了</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#262-行程和用户"><span class="nav-number">7.</span> <span class="nav-text">262.行程和用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#196-删除重复的邮箱"><span class="nav-number">8.</span> <span class="nav-text">196.删除重复的邮箱</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展，delete连表的语句"><span class="nav-number">8.1.</span> <span class="nav-text">扩展，delete连表的语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#185-部门工资前三高的员工"><span class="nav-number">9.</span> <span class="nav-text">185.部门工资前三高的员工</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#601-体育馆的人流量"><span class="nav-number">10.</span> <span class="nav-text">601.体育馆的人流量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#627-交换性别"><span class="nav-number">11.</span> <span class="nav-text">627.交换性别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gustave</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">45.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'y342POhWCRR95vOhfnvm8JmU-gzGzoHsz',
+        appKey: 'LYAWA6Xx4eiYgbghbg6uxeuB',
+        placeholder: '踏出竹叶梅花？',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+</body>
+</html>

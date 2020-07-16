@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,SQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kikfan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="过于草率地相信直觉的判断了，作为一个猜想是需要验证的，想当然才是根源 执行力不够，脑袋里产生想法之后一定要立即马上去验证，时间长了就忘了！！（最次也得上备忘录） 对于连表的理解有欠缺 sql语句多学多看，多查，终身学习，不要被其他的边边角角占据了头脑，保持敏锐！ 对于where in和inner join，not in 和left join之间的转化关系有进一步了解 前几名的问题，使用group">
+<meta name="keywords" content="Java,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL，一叶障目，不见泰山">
+<meta property="og:url" content="https://www.kikfan.com/archives/5bea5d90.html">
+<meta property="og:site_name" content="kikfan">
+<meta property="og:description" content="过于草率地相信直觉的判断了，作为一个猜想是需要验证的，想当然才是根源 执行力不够，脑袋里产生想法之后一定要立即马上去验证，时间长了就忘了！！（最次也得上备忘录） 对于连表的理解有欠缺 sql语句多学多看，多查，终身学习，不要被其他的边边角角占据了头脑，保持敏锐！ 对于where in和inner join，not in 和left join之间的转化关系有进一步了解 前几名的问题，使用group">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-20T08:57:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL，一叶障目，不见泰山">
+<meta name="twitter:description" content="过于草率地相信直觉的判断了，作为一个猜想是需要验证的，想当然才是根源 执行力不够，脑袋里产生想法之后一定要立即马上去验证，时间长了就忘了！！（最次也得上备忘录） 对于连表的理解有欠缺 sql语句多学多看，多查，终身学习，不要被其他的边边角角占据了头脑，保持敏锐！ 对于where in和inner join，not in 和left join之间的转化关系有进一步了解 前几名的问题，使用group">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.kikfan.com/archives/5bea5d90.html">
+
+
+
+
+
+  <title>MySQL，一叶障目，不见泰山 | kikfan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kikfan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">lack is rich, self-discipline to produce joy!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav menuTool">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+
+        
+          <li class="menu-item menu-item-search">
+            
+              <a href="javascript:;" class="popup-trigger">
+            
+              
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              
+              搜索
+            </a>
+          </li>
+        
+
+    
+      <li class="menu-item menu-item-briefcase">
+        <a href="#">
+          <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br>
+          工具
+        </a>
+        <ul>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的工具</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/80084445.html" target="_blank">MapperUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/b1e39e23.html" target="_blank">CookieUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/yangwei256/article/details/82683140" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml" target="_blank">Config.yml</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tools.hexianwei.com/#/tools/jrebel" target="_blank">Jrebel</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/xiaoxiunique/tool-tips" target="_blank">IDEA-Tool-tips</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的收藏</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/" target="_blank">百度站长</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://weui.io/#navbar" target="_blank">WeUI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/ijavaweb/article/details/16963725" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://kidneyball.iteye.com/blog/1828427" target="_blank">IDEAVim</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/donahue_ldz/article/details/17139361" target="_blank">Vim快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://doub.io/brook-jc1/" target="_blank">doub.io</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/waeceo/article/details/78702584" target="_blank">MySQL索引</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/Tools/subnetmask" target="_blank">站长工具</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://plugins.jetbrains.com/" target="_blank">IDEA Plugins</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://docs.kubernetes.org.cn/227.html" target="_blank">Kubernetes</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线编辑</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.bejson.com/jsoneditoronline" target="_blank">JSON编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tool.lu/tables/" target="_blank">MD表格生成</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://cron.qqe2.com" target="_blank">CRON表达式</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.oschina.net/codeformat/html" target="_blank">代码格式化</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://zh.numberempire.com/latexequationeditor.php" target="_blank">公式编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cli.im/" target="_blank">二维码生成器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/tools/native_ascii.aspx" target="_blank">在线编码转换</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.toyaml.com" target="_blank">YAML转换</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线服务</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cn.vuejs.org/v2/api/" target="_blank">vue</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://vuex.vuejs.org/zh/api/#vuex-store" target="_blank">vuex</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://trends.google.com/trends/?geo=US" target="_blank">谷歌趋势</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://index.baidu.com/#/" target="_blank">百度指数</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tongji.baidu.com/data/browser" target="_blank">百度流量研究院</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">高频网站</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/tree/source" target="_blank">GitHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.travis-ci.org/kikyou93/kikyou93.github.io/" target="_blank">Travis CI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://billing.virmach.com/clientarea.php?action=services" target="_blank">Virmach</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://dev.tencent.com/u/kikfan/p/kikfan.coding.me/git" target="_blank">Coding Pages</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://mvnrepository.com/" target="_blank">MavenRepo</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://hub.docker.com/search/" target="_blank">DockerHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+        </ul>
+      </li>
+    
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.kikfan.com/archives/5bea5d90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gustave">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kikfan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL，一叶障目，不见泰山</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T00:01:48+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-20T16:57:54+08:00">
+                2019-06-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/5bea5d90.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/5bea5d90.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>过于草率地相信直觉的判断了，作为一个猜想是需要验证的，想当然才是根源</li>
+<li>执行力不够，脑袋里产生想法之后一定要立即马上去验证，时间长了就忘了！！（最次也得上备忘录）</li>
+<li>对于连表的理解有欠缺</li>
+<li>sql语句多学多看，多查，终身学习，不要被其他的边边角角占据了头脑，保持敏锐！</li>
+<li>对于where in和inner join，not in 和left join之间的转化关系有进一步了解</li>
+<li>前几名的问题，使用group_concat 和 find_in_set的形式可以方便地解决问题</li>
+<li>周的生日的问题，年份必须转化，不然只会是错误的结果</li>
+<li>case when 的用法，常见于行和列的转化</li>
+<li>MySQL里没有排名函数，所以使用定义的方式就尤为重要，尤其是不保留排名的方式，必须要3个变量</li>
+</ul>
+<h1 id="Update-Join"><a href="#Update-Join" class="headerlink" title="Update Join"></a>Update Join</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> table_name_1</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> table_name_2 <span class="keyword">on</span> table_name_1.id = table_name_2.uid</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> table_name_3 <span class="keyword">on</span> table_name_3.id = table_name_1.tid</span><br><span class="line"><span class="keyword">set</span> *** = ***</span><br><span class="line"><span class="keyword">where</span> ***</span><br></pre></td></tr></table></figure>
+<h1 id="Delete-Join"><a href="#Delete-Join" class="headerlink" title="Delete Join"></a>Delete Join</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> a <span class="keyword">FROM</span> t1 a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">min</span>(info_id) <span class="keyword">AS</span> infoId</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> form_id) b <span class="keyword">ON</span> a.info_id = b.infoId <span class="keyword">WHERE</span> b.infoId <span class="keyword">is</span> <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+<h1 id="in-和-exists"><a href="#in-和-exists" class="headerlink" title="in 和 exists"></a>in 和 exists</h1><p>in是把外表和内表作hash连接，而exists是对外表作loop循环，每次loop循环再对内表进行查询，一直以来认为exists比in效率高的说法是不准确的。如果查询的两个表大小相当，那么用in和exists差别不大；如果两个表中一个较小一个较大，则子查询表大的用exists，子查询表小的用in；</p>
+<p>例如：表A(小表)，表B(大表)</p>
+<p>select * from A where cc in(select cc from B)　　–&gt;效率低，用到了A表上cc列的索引；</p>
+<p>select * from A where exists(select cc from B where cc=A.cc)　　–&gt;效率高，用到了B表上cc列的索引。<br>相反的：</p>
+<p>select * from B where cc in(select cc from A)　　–&gt;效率高，用到了B表上cc列的索引</p>
+<p>select * from B where exists(select cc from A where cc=B.cc)　　–&gt;效率低，用到了A表上cc列的索引。</p>
+<h1 id="not-in-和not-exists"><a href="#not-in-和not-exists" class="headerlink" title="not in 和not exists"></a>not in 和not exists</h1><p>not in 逻辑上不完全等同于not exists，如果你误用了not in，小心你的程序存在致命的BUG，请看下面的例子：</p>
+<p>create table #t1(c1 int,c2 int);</p>
+<p>create table #t2(c1 int,c2 int);</p>
+<p>insert into #t1 values(1,2);</p>
+<p>insert into #t1 values(1,3);</p>
+<p>insert into #t2 values(1,2);</p>
+<p>insert into #t2 values(1,null);</p>
+<p>select * from #t1 where c2 not in(select c2 from #t2);　　–&gt;执行结果：无</p>
+<p>select * from #t1 where not exists(select 1 from #t2 where #t2.c2=#t1.c2)　　–&gt;执行结果：1　　3</p>
+<p>正如所看到的，not in出现了不期望的结果集，存在逻辑错误。如果看一下上述两个select 语句的执行计划，也会不同，后者使用了hash_aj，所以，请尽量不要使用not in(它会调用子查询)，而尽量使用not exists（它会调用关联子查询）。如果子查询中返回的任意一条记录含有空值，则查询将不返回任何记录。如果子查询字段有非空限制，这时可以使用not in，并且可以通过提示让它用hasg_aj或merge_aj连接。</p>
+<p>如果查询语句使用了not in，那么对内外表都进行全表扫描，没有用到索引；而not exists的子查询依然能用到表上的索引。所以无论哪个表大，用not exists都比not in 要快。</p>
+<ul>
+<li>说多了都是泪啊</li>
+</ul>
+<h1 id="获取表中某字段包含某字符串的数据"><a href="#获取表中某字段包含某字符串的数据" class="headerlink" title="获取表中某字段包含某字符串的数据"></a>获取表中某字段包含某字符串的数据</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="string">`表名`</span> <span class="keyword">WHERE</span> <span class="keyword">LOCATE</span>(<span class="string">'关键字'</span>, 字段名)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>locate函数的用法</li>
+</ul>
+<h1 id="连续范围的问题"><a href="#连续范围的问题" class="headerlink" title="连续范围的问题"></a>连续范围的问题</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建测试表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_number`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`number`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'数字'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">5</span>,<span class="number">7</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">6</span>,<span class="number">8</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">7</span>,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_number <span class="keyword">values</span>(<span class="number">8</span>,<span class="number">11</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">min</span>(<span class="built_in">number</span>) start_range, <span class="keyword">max</span>(<span class="built_in">number</span>) end_range</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="built_in">number</span>, rn, <span class="built_in">number</span> - rn diff</span><br><span class="line">      <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="built_in">number</span>, @<span class="built_in">number</span> := @<span class="built_in">number</span> + <span class="number">1</span> rn</span><br><span class="line">            <span class="keyword">FROM</span> test_number,</span><br><span class="line">                 (<span class="keyword">SELECT</span> @<span class="built_in">number</span> := <span class="number">0</span>) <span class="keyword">AS</span> <span class="built_in">number</span>) b) c</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> diff;</span><br></pre></td></tr></table></figure>
+<h1 id="签到问题"><a href="#签到问题" class="headerlink" title="签到问题"></a>签到问题</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建参考表(模拟数据需要用到)</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_nums`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COMMENT</span>=<span class="string">'参考表'</span>;</span><br><span class="line"><span class="comment"># 模拟数据，插入 1-1000 连续数据.</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">PROCEDURE</span> <span class="keyword">test</span>()</span><br><span class="line">  <span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DECLARE</span> i <span class="built_in">int</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>;</span><br><span class="line">    WHILE (i &lt; 1000) DO INSERT INTO test_nums VALUES (i);</span><br><span class="line">      <span class="keyword">SET</span> i = i + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line">  <span class="keyword">END</span>;</span><br><span class="line"><span class="keyword">CALL</span> <span class="keyword">test</span>();</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">test</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`test_sign_history`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`uid`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'用户ID'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> <span class="built_in">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'签到时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COMMENT</span>=<span class="string">'签到历史表'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_sign_history(uid,create_time)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">ceil</span>(<span class="keyword">rand</span>()*<span class="number">10000</span>),<span class="keyword">str_to_date</span>(<span class="string">'2016-12-11'</span>,<span class="string">'%Y-%m-%d'</span>)+<span class="built_in">interval</span> <span class="keyword">ceil</span>(<span class="keyword">rand</span>()*<span class="number">10000</span>) <span class="keyword">minute</span></span><br><span class="line"><span class="keyword">from</span> test_nums <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">500</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计每天的每小时用户签到情况</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">       tmp.h,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161211'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">11</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161212'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">12</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161213'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">13</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161214'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">14</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161215'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">15</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161216'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">16</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161217'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">17</span><span class="keyword">sign</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">hour</span>(create_time) h,<span class="keyword">date_format</span>(create_time,<span class="string">'%Y%m%d'</span>) <span class="keyword">as</span> d,<span class="keyword">count</span>(*) c</span><br><span class="line"><span class="keyword">FROM</span> test_sign_history <span class="keyword">group</span> <span class="keyword">BY</span> h,d) tmp</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> tmp.h <span class="keyword">ORDER</span> <span class="keyword">BY</span> tmp.h;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计每天的每小时用户签到情况(当某个小时没有数据时，显示0)</span></span><br><span class="line"><span class="comment"># 主要在于使用了辅助表，使用它用来作为left join 的主表</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">       tmp.h,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161211'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">11</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161212'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">12</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161213'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">13</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161214'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">14</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161215'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">15</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161216'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">16</span><span class="keyword">sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> tmp.d = <span class="string">'20161217'</span> <span class="keyword">THEN</span> tmp.c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> ) <span class="keyword">as</span> <span class="number">17</span><span class="keyword">sign</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">     (<span class="keyword">SELECT</span> b.h,tsh.d,tsh.c</span><br><span class="line">     <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">as</span> h <span class="keyword">FROM</span> test_nums <span class="keyword">WHERE</span> <span class="keyword">id</span> &lt;= <span class="number">24</span>) b</span><br><span class="line">     <span class="keyword">LEFT</span> <span class="keyword">JOIN</span></span><br><span class="line">     (<span class="keyword">select</span> <span class="keyword">hour</span>(create_time) h,<span class="keyword">date_format</span>(create_time,<span class="string">'%Y%m%d'</span>) <span class="keyword">as</span> d,<span class="keyword">count</span>(*) c</span><br><span class="line">      <span class="keyword">FROM</span> test_sign_history <span class="keyword">group</span> <span class="keyword">BY</span> h,d) tsh <span class="keyword">ON</span> b.h = tsh.h</span><br><span class="line">     ) tmp</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> tmp.h <span class="keyword">ORDER</span> <span class="keyword">BY</span> tmp.h;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计每天的用户签到数据和每天的增量数据</span></span><br><span class="line"><span class="comment"># 自己想的写法</span></span><br><span class="line"><span class="keyword">SELECT</span> t.d, t.cnt, t.cnt - @rown <span class="keyword">AS</span> increase, @rown := t.cnt</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y%m%d'</span>) <span class="keyword">AS</span> d, <span class="keyword">count</span>(*) <span class="keyword">AS</span> cnt</span><br><span class="line">            <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> d</span><br><span class="line">      <span class="keyword">ORDER</span> <span class="keyword">BY</span> d) t,</span><br><span class="line">     (<span class="keyword">SELECT</span> @rown := <span class="number">0</span>) r;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参考写法</span></span><br><span class="line"><span class="comment"># 两种写法，思想不同而已</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">type</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-11'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">11</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-12'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">12</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-13'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">13</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-14'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">14</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-15'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">15</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-16'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">16</span><span class="keyword">Sign</span>,</span><br><span class="line">       <span class="keyword">sum</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> create_time = <span class="string">'2016-12-17'</span> <span class="keyword">THEN</span> c <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="number">17</span><span class="keyword">Sign</span></span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> b.create_time, <span class="keyword">ifnull</span>(b.c - c.c, <span class="number">0</span>) c, <span class="string">'Increment'</span> <span class="keyword">type</span></span><br><span class="line">      <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>) create_time, <span class="keyword">count</span>(*) c</span><br><span class="line">            <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">            <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>)) b</span><br><span class="line">             <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>) create_time, <span class="keyword">count</span>(*) c</span><br><span class="line">                        <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">                        <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>)) c</span><br><span class="line">               <span class="keyword">ON</span> (b.create_time = c.create_time + <span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>)</span><br><span class="line">      <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">      <span class="keyword">SELECT</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>) create_time, <span class="keyword">count</span>(*) c, <span class="string">'Current'</span></span><br><span class="line">      <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>)) a</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">type</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">type</span> = <span class="string">'Current'</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span> <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#模拟不同的用户签到了不同的天数</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test_sign_history(uid,create_time)</span><br><span class="line"><span class="keyword">select</span> uid,create_time + <span class="built_in">interval</span> <span class="keyword">ceil</span>(<span class="keyword">rand</span>()*<span class="number">10</span>) <span class="keyword">day</span> <span class="keyword">from</span> test_sign_history,test_nums</span><br><span class="line"><span class="keyword">where</span> test_nums.id &lt;<span class="number">10</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">rand</span>() <span class="keyword">limit</span> <span class="number">150</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计签到天数相同的用户数量</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">date_format</span>(create_time,<span class="string">'%Y%m%d'</span>) <span class="keyword">as</span> d,<span class="keyword">count</span>(<span class="keyword">DISTINCT</span> uid) <span class="keyword">AS</span> user_cnt</span><br><span class="line"><span class="keyword">FROM</span> test_sign_history <span class="keyword">GROUP</span> <span class="keyword">BY</span> d <span class="keyword">ORDER</span> <span class="keyword">BY</span> d;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计每个用户的连续签到时间</span></span><br><span class="line"><span class="comment"># 属于连续问题的解决办法</span></span><br><span class="line"><span class="keyword">SELECT</span> tmp2.uid,<span class="keyword">max</span>(tmp2.sign_last) <span class="keyword">FROM</span></span><br><span class="line">       (</span><br><span class="line">       <span class="keyword">SELECT</span> tmp.uid, <span class="keyword">min</span>(d) <span class="keyword">AS</span> begin_date, <span class="keyword">max</span>(d) <span class="keyword">AS</span> end_date, <span class="keyword">datediff</span>(<span class="keyword">max</span>(d), <span class="keyword">min</span>(d)) + <span class="number">1</span> <span class="keyword">AS</span> sign_last</span><br><span class="line">        <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> ud.uid, ud.d, <span class="keyword">datediff</span>(ud.d, @<span class="built_in">time</span>) <span class="keyword">AS</span> diff, @<span class="built_in">time</span> := @<span class="built_in">time</span> + <span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span></span><br><span class="line">              <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> uid, <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>) <span class="keyword">AS</span> d</span><br><span class="line">                    <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">                    <span class="keyword">GROUP</span> <span class="keyword">BY</span> uid, d</span><br><span class="line">                    <span class="keyword">ORDER</span> <span class="keyword">BY</span> uid, d) ud,</span><br><span class="line">                   (<span class="keyword">SELECT</span> @<span class="built_in">time</span> := <span class="string">'2016-01-01'</span>) t) tmp</span><br><span class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> tmp.uid, tmp.diff</span><br><span class="line">       ) tmp2 <span class="keyword">GROUP</span> <span class="keyword">BY</span> tmp2.uid;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参考写法</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> d.*, @ggid := @cggid, @cggid := d.uid, <span class="keyword">if</span>(@ggid = @cggid, @grank := @grank + <span class="number">1</span>, @grank := <span class="number">1</span>) grank</span><br><span class="line">      <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> uid, <span class="keyword">min</span>(c.create_time) begin_date, <span class="keyword">max</span>(c.create_time) end_date, <span class="keyword">count</span>(*) <span class="keyword">count</span></span><br><span class="line">            <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> b.*,</span><br><span class="line">                         @gid := @cgid,</span><br><span class="line">                         @cgid := b.uid,</span><br><span class="line">                         <span class="keyword">if</span>(@gid = @cgid, @<span class="keyword">rank</span> := @<span class="keyword">rank</span> + <span class="number">1</span>, @<span class="keyword">rank</span> := <span class="number">1</span>),</span><br><span class="line">                         b.diff - @<span class="keyword">rank</span> <span class="keyword">as</span> flag</span><br><span class="line">                  <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> uid,</span><br><span class="line">                                        <span class="keyword">date_format</span>(create_time, <span class="string">'%Y-%m-%d'</span>) create_time,</span><br><span class="line">                                        <span class="keyword">datediff</span>(create_time, <span class="keyword">now</span>())         diff</span><br><span class="line">                        <span class="keyword">FROM</span> test_sign_history</span><br><span class="line">                        <span class="keyword">ORDER</span> <span class="keyword">BY</span> uid, create_time) b,</span><br><span class="line">                       (<span class="keyword">SELECT</span> @gid := <span class="number">1</span>, @cgid := <span class="number">1</span>, @<span class="keyword">rank</span> := <span class="number">1</span>) <span class="keyword">AS</span> a) c</span><br><span class="line">            <span class="keyword">GROUP</span> <span class="keyword">BY</span> uid, flag</span><br><span class="line">            <span class="keyword">ORDER</span> <span class="keyword">BY</span> uid, <span class="keyword">count</span>(*) <span class="keyword">DESC</span>) d,</span><br><span class="line">           (<span class="keyword">SELECT</span> @ggid := <span class="number">1</span>, @cggid := <span class="number">1</span>, @grank := <span class="number">1</span>) <span class="keyword">AS</span> e)f</span><br><span class="line"><span class="keyword">WHERE</span> grank = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/Thomson617/article/details/83140926" target="_blank" rel="noopener">MySQL2</a></p>
+<h1 id="MySQL的测试表"><a href="#MySQL的测试表" class="headerlink" title="MySQL的测试表"></a>MySQL的测试表</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student(</span><br><span class="line">  s_id <span class="built_in">varchar</span> (<span class="number">20</span>),</span><br><span class="line">  s_name <span class="built_in">varchar</span> (<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  s_birth <span class="built_in">varchar</span> (<span class="number">20</span>)<span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  s_sex <span class="built_in">varchar</span> (<span class="number">10</span>) <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  primary <span class="keyword">key</span> (s_id)</span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> course(</span><br><span class="line">  c_id <span class="built_in">varchar</span> (<span class="number">20</span>),</span><br><span class="line">  c_name <span class="built_in">varchar</span> (<span class="number">20</span>)<span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  t_id <span class="built_in">varchar</span> (<span class="number">20</span>)<span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  primary <span class="keyword">key</span>( c_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> teacher(</span><br><span class="line">  t_id <span class="built_in">varchar</span> (<span class="number">20</span>),</span><br><span class="line">  t_name <span class="built_in">varchar</span> (<span class="number">20</span>)<span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="string">''</span>,</span><br><span class="line">  primary <span class="keyword">key</span> (t_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> score(</span><br><span class="line">  s_id <span class="built_in">varchar</span> (<span class="number">20</span>),</span><br><span class="line">  c_id <span class="built_in">varchar</span> (<span class="number">20</span>),</span><br><span class="line">  s_score <span class="built_in">int</span>(<span class="number">3</span>),</span><br><span class="line">  primary <span class="keyword">key</span> (s_id,c_id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'赵雷'</span> , <span class="string">'1990-01-01'</span> , <span class="string">'男'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'钱电'</span> , <span class="string">'1990-12-21'</span> , <span class="string">'男'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'孙风'</span> , <span class="string">'1990-05-20'</span> , <span class="string">'男'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'04'</span> , <span class="string">'李云'</span> , <span class="string">'1990-08-06'</span> , <span class="string">'男'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'05'</span> , <span class="string">'周梅'</span> , <span class="string">'1991-12-01'</span> , <span class="string">'女'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'06'</span> , <span class="string">'吴兰'</span> , <span class="string">'1992-03-01'</span> , <span class="string">'女'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'07'</span> , <span class="string">'郑竹'</span> , <span class="string">'1989-07-01'</span> , <span class="string">'女'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="string">'08'</span> , <span class="string">'王菊'</span> , <span class="string">'1990-01-20'</span> , <span class="string">'女'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'语文'</span> , <span class="string">'02'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'数学'</span> , <span class="string">'01'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'英语'</span> , <span class="string">'03'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'张三'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'李四'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'王五'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'01'</span> , <span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'02'</span> , <span class="number">90</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'01'</span> , <span class="string">'03'</span> , <span class="number">99</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'01'</span> , <span class="number">70</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'02'</span> , <span class="number">60</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'02'</span> , <span class="string">'03'</span> , <span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'01'</span> , <span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'02'</span> , <span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'03'</span> , <span class="string">'03'</span> , <span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'04'</span> , <span class="string">'01'</span> , <span class="number">50</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'04'</span> , <span class="string">'02'</span> , <span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'04'</span> , <span class="string">'03'</span> , <span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'05'</span> , <span class="string">'01'</span> , <span class="number">76</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'05'</span> , <span class="string">'02'</span> , <span class="number">87</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'06'</span> , <span class="string">'01'</span> , <span class="number">31</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'06'</span> , <span class="string">'03'</span> , <span class="number">34</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'07'</span> , <span class="string">'02'</span> , <span class="number">89</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="string">'07'</span> , <span class="string">'03'</span> , <span class="number">98</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="查询”01”课程比”02”课程成绩高的学生的信息及课程分数"><a href="#查询”01”课程比”02”课程成绩高的学生的信息及课程分数" class="headerlink" title="查询”01”课程比”02”课程成绩高的学生的信息及课程分数"></a>查询”01”课程比”02”课程成绩高的学生的信息及课程分数</h1><ul>
+<li>考虑02课程没选的的情况<br>SELECT<pre><code>s.*,sc.s_score AS 01score,sc2.s_score AS 02score
+</code></pre>FROM student s INNER JOIN score sc ON s.s_id = sc.s_id AND sc.c_id = ‘01’<pre><code>LEFT JOIN score sc2 ON s.s_id = sc2.s_id AND sc2.c_id = &apos;02&apos;
+</code></pre>WHERE sc.s_score &lt; sc2.s_score OR sc.s_score is NULL ;</li>
+</ul>
+<p>SELECT student.*, a.s_score AS 01_score, b.s_score AS 02_score<br>FROM student<br>       JOIN score a ON student.s_id = a.s_id AND a.c_id = ‘01’<br>       LEFT JOIN score b ON student.s_id = b.s_id AND b.c_id = ‘02’ OR b.c_id = NULL<br>WHERE a.s_score &gt; b.s_score;</p>
+<h1 id="查询”01”课程比”02”课程成绩低的学生的信息及课程分数"><a href="#查询”01”课程比”02”课程成绩低的学生的信息及课程分数" class="headerlink" title="查询”01”课程比”02”课程成绩低的学生的信息及课程分数"></a>查询”01”课程比”02”课程成绩低的学生的信息及课程分数</h1><p>SELECT student.*, a.s_score AS 01_score, b.s_score AS 02_score<br>FROM student<br>       JOIN score a ON student.s_id = a.s_id AND a.c_id = ‘01’ OR a.c_id = NULL<br>       LEFT JOIN score b ON student.s_id = b.s_id AND b.c_id = ‘02’<br>WHERE a.s_score &lt; b.s_score;</p>
+<h1 id="查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩"><a href="#查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩" class="headerlink" title="查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩"></a>查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩</h1><ul>
+<li>group by 之后，如果已经group by 了用以区分的id,那么其他所有的属性都是可以直接得出来的<br>SELECT<pre><code>s.s_id,s.s_name,round(avg(sc.s_score),1) as avg_score
+</code></pre>FROM student s LEFT JOIN score sc on s.s_id = sc.s_id<br>GROUP BY s.s_id,s.s_name HAVING avg(sc.s_score) &gt;= 60;</li>
+</ul>
+<p>SELECT student.s_id, student.s_name, tmp.avg_score<br>FROM student<br>       JOIN (SELECT score.s_id, round(avg(score.s_score), 1)AS avg_score FROM score GROUP BY s_id)AS tmp<br>         ON tmp.avg_score &gt;= 60<br>WHERE student.s_id = tmp.s_id;</p>
+<p>–答案2</p>
+<p>SELECT student.s_id, student.s_name, round(avg(score.s_score), 1) AS avg_score<br>FROM student<br>       JOIN score ON student.s_id = score.s_id<br>GROUP BY score.s_id<br>HAVING avg(score.s_score) &gt;= 60;</p>
+<h1 id="查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩"><a href="#查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩" class="headerlink" title="查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩"></a>查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩</h1><p>– (包括有成绩的和无成绩的)<br>SELECT<br>       s.s_id,s.s_name,ifnull(round(avg(sc.s_score),1),0) as avg_score<br>FROM student s LEFT JOIN score sc on s.s_id = sc.s_id<br>GROUP BY s.s_id,s.s_name HAVING avg(sc.s_score) &lt; 60<br>                             or count(sc.s_score) = 0;</p>
+<p>SELECT student.s_id, student.s_name, tmp.avg_score<br>FROM student<br>       JOIN (SELECT score.s_id, round(avg(score.s_score), 1)AS avg_score FROM score GROUP BY s_id)AS tmp<br>         ON tmp.avg_score &lt; 60<br>WHERE student.s_id = tmp.s_id<br>UNION<br>SELECT s_id, s_name, 0 AS avg_score<br>FROM student<br>WHERE s_id NOT IN<br>      (SELECT DISTINCT s_id FROM score);</p>
+<p>–答案2</p>
+<p>SELECT student.s_id, student.s_name, round(avg(score.s_score), 1) AS avg_score<br>FROM student<br>       JOIN score ON student.s_id = score.s_id<br>GROUP BY score.s_id<br>HAVING avg(score.s_score) &lt; 60<br>UNION<br>SELECT s_id, s_name, 0 AS avg_score<br>FROM student<br>WHERE s_id NOT IN<br>      (SELECT DISTINCT s_id FROM score);</p>
+<h1 id="查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩"><a href="#查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩" class="headerlink" title="查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩"></a>查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩</h1><p>SELECT  s.s_id,s.s_name,count(DISTINCT sc.c_id) as num,sum(sc.s_score) as total<br>FROM student s LEFT JOIN score sc ON s.s_id = sc.s_id<br>GROUP BY s.s_id ORDER BY total DESC ;</p>
+<p>SELECT student.s_id, student.s_name, count(score.c_id) AS total_count, sum(score.s_score)AS total_score<br>FROM student<br>       LEFT JOIN score ON student.s_id = score.s_id<br>GROUP BY student.s_id ORDER BY total_score DESC ;</p>
+<h1 id="查询”李”姓老师的数量"><a href="#查询”李”姓老师的数量" class="headerlink" title="查询”李”姓老师的数量"></a>查询”李”姓老师的数量</h1><p>SELECT count(1)<br>FROM teacher<br>WHERE t_name LIKE ‘李%’;</p>
+<h1 id="查询学过”张三”老师授课的同学的信息"><a href="#查询学过”张三”老师授课的同学的信息" class="headerlink" title="查询学过”张三”老师授课的同学的信息"></a>查询学过”张三”老师授课的同学的信息</h1><p>– 这就是因为对于连表的概念还不够融汇贯通的表现<br>SELECT student.*<br>FROM student INNER JOIN<br>         (SELECT sc.s_id<br>          FROM score sc INNER JOIN course c ON sc.c_id = c.c_id<br>                        INNER JOIN teacher t ON c.t_id = t.t_id WHERE t.t_name= ‘张三’) tmp<br>         ON student.s_id = tmp.s_id;</p>
+<p>SELECT student.*<br>FROM student INNER JOIN<br>         score sc ON student.s_id = sc.s_id INNER JOIN course c ON sc.c_id = c.c_id<br>             INNER JOIN teacher t ON c.t_id = t.t_id WHERE t.t_name= ‘张三’;</p>
+<p>SELECT *<br>FROM student<br>       JOIN score ON student.s_id = score.s_id<br>WHERE score.c_id IN (SELECT course.c_id<br>                     FROM course<br>                     WHERE course.t_id IN (SELECT teacher.t_id FROM teacher WHERE teacher.t_name = ‘张三’));</p>
+<p>–答案2</p>
+<p>SELECT student.*<br>FROM student<br>       JOIN score ON student.s_id = score.s_id<br>       JOIN course ON course.c_id = score.c_id<br>       JOIN teacher ON course.t_id = teacher.t_id AND t_name = ‘张三’;</p>
+<h1 id="查询没学过”张三”老师授课的同学的信息"><a href="#查询没学过”张三”老师授课的同学的信息" class="headerlink" title="查询没学过”张三”老师授课的同学的信息"></a>查询没学过”张三”老师授课的同学的信息</h1><p>SELECT *<br>FROM student<br>WHERE s_id NOT IN (SELECT score.s_id<br>                   FROM score<br>                   WHERE score.c_id IN (SELECT course.c_id<br>                                        FROM course<br>                                        WHERE course.t_id =<br>                                              (SELECT teacher.t_id FROM teacher WHERE teacher.t_name = ‘张三’)));</p>
+<p>SELECT student.*<br>FROM student LEFT JOIN<br>         (SELECT sc.s_id<br>          FROM score sc INNER JOIN course c ON sc.c_id = c.c_id<br>                        INNER JOIN teacher t ON c.t_id = t.t_id WHERE t.t_name= ‘张三’) tmp<br>         ON student.s_id = tmp.s_id WHERE tmp.s_id is NULL ;</p>
+<p>–答案2</p>
+<p>SELECT student.*<br>FROM student<br>       LEFT JOIN (SELECT s_id<br>                  FROM score<br>                         JOIN course ON course.c_id = score.c_id<br>                         JOIN teacher ON course.t_id = teacher.t_id AND t_name = ‘张三’)tmp ON student.s_id = tmp.s_id<br>WHERE tmp.s_id IS NULL;</p>
+<h1 id="查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息"><a href="#查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息" class="headerlink" title="查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息"></a>查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息</h1><p>SELECT *<br>FROM student<br>WHERE s_id IN (SELECT s_id FROM score WHERE c_id = 1)<br>  AND s_id IN (SELECT s_id FROM score WHERE c_id = 2);</p>
+<h1 id="查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息"><a href="#查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息" class="headerlink" title="查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息"></a>查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息</h1><p>SELECT *<br>FROM student<br>WHERE s_id IN (SELECT s_id FROM score WHERE c_id = 1)<br>  AND s_id NOT IN (SELECT s_id FROM score WHERE c_id = 2);</p>
+<p>–答案2</p>
+<p>SELECT student.*<br>FROM student<br>       JOIN (SELECT s_id FROM score WHERE c_id = 1)tmp1 ON student.s_id = tmp1.s_id<br>       LEFT JOIN (SELECT s_id FROM score WHERE c_id = 2)tmp2 ON student.s_id = tmp2.s_id<br>WHERE tmp2.s_id IS NULL;</p>
+<h1 id="查询没有学全所有课程的同学的信息"><a href="#查询没有学全所有课程的同学的信息" class="headerlink" title="查询没有学全所有课程的同学的信息"></a>查询没有学全所有课程的同学的信息</h1><p>SELECT *<br>FROM student<br>WHERE s_id NOT IN (SELECT s_id FROM score GROUP BY s_id HAVING count(c_id) = (SELECT count(1) FROM course));</p>
+<h1 id="查询至少有一门课与学号为”01”的同学所学相同的同学的信息"><a href="#查询至少有一门课与学号为”01”的同学所学相同的同学的信息" class="headerlink" title="查询至少有一门课与学号为”01”的同学所学相同的同学的信息"></a>查询至少有一门课与学号为”01”的同学所学相同的同学的信息</h1><p>– 对于这种单个的条件的情况下，使用where in的方式，明显更加直接，如果有多个条件的情况下，使用join才是优势<br>SELECT DISTINCT student.* FROM student INNER JOIN score ON student.s_id = score.s_id WHERE score.c_id IN<br>                                                                                           (SELECT c_id FROM score WHERE s_id = ‘01’) AND student.s_id &lt;&gt; ‘01’;</p>
+<p>SELECT *<br>FROM student<br>WHERE s_id &lt;&gt; 01<br>  AND s_id IN (SELECT s_id FROM score WHERE c_id IN (SELECT c_id FROM score WHERE score.s_id = 01) GROUP BY s_id);</p>
+<h1 id="查询和”01”号的同学学习的课程完全相同的其他同学的信息"><a href="#查询和”01”号的同学学习的课程完全相同的其他同学的信息" class="headerlink" title="查询和”01”号的同学学习的课程完全相同的其他同学的信息"></a>查询和”01”号的同学学习的课程完全相同的其他同学的信息</h1><p>– 使用了group_concat的知识，还以为能有什么新鲜的<br>SELECT s.*,tmp1.cids FROM student s INNER JOIN<br>                              (SELECT s_id,group_concat(c_id ORDER by c_id) as cids FROM score GROUP BY s_id ) tmp1<br>                              ON s.s_id = tmp1.s_id AND s.s_id &lt;&gt; ‘01’<br>WHERE tmp1.cids =<br>      (SELECT group_concat(c_id ORDER by c_id) as cids FROM score WHERE s_id = ‘01’ GROUP BY s_id );</p>
+<p>SELECT student.*, tmp.course_id<br>FROM (SELECT s_id, group_concat(c_id) course_id<br>      FROM score<br>      GROUP BY s_id<br>      HAVING s_id &lt;&gt; 1<br>         AND course_id = (SELECT group_concat(c_id) course_id2 FROM score WHERE s_id = 1))tmp<br>       JOIN student ON student.s_id = tmp.s_id;</p>
+<h1 id="查询没学过”张三”老师讲授的任一门课程的学生姓名"><a href="#查询没学过”张三”老师讲授的任一门课程的学生姓名" class="headerlink" title="查询没学过”张三”老师讲授的任一门课程的学生姓名"></a>查询没学过”张三”老师讲授的任一门课程的学生姓名</h1><p>SELECT *<br>FROM student<br>WHERE s_id NOT IN (SELECT s_id<br>                   FROM score<br>                          JOIN (SELECT c_id FROM course WHERE t_id IN (SELECT t_id FROM teacher WHERE t_name = ‘张三’))tmp<br>                            ON score.c_id = tmp.c_id);</p>
+<p>–答案2</p>
+<p>SELECT student.*<br>FROM student<br>       LEFT JOIN (SELECT s_id<br>                  FROM score<br>                         JOIN (SELECT c_id FROM course<br>                                                  JOIN teacher ON course.t_id = teacher.t_id AND t_name = ‘张三’)tmp2<br>                           ON score.c_id = tmp2.c_id)tmp ON student.s_id = tmp.s_id<br>WHERE tmp.s_id IS NULL;</p>
+<h1 id="查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩"><a href="#查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩" class="headerlink" title="查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩"></a>查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩</h1><p>– 关于sum里面可以使用计算条件的方式，很多人都不知道<br>SELECT s.*,round(tmp.avg_score,1) as avg_score FROM student s INNER JOIN<br>                                                        (SELECT s_id,avg(s_score) as avg_score FROM score GROUP BY s_id HAVING sum(s_score &lt; 60) &gt;=2) tmp<br>                                                        ON s.s_id = tmp.s_id;</p>
+<p>SELECT student.s_id, student.s_name, tmp.avg_score<br>FROM student<br>       LEFT JOIN (SELECT s_id, round(AVG(score.s_score)) avg_score FROM score GROUP BY s_id)tmp<br>         ON tmp.s_id = student.s_id<br>WHERE student.s_id IN (SELECT s_id FROM score WHERE s_score &lt; 60 GROUP BY score.s_id HAVING count(s_id) &gt; 1);</p>
+<h1 id="检索”01”课程分数小于60，按分数降序排列的学生信息"><a href="#检索”01”课程分数小于60，按分数降序排列的学生信息" class="headerlink" title="检索”01”课程分数小于60，按分数降序排列的学生信息"></a>检索”01”课程分数小于60，按分数降序排列的学生信息</h1><p>SELECT student.*, s_score<br>FROM student,<br>     score<br>WHERE student.s_id = score.s_id<br>  AND s_score &lt; 60<br>  AND c_id = ‘01’<br>ORDER BY s_score DESC;</p>
+<h1 id="按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩"><a href="#按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩" class="headerlink" title="按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩"></a>按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩</h1><p>– 在查找的选项里还是可以有这种花式的写法的<br>SELECT s_id,<br>       (SELECT s_score<br>        FROM score<br>        WHERE s_id = a.s_id<br>          AND c_id = ‘01’)AS     语文,<br>       (SELECT s_score<br>        FROM score<br>        WHERE s_id = a.s_id<br>          AND c_id = ‘02’)AS     数学,<br>       (SELECT s_score<br>        FROM score<br>        WHERE s_id = a.s_id<br>          AND c_id = ‘03’)AS     英语,<br>       round(avg(s_score), 2) AS 平均分<br>FROM score a<br>GROUP BY s_id<br>ORDER BY 平均分 DESC;</p>
+<p>–答案2<br>– 尝试使用group_concat 的方式处理,外连接的一点模糊领域，要知道一个都连不到的情况下才会出现null</p>
+<p>SELECT sc.s_id,avg(sc.s_score) as avg_score,group_concat(sc.s_score) FROM score sc<br>                                                                            RIGHT JOIN course c ON c.c_id = sc.c_id<br>GROUP BY sc.s_id ORDER BY avg_score DESC ;</p>
+<p>– 由于如果一旦使用了group by sid的方式，那么各科的成绩将无法获取，所以使用left join 多个表的形式处理<br>SELECT a.s_id,<br>       tmp1.s_score             AS chinese,<br>       tmp2.s_score             AS math,<br>       tmp3.s_score             AS english,<br>       round(avg(a.s_score), 2) AS avgScore<br>FROM score a<br>       LEFT JOIN (SELECT s_id, s_score FROM score s1 WHERE c_id = ‘01’)tmp1 ON tmp1.s_id = a.s_id<br>       LEFT JOIN (SELECT s_id, s_score FROM score s2 WHERE c_id = ‘02’)tmp2 ON tmp2.s_id = a.s_id<br>       LEFT JOIN (SELECT s_id, s_score FROM score s3 WHERE c_id = ‘03’)tmp3 ON tmp3.s_id = a.s_id<br>GROUP BY a.s_id, tmp1.s_score, tmp2.s_score, tmp3.s_score<br>ORDER BY avgScore DESC;</p>
+<h1 id="查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率-–及格为-gt-60，中等为：70-80，优良为：80-90，优秀为：-gt-90"><a href="#查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率-–及格为-gt-60，中等为：70-80，优良为：80-90，优秀为：-gt-90" class="headerlink" title="查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率 –及格为&gt;=60，中等为：70-80，优良为：80-90，优秀为：&gt;=90"></a>查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率 –及格为&gt;=60，中等为：70-80，优良为：80-90，优秀为：&gt;=90</h1><p>– 再次验证了sum里面的条件其实是可以直接等效为case when的，这样就非常方便了<br>SELECT sc.c_id,c.c_name,avg(sc.s_score) avg_score,max(sc.s_score) max_score,<br>       min(sc.s_score) min_score,sum(s_score&gt;=60)/count(<em>) AS pass_rate,<br>       sum(s_score&gt;=80 AND s_score&lt;90)/count(</em>) AS good_rate<br>FROM score sc INNER JOIN course c on sc.c_id =c.c_id GROUP BY sc.c_id;</p>
+<p>SELECT score.c_id    AS                                                                                     ‘课程ID’,<br>       course.c_name AS                                                                                     ‘课程name’,<br>       max(s_score)  AS                                                                                     ‘最高分’,<br>       min(s_score)AS                                                                                       ‘最低分’,<br>       round(avg(s_score), 2)                                                                               ‘平均分’,<br>       round(sum(CASE WHEN s_score &gt;= 60 THEN 1 ELSE 0 END) / sum(CASE WHEN s_score THEN 1 ELSE 0 END), 2)’及格率’,<br>       round(sum(CASE WHEN s_score &gt;= 70 AND s_score &lt; 80 THEN 1 ELSE 0 END) / sum(CASE WHEN s_score THEN 1 ELSE 0 END),<br>             2)’中等率’,<br>       round(sum(CASE WHEN s_score &gt;= 80 AND s_score &lt; 90 THEN 1 ELSE 0 END) / sum(CASE WHEN s_score THEN 1 ELSE 0 END),<br>             2)’优良率’,<br>       round(sum(CASE WHEN s_score &gt;= 90 THEN 1 ELSE 0 END) / (SUM(CASE WHEN s_score THEN 1 ELSE 0 END)), 2)’优秀率’<br>FROM score<br>       LEFT JOIN course ON score.c_id = course.c_id<br>GROUP BY score.c_id;</p>
+<p>–答案2</p>
+<p>SELECT course.c_id,<br>       course.c_name,<br>       tmp.maxScore,<br>       tmp.minScore,<br>       tmp.avgScore,<br>       tmp.passRate,<br>       tmp.moderate,<br>       tmp.goodRate,<br>       tmp.excellentRates<br>FROM course<br>       JOIN (SELECT c_id,<br>                    max(s_score) AS                                                                         maxScore,<br>                    min(s_score)AS                                                                          minScore,<br>                    round(avg(s_score), 2)                                                                  avgScore,<br>                    round(sum(CASE WHEN s_score &gt;= 60 THEN 1 ELSE 0 END) / count(c_id), 2)passRate,<br>                    round(sum(CASE WHEN s_score &gt;= 60 AND s_score &lt; 70 THEN 1 ELSE 0 END) / count(c_id), 2) moderate,<br>                    round(sum(CASE WHEN s_score &gt;= 70 AND s_score &lt; 80 THEN 1 ELSE 0 END) / count(c_id), 2) goodRate,<br>                    round(sum(CASE WHEN s_score &gt;= 80 AND s_score &lt; 90 THEN 1 ELSE 0 END) / count(c_id),<br>                          2)                                                                                excellentRates<br>             FROM score<br>             GROUP BY c_id)tmp ON tmp.c_id = course.c_id;</p>
+<h1 id="按各科成绩进行排序，并显示排名-实现不完全"><a href="#按各科成绩进行排序，并显示排名-实现不完全" class="headerlink" title="按各科成绩进行排序，并显示排名(实现不完全)"></a>按各科成绩进行排序，并显示排名(实现不完全)</h1><p>– mysql没有rank函数<br>–方法1<br>– 关于排名的sql，很蛋疼的是可能会涉及到不同的同分情况下，是否占用排名的形式<br>– 在select的项里面，可以使用查找语句，查找出的是一个值就是了</p>
+<p>(SELECT <em> FROM<br>(SELECT s1.s_id, s1.c_id, s1.s_score,<br>(SELECT COUNT(distinct sc.s_score) FROM score sc<br>WHERE sc.s_score&gt;=s1.s_score AND sc.c_id = ‘01’) as ‘rank不保留排名’<br>FROM score s1 WHERE s1.c_id = ‘01’ ORDER BY s1.s_score DESC) t1)<br>UNION (SELECT </em> FROM<br>(SELECT s1.s_id, s1.c_id, s1.s_score,<br>(SELECT COUNT(DISTINCT sc.s_score) FROM score sc<br>WHERE sc.s_score&gt;=s1.s_score AND sc.c_id = ‘02’) ‘rank不保留排名’<br>FROM score s1 WHERE s1.c_id = ‘02’ ORDER BY s1.s_score DESC) t2)<br>UNION (SELECT * FROM<br>(SELECT s1.s_id, s1.c_id, s1.s_score,<br>(SELECT COUNT(DISTINCT sc.s_score) FROM score sc<br>WHERE sc.s_score&gt;=s1.s_score AND sc.c_id = ‘03’) ‘rank不保留排名’<br>FROM score s1 WHERE s1.c_id = ‘03’ ORDER BY s1.s_score DESC) t3)</p>
+<p>–方法2</p>
+<p>(SELECT a.s_id, a.c_id, @i:=@i+1 AS i保留排名,<br>@k:=(CASE WHEN @score = a.s_score THEN @k ELSE @i END) AS rank不保留排名,<br>@score:=a.s_score AS score<br>FROM (SELECT <em> FROM score WHERE c_id = ‘01’ GROUP BY s_id, c_id, s_score ORDER BY s_score DESC)a,<br>(SELECT @i:=0, @k:=0, @score:=0)b)<br>UNION<br>(SELECT a.s_id, a.c_id, @m:=@m+1 AS i保留排名,<br>@k:=(CASE WHEN @score = a.s_score THEN @k ELSE @m END) AS rank不保留排名,<br>@score:=a.s_score AS score<br>FROM (SELECT </em> FROM score WHERE c_id = ‘02’ GROUP BY s_id, c_id, s_score ORDER BY s_score DESC)a,<br>(SELECT @m:=0, @k:=0, @score:=0)b)<br>UNION<br>(SELECT a.s_id, a.c_id, @x:=@x+1 AS i保留排名,<br>@k:=(CASE WHEN @score = a.s_score THEN @k ELSE @x END) AS rank不保留排名,<br>@score:=a.s_score AS score<br>FROM (SELECT * FROM score WHERE c_id = ‘03’ GROUP BY s_id, c_id, s_score ORDER BY s_score DESC)a,<br>(SELECT @x:=0, @k:=0, @score:=0)b);</p>
+<h1 id="查询学生的总成绩并进行排名"><a href="#查询学生的总成绩并进行排名" class="headerlink" title="查询学生的总成绩并进行排名"></a>查询学生的总成绩并进行排名</h1><p>SELECT score.s_id, s_name, sum(s_score) sumscore<br>FROM score,<br>     student<br>WHERE score.s_id = student.s_id<br>GROUP BY score.s_id<br>ORDER BY sumscore DESC;</p>
+<h1 id="查询不同老师所教不同课程平均分从高到低显示"><a href="#查询不同老师所教不同课程平均分从高到低显示" class="headerlink" title="查询不同老师所教不同课程平均分从高到低显示"></a>查询不同老师所教不同课程平均分从高到低显示</h1><p>–方法1<br>– 自行写法,参考写法实在是多此一举啊<br>SELECT t.t_id,sc.c_id,t.t_name,avg(sc.s_score) avgScore<br>FROM teacher t INNER JOIN course c ON t.t_id = c.t_id<br>               INNER JOIN score sc ON sc.c_id = c.c_id<br>GROUP BY t.t_id,sc.c_id ORDER BY avgScore DESC ;</p>
+<p>SELECT tmp.c_id, t_id, avgscore AS ‘平均分’<br>FROM ((SELECT DISTINCT c_id, (round((SELECT avg(s_score) FROM score WHERE c_id = ‘01’ GROUP BY c_id), 2))avgscore<br>       FROM score s1<br>       WHERE c_id = ‘01’)<br>      UNION<br>      (SELECT DISTINCT c_id, (round((SELECT avg(s_score) FROM score WHERE c_id = ‘02’ GROUP BY c_id), 2))avgscore<br>       FROM score s1<br>       WHERE c_id = ‘02’)<br>      UNION<br>      (SELECT DISTINCT c_id, (round((SELECT avg(s_score) FROM score WHERE c_id = ‘03’ GROUP BY c_id), 2))avgscore<br>       FROM score s1<br>       WHERE c_id = ‘03’))tmp,<br>     course<br>WHERE tmp.c_id = course.c_id<br>ORDER BY tmp.avgscore DESC;</p>
+<p>–方法2</p>
+<p>SELECT course.c_id, course.t_id, t_name, round(avg(s_score), 2)AS avgscore<br>FROM course<br>       JOIN teacher ON teacher.t_id = course.t_id<br>       JOIN score ON course.c_id = score.c_id<br>GROUP BY score.c_id<br>ORDER BY avgscore DESC;</p>
+<p>–方法3<br>– 使用cross join 的方式反而是对查询效率的降级<br>SELECT course.c_id, course.t_id, t_name, round(avg(s_score), 2)AS avgscore<br>FROM course,<br>     teacher,<br>     score<br>WHERE teacher.t_id = course.t_id<br>  AND course.c_id = score.c_id<br>GROUP BY score.c_id<br>ORDER BY avgscore DESC;</p>
+<h1 id="查询所有课程的成绩第2名到第3名的学生信息及该课程成绩"><a href="#查询所有课程的成绩第2名到第3名的学生信息及该课程成绩" class="headerlink" title="查询所有课程的成绩第2名到第3名的学生信息及该课程成绩"></a>查询所有课程的成绩第2名到第3名的学生信息及该课程成绩</h1><p>–方法1<br>– 由于这种情况下，group by 之后没有办法使用limit，而这种特定的名词就是使用Limit的处理合适，所以就使用union进行连接</p>
+<p>(SELECT student.<em>, tmp1.c_id, tmp1.s_score FROM student,<br>(SELECT s_id, c_id, s_score FROM score WHERE c_id = ‘01’ ORDER BY s_score DESC LIMIT 1, 2)tmp1<br>WHERE student.s_id = tmp1.s_id)<br>UNION (SELECT student.</em>, tmp2.c_id, tmp2.s_score FROM student,<br>(SELECT s_id, c_id, s_score FROM score WHERE c_id = ‘02’ ORDER BY s_score DESC LIMIT 1, 2)tmp2<br>WHERE student.s_id = tmp2.s_id)<br>UNION (SELECT student.*, tmp3.c_id, tmp3.s_score FROM student,<br>(SELECT s_id, c_id, s_score FROM score WHERE c_id = ‘03’ ORDER BY s_score DESC LIMIT 1, 2)tmp3<br>WHERE student.s_id = tmp3.s_id);</p>
+<p>–方法2<br>– 直接找出排名，然后对排名进行筛选，当然是一种方法，但是并不推荐<br>(SELECT student.<em>, tmp.c_id, tmp.s_score, tmp.排名 FROM (<br>SELECT a.s_id, a.c_id, a.s_score, @i:=@i+1 AS 排名 FROM score a, (SELECT @i:=0)b<br>WHERE a.c_id = ‘01’ ORDER BY a.s_score DESC<br>)tmp JOIN student ON tmp.s_id = student.s_id WHERE 排名 BETWEEN 2 AND 3)<br>UNION (<br>SELECT student.</em>, tmp.c_id, tmp.s_score, tmp.排名 FROM (<br>SELECT a.s_id, a.c_id, a.s_score, @j:=@j+1 AS 排名 FROM score a, (SELECT @j:=0)b<br>WHERE a.c_id = ‘02’ ORDER BY a.s_score DESC<br>)tmp JOIN student ON tmp.s_id = student.s_id WHERE 排名 BETWEEN 2 AND 3<br>) UNION (<br>SELECT student.*, tmp.c_id, tmp.s_score, tmp.排名 FROM (<br>SELECT a.s_id, a.c_id, a.s_score, @k:=@k+1 AS 排名 FROM score a, (SELECT @k:=0)b<br>WHERE a.c_id = ‘03’ ORDER BY a.s_score DESC<br>)tmp JOIN student ON tmp.s_id = student.s_id WHERE 排名 BETWEEN 2 AND 3);</p>
+<h1 id="统计各科成绩各分数段人数：课程编号-课程名称-100-85-85-70-70-60-0-60及所占百分比"><a href="#统计各科成绩各分数段人数：课程编号-课程名称-100-85-85-70-70-60-0-60及所占百分比" class="headerlink" title="统计各科成绩各分数段人数：课程编号,课程名称,100-85,85-70,70-60,0-60及所占百分比"></a>统计各科成绩各分数段人数：课程编号,课程名称,100-85,85-70,70-60,0-60及所占百分比</h1><p>– 很简单可以搞定的东西，为何需要那么复杂啊。。<br>select c.c_id,c.c_name,<br>       sum(sc.s_score&lt;=100 AND sc.s_score&gt;=85) AS a,<br>       sum(sc.s_score<85 and sc.s_score>=70) AS b,<br>       sum(sc.s_score<70 and sc.s_score>=60) AS c<br>FROM course c INNER JOIN score sc ON c.c_id = sc.c_id<br>GROUP BY c.c_id ;</70></85></p>
+<h1 id="查询学生平均成绩及其名次"><a href="#查询学生平均成绩及其名次" class="headerlink" title="查询学生平均成绩及其名次"></a>查询学生平均成绩及其名次</h1><ul>
+<li>因为MySQL没有rowcount的函数，所以需要使用此种形式</li>
+</ul>
+<p>SELECT a.s_id, a.s_name, a.平均分, @i := @i + 1 AS 排名<br>FROM (SELECT student.s_id, student.s_name, avg(score.s_score) AS “平均分”<br>      FROM student,<br>           score<br>      WHERE student.s_id = score.s_id<br>      GROUP BY score.s_id<br>      ORDER BY <code>平均分</code> DESC)a,<br>     (SELECT @i := 0)b;</p>
+<h1 id="查询各科成绩前三名的记录"><a href="#查询各科成绩前三名的记录" class="headerlink" title="查询各科成绩前三名的记录"></a>查询各科成绩前三名的记录</h1><p>– 1.选出b表比a表成绩大的所有组<br>– 2.选出比当前id成绩大的 小于三个的<br>–没有查学生姓名</p>
+<ul>
+<li>查找前几名的方法，使用find_in_set真的是可以事半功倍啊！！<br>SELECT s1.*,s2.c_name  FROM score s1 INNER JOIN<pre><code>(SELECT sc.c_id,c.c_name,group_concat(sc.s_id ORDER BY sc.s_score DESC) as sids
+ FROM score sc INNER JOIN course c on c.c_id = sc.c_id GROUP BY sc.c_id) s2 ON s1.c_id = s2.c_id WHERE
+</code></pre>  find_in_set(s1.s_id,s2.sids) BETWEEN 1 AND 3 ORDER BY s1.c_id,s1.s_score DESC ;</li>
+</ul>
+<p>(SELECT score.c_id, course.c_name, s_score FROM score, course<br> WHERE score.c_id = ‘01’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3)<br>UNION<br>    (SELECT score.c_id, course.c_name, s_score FROM score, course<br>     WHERE score.c_id = ‘02’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3)<br>UNION<br>    (SELECT score.c_id, course.c_name, s_score FROM score, course<br>     WHERE score.c_id = ‘03’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3);</p>
+<p>–查了学生姓名</p>
+<p>(SELECT score.c_id, course.c_name, student.s_name, s_score FROM score<br>JOIN student ON student.s_id = score.s_id<br>JOIN course ON score.c_id = ‘01’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3)<br>UNION (<br>SELECT score.c_id, course.c_name, student.s_name, s_score FROM score<br>JOIN student ON student.s_id = score.s_id<br>JOIN course ON score.c_id = ‘02’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3</p>
+<p>) UNION (<br>SELECT score.c_id, course.c_name, student.s_name, s_score FROM score<br>JOIN student ON student.s_id = score.s_id<br>JOIN course ON score.c_id = ‘03’ AND course.c_id = score.c_id ORDER BY s_score DESC LIMIT 3);</p>
+<h1 id="查询每门课程被重修的学生数"><a href="#查询每门课程被重修的学生数" class="headerlink" title="查询每门课程被重修的学生数"></a>查询每门课程被重修的学生数</h1><ul>
+<li>能直接连接就不要使用子查询，使用count(1)的形式其实是不严谨的<br>SELECT  c.c_id,c.c_name,count(DISTINCT sc.s_id) AS cnt FROM course c LEFT JOIN score sc ON c.c_id = sc.c_id<br>WHERE sc.s_score &lt; 60<br>GROUP BY c.c_id;</li>
+</ul>
+<p>SELECT c.c_id, c.c_name, a.<code>被选修人数</code><br>FROM course c<br>       JOIN (SELECT c_id, count(1) AS <code>被选修人数</code> FROM score WHERE score.s_score &lt; 60 GROUP BY score.c_id)a<br>         ON a.c_id = c.c_id;</p>
+<h1 id="查询出只有两门课程的全部学生的学号和姓名"><a href="#查询出只有两门课程的全部学生的学号和姓名" class="headerlink" title="查询出只有两门课程的全部学生的学号和姓名"></a>查询出只有两门课程的全部学生的学号和姓名</h1><ul>
+<li>还是那句话，如果已经group by了完全的s_id了，那么其他的项都是可以获取到的<br>SELECT s.s_id,s.s_name<br>FROM student s INNER JOIN score sc ON s.s_id = sc.s_id GROUP BY s.s_id HAVING count(DISTINCT c_id) = 2;</li>
+</ul>
+<p>SELECT st.s_id, st.s_name<br>FROM student st<br>       JOIN (SELECT s_id FROM score GROUP BY s_id HAVING count(c_id) = 2)a ON st.s_id = a.s_id;</p>
+<h1 id="查询男生、女生人数"><a href="#查询男生、女生人数" class="headerlink" title="查询男生、女生人数"></a>查询男生、女生人数</h1><p>SELECT<br>       sum(s_sex = ‘男’) as male,<br>       sum(s_sex = ‘女’) as female<br>FROM student;</p>
+<p>SELECT a.男生人数, b.女生人数<br>FROM (SELECT count(1) AS 男生人数 FROM student WHERE s_sex = ‘男’)a,<br>     (SELECT count(1) AS 女生人数 FROM student WHERE s_sex = ‘女’)b;</p>
+<h1 id="查询名字中含有”风”字的学生信息"><a href="#查询名字中含有”风”字的学生信息" class="headerlink" title="查询名字中含有”风”字的学生信息"></a>查询名字中含有”风”字的学生信息</h1><p>SELECT *<br>FROM student<br>WHERE s_name LIKE ‘%风%’;</p>
+<h1 id="查询同名同性学生名单，并统计同名人数"><a href="#查询同名同性学生名单，并统计同名人数" class="headerlink" title="查询同名同性学生名单，并统计同名人数"></a>查询同名同性学生名单，并统计同名人数</h1><ul>
+<li><p>统计个数就是聚合的方式，很简单，直接group by就是了，大不了再用find_in_set就是了<br>SELECT s_name,s_sex,GROUP_CONCAT(s_id) sids,count(s_id) cnt<br>FROM student GROUP BY s_name,s_sex HAVING count(s_id) &gt;=2;</p>
+</li>
+<li><p>这是错误的写法，老哥啊<br>SELECT s1.s_name, s1.s_sex, count(*) AS 同名人数<br>FROM student s1,<br>   student s2<br>WHERE s1.s_name = s2.s_name<br>AND s1.s_id &lt;&gt; s2.s_id<br>AND s1.s_sex = s2.s_sex<br>GROUP BY s1.s_name, s1.s_sex;</p>
+</li>
+</ul>
+<h1 id="查询1990年出生的学生名单"><a href="#查询1990年出生的学生名单" class="headerlink" title="查询1990年出生的学生名单"></a>查询1990年出生的学生名单</h1><p>SELECT *<br>FROM student<br>WHERE s_birth LIKE ‘1990%’;</p>
+<h1 id="查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列"><a href="#查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列" class="headerlink" title="查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列"></a>查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列</h1><p>SELECT score.c_id, c_name, round(avg(s_score), 2) AS 平均成绩<br>FROM score<br>       JOIN course ON score.c_id = course.c_id<br>GROUP BY c_id<br>ORDER BY <code>平均成绩</code> DESC, score.c_id ASC;</p>
+<h1 id="查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩"><a href="#查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩" class="headerlink" title="查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩"></a>查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩</h1><p>SELECT s.s_id,s.s_name,round(avg(sc.s_score),2) AS avgScore<br>FROM student s INNER JOIN score sc ON s.s_id = sc.s_id<br>GROUP BY s.s_id HAVING avgScore &gt;= 85;</p>
+<p>SELECT score.s_id, s_name, round(avg(s_score), 2)AS 平均成绩<br>FROM score<br>       JOIN student ON student.s_id = score.s_id<br>GROUP BY score.s_id<br>HAVING <code>平均成绩</code> &gt;= 85;</p>
+<h1 id="查询课程名称为”数学”，且分数低于60的学生姓名和分数"><a href="#查询课程名称为”数学”，且分数低于60的学生姓名和分数" class="headerlink" title="查询课程名称为”数学”，且分数低于60的学生姓名和分数"></a>查询课程名称为”数学”，且分数低于60的学生姓名和分数</h1><p>SELECT s_name, s_score AS 数学成绩<br>FROM student<br>       JOIN (SELECT s_id, s_score<br>             FROM score,<br>                  course<br>             WHERE score.c_id = course.c_id<br>               AND c_name = ‘数学’)a ON a.s_score &lt; 60 AND student.s_id = a.s_id;</p>
+<h1 id="查询所有学生的课程及分数情况"><a href="#查询所有学生的课程及分数情况" class="headerlink" title="查询所有学生的课程及分数情况"></a>查询所有学生的课程及分数情况</h1><ul>
+<li>相当于行列转换的用法了，由于需要就算总分，必须要要使用聚合<br>SELECT a.s_name,<pre><code>SUM(CASE c.c_name WHEN &apos;语文&apos; THEN b.s_score ELSE 0 END) AS 语文,
+SUM(CASE c.c_name WHEN &apos;数学&apos; THEN b.s_score ELSE 0 END) AS 数学,
+SUM(CASE c.c_name WHEN &apos;英语&apos; THEN b.s_score ELSE 0 END) AS 英语,
+SUM(b.s_score)                                         AS 总分
+</code></pre>FROM student a<pre><code>JOIN score b ON a.s_id = b.s_id
+JOIN course c ON b.c_id = c.c_id
+</code></pre>GROUP BY s_name, a.s_id;</li>
+</ul>
+<h1 id="查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数"><a href="#查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数" class="headerlink" title="查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数"></a>查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数</h1><p>SELECT s.s_id,s.s_name,sc.s_score FROM student s INNER JOIN score sc ON s.s_id = sc.s_id<br>WHERE sc.s_id not IN<br>      (SELECT s_id FROM score WHERE s_score &lt; 70 GROUP BY s_id);</p>
+<ul>
+<li>又是一个错误的写法<br>SELECT s_name, c_name, s_score<br>FROM score<pre><code>JOIN student ON student.s_id = score.s_id
+JOIN course ON score.c_id = course.c_id
+</code></pre>WHERE s_score &lt; 70;</li>
+</ul>
+<h1 id="查询不及格的课程"><a href="#查询不及格的课程" class="headerlink" title="查询不及格的课程"></a>查询不及格的课程</h1><p>SELECT s_name, c_name AS 不及格课程, tmp.s_score<br>FROM student<br>       JOIN (SELECT s_id, s_score, c_name<br>             FROM score,<br>                  course<br>             WHERE score.c_id = course.c_id<br>               AND s_score &lt; 60)tmp ON student.s_id = tmp.s_id;</p>
+<h1 id="查询课程编号为01且课程成绩在80分以上的学生的学号和姓名"><a href="#查询课程编号为01且课程成绩在80分以上的学生的学号和姓名" class="headerlink" title="查询课程编号为01且课程成绩在80分以上的学生的学号和姓名"></a>查询课程编号为01且课程成绩在80分以上的学生的学号和姓名</h1><p>SELECT student.s_id, s_name, s_score AS score_01<br>FROM student<br>       JOIN score ON student.s_id = score.s_id<br>WHERE c_id = ‘01’<br>  AND s_score &gt;= 80;</p>
+<h1 id="求每门课程的学生人数"><a href="#求每门课程的学生人数" class="headerlink" title="求每门课程的学生人数"></a>求每门课程的学生人数</h1><p>SELECT course.c_id, course.c_name, count(1)AS 选课人数<br>FROM course<br>       JOIN score ON course.c_id = score.c_id<br>GROUP BY score.c_id;</p>
+<h1 id="查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩"><a href="#查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩" class="headerlink" title="查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩"></a>查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩</h1><p>– 查询老师id</p>
+<ul>
+<li>此种查法会丢失调同样都是最高分的学生<br>SELECT s.*,c.c_name,sc.s_score<br>FROM student s INNER JOIN score sc ON s.s_id = sc.s_id<pre><code>INNER join course c  ON sc.c_id = c.c_id
+INNER JOIN teacher t ON c.t_id = t.t_id
+</code></pre>WHERE t.t_name= ‘张三’ ORDER BY sc.s_score DESC LIMIT 1;</li>
+</ul>
+<p>select s.*,sc.s_score FROM student s inner join score sc ON s.s_id = sc.s_id<br>where sc.s_score = (<br>                   SELECT max(sc.s_score)<br>                   FROM  score sc INNER join course c  ON sc.c_id = c.c_id<br>                                  INNER JOIN teacher t ON c.t_id = t.t_id<br>                   WHERE t.t_name= ‘张三’<br>                   );</p>
+<p>– 查询最高分（可能有相同分数）</p>
+<p>SELECT  max(s_score)<br>FROM score<br>       JOIN (SELECT course.c_id, c_name<br>             FROM course,<br>                  (SELECT t_id, t_name FROM teacher WHERE t_name = ‘张三’)tmp<br>             WHERE course.t_id = tmp.t_id)tmp2 ON score.c_id = tmp2.c_id;</p>
+<h1 id="查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩"><a href="#查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩" class="headerlink" title="查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩"></a>查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩</h1><p>SELECT DISTINCT a.s_id, a.c_id, a.s_score<br>FROM score a,<br>     score b<br>WHERE a.c_id &lt;&gt; b.c_id<br>  AND a.s_score = b.s_score;</p>
+<h1 id="查询每门课程成绩最好的前两名"><a href="#查询每门课程成绩最好的前两名" class="headerlink" title="查询每门课程成绩最好的前两名"></a>查询每门课程成绩最好的前两名</h1><p>–方法1(该方法有bug, 不能查出临界的重复值, 例如查各科的第一名或前三名)</p>
+<ul>
+<li>这里如果第一名的话，显然就有问题了<br>SELECT a.s_id, a.c_id, a.s_score<br>FROM score a<br>WHERE (SELECT count(1)<pre><code>FROM score b
+WHERE a.c_id = b.c_id
+  AND b.s_score &gt;= a.s_score) &lt;= 2
+</code></pre>ORDER BY a.c_id ASC, a.s_score DESC;</li>
+</ul>
+<p>–方法2(查前三名)</p>
+<ul>
+<li>达成这种效果的话，其实find_in_set的方式更加合理和擅长<br>(SELECT <em> FROM score WHERE c_id = ‘01’ ORDER BY s_score DESC LIMIT 3)<br>UNION (<br>SELECT </em> FROM score WHERE c_id = ‘02’ ORDER BY s_score DESC LIMIT 3)<br>UNION (<br>SELECT * FROM score WHERE c_id = ‘03’ ORDER BY s_score DESC LIMIT 3);</li>
+</ul>
+<p>-方法三</p>
+<ul>
+<li>仍然是使用find_in_set的方式，比起其他的真是好用很多了<br>SELECT sc.* FROM score sc INNER JOIN<br>(SELECT c_id,group_concat(s_id ORDER by s_score DESC) sids<br>FROM score GROUP BY c_id) tmp ON sc.c_id = tmp.c_id WHERE<br>find_in_set(sc.s_id,tmp.sids) BETWEEN 1 AND 2 ORDER BY sc.c_id,s_score DESC ;<h1 id="统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列"><a href="#统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列" class="headerlink" title="统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列"></a>统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</h1></li>
+</ul>
+<p>SELECT DISTINCT course.c_id, tmp.选修人数<br>FROM course<br>       JOIN (SELECT c_id, count(1) AS 选修人数 FROM score GROUP BY c_id)tmp<br>WHERE tmp.选修人数 &gt;= 5<br>ORDER BY tmp.选修人数 DESC, course.c_id ASC;</p>
+<h1 id="检索至少选修两门课程的学生学号"><a href="#检索至少选修两门课程的学生学号" class="headerlink" title="检索至少选修两门课程的学生学号"></a>检索至少选修两门课程的学生学号</h1><p>SELECT s_id, count(c_id) AS totalCourse<br>FROM score<br>GROUP BY s_id<br>HAVING count(c_id) &gt;= 2;</p>
+<h1 id="查询选修了全部课程的学生信息"><a href="#查询选修了全部课程的学生信息" class="headerlink" title="查询选修了全部课程的学生信息"></a>查询选修了全部课程的学生信息</h1><p>SELECT student.*<br>FROM student,<br>     (SELECT s_id, count(c_id) AS totalCourse FROM score GROUP BY s_id)tmp<br>WHERE student.s_id = tmp.s_id<br>  AND totalCourse = 3;</p>
+<h1 id="查询各学生的年龄"><a href="#查询各学生的年龄" class="headerlink" title="查询各学生的年龄"></a>查询各学生的年龄</h1><p>– 按照出生日期来算，当前月日 &lt; 出生年月的月日则，年龄减一</p>
+<ul>
+<li><p>date_format之后的可以直接进行加减运算，这个就算是记下了<br>SELECT s_name, s_birth, (DATE_FORMAT(NOW(), ‘%Y’) - DATE_FORMAT(s_birth, ‘%Y’) -</p>
+<pre><code>CASE
+  WHEN (DATE_FORMAT(NOW(), &apos;%m%d&apos;) &gt; DATE_FORMAT(s_birth, &apos;%m%d&apos;)) THEN 1
+  ELSE 0 END) AS age
+</code></pre><p>FROM student;</p>
+<h1 id="查询本周过生日的学生"><a href="#查询本周过生日的学生" class="headerlink" title="查询本周过生日的学生"></a>查询本周过生日的学生</h1><p>–方法1<br>SELECT *,week(s_birth) FROM student<br>WHERE week(now()) = week(concat(date_format(now(),’%Y’),date_format(s_birth,’%m%d’)));</p>
+</li>
+<li><p>以下全错啊！！<br>SELECT *<br>FROM student<br>WHERE WEEK(DATE_FORMAT(NOW(), ‘%Y%m%d’)) = WEEK(s_birth);</p>
+</li>
+</ul>
+<h1 id="查询本月过生日的学生"><a href="#查询本月过生日的学生" class="headerlink" title="查询本月过生日的学生"></a>查询本月过生日的学生</h1><p>–方法1</p>
+<p>SELECT *,month(s_birth)<br>FROM student<br>WHERE MONTH(DATE_FORMAT(NOW(), ‘%Y%m%d’)) = MONTH(s_birth);<br>–方法2</p>
+<ul>
+<li>这种方法很不正规<br>SELECT s_name, s_sex, s_birth<br>FROM student<br>WHERE substring(s_birth, 6, 2) = ‘03’;</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Gustave
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.kikfan.com/archives/5bea5d90.html" title="MySQL，一叶障目，不见泰山">https://www.kikfan.com/archives/5bea5d90.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/b0026423.html" rel="prev" title="集合的求交集方法测试">
+                <i class="fa fa-chevron-left"></i> 集合的求交集方法测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/a33f44d0.html" rel="next" title="分区助手迁移系统真的是爽">
+                分区助手迁移系统真的是爽 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Gustave">
+            
+              <p class="site-author-name" itemprop="name">Gustave</p>
+              <p class="site-description motion-element" itemprop="description">偏安一隅</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kikyou93" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://locenes.com/" title="locenes" target="_blank">locenes</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Update-Join"><span class="nav-number">1.</span> <span class="nav-text">Update Join</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Delete-Join"><span class="nav-number">2.</span> <span class="nav-text">Delete Join</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in-和-exists"><span class="nav-number">3.</span> <span class="nav-text">in 和 exists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#not-in-和not-exists"><span class="nav-number">4.</span> <span class="nav-text">not in 和not exists</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取表中某字段包含某字符串的数据"><span class="nav-number">5.</span> <span class="nav-text">获取表中某字段包含某字符串的数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连续范围的问题"><span class="nav-number">6.</span> <span class="nav-text">连续范围的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#签到问题"><span class="nav-number">7.</span> <span class="nav-text">签到问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL的测试表"><span class="nav-number">8.</span> <span class="nav-text">MySQL的测试表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询”01”课程比”02”课程成绩高的学生的信息及课程分数"><span class="nav-number">9.</span> <span class="nav-text">查询”01”课程比”02”课程成绩高的学生的信息及课程分数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询”01”课程比”02”课程成绩低的学生的信息及课程分数"><span class="nav-number">10.</span> <span class="nav-text">查询”01”课程比”02”课程成绩低的学生的信息及课程分数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩"><span class="nav-number">11.</span> <span class="nav-text">查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩"><span class="nav-number">12.</span> <span class="nav-text">查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩"><span class="nav-number">13.</span> <span class="nav-text">查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询”李”姓老师的数量"><span class="nav-number">14.</span> <span class="nav-text">查询”李”姓老师的数量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询学过”张三”老师授课的同学的信息"><span class="nav-number">15.</span> <span class="nav-text">查询学过”张三”老师授课的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询没学过”张三”老师授课的同学的信息"><span class="nav-number">16.</span> <span class="nav-text">查询没学过”张三”老师授课的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息"><span class="nav-number">17.</span> <span class="nav-text">查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息"><span class="nav-number">18.</span> <span class="nav-text">查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询没有学全所有课程的同学的信息"><span class="nav-number">19.</span> <span class="nav-text">查询没有学全所有课程的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询至少有一门课与学号为”01”的同学所学相同的同学的信息"><span class="nav-number">20.</span> <span class="nav-text">查询至少有一门课与学号为”01”的同学所学相同的同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询和”01”号的同学学习的课程完全相同的其他同学的信息"><span class="nav-number">21.</span> <span class="nav-text">查询和”01”号的同学学习的课程完全相同的其他同学的信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询没学过”张三”老师讲授的任一门课程的学生姓名"><span class="nav-number">22.</span> <span class="nav-text">查询没学过”张三”老师讲授的任一门课程的学生姓名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩"><span class="nav-number">23.</span> <span class="nav-text">查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索”01”课程分数小于60，按分数降序排列的学生信息"><span class="nav-number">24.</span> <span class="nav-text">检索”01”课程分数小于60，按分数降序排列的学生信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩"><span class="nav-number">25.</span> <span class="nav-text">按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率-–及格为-gt-60，中等为：70-80，优良为：80-90，优秀为：-gt-90"><span class="nav-number">26.</span> <span class="nav-text">查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率 –及格为&gt;=60，中等为：70-80，优良为：80-90，优秀为：&gt;=90</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按各科成绩进行排序，并显示排名-实现不完全"><span class="nav-number">27.</span> <span class="nav-text">按各科成绩进行排序，并显示排名(实现不完全)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询学生的总成绩并进行排名"><span class="nav-number">28.</span> <span class="nav-text">查询学生的总成绩并进行排名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询不同老师所教不同课程平均分从高到低显示"><span class="nav-number">29.</span> <span class="nav-text">查询不同老师所教不同课程平均分从高到低显示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询所有课程的成绩第2名到第3名的学生信息及该课程成绩"><span class="nav-number">30.</span> <span class="nav-text">查询所有课程的成绩第2名到第3名的学生信息及该课程成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计各科成绩各分数段人数：课程编号-课程名称-100-85-85-70-70-60-0-60及所占百分比"><span class="nav-number">31.</span> <span class="nav-text">统计各科成绩各分数段人数：课程编号,课程名称,100-85,85-70,70-60,0-60及所占百分比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询学生平均成绩及其名次"><span class="nav-number">32.</span> <span class="nav-text">查询学生平均成绩及其名次</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询各科成绩前三名的记录"><span class="nav-number">33.</span> <span class="nav-text">查询各科成绩前三名的记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询每门课程被重修的学生数"><span class="nav-number">34.</span> <span class="nav-text">查询每门课程被重修的学生数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询出只有两门课程的全部学生的学号和姓名"><span class="nav-number">35.</span> <span class="nav-text">查询出只有两门课程的全部学生的学号和姓名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询男生、女生人数"><span class="nav-number">36.</span> <span class="nav-text">查询男生、女生人数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询名字中含有”风”字的学生信息"><span class="nav-number">37.</span> <span class="nav-text">查询名字中含有”风”字的学生信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询同名同性学生名单，并统计同名人数"><span class="nav-number">38.</span> <span class="nav-text">查询同名同性学生名单，并统计同名人数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询1990年出生的学生名单"><span class="nav-number">39.</span> <span class="nav-text">查询1990年出生的学生名单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列"><span class="nav-number">40.</span> <span class="nav-text">查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩"><span class="nav-number">41.</span> <span class="nav-text">查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询课程名称为”数学”，且分数低于60的学生姓名和分数"><span class="nav-number">42.</span> <span class="nav-text">查询课程名称为”数学”，且分数低于60的学生姓名和分数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询所有学生的课程及分数情况"><span class="nav-number">43.</span> <span class="nav-text">查询所有学生的课程及分数情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数"><span class="nav-number">44.</span> <span class="nav-text">查询任何一门课程成绩在70分以上的学生姓名、课程名称和分数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询不及格的课程"><span class="nav-number">45.</span> <span class="nav-text">查询不及格的课程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询课程编号为01且课程成绩在80分以上的学生的学号和姓名"><span class="nav-number">46.</span> <span class="nav-text">查询课程编号为01且课程成绩在80分以上的学生的学号和姓名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求每门课程的学生人数"><span class="nav-number">47.</span> <span class="nav-text">求每门课程的学生人数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩"><span class="nav-number">48.</span> <span class="nav-text">查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩"><span class="nav-number">49.</span> <span class="nav-text">查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询每门课程成绩最好的前两名"><span class="nav-number">50.</span> <span class="nav-text">查询每门课程成绩最好的前两名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列"><span class="nav-number">51.</span> <span class="nav-text">统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索至少选修两门课程的学生学号"><span class="nav-number">52.</span> <span class="nav-text">检索至少选修两门课程的学生学号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询选修了全部课程的学生信息"><span class="nav-number">53.</span> <span class="nav-text">查询选修了全部课程的学生信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询各学生的年龄"><span class="nav-number">54.</span> <span class="nav-text">查询各学生的年龄</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询本周过生日的学生"><span class="nav-number">55.</span> <span class="nav-text">查询本周过生日的学生</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询本月过生日的学生"><span class="nav-number">56.</span> <span class="nav-text">查询本月过生日的学生</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gustave</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">45.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'y342POhWCRR95vOhfnvm8JmU-gzGzoHsz',
+        appKey: 'LYAWA6Xx4eiYgbghbg6uxeuB',
+        placeholder: '踏出竹叶梅花？',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/paw.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,代码优化,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kikfan" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="尽量指定类、方法的final修饰符带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不可以被继承，为方法指定final修饰符可以让方法不可以被重写。如果指定了一个类为final，则该类所有的方法都是final的。Java编译器会寻找机会内联所有的final方法，内联">
+<meta name="keywords" content="Java,代码优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java代码优化">
+<meta property="og:url" content="https://www.kikfan.com/archives/a2337e7d.html">
+<meta property="og:site_name" content="kikfan">
+<meta property="og:description" content="尽量指定类、方法的final修饰符带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不可以被继承，为方法指定final修饰符可以让方法不可以被重写。如果指定了一个类为final，则该类所有的方法都是final的。Java编译器会寻找机会内联所有的final方法，内联">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.kikfan.com/images/快速随机访问for循环.jpg">
+<meta property="og:updated_time" content="2019-02-14T16:58:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java代码优化">
+<meta name="twitter:description" content="尽量指定类、方法的final修饰符带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不可以被继承，为方法指定final修饰符可以让方法不可以被重写。如果指定了一个类为final，则该类所有的方法都是final的。Java编译器会寻找机会内联所有的final方法，内联">
+<meta name="twitter:image" content="https://www.kikfan.com/images/快速随机访问for循环.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.kikfan.com/archives/a2337e7d.html">
+
+
+
+
+
+  <title>Java代码优化 | kikfan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kikfan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">lack is rich, self-discipline to produce joy!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav menuTool">
+  
+
+  
+    <ul id="menu" class="menu">
+
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+
+        
+          <li class="menu-item menu-item-search">
+            
+              <a href="javascript:;" class="popup-trigger">
+            
+              
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+              
+              搜索
+            </a>
+          </li>
+        
+
+    
+      <li class="menu-item menu-item-briefcase">
+        <a href="#">
+          <i class="menu-item-icon fa fa-briefcase fa-fw"></i> <br>
+          工具
+        </a>
+        <ul>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的工具</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/80084445.html" target="_blank">MapperUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="/archives/b1e39e23.html" target="_blank">CookieUtils</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/yangwei256/article/details/82683140" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml" target="_blank">Config.yml</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tools.hexianwei.com/#/tools/jrebel" target="_blank">Jrebel</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/xiaoxiunique/tool-tips" target="_blank">IDEA-Tool-tips</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">我的收藏</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://ziyuan.baidu.com/dashboard/index?site=https://www.kikfan.com/" target="_blank">百度站长</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://weui.io/#navbar" target="_blank">WeUI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/ijavaweb/article/details/16963725" target="_blank">IDEA快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://kidneyball.iteye.com/blog/1828427" target="_blank">IDEAVim</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/donahue_ldz/article/details/17139361" target="_blank">Vim快捷键</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://doub.io/brook-jc1/" target="_blank">doub.io</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://blog.csdn.net/waeceo/article/details/78702584" target="_blank">MySQL索引</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.ruanyifeng.com/blog/" target="_blank">阮一峰</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/Tools/subnetmask" target="_blank">站长工具</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://plugins.jetbrains.com/" target="_blank">IDEA Plugins</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://docs.kubernetes.org.cn/227.html" target="_blank">Kubernetes</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线编辑</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.bejson.com/jsoneditoronline" target="_blank">JSON编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tool.lu/tables/" target="_blank">MD表格生成</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://cron.qqe2.com" target="_blank">CRON表达式</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.oschina.net/codeformat/html" target="_blank">代码格式化</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://zh.numberempire.com/latexequationeditor.php" target="_blank">公式编辑器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cli.im/" target="_blank">二维码生成器</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://tool.chinaz.com/tools/native_ascii.aspx" target="_blank">在线编码转换</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://www.toyaml.com" target="_blank">YAML转换</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">在线服务</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://cn.vuejs.org/v2/api/" target="_blank">vue</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://vuex.vuejs.org/zh/api/#vuex-store" target="_blank">vuex</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://trends.google.com/trends/?geo=US" target="_blank">谷歌趋势</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="http://index.baidu.com/#/" target="_blank">百度指数</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://tongji.baidu.com/data/browser" target="_blank">百度流量研究院</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+              
+                
+                  <a href="#">高频网站</a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                <ul>
+                  
+                    
+                  
+                    
+                      <li>
+                        <a href="https://github.com/kikyou93/kikyou93.github.io/tree/source" target="_blank">GitHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.travis-ci.org/kikyou93/kikyou93.github.io/" target="_blank">Travis CI</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://billing.virmach.com/clientarea.php?action=services" target="_blank">Virmach</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://dev.tencent.com/u/kikfan/p/kikfan.coding.me/git" target="_blank">Coding Pages</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://mvnrepository.com/" target="_blank">MavenRepo</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://hub.docker.com/search/" target="_blank">DockerHub</a>
+                      </li>
+                    
+                  
+                    
+                      <li>
+                        <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+                      </li>
+                    
+                  
+                </ul>
+            </li>
+          
+        </ul>
+      </li>
+    
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.kikfan.com/archives/a2337e7d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gustave">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kikfan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java代码优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-14T22:51:26+08:00">
+                2019-02-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-15T00:58:14+08:00">
+                2019-02-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/a2337e7d.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/a2337e7d.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="尽量指定类、方法的final修饰符"><a href="#尽量指定类、方法的final修饰符" class="headerlink" title="尽量指定类、方法的final修饰符"></a>尽量指定类、方法的final修饰符</h1><p>带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不可以被继承，为方法指定final修饰符可以让方法不可以被重写。如果指定了一个类为final，则该类所有的方法都是final的。Java编译器会寻找机会内联所有的final方法，内联对于提升Java运行效率作用重大，具体参见Java运行期优化。此举能够使性能平均提高50%。</p>
+<h1 id="尽可能使用局部变量"><a href="#尽可能使用局部变量" class="headerlink" title="尽可能使用局部变量"></a>尽可能使用局部变量</h1><p>调用方法时传递的参数以及在调用中创建的临时变量都保存在栈中，速度较快，其他变量，如静态变量、实例变量等，都在堆中创建，速度较慢。另外，栈中创建的变量，随着方法的运行结束，这些内容就没了，不需要额外的垃圾回收。</p>
+<h1 id="及时关闭流"><a href="#及时关闭流" class="headerlink" title="及时关闭流"></a>及时关闭流</h1><p>Java编程过程中，进行数据库连接、I/O流操作时务必小心，在使用完毕后，及时关闭以释放资源。因为对这些大对象的操作会造成系统大的开销，稍有不慎，将会导致严重的后果。</p>
+<h1 id="尽量减少变量的重复计算"><a href="#尽量减少变量的重复计算" class="headerlink" title="尽量减少变量的重复计算"></a>尽量减少变量的重复计算</h1><p>明确一个概念，对方法的调用，即使方法中只有一句语句，也是有消耗的，包括创建栈帧、调用方法时保护现场、调用方法完毕时恢复现场等。所以例如下面的操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i;i &lt; list.size();i++)</span><br><span class="line">    &#123;...&#125;</span><br><span class="line">修改为:</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i,length = list.size;i&lt;length;i++)</span><br><span class="line">    &#123;...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种写法，在list的size很大的时候，可以减少开销</p>
+<h1 id="尽量使用懒加载，即在需要的时候创建"><a href="#尽量使用懒加载，即在需要的时候创建" class="headerlink" title="尽量使用懒加载，即在需要的时候创建"></a>尽量使用懒加载，即在需要的时候创建</h1><h1 id="慎用异常"><a href="#慎用异常" class="headerlink" title="慎用异常"></a>慎用异常</h1><ol>
+<li>只在必要使用异常的地方才使用异常，不要用异常去控制程序的流程<br>谨慎地使用异常，异常捕获的代价非常高昂，异常使用过多会严重影响程序的性能。如果在程序中能够用if语句和Boolean变量来进行逻辑判断，那么尽量减少异常的使用，从而避免不必要的异常捕获和处理。比如下面这段经典的程序：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useExceptionsForFlowControl</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">try</span> &#123;  </span><br><span class="line">  <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;  </span><br><span class="line">    increaseCount();  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125; <span class="keyword">catch</span> (MaximumCountReachedException ex) &#123;  </span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="comment">//Continue execution  </span></span><br><span class="line">&#125;  </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">increaseCount</span><span class="params">()</span> <span class="keyword">throws</span> MaximumCountReachedException </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (count &gt;= <span class="number">5000</span>)  </span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> MaximumCountReachedException();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上边的useExceptionsForFlowControl()用一个无限循环来增加count直到抛出异常，这种做法并没有说让代码不易读，而是使得程序执行效率降低。</p>
+<ol start="2">
+<li>切忌使用空catch块<br>在捕获了异常之后什么都不做，相当于忽略了这个异常。千万不要使用空的catch块，空的catch块意味着你在程序中隐藏了错误和异常，并且很可能导致程序出现不可控的执行结果。如果你非常肯定捕获到的异常不会以任何方式对程序造成影响，最好用Log日志将该异常进行记录，以便日后方便更新和维护。</li>
+<li>检查异常和非检查异常的选择<br>一旦你决定抛出异常，你就要决定抛出什么异常。这里面的主要问题就是抛出检查异常还是非检查异常。<br>检查异常导致了太多的try…catch代码，可能有很多检查异常对开发人员来说是无法合理地进行处理的，比如SQLException，而开发人员却不得不去进行try…catch，这样就会导致经常出现这样一种情况：逻辑代码只有很少的几行，而进行异常捕获和处理的代码却有很多行。这样不仅导致逻辑代码阅读起来晦涩难懂，而且降低了程序的性能。<br>我个人建议尽量避免检查异常的使用，如果确实该异常情况的出现很普遍，需要提醒调用者注意处理的话，就使用检查异常；否则使用非检查异常。<br>因此，在一般情况下，我觉得尽量将检查异常转变为非检查异常交给上层处理。</li>
+<li>注意catch块的顺序<br>不要把上层类的异常放在最前面的catch块。比如下面这段代码：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">        FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"d:/a.txt"</span>);</span><br><span class="line">        <span class="keyword">int</span> ch = inputStream.read();</span><br><span class="line">        System.out.println(<span class="string">"aaa"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"step1"</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">　　      System.out.println(<span class="string">"io exception"</span>);　　      </span><br><span class="line">         <span class="keyword">return</span> <span class="string">"step2"</span>;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        System.out.println(<span class="string">"file not found"</span>);　　　　      </span><br><span class="line">        <span class="keyword">return</span> <span class="string">"step3"</span>;</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"finally block"</span>);</span><br><span class="line">        <span class="comment">//return "finally";</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>第二个catch的FileNotFoundException将永远不会被捕获到，因为FileNotFoundException是IOException的子类。</p>
+<ol start="5">
+<li>不要将提供给用户看的信息放在异常信息里<br>比如下面这段代码：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String user = <span class="keyword">null</span>;</span><br><span class="line">            String pwd = <span class="keyword">null</span>;</span><br><span class="line">            login(user,pwd);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String user,String pwd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(user==<span class="keyword">null</span>||pwd==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"用户名或者密码为空"</span>);</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>展示给用户错误提示信息最好不要跟程序混淆一起，比较好的方式是将所有错误提示信息放在一个配置文件中统一管理。</p>
+<ol start="6">
+<li>避免多次在日志信息中记录同一个异常<br>只在异常最开始发生的地方进行日志信息记录。很多情况下异常都是层层向上跑出的，如果在每次向上抛出的时候，都Log到日志系统中，则会导致无从查找异常发生的根源。</li>
+<li>异常处理尽量放在高层进行<br>尽量将异常统一抛给上层调用者，由上层调用者统一之时如何进行处理。如果在每个出现异常的地方都直接进行处理，会导致程序异常处理流程混乱，不利于后期维护和异常错误排查。由上层统一进行处理会使得整个程序的流程清晰易懂。</li>
+<li>在finally中释放资源<br>如果有使用文件读取、网络操作以及数据库操作等，记得在finally中释放资源。这样不仅会使得程序占用更少的资源，也会避免不必要的由于资源未释放而发生的异常情况。</li>
+</ol>
+<h1 id="当复制大量数据时，使用System-arraycopy-命令"><a href="#当复制大量数据时，使用System-arraycopy-命令" class="headerlink" title="当复制大量数据时，使用System.arraycopy()命令"></a>当复制大量数据时，使用<code>System.arraycopy()</code>命令</h1><h1 id="乘法和除法使用移位操作"><a href="#乘法和除法使用移位操作" class="headerlink" title="乘法和除法使用移位操作"></a>乘法和除法使用移位操作</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">100</span>;i ++)&#123;</span><br><span class="line">    a = i * <span class="number">8</span>;</span><br><span class="line">    b = i / <span class="number">16</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i -= <span class="number">0</span>;i &lt; <span class="number">100</span>; i ++)&#123;</span><br><span class="line">    a = i &lt;&lt; <span class="number">3</span>;</span><br><span class="line">    b = i &gt;&gt; <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>移位操作会降低可读性，所以最好带上注释</p>
+<h1 id="循环内不要不断创建对象引用"><a href="#循环内不要不断创建对象引用" class="headerlink" title="循环内不要不断创建对象引用"></a>循环内不要不断创建对象引用</h1><h1 id="尽量在合适的场合使用单例"><a href="#尽量在合适的场合使用单例" class="headerlink" title="尽量在合适的场合使用单例"></a>尽量在合适的场合使用单例</h1><p>使用单例可以减轻加载的负担、缩短加载的时间、提高加载的效率，但并不是所有地方都适用于单例，简单来说，单例主要适用于以下三个方面：</p>
+<ul>
+<li>控制资源的使用，通过线程同步来控制资源的并发访问</li>
+<li>控制实例的产生，以达到节约资源的目的</li>
+<li>控制数据的共享，在不建立直接关联的条件下，让多个不相关的进程或线程之间实现通信</li>
+</ul>
+<h1 id="ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环"><a href="#ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环" class="headerlink" title="ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环"></a>ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环</h1><p>这是JDK推荐给用户的。JDK API对于RandomAccess接口的解释是：实现RandomAccess接口用来表明其支持快速随机访问，此接口的主要目的是允许一般的算法更改其行为，从而将其应用到随机或连续访问列表时能提供良好的性能。实际经验表明，实现RandomAccess接口的类实例，假如是随机访问的，使用普通for循环效率将高于使用foreach循环；反过来，如果是顺序访问的，则使用Iterator会效率更高。可以使用类似如下的代码作判断：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Iterator&lt;?&gt; iterator = list.iterable();</span><br><span class="line">    <span class="keyword">while</span> (iterator.hasNext())&#123;iterator.next()&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>自己的测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRandomAccess</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span> ; i++) &#123;</span><br><span class="line">        list.add(i);</span><br><span class="line">    &#125;</span><br><span class="line">    Object obj = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">long</span> l = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">        obj = list.get(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> l1 = System.currentTimeMillis();</span><br><span class="line">    System.out.println(l1-l);</span><br><span class="line">    <span class="keyword">for</span> (Integer x : list) &#123;</span><br><span class="line">        obj = x;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(System.currentTimeMillis() - l1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="../images/快速随机访问for循环.jpg" alt="结果"></p>
+<h1 id="使用同步代码块代替同步方法"><a href="#使用同步代码块代替同步方法" class="headerlink" title="使用同步代码块代替同步方法"></a>使用同步代码块代替同步方法</h1><p>这点在多线程模块中的synchronized锁方法块一文中已经讲得很清楚了，除非能确定一整个方法都是需要进行同步的，否则尽量使用同步代码块，避免对那些不需要进行同步的代码也进行了同步，影响了代码执行效率。</p>
+<h1 id="程序运行过程避免使用反射"><a href="#程序运行过程避免使用反射" class="headerlink" title="程序运行过程避免使用反射"></a>程序运行过程避免使用反射</h1><p>关于，请参见反射。反射是Java提供给用户一个很强大的功能，功能强大往往意味着效率不高。不建议在程序运行过程中使用尤其是频繁使用反射机制，特别是Method的invoke方法，如果确实有必要，一种建议性的做法是将那些需要通过反射加载的类在项目启动的时候通过反射实例化出一个对象并放入内存—-用户只关心和对端交互的时候获取最快的响应速度，并不关心对端的项目启动花多久时间。</p>
+<h1 id="使用带缓冲的输入输出流进行IO操作"><a href="#使用带缓冲的输入输出流进行IO操作" class="headerlink" title="使用带缓冲的输入输出流进行IO操作"></a>使用带缓冲的输入输出流进行IO操作</h1><p>带缓冲的输入输出流，即BufferedReader、BufferedWriter、BufferedInputStream、BufferedOutputStream，这可以极大地提升IO效率</p>
+<h1 id="公用的集合类中不使用的数据一定要及时remove掉"><a href="#公用的集合类中不使用的数据一定要及时remove掉" class="headerlink" title="公用的集合类中不使用的数据一定要及时remove掉"></a>公用的集合类中不使用的数据一定要及时remove掉</h1><p>如果一个集合类是公用的（也就是说不是方法里面的属性），那么这个集合里面的元素是不会自动释放的，因为始终有引用指向它们。所以，如果公用集合里面的某些数据不使用而不去remove掉它们，那么将会造成这个公用集合不断增大，使得系统有内存泄露的隐患。</p>
+<h1 id="把一个基本数据类型转为字符串，基本数据类型-toString-是最快的方式、String-valueOf-数据-次之、数据-””最慢"><a href="#把一个基本数据类型转为字符串，基本数据类型-toString-是最快的方式、String-valueOf-数据-次之、数据-””最慢" class="headerlink" title="把一个基本数据类型转为字符串，基本数据类型.toString()是最快的方式、String.valueOf(数据)次之、数据+””最慢"></a>把一个基本数据类型转为字符串，基本数据类型.toString()是最快的方式、String.valueOf(数据)次之、数据+””最慢</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> loopTime = <span class="number">50000</span>;</span><br><span class="line">    Integer i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        String str = String.valueOf(i);</span><br><span class="line">    &#125;    </span><br><span class="line">    System.out.println(<span class="string">"String.valueOf()："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">    startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        String str = i.toString();</span><br><span class="line">    &#125;    </span><br><span class="line">    System.out.println(<span class="string">"Integer.toString()："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">    startTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        String str = i + <span class="string">""</span>;</span><br><span class="line">    &#125;    </span><br><span class="line">    System.out.println(<span class="string">"i + \"\"："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String.valueOf()：<span class="number">11</span>ms</span><br><span class="line">Integer.toString()：<span class="number">5</span>ms</span><br><span class="line">i + <span class="string">""</span>：<span class="number">25</span>ms</span><br></pre></td></tr></table></figure></p>
+<p>所以以后遇到把一个基本数据类型转为String的时候，优先考虑使用toString()方法。至于为什么，很简单：</p>
+<ul>
+<li>String.valueOf()方法底层调用了Integer.toString()方法，但是会在调用前做空判断</li>
+<li>Integer.toString()方法就不说了，直接调用了</li>
+<li>i + “”底层使用了StringBuilder实现，先用append方法拼接，再用toString()方法获取字符串<br>三者对比下来，明显是2最快、1次之、3最慢</li>
+</ul>
+<h1 id="对资源的close-建议分开操作"><a href="#对资源的close-建议分开操作" class="headerlink" title="对资源的close()建议分开操作"></a>对资源的close()建议分开操作</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    XXX.close();</span><br><span class="line">    YYY.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    XXX.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    YYY.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>虽然有些麻烦，却能避免资源泄露。我们想，如果没有修改过的代码，万一XXX.close()抛异常了，那么就进入了catch块中了，YYY.close()不会执行，YYY这块资源就不会回收了，一直占用着，这样的代码一多，是可能引起资源句柄泄露的。而改为下面的写法之后，就保证了无论如何XXX和YYY都会被close掉</p>
+<h1 id="切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定"><a href="#切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定" class="headerlink" title="切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定"></a>切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定</h1><h1 id="推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a-equals-b-，有空指针异常的风险"><a href="#推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a-equals-b-，有空指针异常的风险" class="headerlink" title="推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a.equals(b)，有空指针异常的风险"></a>推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a.equals(b)，有空指针异常的风险</h1><h1 id="对于ThreadLocal使用前或者使用后一定要先remove"><a href="#对于ThreadLocal使用前或者使用后一定要先remove" class="headerlink" title="对于ThreadLocal使用前或者使用后一定要先remove"></a>对于ThreadLocal使用前或者使用后一定要先remove</h1><p>当前基本所有的项目都使用了线程池技术，这非常好，可以动态配置线程数、可以重用线程。<br>然而，如果你在项目中使用到了ThreadLocal，一定要记得使用前或者使用后remove一下。这是因为上面提到了线程池技术做的是一个线程重用，这意味着代码运行过程中，一条线程使用完毕，并不会被销毁而是等待下一次的使用。我们看一下Thread类中，持有ThreadLocal.ThreadLocalMap的引用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ThreadLocal values pertaining to this thread. This map is maintained</span></span><br><span class="line"><span class="comment"> * by the ThreadLocal class. */</span></span><br><span class="line">ThreadLocal.ThreadLocalMap threadLocals = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>线程不销毁意味着上条线程set的ThreadLocal.ThreadLocalMap中的数据依然存在，那么在下一条线程重用这个Thread的时候，很可能get到的是上条线程set的数据而不是自己想要的内容。<br>这个问题非常隐晦，一旦出现这个原因导致的错误，没有相关经验或者没有扎实的基础非常难发现这个问题，因此在写代码的时候就要注意这一点，这将给你后续减少很多的工作量。</p>
+<h1 id="不捕获Java类库中定义的继承自RuntimeException的运行时异常类"><a href="#不捕获Java类库中定义的继承自RuntimeException的运行时异常类" class="headerlink" title="不捕获Java类库中定义的继承自RuntimeException的运行时异常类"></a>不捕获Java类库中定义的继承自RuntimeException的运行时异常类</h1><ul>
+<li>ArithmeticException可以通过判断除数是否为空来规避</li>
+<li>NullPointerException可以通过判断对象是否为空来规避</li>
+<li>IndexOutOfBoundsException可以通过判断数组/字符串长度来规避</li>
+<li>ClassCastException可以通过instanceof关键字来规避</li>
+<li>ConcurrentModificationException可以使用迭代器来规避</li>
+</ul>
+<h1 id="避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed-导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数"><a href="#避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed-导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数" class="headerlink" title="避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed 导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数"></a>避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed 导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数</h1><p>解释一下竞争同一个seed导致性能下降的原因，比如，看一下Random类的nextInt()方法实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> next(<span class="number">32</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>调用了next(int bits)方法，这是一个受保护的方法：</p>
+<p>复制代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> bits)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> oldseed, nextseed;</span><br><span class="line">    AtomicLong seed = <span class="keyword">this</span>.seed;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        oldseed = seed.get();</span><br><span class="line">        nextseed = (oldseed * multiplier + addend) &amp; mask;</span><br><span class="line">    &#125; <span class="keyword">while</span> (!seed.compareAndSet(oldseed, nextseed));</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(nextseed &gt;&gt;&gt; (<span class="number">48</span> - bits));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>复制代码<br>而这边的seed是一个全局变量：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The internal state associated with this pseudorandom number generator.</span></span><br><span class="line"><span class="comment"> * (The specs for the methods in this class describe the ongoing</span></span><br><span class="line"><span class="comment"> * computation of this value.)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AtomicLong seed;</span><br></pre></td></tr></table></figure></p>
+<p>多个线程同时获取随机数的时候，会竞争同一个seed，导致了效率的降低。</p>
+<p>转自：<a href="http://www.cnblogs.com/xrq730/p/4865416.html" target="_blank" rel="noopener">五月的仓颉</a></p>
+<ul>
+<li>谨此祭奠过去N多年来逃避现实的自己</li>
+<li>永远对这个世界保持好奇心！</li>
+<li>痛苦时分析其产生的根源，去改正能改正的己过，以技术角度为突破口走出来，切莫陷入痛苦的漩涡无法自拔</li>
+<li>番茄使人充实，也是驱使你前进的本源！</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Gustave
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.kikfan.com/archives/a2337e7d.html" title="Java代码优化">https://www.kikfan.com/archives/a2337e7d.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/代码优化/" rel="tag"># 代码优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/a33f44d0.html" rel="prev" title="分区助手迁移系统真的是爽">
+                <i class="fa fa-chevron-left"></i> 分区助手迁移系统真的是爽
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/41e00c03.html" rel="next" title="Java设计模式">
+                Java设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Gustave">
+            
+              <p class="site-author-name" itemprop="name">Gustave</p>
+              <p class="site-description motion-element" itemprop="description">偏安一隅</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kikyou93" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://locenes.com/" title="locenes" target="_blank">locenes</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#尽量指定类、方法的final修饰符"><span class="nav-number">1.</span> <span class="nav-text">尽量指定类、方法的final修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尽可能使用局部变量"><span class="nav-number">2.</span> <span class="nav-text">尽可能使用局部变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#及时关闭流"><span class="nav-number">3.</span> <span class="nav-text">及时关闭流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尽量减少变量的重复计算"><span class="nav-number">4.</span> <span class="nav-text">尽量减少变量的重复计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尽量使用懒加载，即在需要的时候创建"><span class="nav-number">5.</span> <span class="nav-text">尽量使用懒加载，即在需要的时候创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慎用异常"><span class="nav-number">6.</span> <span class="nav-text">慎用异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当复制大量数据时，使用System-arraycopy-命令"><span class="nav-number">7.</span> <span class="nav-text">当复制大量数据时，使用System.arraycopy()命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法和除法使用移位操作"><span class="nav-number">8.</span> <span class="nav-text">乘法和除法使用移位操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环内不要不断创建对象引用"><span class="nav-number">9.</span> <span class="nav-text">循环内不要不断创建对象引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尽量在合适的场合使用单例"><span class="nav-number">10.</span> <span class="nav-text">尽量在合适的场合使用单例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环"><span class="nav-number">11.</span> <span class="nav-text">ArrayList等实现了RandomAccess接口的集合，应当使用普通for循环而不是foreach循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用同步代码块代替同步方法"><span class="nav-number">12.</span> <span class="nav-text">使用同步代码块代替同步方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序运行过程避免使用反射"><span class="nav-number">13.</span> <span class="nav-text">程序运行过程避免使用反射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用带缓冲的输入输出流进行IO操作"><span class="nav-number">14.</span> <span class="nav-text">使用带缓冲的输入输出流进行IO操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公用的集合类中不使用的数据一定要及时remove掉"><span class="nav-number">15.</span> <span class="nav-text">公用的集合类中不使用的数据一定要及时remove掉</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把一个基本数据类型转为字符串，基本数据类型-toString-是最快的方式、String-valueOf-数据-次之、数据-””最慢"><span class="nav-number">16.</span> <span class="nav-text">把一个基本数据类型转为字符串，基本数据类型.toString()是最快的方式、String.valueOf(数据)次之、数据+””最慢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对资源的close-建议分开操作"><span class="nav-number">17.</span> <span class="nav-text">对资源的close()建议分开操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定"><span class="nav-number">18.</span> <span class="nav-text">切记以常量定义的方式替代魔鬼数字，魔鬼数字的存在将极大地降低代码可读性，字符串常量是否使用常量定义可以视情况而定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a-equals-b-，有空指针异常的风险"><span class="nav-number">19.</span> <span class="nav-text">推荐使用JDK7中新引入的Objects工具类来进行对象的equals比较，直接a.equals(b)，有空指针异常的风险</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对于ThreadLocal使用前或者使用后一定要先remove"><span class="nav-number">20.</span> <span class="nav-text">对于ThreadLocal使用前或者使用后一定要先remove</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不捕获Java类库中定义的继承自RuntimeException的运行时异常类"><span class="nav-number">21.</span> <span class="nav-text">不捕获Java类库中定义的继承自RuntimeException的运行时异常类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed-导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数"><span class="nav-number">22.</span> <span class="nav-text">避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed 导致的性能下降，JDK7之后，可以使用ThreadLocalRandom来获取随机数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gustave</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">45.3k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'y342POhWCRR95vOhfnvm8JmU-gzGzoHsz',
+        appKey: 'LYAWA6Xx4eiYgbghbg6uxeuB',
+        placeholder: '踏出竹叶梅花？',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+</body>
+</html>

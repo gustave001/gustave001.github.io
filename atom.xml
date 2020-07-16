@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>kikfan</title>
+  
+  <subtitle>lack is rich, self-discipline to produce joy!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.kikfan.com/"/>
+  <updated>2020-07-05T03:32:10.000Z</updated>
+  <id>https://www.kikfan.com/</id>
+  
+  <author>
+    <name>Gustave</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git</title>
+    <link href="https://www.kikfan.com/archives/43167.html"/>
+    <id>https://www.kikfan.com/archives/43167.html</id>
+    <published>2020-07-05T03:32:10.000Z</published>
+    <updated>2020-07-05T03:32:10.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;git-reset-–hard-–soft-–mixed区别&quot;&gt;&lt;a href=&quot;#git-reset-–hard-–soft-–mixed区别&quot; class=&quot;headerlink&quot; title=&quot;git reset –hard –soft –mixed区别&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="实用工具" scheme="https://www.kikfan.com/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="git" scheme="https://www.kikfan.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SearchQuickByShortcut</title>
+    <link href="https://www.kikfan.com/archives/137c7eea.html"/>
+    <id>https://www.kikfan.com/archives/137c7eea.html</id>
+    <published>2020-06-05T03:11:58.000Z</published>
+    <updated>2020-06-05T03:11:58.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;作为码农，总免不了开心地撸着代码的时候需要查下谷歌、stackoverflow等，那就得切到浏览器-&amp;gt;输入网址-&amp;gt;搜
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="IDEA" scheme="https://www.kikfan.com/tags/IDEA/"/>
+    
+      <category term="Plugin" scheme="https://www.kikfan.com/tags/Plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openvpn+frp实现内网穿透远程办公</title>
+    <link href="https://www.kikfan.com/archives/87304ffa.html"/>
+    <id>https://www.kikfan.com/archives/87304ffa.html</id>
+    <published>2020-06-03T20:48:04.000Z</published>
+    <updated>2020-06-03T20:48:04.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;openvpn&quot;&gt;&lt;a href=&quot;#openvpn&quot; class=&quot;headerlink&quot; title=&quot;openvpn&quot;&gt;&lt;/a&gt;openvpn&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;使用Nyr大神的一键脚本即可（注：数据源上面吃了小亏，package 错误，不再犯）&lt;f
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="frp" scheme="https://www.kikfan.com/tags/frp/"/>
+    
+      <category term="内网穿透" scheme="https://www.kikfan.com/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+      <category term="openvpn" scheme="https://www.kikfan.com/tags/openvpn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阴阳师外挂</title>
+    <link href="https://www.kikfan.com/archives/63a2eef1.html"/>
+    <id>https://www.kikfan.com/archives/63a2eef1.html</id>
+    <published>2020-05-09T16:02:10.000Z</published>
+    <updated>2020-05-09T16:02:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;咸鱼地有些时日没动博客，最近回坑了下阴阳师，旨在养肝，遂心血来潮写写自动脚本，封号即脱坑，终是闲云野鹤
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="Java" scheme="https://www.kikfan.com/tags/Java/"/>
+    
+      <category term="hobby" scheme="https://www.kikfan.com/tags/hobby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql物理备份恢复</title>
+    <link href="https://www.kikfan.com/archives/29644176.html"/>
+    <id>https://www.kikfan.com/archives/29644176.html</id>
+    <published>2019-10-16T03:16:30.000Z</published>
+    <updated>2019-10-24T03:13:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;物理备份的恢复&quot;&gt;&lt;a href=&quot;#物理备份的恢复&quot; class=&quot;headerlink&quot; title=&quot;物理备份的恢复&quot;&gt;&lt;/a&gt;物理备份的恢复&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://help.aliyun.com/knowledge_detail/
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://www.kikfan.com/categories/SQL/"/>
+    
+    
+      <category term="SQL" scheme="https://www.kikfan.com/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell学习</title>
+    <link href="https://www.kikfan.com/archives/f8d5cfbe.html"/>
+    <id>https://www.kikfan.com/archives/f8d5cfbe.html</id>
+    <published>2019-10-11T08:26:32.000Z</published>
+    <updated>2019-10-11T08:26:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;shell脚本学习&quot;&gt;&lt;a href=&quot;#shell脚本学习&quot; class=&quot;headerlink&quot; title=&quot;shell脚本学习&quot;&gt;&lt;/a&gt;shell脚本学习&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;echo -e 不显示转义的字符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="shell" scheme="https://www.kikfan.com/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>K线形态分析程序</title>
+    <link href="https://www.kikfan.com/archives/728ca17.html"/>
+    <id>https://www.kikfan.com/archives/728ca17.html</id>
+    <published>2019-09-29T10:26:42.000Z</published>
+    <updated>2019-11-19T03:30:10.000Z</updated>
+    
+    <summary type="html">
+    
+      欢迎访问
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="股票" scheme="https://www.kikfan.com/tags/%E8%82%A1%E7%A5%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用命令</title>
+    <link href="https://www.kikfan.com/archives/d0edc1ed.html"/>
+    <id>https://www.kikfan.com/archives/d0edc1ed.html</id>
+    <published>2019-08-07T04:17:13.000Z</published>
+    <updated>2019-08-07T04:17:13.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.查看日志常用命令&lt;br&gt;    tail:&lt;br&gt;       -n  是显示行号；相当于nl命令；例子如下：&lt;br&gt;            tail -100f test.log      实时监控100行日志&lt;br&gt;            tail  -n  10 
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.kikfan.com/categories/Java/"/>
+    
+    
+      <category term="Linux" scheme="https://www.kikfan.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>背驰</title>
+    <link href="https://www.kikfan.com/archives/88ba48e.html"/>
+    <id>https://www.kikfan.com/archives/88ba48e.html</id>
+    <published>2019-07-08T15:30:45.000Z</published>
+    <updated>2019-11-19T03:13:13.000Z</updated>
+    
+    <summary type="html">
+    
+      欢迎访问
+    
+    </summary>
+    
+      <category term="股海浮沉" scheme="https://www.kikfan.com/categories/%E8%82%A1%E6%B5%B7%E6%B5%AE%E6%B2%89/"/>
+    
+    
+      <category term="股票" scheme="https://www.kikfan.com/tags/%E8%82%A1%E7%A5%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常小技巧</title>
+    <link href="https://www.kikfan.com/archives/9dfc94f1.html"/>
+    <id>https://www.kikfan.com/archives/9dfc94f1.html</id>
+    <published>2019-06-05T06:42:17.000Z</published>
+    <updated>2019-06-05T06:42:17.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Excel连接文本&quot;&gt;&lt;a href=&quot;#Excel连接文本&quot; class=&quot;headerlink&quot; title=&quot;Excel连接文本&quot;&gt;&lt;/a&gt;Excel连接文本&lt;/h1&gt;&lt;p&gt;使用concatenate(text1,text2,text3…)函数，其中，如果有
+      
+    
+    </summary>
+    
+      <category term="实用工具" scheme="https://www.kikfan.com/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="日常" scheme="https://www.kikfan.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>List排序</title>
+    <link href="https://www.kikfan.com/archives/b8b2cf67.html"/>
+    <id>https://www.kikfan.com/archives/b8b2cf67.html</id>
+    <published>2019-05-24T04:28:32.000Z</published>
+    <updated>2019-06-21T03:10:25.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;最近懈怠较重，急需正反馈&lt;/li&gt;
+&lt;li&gt;结合Lambda,初始list&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.kikfan.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://www.kikfan.com/tags/Java/"/>
+    
+      <category term="List" scheme="https://www.kikfan.com/tags/List/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重启征程</title>
+    <link href="https://www.kikfan.com/archives/188c91f.html"/>
+    <id>https://www.kikfan.com/archives/188c91f.html</id>
+    <published>2019-05-08T03:17:57.000Z</published>
+    <updated>2019-11-19T03:13:03.000Z</updated>
+    
+    <summary type="html">
+    
+      欢迎访问
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>密码与素数</title>
+    <link href="https://www.kikfan.com/archives/47e39252.html"/>
+    <id>https://www.kikfan.com/archives/47e39252.html</id>
+    <published>2019-04-19T06:09:06.000Z</published>
+    <updated>2019-04-19T06:09:06.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转自: &lt;a href=&quot;https://blog.csdn.net/ssmile/article/details/53423201#tt_daymode=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;密码学&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="密码" scheme="https://www.kikfan.com/tags/%E5%AF%86%E7%A0%81/"/>
+    
+      <category term="素数" scheme="https://www.kikfan.com/tags/%E7%B4%A0%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Elasticsearch</title>
+    <link href="https://www.kikfan.com/archives/d32d37e5.html"/>
+    <id>https://www.kikfan.com/archives/d32d37e5.html</id>
+    <published>2019-03-27T02:19:12.000Z</published>
+    <updated>2019-04-14T15:32:17.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;安装ES&quot;&gt;&lt;a href=&quot;#安装ES&quot; class=&quot;headerlink&quot; title=&quot;安装ES&quot;&gt;&lt;/a&gt;安装ES&lt;/h1&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="Elasticsearch" scheme="https://www.kikfan.com/tags/Elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL战leetcode</title>
+    <link href="https://www.kikfan.com/archives/7c4ba2e7.html"/>
+    <id>https://www.kikfan.com/archives/7c4ba2e7.html</id>
+    <published>2019-03-18T17:15:14.000Z</published>
+    <updated>2019-03-19T18:15:23.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;180-连续出现的数字&quot;&gt;&lt;a href=&quot;#180-连续出现的数字&quot; class=&quot;headerlink&quot; title=&quot;180.连续出现的数字&quot;&gt;&lt;/a&gt;180.连续出现的数字&lt;/h1&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://www.kikfan.com/categories/SQL/"/>
+    
+    
+      <category term="SQL" scheme="https://www.kikfan.com/tags/SQL/"/>
+    
+      <category term="leetcode" scheme="https://www.kikfan.com/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>frp实现内网穿透</title>
+    <link href="https://www.kikfan.com/archives/f51df9f4.html"/>
+    <id>https://www.kikfan.com/archives/f51df9f4.html</id>
+    <published>2019-03-16T02:23:33.000Z</published>
+    <updated>2019-03-16T18:37:22.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;什么是frp&quot;&gt;&lt;a href=&quot;#什么是frp&quot; class=&quot;headerlink&quot; title=&quot;什么是frp&quot;&gt;&lt;/a&gt;什么是frp&lt;/h1&gt;&lt;p&gt;frp 是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http,
+      
+    
+    </summary>
+    
+      <category term="好奇尚异" scheme="https://www.kikfan.com/categories/%E5%A5%BD%E5%A5%87%E5%B0%9A%E5%BC%82/"/>
+    
+    
+      <category term="frp" scheme="https://www.kikfan.com/tags/frp/"/>
+    
+      <category term="内网穿透" scheme="https://www.kikfan.com/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集合的求交集方法测试</title>
+    <link href="https://www.kikfan.com/archives/b0026423.html"/>
+    <id>https://www.kikfan.com/archives/b0026423.html</id>
+    <published>2019-03-08T16:31:18.000Z</published>
+    <updated>2019-03-08T16:31:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;猜想&quot;&gt;&lt;a href=&quot;#猜想&quot; class=&quot;headerlink&quot; title=&quot;猜想&quot;&gt;&lt;/a&gt;猜想&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;心血来潮，也是有需要使用到集合的交集，对List的Stream求交集，retainAll求交集，以及guava的求交集方式进行了
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.kikfan.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://www.kikfan.com/tags/Java/"/>
+    
+      <category term="集合" scheme="https://www.kikfan.com/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL，一叶障目，不见泰山</title>
+    <link href="https://www.kikfan.com/archives/5bea5d90.html"/>
+    <id>https://www.kikfan.com/archives/5bea5d90.html</id>
+    <published>2019-02-26T16:01:48.000Z</published>
+    <updated>2019-06-20T08:57:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;过于草率地相信直觉的判断了，作为一个猜想是需要验证的，想当然才是根源&lt;/li&gt;
+&lt;li&gt;执行力不够，脑袋里产生想法之后一定要立即马上去验证，时间长了就忘了！！（最次也得上备忘录）&lt;/li&gt;
+&lt;li&gt;对于连表的理解有欠缺&lt;/li&gt;
+&lt;li&gt;sql语句多学多看，多查
+      
+    
+    </summary>
+    
+      <category term="SQL" scheme="https://www.kikfan.com/categories/SQL/"/>
+    
+    
+      <category term="Java" scheme="https://www.kikfan.com/tags/Java/"/>
+    
+      <category term="SQL" scheme="https://www.kikfan.com/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分区助手迁移系统真的是爽</title>
+    <link href="https://www.kikfan.com/archives/a33f44d0.html"/>
+    <id>https://www.kikfan.com/archives/a33f44d0.html</id>
+    <published>2019-02-21T17:57:55.000Z</published>
+    <updated>2019-02-21T17:57:55.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;坑爹的建兴SSD，多次无缘无故自动格式化，终于没忍住动手搞搞&lt;/li&gt;
+&lt;li&gt;在固态中的系统果然是稳的不行&lt;br&gt;&lt;img src=&quot;../images/浦科特跑分.jpg&quot; alt=&quot;浦科特跑分&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      
+    
+    </summary>
+    
+      <category term="漫漫人生" scheme="https://www.kikfan.com/categories/%E6%BC%AB%E6%BC%AB%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="System" scheme="https://www.kikfan.com/tags/System/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java代码优化</title>
+    <link href="https://www.kikfan.com/archives/a2337e7d.html"/>
+    <id>https://www.kikfan.com/archives/a2337e7d.html</id>
+    <published>2019-02-14T14:51:26.000Z</published>
+    <updated>2019-02-14T16:58:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;尽量指定类、方法的final修饰符&quot;&gt;&lt;a href=&quot;#尽量指定类、方法的final修饰符&quot; class=&quot;headerlink&quot; title=&quot;尽量指定类、方法的final修饰符&quot;&gt;&lt;/a&gt;尽量指定类、方法的final修饰符&lt;/h1&gt;&lt;p&gt;带有final修饰符
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.kikfan.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://www.kikfan.com/tags/Java/"/>
+    
+      <category term="代码优化" scheme="https://www.kikfan.com/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>

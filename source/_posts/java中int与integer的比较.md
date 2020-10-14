@@ -1,9 +1,13 @@
 ---
 title: java中int与integer的比较
-tags: [java,Integer,int]
+tags:
+  - java
+  - Integer
+  - int
+categories: uncategorized
+abbrlink: 36219
 date: 2020-08-03 11:42:54
 updated: 2020-08-03 11:42:54
-categories: 温故知新
 ---
 # 前言：
 

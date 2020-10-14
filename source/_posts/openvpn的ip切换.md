@@ -1,9 +1,13 @@
 ---
 title: openvpn的ip切换
-tags: [shell,vpn,yml]
+tags:
+  - shell
+  - vpn
+  - yml
+categories: uncategorized
+abbrlink: 48632
 date: 2020-07-31 10:30:29
 updated: 2020-07-31 10:30:29
-categories: 好奇尚异
 ---
 # 起因
 - 本来用的好好的vpn，突然频繁断，然后使用finalshell连接vpn服务器，也频繁断开，折腾一天，啥都试了，以下是解决步骤

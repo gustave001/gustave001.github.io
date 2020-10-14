@@ -1,9 +1,11 @@
 ---
 title: git
-tags: [git]
+tags:
+  - git
+categories: uncategorized
+abbrlink: 43167
 date: 2020-07-05 11:32:10
 updated: 2020-07-05 11:32:10
-categories: 实用工具
 ---
 # git reset --hard --soft --mixed区别
 使用方法

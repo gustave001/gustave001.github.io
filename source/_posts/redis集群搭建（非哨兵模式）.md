@@ -1,5 +1,5 @@
 ---
-title: redis集群搭建（非哨兵模式）
+title: redis集群搭建
 tags: [redis]
 date: 2020-10-14 11:06:15
 updated: 2020-10-14 11:06:15

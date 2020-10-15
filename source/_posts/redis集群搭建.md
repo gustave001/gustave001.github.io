@@ -8,8 +8,6 @@ categories: 好奇尚异
 
 # config
 ```
-
-
 port 6391
 
 tcp-backlog 511
@@ -39,13 +37,6 @@ stop-writes-on-bgsave-error yes
 
 rdbcompression yes
 
-# Since version 5 of RDB a CRC64 checksum is placed at the end of the file.
-# This makes the format more resistant to corruption but there is a performance
-# hit to pay (around 10%) when saving and loading RDB files, so you can disable it
-# for maximum performances.
-#
-# RDB files created with checksum disabled have a checksum of zero that will
-# tell the loading code to skip the check.
 rdbchecksum yes
 
 # The filename where to dump the DB

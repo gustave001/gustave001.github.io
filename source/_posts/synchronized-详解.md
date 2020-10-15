@@ -8,7 +8,7 @@ categories: Java
 
 # synchronized(.class)
 synchronized（.class）只要是访问这个类的方法，就会同步，不管用这个类创建了几个对象！一般单列模式常用
-```
+```java
 private static volatile SingIn instance=null;
  private SingIn (){
  
@@ -27,7 +27,7 @@ private static volatile SingIn instance=null;
 
 # synchronized(Object )
 synchronized（Object x），通过对象同步，注意必须是同一个对象
-```
+```java
 @Override
  public void run（）{
      synchronized（Object x）{
@@ -38,7 +38,7 @@ synchronized（Object x），通过对象同步，注意必须是同一个对象
 
 # synchronized(this)
 synchronized（this） 指的是对象本身同步，一般在定义对象的方法时可以用，当只有访问同一对象，才会同步,和synchronized（Object x）功能类似。
-```
+```java
 public class ObjectService {  
     public void serviceMethodA(){  
         try {  

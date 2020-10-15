@@ -62,6 +62,11 @@ docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '+%Y-%m-%d') && pg_baseb
 
 ```
 
+# 压缩版本
+```shell script
+       docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '+%Y-%m-%d') && pg_basebackup -D /backup/$(date '+%Y-%m-%d') -Upostgres -R -Ft -z -v"
+```
+
 ```shell script
 drwxr-xr-x. 19 root    root  4096 10月 15 18:11 2020-10-15
 drwxr-xr-x.  2 polkitd input 4096 10月 15 18:11 pg_archive
@@ -88,5 +93,12 @@ recovery_target_time = '2020-10-14 16:38:00+08'
 # 定时任务执行备份，并定期删除过期文件
 ```shell script
 #!/bin/bash
-docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '+%Y-%m-%d') && pg_basebackup -D /backup/$(date '+%Y-%m-%d') -Upostgres -R" 
+export backupPath=/home/backup
+export backupLog=$backupPath/log/backup.log
+Monitor(){
+       docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '+%Y-%m-%d') && pg_basebackup -D /backup/$(date '+%Y-%m-%d') -Upostgres -R -Ft -z -v"
+}
+Monitor >> $backupLog
+find $backupPath -name "*.tar.gz" -mtime +20 |xargs rm -fr 2>&1
+find $backupPath -name "*-*-*" -mtime +20 |xargs rm -fr 2>&1
 ```

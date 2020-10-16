@@ -3,7 +3,7 @@ title: synchronized()详解
 tags:
   - Java
   - synchronized
-categories: uncategorized
+categories: 好奇尚异
 abbrlink: 40821
 date: 2020-10-14 11:02:53
 updated: 2020-10-14 11:02:53

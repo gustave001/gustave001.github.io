@@ -1,9 +1,12 @@
 ---
 title: postgres全备份和增量备份
-tags: [postgres,数据库]
-date: 2020-10-15 20:29:47
-updated: 2020-10-16
+tags:
+  - postgres
+  - 数据库
 categories: SQL
+abbrlink: 34964
+date: 2020-10-15 20:29:47
+updated: 2020-10-16 00:00:00
 ---
 
 
@@ -76,7 +79,7 @@ drwxr-xr-x.  2 polkitd input 4096 10月 15 18:11 pg_archive
 
 # 恢复
 - 解压缩相应日期下的备份，并复制到数据卷对应的数据库集簇目录，例如挂载方式为/home/data/docker/pgdata:/var/lib/postgres/data 则复制到宿主机的/home/data/docker/pgdata下
-```
+```shell script
 [root@localhost 2020-10-16]# pwd
 /home/backup/2020-10-16
 tar -xzvf base.tar.gz

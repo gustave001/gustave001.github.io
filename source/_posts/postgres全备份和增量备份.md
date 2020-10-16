@@ -2,8 +2,8 @@
 title: postgres全备份和增量备份
 tags: [postgres,数据库]
 date: 2020-10-15 20:29:47
-updated: 2020-10-15 20:29:47
-categories: 好奇尚异
+updated: 2020-10-16
+categories: SQL
 ---
 
 

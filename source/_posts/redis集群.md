@@ -1,9 +1,11 @@
 ---
 title: redis集群
-tags: [redis]
+tags:
+  - redis
+categories: uncategorized
+abbrlink: 53558
 date: 2020-10-14 11:02:53
 updated: 2020-10-14 11:02:53
-categories: redis
 ---
 
 # config

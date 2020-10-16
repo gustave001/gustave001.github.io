@@ -1,9 +1,12 @@
 ---
 title: synchronized()详解
-tags: [Java,synchronized]
+tags:
+  - Java
+  - synchronized
+categories: uncategorized
+abbrlink: 40821
 date: 2020-10-14 11:02:53
 updated: 2020-10-14 11:02:53
-categories: Java
 ---
 
 # synchronized(.class)

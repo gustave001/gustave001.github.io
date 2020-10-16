@@ -2,10 +2,10 @@
 title: git
 tags:
   - git
-categories: uncategorized
+categories: 实用工具
 abbrlink: 43167
 date: 2020-07-05 11:32:10
-updated: 2020-07-05 11:32:10
+updated: 2020-10-16
 ---
 # git reset --hard --soft --mixed区别
 使用方法

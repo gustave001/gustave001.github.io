@@ -4,7 +4,7 @@ tags:
   - shell
   - vpn
   - yml
-categories: uncategorized
+categories: 实用工具
 abbrlink: 48632
 date: 2020-07-31 10:30:29
 updated: 2020-07-31 10:30:29

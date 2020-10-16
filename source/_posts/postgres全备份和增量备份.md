@@ -40,7 +40,7 @@ Creating pgsql ... done
 
 ```
 
-# 获取用户信息 并赋予备份目录权限
+### 获取用户信息 并赋予备份目录权限
 - 注：因wal归档有以postgres身份执行的cp命令，所以需要该操作
 ```shell_script
 [root@localhost backup]# docker exec -it pgsql bash

@@ -121,11 +121,10 @@ recovery_target_time = '2020-10-14 16:38:00+08'
 [root@localhost backup]# cat cron/pg_backup_and_clear.sh 
 #!/bin/bash
 export backupPath=/data/backup
-export backupLog=$backupPath/log/backup.log
 export fileKeep=+20
-echo "$(date +'%F %H:%M:%S')"
-docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '+%Y-%m-%d') && pg_basebackup -D /backup/$(date '+%Y-%m-%d') -Upostgres -Ft -z -v"
-echo "backup finish"
+echo "$(date +'%F %H:%M:%S') backup start"
+docker exec pgsql /bin/bash -c "mkdir -p /backup/$(date '   +%Y-%m-%d') && pg_basebackup -D /backup/$(date '+%Y-%m-%d') -Upostgres -Ft -z -v"
+echo "$(date +'%F %H:%M:%S') backup finish"
 find $backupPath -name "*.tar.gz" -mtime $fileKeep |xargs rm -fr
 find $backupPath -name "*-*-*" -mtime $fileKeep |xargs rm -fr
 find $backupPath/pg_archive -mtime $fileKeep |xargs rm -fr

@@ -6,7 +6,7 @@ tags:
 categories: SQL
 abbrlink: 34964
 date: 2020-10-15 20:29:47
-updated: 2020-10-16 00:00:00
+updated: 2020-10-20
 ---
 
 
@@ -15,7 +15,8 @@ updated: 2020-10-16 00:00:00
 
 # 开启连续归档(增量备份)
 - $PGDATA 即集簇目录 找到postgres.conf
-*集簇目录* 表示为数据卷的主目录，对应容器里的/var/lib/postgres/data
+### 集簇目录 
+表示为数据卷的主目录，对应容器里的/var/lib/postgres/data
 ```shell_script
 [root@localhost pgsql]# ll
 总用量 8
@@ -29,7 +30,7 @@ wal_level = replica
 
 archive_mode = on
 
-archive_command = 'test ! -f /backup/pg_archive/%f && cp %p /backup/pg_archive/%f'
+archive_command = 'test ! -f /backup/pg_archive/%f.gz && gzip < %p > /backup/pg_archive/%f.gz'
 ###
 
 [root@localhost pgsql]# docker-compose down
@@ -39,9 +40,43 @@ Removing network pgsql_default
 [root@localhost pgsql]# docker-compose up -d
 Creating network "pgsql_default" with the default driver
 Creating pgsql ... done
-
-
 ```
+
+### 重新加载postgres.conf 
+- 对archive_command 生效
+```shell_script
+SELECT pg_reload_conf();
+```
+
+### 常用的归档配置如下
+1. 非压缩
+
+archive_command = 'cp %p /appdata/pgsql/pg_archive/%f && echo %f >> /appdata/pgsql/pg_archive/archive.list'
+restore_command = 'cp /appdata/pgsql/pg_archive/%f %p'
+2. 压缩 gzip
+
+archive_command = 'gzip < %p > /appdata/pgsql/pg_archive/%f.gz'
+restore_command = 'gunzip < /appdata/pgsql/pg_archive/%f.gz > %p'
+3. 压缩 bzip2
+
+archive_command = 'bzip2 < %p > /appdata/pgsql/pg_archive/%f.bz2'
+restore_command = 'bunzip2 < /appdata/pgsql/pg_archive/%f.bz2 > %p'
+4. 压缩 lz4
+
+archive_command = 'lz4 -f -q -z %p /appdata/pgsql/pg_archive/%f.lz4'
+restore_command = 'lz4 -f -q -d /appdata/pgsql/pg_archive/%f.lz4 %p'
+5. scp方式
+
+archive_command = 'scp %p dragon02:/appdata/pgsql/pg_archive/%f'
+restore_command = 'scp dragon02:/appdata/pgsql/pg_archive/%f %p'
+6. rsync方式
+
+archive_command = 'rsync -a %p barman@dragon02:/appdata/pgsql/pg_archive/%f'
+restore_command = 'rsync -a barman@dragon02:/appdata/pgsql/pg_archive/%f %p'
+7. windows
+
+archive_command = 'copy "%p" "C:\\appdata\\pgsql\\pg_archive\\%f"'
+
 
 ### 获取用户信息 并赋予备份目录权限
 - 注：因wal归档有以postgres身份执行的cp命令，所以需要该操作
@@ -79,20 +114,21 @@ drwxr-xr-x.  2 polkitd input 4096 10月 15 18:11 pg_archive
 
 # 恢复
 - 解压缩相应日期下的备份，并复制到数据卷对应的数据库集簇目录，例如挂载方式为/home/data/docker/pgdata:/var/lib/postgres/data 则复制到宿主机的/home/data/docker/pgdata下
-```shell script
+```shell_script
 [root@localhost 2020-10-16]# pwd
 /home/backup/2020-10-16
 tar -xzvf base.tar.gz
-cp * /home/data/docker/pgdata/
+cp * /data/docker/pgsql/pgdata/
 ```
 - 配置好相应的docker-compose.yml （注意不能现在还不能启动）
 - $PGDATA 目录创建 recovery.conf 文件，配置恢复信息
 ```shell_script
 cat recovery.conf
 
-restore_command = 'cp /backup/pg_archive/%f %p'                    
+restore_command = 'gunzip < /backup/pg_archive/%f.gz > %p'                    
 
 recovery_target_time = '2020-10-14 16:38:00+08'
+# recovery_target_timeline = 'latest'
 
 ```
 - docker-compose.yml 所在目录 执行 docker-compose up -d
@@ -113,7 +149,7 @@ recovery_target_time = '2020-10-14 16:38:00+08'
 - 定时任务,每天凌晨 0点5分执行该脚本，并记录执行日志
 ```shell_script
 [root@localhost backup]# crontab -l
-5 0 * * * /bin/bash -x /home/backup/cron/pg_backup_and_clear.sh 1>>/data/backup/log/backup.log 2>&1
+5 0 * * * /bin/bash /data/backup/cron/pg_backup_and_clear.sh 1>>/data/backup/log/backup.log 2>&1
 ```
 
 - 具体脚本
@@ -128,4 +164,15 @@ echo "$(date +'%F %H:%M:%S') backup finish"
 find $backupPath -name "*.tar.gz" -mtime $fileKeep |xargs rm -fr
 find $backupPath -name "*-*-*" -mtime $fileKeep |xargs rm -fr
 find $backupPath/pg_archive -mtime $fileKeep |xargs rm -fr
+```
+
+# 定时任务执行有效期加10年的操作
+- 注意这里转义字符的使用，还是挺讲究的
+```shell_script
+docker exec pgsql /bin/bash -c "psql -U postgres -d zegobirdWMS_Storage -c \"UPDATE tb_locationstock SET expirationdate = expirationdate + INTERVAL '10 YEAR' WHERE expirationdate < '2025-01-01'\""
+```
+
+# 切换wal 日志
+```shelll_script
+select pg_switch_wal();
 ```

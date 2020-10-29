@@ -2,7 +2,7 @@
 title: Mysql物理备份恢复
 tags:
   - SQL
-categories: SQL
+categories: 吃堑长智
 abbrlink: '29644176'
 date: 2019-10-16 11:16:30
 updated: 2019-10-24 11:13:46

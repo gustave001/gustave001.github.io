@@ -3,7 +3,7 @@ title: tomcat假死
 tags: [Java,tomcat]
 date: 2020-10-29 17:49:02
 updated: 2020-10-29 17:49:02
-categories: Java
+categories: 吃堑长智
 ---
 
 # 前言

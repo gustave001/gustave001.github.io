@@ -17,10 +17,10 @@ harbor镜像没有自动清理过期镜像的设置，所以通过api利用shell
 
 # 通过api查找到所有对应的镜像地址，这里有个"tags_count"就是镜像的tag数，通过tag数判断>5筛选出对应的镜像"repository_name"，刚开始一直在想通过管道连接的方式一条语句判断出来，结果确实没有想到好的方法判断出来，退而求其次选择了现在的方法，将获取到的值保存到文件中，根据自己的需要构造一个新的文件。
 
-harbor_user=admin
-harbor_passwd=Harbor12345
-harbor_url=192.168.50.54
-HARBOR_PATH=/opt/harbor-v1.9.4/harbor
+harbor_user=
+harbor_passwd=
+harbor_url=
+HARBOR_PATH=
 repo=dev
 
 echo "$(date +'%F %H:%M:%S') clear start"
@@ -130,10 +130,10 @@ echo "$(date +'%F %H:%M:%S') clear finish"
 
 # 通过api查找到所有对应的镜像地址，这里有个"tags_count"就是镜像的tag数，通过tag数判断>5筛选出对应的镜像"repository_name"，刚开始一直在想通过管道连接的方式一条语句判断出来，结果确实没有想到好的方法判断出来，退而求其次选择了现在的方法，将获取到的值保存到文件中，根据自己的需要构造一个新的文件。
 
-harbor_user=admin
-harbor_passwd=Zego@654321
-harbor_url=192.168.1.124
-HARBOR_PATH=/opt/harbor
+harbor_user=
+harbor_passwd=
+harbor_url=
+HARBOR_PATH=
 repo=pro
 version=v2.0
 

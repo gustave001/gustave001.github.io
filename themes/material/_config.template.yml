@@ -245,10 +245,10 @@ comment:
     changyan_conf:
     changyan_thread_key_type: path
     livere_data_uid: MTAyMC80MDI4Ny8xNjgxNA
-    gitment_repo: kikyou93.github.io
-    gitment_owner: kikyou93
+    gitment_repo: gustave001.github.io
+    gitment_owner: gustave001
     gitment_client_id: 548e75a8ecf67f7a94be
-    gitment_client_secret : 53135961623f7a80eefea4a473943e1c0a88c0aa
+    gitment_client_secret: 53135961623f7a80eefea4a473943e1c0a88c0aa
     valine_leancloud_appId: y342POhWCRR95vOhfnvm8JmU-gzGzoHsz
     valine_leancloud_appKey: LYAWA6Xx4eiYgbghbg6uxeuB
     valine_notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki

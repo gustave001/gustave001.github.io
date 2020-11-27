@@ -91,7 +91,7 @@ baidu_url_submit:
 deploy:
 - type: git
   repo:
-  - git@github.com:kikyou93/kikyou93.github.io.git
+  - git@github.com:gustave001/gustave001.github.io.git
 #  - git@e.coding.net:kikfan/kikfan.coding.me.git
   branch: master
   message: 'Updated By Hexo'

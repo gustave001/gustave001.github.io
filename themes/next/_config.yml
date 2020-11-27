@@ -127,7 +127,7 @@ scheme: Mist
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  GitHub: https://github.com/kikyou93 || github
+  GitHub: https://github.com/gustave001 || github
 #  E-Mail: mailto:yourname@gmail.com || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -826,7 +826,7 @@ tool_detail:
     MapperUtils: /archives/80084445.html
     CookieUtils: /archives/b1e39e23.html
     IDEA快捷键: https://blog.csdn.net/yangwei256/article/details/82683140
-    Config.yml: https://github.com/kikyou93/kikyou93.github.io/edit/source/_config.yml
+    Config.yml: https://github.com/gustave001/gustave001.github.io/edit/source/_config.yml
     Jrebel: https://tools.hexianwei.com/#/tools/jrebel
     IDEA-Tool-tips: https://github.com/xiaoxiunique/tool-tips
   我的收藏:
@@ -861,8 +861,8 @@ tool_detail:
     百度流量研究院: https://tongji.baidu.com/data/browser
   高频网站:
     key: 高频网站
-    GitHub: https://github.com/kikyou93/kikyou93.github.io/tree/source
-    Travis CI: https://www.travis-ci.org/kikyou93/kikyou93.github.io/
+    GitHub: https://github.com/gustave001/gustave001.github.io/tree/source
+    Travis CI: https://www.travis-ci.org/gustave001/gustave001.github.io/
     Virmach: https://billing.virmach.com/clientarea.php?action=services
     Coding Pages: https://dev.tencent.com/u/kikfan/p/kikfan.coding.me/git
     MavenRepo: https://mvnrepository.com/

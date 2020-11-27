@@ -73,7 +73,7 @@ branches:
     - source
 env:
   global:
-    - GH_REF: github.com/kikyou93/kikyou93.github.io.git
+    - GH_REF: github.com/gustave001/gustave001.github.io.git
     - CO_REF: git.coding.net/kikfan/kikfan.coding.me.git
 
 # configure notifications (email, IRC, campfire etc)

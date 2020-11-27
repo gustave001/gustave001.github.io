@@ -15,7 +15,6 @@ install:
   - cnpm install
 #  - npm install
 
-
 #before_script:
 #  - export TZ='Asia/Shanghai' # 更改时区
 

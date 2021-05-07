@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="276px" preserveAspectRatio="none" style="width:379px;height:276px;" version="1.1" viewBox="0 0 379 276" width="379px" zoomAndPan="magnify"><defs><filter height="300%" id="f6xtgz8eyql3j" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[11f4549b7e8321ef46cfe4de9e924cbb]
+cluster DIP ZhangsanShop 类图--><polygon fill="#DDDDDD" filter="url(#f6xtgz8eyql3j)" points="22,24,193,24,200,49.1201,357,49.1201,357,264,22,264,22,24" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="22" x2="200" y1="49.1201" y2="49.1201"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="165" x="26" y="42.0439">DIP ZhangsanShop 类图</text><!--MD5=[2ce0c9fb7f55b1e256ab28a8ea6b25ec]
+class Customer--><rect fill="#FEFECE" filter="url(#f6xtgz8eyql3j)" height="63.0229" id="Customer" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="38" y="62"/><ellipse cx="60.65" cy="78" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M59.2281,83.3594 Q57.3688,83.3594 56.275,81.9688 Q55.1813,80.5781 55.1813,77.5938 Q55.1813,75.0625 56.3453,73.4063 Q57.5094,71.75 59.4938,71.75 Q60.9625,71.75 61.4313,71.875 Q61.9,72.0781 61.9,72.0781 Q61.9,72.0781 61.9,72.0078 Q61.9,71.9375 62.5094,71.0156 L63.5563,74.6719 L62.2281,75.0781 Q61.7594,73.5313 61.0953,72.8672 Q60.4313,72.2031 59.3688,72.2031 Q58.9781,72.2031 58.2125,73.7344 Q57.4469,75.2656 57.4469,77.5156 Q57.4469,79.9844 58.1109,81.375 Q58.775,82.7656 59.3063,82.7656 Q60.3688,82.7656 61.1266,82 Q61.8844,81.2344 62.2281,79.5781 L63.5563,80.1719 Q63.2281,81.5781 62.3297,82.4688 Q61.4313,83.3594 59.2281,83.3594 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="76.35" y="83.5576">Customer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="141" y1="94" y2="94"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="39" x2="141" y1="102" y2="102"/><ellipse cx="49" cy="113" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="78" x="58" y="118.606">void shopping();</text><path d="M177.5,70.5 L177.5,89.5 L142.152,93.5 L177.5,97.5 L177.5,116.0088 A0,0 0 0 0 177.5,116.0088 L340.5,116.0088 A0,0 0 0 0 340.5,116.0088 L340.5,80.5 L330.5,70.5 L177.5,70.5 A0,0 0 0 0 177.5,70.5 " fill="#FBFB77" filter="url(#f6xtgz8eyql3j)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M330.5,70.5 L330.5,80.5 L340.5,80.5 L330.5,70.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="142" x="183.5" y="90.3979">用户调用 ZhangsanShop</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="80" x="183.5" y="108.1523">中的 sell 方法</text><!--MD5=[c867eb4fa9cb96e5df3fcd823c8a8777]
+class ZhangsanShop--><rect fill="#FEFECE" filter="url(#f6xtgz8eyql3j)" height="63.0229" id="ZhangsanShop" style="stroke: #A80036; stroke-width: 1.5;" width="117" x="38.5" y="185"/><ellipse cx="53.5" cy="201" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M52.0781,206.3594 Q50.2188,206.3594 49.125,204.9688 Q48.0313,203.5781 48.0313,200.5938 Q48.0313,198.0625 49.1953,196.4063 Q50.3594,194.75 52.3438,194.75 Q53.8125,194.75 54.2813,194.875 Q54.75,195.0781 54.75,195.0781 Q54.75,195.0781 54.75,195.0078 Q54.75,194.9375 55.3594,194.0156 L56.4063,197.6719 L55.0781,198.0781 Q54.6094,196.5313 53.9453,195.8672 Q53.2813,195.2031 52.2188,195.2031 Q51.8281,195.2031 51.0625,196.7344 Q50.2969,198.2656 50.2969,200.5156 Q50.2969,202.9844 50.9609,204.375 Q51.625,205.7656 52.1563,205.7656 Q53.2188,205.7656 53.9766,205 Q54.7344,204.2344 55.0781,202.5781 L56.4063,203.1719 Q56.0781,204.5781 55.1797,205.4688 Q54.2813,206.3594 52.0781,206.3594 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="85" x="67.5" y="206.5576">ZhangsanShop</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="154.5" y1="217" y2="217"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="154.5" y1="225" y2="225"/><ellipse cx="49.5" cy="236" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="58.5" y="241.606">void sell();</text><!--MD5=[2981778a22aa48db113872f0215f42f2]
+link Customer to ZhangsanShop--><path d="M91.7664,125.033 C92.4628,137.071 93.2816,151.226 94.0622,164.718 " fill="none" id="Customer-&gt;ZhangsanShop" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="101.0673,164.605,95.2342,184.9764,87.0907,165.414,101.0673,164.605" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[0ede2ac3c2fc962999d8039e0c3eb77d]
+@startuml
+package "DIP ZhangsanShop 类图" #DDDDDD {
+    Class Customer {
+        +void shopping();
+    }
+    note right of Customer
+    用户调用 ZhangsanShop
+    中的 sell 方法
+    end note
+
+    Class ZhangsanShop {
+        +void sell();
+    }
+
+    Customer - -|> ZhangsanShop
+}
+
+
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 17:35:57 CST 2020)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Java Version: 1.8.0_91-b14
+Operating System: Windows 10
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

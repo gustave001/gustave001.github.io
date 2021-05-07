@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="276px" preserveAspectRatio="none" style="width:496px;height:276px;" version="1.1" viewBox="0 0 496 276" width="496px" zoomAndPan="magnify"><defs><filter height="300%" id="f16lnage86wh79" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[11f4549b7e8321ef46cfe4de9e924cbb]
+cluster DIP ZhangsanShop 类图--><polygon fill="#DDDDDD" filter="url(#f16lnage86wh79)" points="22,24,193,24,200,49.1201,474,49.1201,474,264,22,264,22,24" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="22" x2="200" y1="49.1201" y2="49.1201"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="165" x="26" y="42.0439">DIP ZhangsanShop 类图</text><!--MD5=[2ce0c9fb7f55b1e256ab28a8ea6b25ec]
+class Customer--><rect fill="#FEFECE" filter="url(#f16lnage86wh79)" height="63.0229" id="Customer" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="191" y="62"/><ellipse cx="213.65" cy="78" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M212.2281,83.3594 Q210.3688,83.3594 209.275,81.9688 Q208.1813,80.5781 208.1813,77.5938 Q208.1813,75.0625 209.3453,73.4063 Q210.5094,71.75 212.4938,71.75 Q213.9625,71.75 214.4313,71.875 Q214.9,72.0781 214.9,72.0781 Q214.9,72.0781 214.9,72.0078 Q214.9,71.9375 215.5094,71.0156 L216.5563,74.6719 L215.2281,75.0781 Q214.7594,73.5313 214.0953,72.8672 Q213.4313,72.2031 212.3688,72.2031 Q211.9781,72.2031 211.2125,73.7344 Q210.4469,75.2656 210.4469,77.5156 Q210.4469,79.9844 211.1109,81.375 Q211.775,82.7656 212.3063,82.7656 Q213.3688,82.7656 214.1266,82 Q214.8844,81.2344 215.2281,79.5781 L216.5563,80.1719 Q216.2281,81.5781 215.3297,82.4688 Q214.4313,83.3594 212.2281,83.3594 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="229.35" y="83.5576">Customer</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="192" x2="294" y1="94" y2="94"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="192" x2="294" y1="102" y2="102"/><ellipse cx="202" cy="113" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="78" x="211" y="118.606">void shopping();</text><path d="M330.5,70.5 L330.5,89.5 L295.201,93.5 L330.5,97.5 L330.5,116.0088 A0,0 0 0 0 330.5,116.0088 L457.5,116.0088 A0,0 0 0 0 457.5,116.0088 L457.5,80.5 L447.5,70.5 L330.5,70.5 A0,0 0 0 0 330.5,70.5 " fill="#FBFB77" filter="url(#f16lnage86wh79)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M447.5,70.5 L447.5,80.5 L457.5,80.5 L447.5,70.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="106" x="336.5" y="90.3979">用户调用 LisiShop</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="80" x="336.5" y="108.1523">中的 sell 方法</text><!--MD5=[c867eb4fa9cb96e5df3fcd823c8a8777]
+class ZhangsanShop--><rect fill="#FEFECE" filter="url(#f16lnage86wh79)" height="63.0229" id="ZhangsanShop" style="stroke: #A80036; stroke-width: 1.5;" width="117" x="38.5" y="62"/><ellipse cx="53.5" cy="78" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M52.0781,83.3594 Q50.2188,83.3594 49.125,81.9688 Q48.0313,80.5781 48.0313,77.5938 Q48.0313,75.0625 49.1953,73.4063 Q50.3594,71.75 52.3438,71.75 Q53.8125,71.75 54.2813,71.875 Q54.75,72.0781 54.75,72.0781 Q54.75,72.0781 54.75,72.0078 Q54.75,71.9375 55.3594,71.0156 L56.4063,74.6719 L55.0781,75.0781 Q54.6094,73.5313 53.9453,72.8672 Q53.2813,72.2031 52.2188,72.2031 Q51.8281,72.2031 51.0625,73.7344 Q50.2969,75.2656 50.2969,77.5156 Q50.2969,79.9844 50.9609,81.375 Q51.625,82.7656 52.1563,82.7656 Q53.2188,82.7656 53.9766,82 Q54.7344,81.2344 55.0781,79.5781 L56.4063,80.1719 Q56.0781,81.5781 55.1797,82.4688 Q54.2813,83.3594 52.0781,83.3594 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="85" x="67.5" y="83.5576">ZhangsanShop</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="154.5" y1="94" y2="94"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="154.5" y1="102" y2="102"/><ellipse cx="49.5" cy="113" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="58.5" y="118.606">void sell();</text><!--MD5=[092eeebd04e19b45704b62eb5f3199cd]
+class LisiShop--><rect fill="#FEFECE" filter="url(#f16lnage86wh79)" height="63.0229" id="LisiShop" style="stroke: #A80036; stroke-width: 1.5;" width="81" x="202.5" y="185"/><ellipse cx="217.5" cy="201" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M216.0781,206.3594 Q214.2188,206.3594 213.125,204.9688 Q212.0313,203.5781 212.0313,200.5938 Q212.0313,198.0625 213.1953,196.4063 Q214.3594,194.75 216.3438,194.75 Q217.8125,194.75 218.2813,194.875 Q218.75,195.0781 218.75,195.0781 Q218.75,195.0781 218.75,195.0078 Q218.75,194.9375 219.3594,194.0156 L220.4063,197.6719 L219.0781,198.0781 Q218.6094,196.5313 217.9453,195.8672 Q217.2813,195.2031 216.2188,195.2031 Q215.8281,195.2031 215.0625,196.7344 Q214.2969,198.2656 214.2969,200.5156 Q214.2969,202.9844 214.9609,204.375 Q215.625,205.7656 216.1563,205.7656 Q217.2188,205.7656 217.9766,205 Q218.7344,204.2344 219.0781,202.5781 L220.4063,203.1719 Q220.0781,204.5781 219.1797,205.4688 Q218.2813,206.3594 216.0781,206.3594 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="49" x="231.5" y="206.5576">LisiShop</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="203.5" x2="282.5" y1="217" y2="217"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="203.5" x2="282.5" y1="225" y2="225"/><ellipse cx="213.5" cy="236" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="222.5" y="241.606">void sell();</text><!--MD5=[18e91e7802db9df47aead303013f8543]
+link Customer to LisiShop--><path d="M243,125.033 C243,137.071 243,151.226 243,164.718 " fill="none" id="Customer-&gt;LisiShop" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="250,164.976,243,184.9764,236,164.976,250,164.976" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ed7440236ad445a44e032b7899b3dbae]
+@startuml
+package "DIP ZhangsanShop 类图" #DDDDDD {
+    Class Customer {
+        +void shopping();
+    }
+    note right of Customer
+    用户调用 LisiShop
+    中的 sell 方法
+    end note
+
+    Class ZhangsanShop {
+        +void sell();
+    }
+
+    Class LisiShop {
+        +void sell();
+    }
+
+    Customer - -|> LisiShop
+}
+
+
+@enduml
+
+PlantUML version 1.2020.10(Sun May 17 17:35:57 CST 2020)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Java Version: 1.8.0_91-b14
+Operating System: Windows 10
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

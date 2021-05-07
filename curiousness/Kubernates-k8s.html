@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搭建k8s集群 | kikfan</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css">
+    <meta name="description" content="kikfan">
+    
+    <link rel="preload" href="/assets/css/2.styles.051e8285.css" as="style"><link rel="preload" href="/assets/js/app.27b2d4ce.js" as="script"><link rel="preload" href="/assets/js/4.9a9f6078.js" as="script"><link rel="preload" href="/assets/js/43.1f36637d.js" as="script"><link rel="prefetch" href="/assets/js/0.e4e7bdd7.js"><link rel="prefetch" href="/assets/js/1.fa961c29.js"><link rel="prefetch" href="/assets/js/10.731ee775.js"><link rel="prefetch" href="/assets/js/100.8f4b7cc5.js"><link rel="prefetch" href="/assets/js/101.a083f158.js"><link rel="prefetch" href="/assets/js/102.2c3648c3.js"><link rel="prefetch" href="/assets/js/103.f00d7dd8.js"><link rel="prefetch" href="/assets/js/104.0c414ab7.js"><link rel="prefetch" href="/assets/js/105.683675df.js"><link rel="prefetch" href="/assets/js/106.733b71a1.js"><link rel="prefetch" href="/assets/js/107.16837d98.js"><link rel="prefetch" href="/assets/js/108.28ae623b.js"><link rel="prefetch" href="/assets/js/109.a702f251.js"><link rel="prefetch" href="/assets/js/11.d7b558c8.js"><link rel="prefetch" href="/assets/js/110.74980c24.js"><link rel="prefetch" href="/assets/js/111.bf05772f.js"><link rel="prefetch" href="/assets/js/112.7f823ce5.js"><link rel="prefetch" href="/assets/js/113.4145bf66.js"><link rel="prefetch" href="/assets/js/114.4466ba9a.js"><link rel="prefetch" href="/assets/js/115.7066e3ba.js"><link rel="prefetch" href="/assets/js/116.dc1f78b7.js"><link rel="prefetch" href="/assets/js/117.88fe74db.js"><link rel="prefetch" href="/assets/js/118.e37e03b4.js"><link rel="prefetch" href="/assets/js/119.d7e4f790.js"><link rel="prefetch" href="/assets/js/12.42f2fa87.js"><link rel="prefetch" href="/assets/js/13.41e1d4b5.js"><link rel="prefetch" href="/assets/js/14.5b7e8e37.js"><link rel="prefetch" href="/assets/js/15.d9e0fc06.js"><link rel="prefetch" href="/assets/js/16.87dd9a3b.js"><link rel="prefetch" href="/assets/js/17.d120ed17.js"><link rel="prefetch" href="/assets/js/18.59184376.js"><link rel="prefetch" href="/assets/js/19.39139a03.js"><link rel="prefetch" href="/assets/js/20.2d9ec408.js"><link rel="prefetch" href="/assets/js/21.6e654bc3.js"><link rel="prefetch" href="/assets/js/22.1a060135.js"><link rel="prefetch" href="/assets/js/23.dcf0bfcc.js"><link rel="prefetch" href="/assets/js/24.9b4a4b3e.js"><link rel="prefetch" href="/assets/js/25.f57f3c65.js"><link rel="prefetch" href="/assets/js/26.fc43a3ae.js"><link rel="prefetch" href="/assets/js/27.e9aaf732.js"><link rel="prefetch" href="/assets/js/28.6e1886c7.js"><link rel="prefetch" href="/assets/js/29.ff720b7d.js"><link rel="prefetch" href="/assets/js/30.297554f4.js"><link rel="prefetch" href="/assets/js/31.fc02f056.js"><link rel="prefetch" href="/assets/js/32.978c9766.js"><link rel="prefetch" href="/assets/js/33.faa483ef.js"><link rel="prefetch" href="/assets/js/34.7f3cc871.js"><link rel="prefetch" href="/assets/js/35.62b9a752.js"><link rel="prefetch" href="/assets/js/36.c08848fc.js"><link rel="prefetch" href="/assets/js/37.59f685b7.js"><link rel="prefetch" href="/assets/js/38.c1588f41.js"><link rel="prefetch" href="/assets/js/39.fdb35fe6.js"><link rel="prefetch" href="/assets/js/40.65505803.js"><link rel="prefetch" href="/assets/js/41.54da323c.js"><link rel="prefetch" href="/assets/js/42.45bbba91.js"><link rel="prefetch" href="/assets/js/44.d7d8a539.js"><link rel="prefetch" href="/assets/js/45.7d764f0b.js"><link rel="prefetch" href="/assets/js/46.3bad6567.js"><link rel="prefetch" href="/assets/js/47.2946a535.js"><link rel="prefetch" href="/assets/js/48.85cbb854.js"><link rel="prefetch" href="/assets/js/49.315a2781.js"><link rel="prefetch" href="/assets/js/5.60a71eda.js"><link rel="prefetch" href="/assets/js/50.58a11a9c.js"><link rel="prefetch" href="/assets/js/51.ea33dd6c.js"><link rel="prefetch" href="/assets/js/52.c9f47820.js"><link rel="prefetch" href="/assets/js/53.012a446d.js"><link rel="prefetch" href="/assets/js/54.2c4f1849.js"><link rel="prefetch" href="/assets/js/55.2a967be9.js"><link rel="prefetch" href="/assets/js/56.2d46c0a0.js"><link rel="prefetch" href="/assets/js/57.c8880e0a.js"><link rel="prefetch" href="/assets/js/58.a6b007f9.js"><link rel="prefetch" href="/assets/js/59.97b9b7e5.js"><link rel="prefetch" href="/assets/js/6.afcd84ec.js"><link rel="prefetch" href="/assets/js/60.f4a784fc.js"><link rel="prefetch" href="/assets/js/61.05eed8fc.js"><link rel="prefetch" href="/assets/js/62.d95be5f8.js"><link rel="prefetch" href="/assets/js/63.c0d0a152.js"><link rel="prefetch" href="/assets/js/64.f74c6626.js"><link rel="prefetch" href="/assets/js/65.4872ba36.js"><link rel="prefetch" href="/assets/js/66.3846d75c.js"><link rel="prefetch" href="/assets/js/67.5d3c513c.js"><link rel="prefetch" href="/assets/js/68.4c28dad7.js"><link rel="prefetch" href="/assets/js/69.23fa6377.js"><link rel="prefetch" href="/assets/js/7.69deb300.js"><link rel="prefetch" href="/assets/js/70.a1673575.js"><link rel="prefetch" href="/assets/js/71.53175f3c.js"><link rel="prefetch" href="/assets/js/72.699361e6.js"><link rel="prefetch" href="/assets/js/73.683bacf8.js"><link rel="prefetch" href="/assets/js/74.d27b950a.js"><link rel="prefetch" href="/assets/js/75.30cfcf8c.js"><link rel="prefetch" href="/assets/js/76.7115ba1f.js"><link rel="prefetch" href="/assets/js/77.61f7aec4.js"><link rel="prefetch" href="/assets/js/78.d9b71b38.js"><link rel="prefetch" href="/assets/js/79.8df96305.js"><link rel="prefetch" href="/assets/js/8.b5d41094.js"><link rel="prefetch" href="/assets/js/80.caefa481.js"><link rel="prefetch" href="/assets/js/81.fbe7f1af.js"><link rel="prefetch" href="/assets/js/82.8a0c0e86.js"><link rel="prefetch" href="/assets/js/83.77f553eb.js"><link rel="prefetch" href="/assets/js/84.9d3058ad.js"><link rel="prefetch" href="/assets/js/85.d66493d7.js"><link rel="prefetch" href="/assets/js/86.d82b3465.js"><link rel="prefetch" href="/assets/js/87.ff69dfdc.js"><link rel="prefetch" href="/assets/js/88.db8a809d.js"><link rel="prefetch" href="/assets/js/89.dbae01c0.js"><link rel="prefetch" href="/assets/js/9.42dfa068.js"><link rel="prefetch" href="/assets/js/90.ac501b95.js"><link rel="prefetch" href="/assets/js/91.de4c7a0e.js"><link rel="prefetch" href="/assets/js/92.689f4272.js"><link rel="prefetch" href="/assets/js/93.17e1c4ae.js"><link rel="prefetch" href="/assets/js/94.1978b8c9.js"><link rel="prefetch" href="/assets/js/95.fb0afeb1.js"><link rel="prefetch" href="/assets/js/96.8b6541d8.js"><link rel="prefetch" href="/assets/js/97.793aa5c6.js"><link rel="prefetch" href="/assets/js/98.62b7c58e.js"><link rel="prefetch" href="/assets/js/99.54020815.js">
+    <link rel="stylesheet" href="/assets/css/2.styles.051e8285.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">kikfan</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/java/" class="nav-link">
+  Java
+</a></div><div class="nav-item"><a href="/idea/" class="nav-link">
+  IDEA
+</a></div><div class="nav-item"><a href="/devops/" class="nav-link">
+  DevOps
+</a></div><div class="nav-item"><a href="/web/" class="nav-link">
+  Web
+</a></div><div class="nav-item"><a href="/curiousness/" class="nav-link router-link-active">
+  好奇尚异
+</a></div><div class="nav-item"><a href="/long-road/" class="nav-link">
+  道阻且长
+</a></div><div class="nav-item"><a href="/step-back/" class="nav-link">
+  海阔天空
+</a></div><div class="nav-item"><a href="/experience/" class="nav-link">
+  吃堑长智
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  Tools
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/java/" class="nav-link">
+  Java
+</a></div><div class="nav-item"><a href="/idea/" class="nav-link">
+  IDEA
+</a></div><div class="nav-item"><a href="/devops/" class="nav-link">
+  DevOps
+</a></div><div class="nav-item"><a href="/web/" class="nav-link">
+  Web
+</a></div><div class="nav-item"><a href="/curiousness/" class="nav-link router-link-active">
+  好奇尚异
+</a></div><div class="nav-item"><a href="/long-road/" class="nav-link">
+  道阻且长
+</a></div><div class="nav-item"><a href="/step-back/" class="nav-link">
+  海阔天空
+</a></div><div class="nav-item"><a href="/experience/" class="nav-link">
+  吃堑长智
+</a></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  Tools
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>好奇尚异</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/curiousness/" aria-current="page" class="sidebar-link">简介</a></li><li><a href="/curiousness/Elasticsearch.html" class="sidebar-link">Elasticsearch</a></li><li><a href="/curiousness/IDEA插件开发小试牛刀.html" class="sidebar-link">IDEA插件开发小试牛刀</a></li><li><a href="/curiousness/Kubernates-k8s.html" aria-current="page" class="active sidebar-link">Kubernates-k8s</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#搭建k8s集群" class="sidebar-link">搭建k8s集群</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#主机名映射" class="sidebar-link">主机名映射</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#在所有节点上安装kubeadm-这里使用阿里云的系统和kubernetes的源" class="sidebar-link">在所有节点上安装kubeadm，这里使用阿里云的系统和kubernetes的源</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#更新源并安装kubeadm-kubectl-kubelet软件包-安装docker-io-非docker-ce" class="sidebar-link">更新源并安装kubeadm, kubectl, kubelet软件包;安装docker.io(非docker-ce)</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#使用kubeadmin初始化master节点-这里有两个坑" class="sidebar-link">使用kubeadmin初始化master节点，这里有两个坑！！</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#大功告成" class="sidebar-link">大功告成</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#安装网络插件canal" class="sidebar-link">安装网络插件canal</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#执行如下命令-可以就可以查看canal的安装状态了" class="sidebar-link">执行如下命令，可以就可以查看canal的安装状态了</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#查看节点" class="sidebar-link">查看节点</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#slave节点在集群中的操作" class="sidebar-link">slave节点在集群中的操作</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#增加新的node节点到你的集群的命令如下" class="sidebar-link">增加新的Node节点到你的集群的命令如下：</a></li><li class="sidebar-sub-header"><a href="/curiousness/Kubernates-k8s.html#删除slave节点" class="sidebar-link">删除slave节点</a></li></ul></li><li><a href="/curiousness/Redis-Sentinel高可用.html" class="sidebar-link">Redis-Sentinel高可用</a></li><li><a href="/curiousness/SearchQuickByShortcut.html" class="sidebar-link">SearchQuickByShortcut</a></li><li><a href="/curiousness/bitmap-有点意思.html" class="sidebar-link">bitmap-有点意思</a></li><li><a href="/curiousness/frp实现内网穿透.html" class="sidebar-link">frp实现内网穿透</a></li><li><a href="/curiousness/harbor镜像自动清理脚本.html" class="sidebar-link">harbor镜像自动清理脚本</a></li><li><a href="/curiousness/jenkins配置及使用.html" class="sidebar-link">jenkins配置及使用</a></li><li><a href="/curiousness/openvpn-frp实现内网穿透远程办公.html" class="sidebar-link">openvpn-frp实现内网穿透远程办公</a></li><li><a href="/curiousness/openvpn的ip切换.html" class="sidebar-link">openvpn的ip切换</a></li><li><a href="/curiousness/redis配置及命令大全.html" class="sidebar-link">redis配置及命令大全</a></li><li><a href="/curiousness/redis集群.html" class="sidebar-link">redis集群</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="搭建k8s集群"><a href="#搭建k8s集群" class="header-anchor">#</a> 搭建k8s集群</h2> <h2 id="主机名映射"><a href="#主机名映射" class="header-anchor">#</a> 主机名映射</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> /etc/hosts
+<span class="token number">127.0</span>.0.1	localhost
+<span class="token number">192.168</span>.213.130   k8s-master
+<span class="token number">192.168</span>.213.131   k8s-slave
+</code></pre></div><p>主机名和IP加入到hostname</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> /etc/hostname
+</code></pre></div><h2 id="在所有节点上安装kubeadm-这里使用阿里云的系统和kubernetes的源"><a href="#在所有节点上安装kubeadm-这里使用阿里云的系统和kubernetes的源" class="header-anchor">#</a> 在所有节点上安装kubeadm，这里使用阿里云的系统和kubernetes的源</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## cat /etc/apt/sources.list</span>
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+</code></pre></div><h2 id="更新源并安装kubeadm-kubectl-kubelet软件包-安装docker-io-非docker-ce"><a href="#更新源并安装kubeadm-kubectl-kubelet软件包-安装docker-io-非docker-ce" class="header-anchor">#</a> 更新源并安装kubeadm, kubectl, kubelet软件包;安装docker.io(非docker-ce)</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">apt-get</span> update -y <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y kubelet kubeadm kubectl --allow-unauthenticated
+
+<span class="token function">apt-get</span> <span class="token function">install</span> docker.io -y
+
+</code></pre></div><h2 id="使用kubeadmin初始化master节点-这里有两个坑"><a href="#使用kubeadmin初始化master节点-这里有两个坑" class="header-anchor">#</a> 使用kubeadmin初始化master节点，这里有两个坑！！</h2> <ul><li>坑1、使用网络上常见的方式，那么如果没有用vpn翻墙，那么则会卡住，无法下载，幸好v1.13.0版本无需翻墙，指定版本即可</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>kubeadm init <span class="token punctuation">\</span>
+--image-repository registry.aliyuncs.com/google_containers <span class="token punctuation">\</span>
+--kubernetes-version v1.13.0 <span class="token punctuation">\</span>
+--pod-network-cidr<span class="token operator">=</span><span class="token number">10.244</span>.0.0/16 <span class="token punctuation">\</span>
+--apiserver-advertise-address<span class="token operator">=</span><span class="token number">192.168</span>.213.130
+</code></pre></div><ul><li>坑2、需要禁用swap<br>
+修改/etc/fstab</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## cat /etc/fstab </span>
+<span class="token comment">## /etc/fstab: static file system information.</span>
+<span class="token comment">##</span>
+<span class="token comment">## Use 'blkid' to print the universally unique identifier for a</span>
+<span class="token comment">## device; this may be used with UUID= as a more robust way to name devices</span>
+<span class="token comment">## that works even if disks are added and removed. See fstab(5).</span>
+<span class="token comment">##</span>
+<span class="token comment">## &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+/dev/mapper/ubuntugustave--vg-root /               ext4    <span class="token assign-left variable">errors</span><span class="token operator">=</span>remount-ro <span class="token number">0</span>       <span class="token number">1</span>
+<span class="token comment">## /boot was on /dev/sda1 during installation</span>
+<span class="token comment">## UUID=340c3d0f-eb29-4512-83ca-ef6ba9d8577f /boot           ext2    defaults        0       2</span>
+<span class="token comment">## /dev/mapper/ubuntugustave--vg-swap_1 none            swap    sw              0       0</span>
+</code></pre></div><p>修改之后执行<code>swapoff -a</code><br>
+如果还不行 <code>kubeadm reset</code></p> <h2 id="大功告成"><a href="#大功告成" class="header-anchor">#</a> 大功告成</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## kubeadm init --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.13.0 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.213.130</span>
+<span class="token punctuation">[</span>init<span class="token punctuation">]</span> Using Kubernetes version: v1.13.0
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> Running pre-flight checks
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> Pulling images required <span class="token keyword">for</span> setting up a Kubernetes cluster
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> This might take a minute or two, depending on the speed of your internet connection
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> You can also perform this action <span class="token keyword">in</span> beforehand using <span class="token string">'kubeadm config images pull'</span>
+
+<span class="token punctuation">[</span>kubelet-start<span class="token punctuation">]</span> Writing kubelet environment <span class="token function">file</span> with flags to <span class="token function">file</span> <span class="token string">&quot;/var/lib/kubelet/kubeadm-flags.env&quot;</span>
+<span class="token punctuation">[</span>kubelet-start<span class="token punctuation">]</span> Writing kubelet configuration to <span class="token function">file</span> <span class="token string">&quot;/var/lib/kubelet/config.yaml&quot;</span>
+<span class="token punctuation">[</span>kubelet-start<span class="token punctuation">]</span> Activating the kubelet <span class="token function">service</span>
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Using certificateDir folder <span class="token string">&quot;/etc/kubernetes/pki&quot;</span>
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;etcd/ca&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;etcd/healthcheck-client&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;etcd/server&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> etcd/server serving cert is signed <span class="token keyword">for</span> DNS names <span class="token punctuation">[</span>k8s-master localhost<span class="token punctuation">]</span> and IPs <span class="token punctuation">[</span><span class="token number">192.168</span>.213.130 <span class="token number">127.0</span>.0.1 ::1<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;etcd/peer&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> etcd/peer serving cert is signed <span class="token keyword">for</span> DNS names <span class="token punctuation">[</span>k8s-master localhost<span class="token punctuation">]</span> and IPs <span class="token punctuation">[</span><span class="token number">192.168</span>.213.130 <span class="token number">127.0</span>.0.1 ::1<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;apiserver-etcd-client&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;ca&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;apiserver-kubelet-client&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;apiserver&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> apiserver serving cert is signed <span class="token keyword">for</span> DNS names <span class="token punctuation">[</span>k8s-master kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local<span class="token punctuation">]</span> and IPs <span class="token punctuation">[</span><span class="token number">10.96</span>.0.1 <span class="token number">192.168</span>.213.130<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;front-proxy-ca&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;front-proxy-client&quot;</span> certificate and key
+<span class="token punctuation">[</span>certs<span class="token punctuation">]</span> Generating <span class="token string">&quot;sa&quot;</span> key and public key
+<span class="token punctuation">[</span>kubeconfig<span class="token punctuation">]</span> Using kubeconfig folder <span class="token string">&quot;/etc/kubernetes&quot;</span>
+<span class="token punctuation">[</span>kubeconfig<span class="token punctuation">]</span> Writing <span class="token string">&quot;admin.conf&quot;</span> kubeconfig <span class="token function">file</span>
+<span class="token punctuation">[</span>kubeconfig<span class="token punctuation">]</span> Writing <span class="token string">&quot;kubelet.conf&quot;</span> kubeconfig <span class="token function">file</span>
+<span class="token punctuation">[</span>kubeconfig<span class="token punctuation">]</span> Writing <span class="token string">&quot;controller-manager.conf&quot;</span> kubeconfig <span class="token function">file</span>
+<span class="token punctuation">[</span>kubeconfig<span class="token punctuation">]</span> Writing <span class="token string">&quot;scheduler.conf&quot;</span> kubeconfig <span class="token function">file</span>
+<span class="token punctuation">[</span>control-plane<span class="token punctuation">]</span> Using manifest folder <span class="token string">&quot;/etc/kubernetes/manifests&quot;</span>
+<span class="token punctuation">[</span>control-plane<span class="token punctuation">]</span> Creating static Pod manifest <span class="token keyword">for</span> <span class="token string">&quot;kube-apiserver&quot;</span>
+<span class="token punctuation">[</span>control-plane<span class="token punctuation">]</span> Creating static Pod manifest <span class="token keyword">for</span> <span class="token string">&quot;kube-controller-manager&quot;</span>
+<span class="token punctuation">[</span>control-plane<span class="token punctuation">]</span> Creating static Pod manifest <span class="token keyword">for</span> <span class="token string">&quot;kube-scheduler&quot;</span>
+<span class="token punctuation">[</span>etcd<span class="token punctuation">]</span> Creating static Pod manifest <span class="token keyword">for</span> <span class="token builtin class-name">local</span> etcd <span class="token keyword">in</span> <span class="token string">&quot;/etc/kubernetes/manifests&quot;</span>
+<span class="token punctuation">[</span>wait-control-plane<span class="token punctuation">]</span> Waiting <span class="token keyword">for</span> the kubelet to boot up the control plane as static Pods from directory <span class="token string">&quot;/etc/kubernetes/manifests&quot;</span><span class="token builtin class-name">.</span> This can take up to 4m0s
+<span class="token punctuation">[</span>apiclient<span class="token punctuation">]</span> All control plane components are healthy after <span class="token number">28.005554</span> seconds
+<span class="token punctuation">[</span>uploadconfig<span class="token punctuation">]</span> storing the configuration used <span class="token keyword">in</span> ConfigMap <span class="token string">&quot;kubeadm-config&quot;</span> <span class="token keyword">in</span> the <span class="token string">&quot;kube-system&quot;</span> Namespace
+<span class="token punctuation">[</span>kubelet<span class="token punctuation">]</span> Creating a ConfigMap <span class="token string">&quot;kubelet-config-1.13&quot;</span> <span class="token keyword">in</span> namespace kube-system with the configuration <span class="token keyword">for</span> the kubelets <span class="token keyword">in</span> the cluster
+<span class="token punctuation">[</span>patchnode<span class="token punctuation">]</span> Uploading the CRI Socket information <span class="token string">&quot;/var/run/dockershim.sock&quot;</span> to the Node API object <span class="token string">&quot;k8s-master&quot;</span> as an annotation
+<span class="token punctuation">[</span>mark-control-plane<span class="token punctuation">]</span> Marking the node k8s-master as control-plane by adding the label <span class="token string">&quot;node-role.kubernetes.io/master=''&quot;</span>
+<span class="token punctuation">[</span>mark-control-plane<span class="token punctuation">]</span> Marking the node k8s-master as control-plane by adding the taints <span class="token punctuation">[</span>node-role.kubernetes.io/master:NoSchedule<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>bootstrap-token<span class="token punctuation">]</span> Using token: 3lnb74.tku3cdu5bagn0air
+<span class="token punctuation">[</span>bootstrap-token<span class="token punctuation">]</span> Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+<span class="token punctuation">[</span>bootstraptoken<span class="token punctuation">]</span> configured RBAC rules to allow Node Bootstrap tokens to post CSRs <span class="token keyword">in</span> order <span class="token keyword">for</span> nodes to get long term certificate credentials
+<span class="token punctuation">[</span>bootstraptoken<span class="token punctuation">]</span> configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+<span class="token punctuation">[</span>bootstraptoken<span class="token punctuation">]</span> configured RBAC rules to allow certificate rotation <span class="token keyword">for</span> all node client certificates <span class="token keyword">in</span> the cluster
+<span class="token punctuation">[</span>bootstraptoken<span class="token punctuation">]</span> creating the <span class="token string">&quot;cluster-info&quot;</span> ConfigMap <span class="token keyword">in</span> the <span class="token string">&quot;kube-public&quot;</span> namespace
+<span class="token punctuation">[</span>addons<span class="token punctuation">]</span> Applied essential addon: CoreDNS
+<span class="token punctuation">[</span>addons<span class="token punctuation">]</span> Applied essential addon: kube-proxy
+
+Your Kubernetes master has initialized successfully<span class="token operator">!</span>
+
+To start using your cluster, you need to run the following as a regular user:
+
+  <span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+  <span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+  <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run <span class="token string">&quot;kubectl apply -f [podnetwork].yaml&quot;</span> with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now <span class="token function">join</span> any number of machines by running the following on each node
+as root:
+
+  kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.213.130:6443 --token 3lnb74.tku3cdu5bagn0air --discovery-token-ca-cert-hash sha256:2ba48ce20ebefcfb6d07ddf01141590eb81cad5de5c0406f08f41faab26a8696
+</code></pre></div><ul><li>按图索骥,按指示的方式配置k8s就行了,其中最后显示的kubeadm join语句包含了节点添加的token等等</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>  <span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+  <span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+  <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+</code></pre></div><h2 id="安装网络插件canal"><a href="#安装网络插件canal" class="header-anchor">#</a> 安装网络插件canal</h2> <ul><li>执行如下两条命令即可</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/canal/rbac.yaml
+ 
+clusterrole.rbac.authorization.k8s.io <span class="token string">&quot;calico&quot;</span> created
+clusterrole.rbac.authorization.k8s.io <span class="token string">&quot;flannel&quot;</span> created
+clusterrolebinding.rbac.authorization.k8s.io <span class="token string">&quot;canal-flannel&quot;</span> created
+clusterrolebinding.rbac.authorization.k8s.io <span class="token string">&quot;canal-calico&quot;</span> created
+ 
+ 
+kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/canal/canal.yaml
+ 
+configmap <span class="token string">&quot;canal-config&quot;</span> created
+daemonset.extensions <span class="token string">&quot;canal&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;felixconfigurations.crd.projectcalico.org&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;bgpconfigurations.crd.projectcalico.org&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;ippools.crd.projectcalico.org&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;clusterinformations.crd.projectcalico.org&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;globalnetworkpolicies.crd.projectcalico.org&quot;</span> created
+customresourcedefinition.apiextensions.k8s.io <span class="token string">&quot;networkpolicies.crd.projectcalico.org&quot;</span> created
+serviceaccount <span class="token string">&quot;canal&quot;</span> created
+
+</code></pre></div><h2 id="执行如下命令-可以就可以查看canal的安装状态了"><a href="#执行如下命令-可以就可以查看canal的安装状态了" class="header-anchor">#</a> 执行如下命令，可以就可以查看canal的安装状态了</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## kubectl get pod -n kube-system -o wide</span>
+NAME                                 READY   STATUS    RESTARTS   AGE   IP                NODE         NOMINATED NODE   READINESS GATES
+canal-6f6kk                          <span class="token number">3</span>/3     Running   <span class="token number">0</span>          58m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+canal-rgb57                          <span class="token number">3</span>/3     Running   <span class="token number">0</span>          50m   <span class="token number">192.168</span>.213.131   k8s-slave    <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+coredns-78d4cf999f-hp7cv             <span class="token number">1</span>/1     Running   <span class="token number">0</span>          64m   <span class="token number">10.244</span>.0.3        k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+coredns-78d4cf999f-p4r7w             <span class="token number">1</span>/1     Running   <span class="token number">0</span>          64m   <span class="token number">10.244</span>.0.2        k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+etcd-k8s-master                      <span class="token number">1</span>/1     Running   <span class="token number">0</span>          69m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+kube-apiserver-k8s-master            <span class="token number">1</span>/1     Running   <span class="token number">0</span>          68m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+kube-controller-manager-k8s-master   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          69m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+kube-proxy-fknxh                     <span class="token number">1</span>/1     Running   <span class="token number">0</span>          50m   <span class="token number">192.168</span>.213.131   k8s-slave    <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+kube-proxy-pvt8w                     <span class="token number">1</span>/1     Running   <span class="token number">0</span>          69m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+kube-scheduler-k8s-master            <span class="token number">1</span>/1     Running   <span class="token number">0</span>          69m   <span class="token number">192.168</span>.213.130   k8s-master   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>           <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="查看节点"><a href="#查看节点" class="header-anchor">#</a> 查看节点</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl get nodes
+</code></pre></div><h2 id="slave节点在集群中的操作"><a href="#slave节点在集群中的操作" class="header-anchor">#</a> slave节点在集群中的操作</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>    kubectl get nodes
+</code></pre></div><h2 id="增加新的node节点到你的集群的命令如下"><a href="#增加新的node节点到你的集群的命令如下" class="header-anchor">#</a> 增加新的Node节点到你的集群的命令如下：</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>  kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.213.130:6443 --token 3lnb74.tku3cdu5bagn0air --discovery-token-ca-cert-hash sha256:2ba48ce20ebefcfb6d07ddf01141590eb81cad5de5c0406f08f41faab26a8696
+</code></pre></div><ul><li>token，一般token两天就过期了，如果过期了你需要重新创建（查看token命令是kubeadm token list，创建token命令是kubeadm token create)，如下：</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## kubeadm token list</span>
+TOKEN                     TTL       EXPIRES                     USAGES                   DESCRIPTION                                                EXTRA <span class="token environment constant">GROUPS</span>
+3lnb74.tku3cdu5bagn0air   22h       <span class="token number">2019</span>-01-08T14:59:55+08:00   authentication,signing   The default bootstrap token generated by <span class="token string">'kubeadm init'</span><span class="token builtin class-name">.</span>   system:bootstrappers:kubeadm:default-node-token
+</code></pre></div><ul><li>--discovery-token-ca-cert-hash，通过如下命令就可以得到</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>root@k8s-master:~<span class="token comment">## openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'</span>
+2ba48ce20ebefcfb6d07ddf01141590eb81cad5de5c0406f08f41faab26a8696
+</code></pre></div><h2 id="删除slave节点"><a href="#删除slave节点" class="header-anchor">#</a> 删除slave节点</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl drain <span class="token operator">&lt;</span>node name<span class="token operator">&gt;</span> --delete-local-data --force --ignore-daemonsets
+kubectl delete node <span class="token operator">&lt;</span>node name<span class="token operator">&gt;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后编辑时间:</span> <span class="time">12/21/2020, 8:56:16 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/curiousness/IDEA插件开发小试牛刀.html" class="prev">
+        IDEA插件开发小试牛刀
+      </a></span> <span class="next"><a href="/curiousness/Redis-Sentinel高可用.html">
+        Redis-Sentinel高可用
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.27b2d4ce.js" defer></script><script src="/assets/js/4.9a9f6078.js" defer></script><script src="/assets/js/43.1f36637d.js" defer></script>
+  </body>
+</html>

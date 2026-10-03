@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/06-增长量比较速判.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析速算技巧
+06：增长量比较速判 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="行测资料分析速算技巧-06增长量比较速判">行测资料分析速算技巧
+06：增长量比较速判</h1>
+<blockquote>
+<p>题目问“增加最多”“同比增量最大”，比较的是增长量，不是增长率。<br />
+核心公式：<code>Δ = Ar/(1+r)</code>，其中 <code>A</code> 为现期量。</p>
+</blockquote>
+<hr />
+<h2 id="1-第一层同大则大">1. 第一层：同大则大</h2>
+<p>对正增长而言：</p>
+<ul>
+<li>增长率相同，现期量越大，增长量越大；</li>
+<li>现期量相同，增长率越大，增长量越大；</li>
+<li>某对象现期量和增长率都更大，它的增长量一定更大。</li>
+</ul>
+<p>这类题不需要计算。</p>
+<h3 id="例题-1">例题 1</h3>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align: right;">现期量</th>
+<th style="text-align: right;">增长率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;">12%</td>
+</tr>
+<tr>
+<td>乙</td>
+<td style="text-align: right;">760</td>
+<td style="text-align: right;">10%</td>
+</tr>
+</tbody>
+</table>
+<p>甲的现期量、增长率都大于乙，因此甲的增长量必然更大。</p>
+<hr />
+<h2 id="2-第二层用-ar-粗筛">2. 第二层：用 <code>Ar</code> 粗筛</h2>
+<p>精确增长量：</p>
+<pre class="text"><code>Δ = Ar/(1+r)</code></pre>
+<p>可以先比较：</p>
+<pre class="text"><code>Ar</code></pre>
+<p>若 <code>Ar</code> 差距很大，排序通常已经明确；若很接近，再补除以
+<code>(1+r)</code>。</p>
+<p>注意：<code>Ar</code> 不是精确增长量，因为 <code>A</code>
+是现期量而不是基期量。</p>
+<h3 id="例题-2">例题 2</h3>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align: right;">现期量 <code>A</code></th>
+<th style="text-align: right;">增长率 <code>r</code></th>
+<th style="text-align: right;"><code>Ar</code> 粗估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲</td>
+<td style="text-align: right;">1200</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr>
+<td>乙</td>
+<td style="text-align: right;">700</td>
+<td style="text-align: right;">12%</td>
+<td style="text-align: right;">84</td>
+</tr>
+</tbody>
+</table>
+<p>精确增长量：</p>
+<pre class="text"><code>甲：96/1.08 ≈ 88.9
+乙：84/1.12 = 75</code></pre>
+<p>粗估已经拉开，甲更大。</p>
+<hr />
+<h2 id="3-第三层百化分看现期份数">3. 第三层：百化分看现期份数</h2>
+<p>若增长率接近 <code>1/n</code>：</p>
+<pre class="text"><code>增长量 ≈ A/(n+1)</code></pre>
+<h3 id="例题-3">例题 3</h3>
+<p>甲现期量 <code>960</code>，增长 <code>20%</code>；乙现期量
+<code>1050</code>，增长约 <code>16.7%</code>。谁的增长量更大？</p>
+<pre class="text"><code>甲：20%=1/5，增长量 = 960/6 = 160
+乙：16.7%≈1/6，增长量 ≈ 1050/7 = 150</code></pre>
+<p>所以甲的现期量虽然更小，增长量反而更大。</p>
+<hr />
+<h2 id="4-为什么-ar-接近时要精算">4. 为什么 <code>Ar</code>
+接近时要精算</h2>
+<p>设两组 <code>Ar</code> 差不多。增长率更大的那一组，分母
+<code>(1+r)</code> 也更大，修正得更多。</p>
+<h3 id="例题-4">例题 4</h3>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align: right;">现期量</th>
+<th style="text-align: right;">增长率</th>
+<th style="text-align: right;"><code>Ar</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲</td>
+<td style="text-align: right;">600</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr>
+<td>乙</td>
+<td style="text-align: right;">1000</td>
+<td style="text-align: right;">12%</td>
+<td style="text-align: right;">120</td>
+</tr>
+</tbody>
+</table>
+<p>如果只看 <code>Ar</code>，二者相同。但：</p>
+<pre class="text"><code>甲增长量 = 120/1.20 = 100
+乙增长量 = 120/1.12 ≈ 107.1</code></pre>
+<p>所以乙更大。</p>
+<p>结论：当 <code>Ar</code>
+相同或很接近时，增长率较小者因分母更小，真实增长量可能更大。</p>
+<hr />
+<h2 id="5-多组选最大值的淘汰流程">5. 多组选最大值的淘汰流程</h2>
+<pre class="text"><code>第一步：删掉“现期量和增长率都不占优”的对象；
+第二步：对剩余对象计算 Ar；
+第三步：Ar 差距明显，直接排序；
+第四步：Ar 接近，再算 Ar/(1+r)；
+第五步：选项只是对象名称时，算到能确定最大者即停。</code></pre>
+<h3 id="示例">示例</h3>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th style="text-align: right;">现期量</th>
+<th style="text-align: right;">增长率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲</td>
+<td style="text-align: right;">900</td>
+<td style="text-align: right;">8%</td>
+</tr>
+<tr>
+<td>乙</td>
+<td style="text-align: right;">850</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>丙</td>
+<td style="text-align: right;">700</td>
+<td style="text-align: right;">7%</td>
+</tr>
+<tr>
+<td>丁</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">16%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>丙同时小于甲的现期量和增长率，先淘汰；</li>
+<li>粗算 <code>Ar</code>：甲 <code>72</code>、乙 <code>85</code>、丁
+<code>80</code>；</li>
+<li>精算乙约 <code>77.3</code>，丁约 <code>69.0</code>，乙最大。</li>
+</ul>
+<p>无需精算甲和丙。</p>
+<hr />
+<h2 id="6-下降量比较">6. 下降量比较</h2>
+<p>若题目问“减少最多”，通常比较减少量的绝对值。</p>
+<p>现期量为 <code>A</code>，下降率为正数 <code>d</code>：</p>
+<pre class="text"><code>减少量 D = Ad/(1-d)</code></pre>
+<p>与增长不同，下降率越大，分母 <code>(1-d)</code>
+越小，会进一步放大减少量。</p>
+<p>若 <code>d≈1/n</code>：</p>
+<pre class="text"><code>减少量 ≈ A/(n-1)</code></pre>
+<p>例如现期 <code>800</code>、下降 <code>20%=1/5</code>：</p>
+<pre class="text"><code>减少量 = 800/(5-1) = 200</code></pre>
+<hr />
+<h2 id="7-常见陷阱">7. 常见陷阱</h2>
+<ul>
+<li>把“增长率最高”当成“增长量最大”；</li>
+<li>直接使用 <code>现期量 × 增长率</code> 当精确答案；</li>
+<li>比较下降量时忘记取绝对值；</li>
+<li>正增长和下降混在一起时直接按百分数大小排序；</li>
+<li>为所有对象精算，浪费时间。</li>
+</ul>
+<hr />
+<h2 id="8-草稿模板">8. 草稿模板</h2>
+<pre class="text"><code>增长量：Δ = Ar/(1+r)
+下降量：D = Ad/(1-d)
+
+先“双大淘汰” → 再看 Ar → 接近才补分母。
+r≈1/n：增长量≈A/(n+1)，减少量≈A/(n-1)。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

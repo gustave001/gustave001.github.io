@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="." data-page-path="维护说明.html">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML 知识站维护说明 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./assets/styles.css"><script defer src="./assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar"><div class="brand"><a href="./index.html"><span class="brand-mark">G</span><span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span></a></div><div class="sidebar-search"><label for="nav-search">搜索目录</label><input id="nav-search" type="search" placeholder="输入题型或技巧…"></div><nav id="site-nav" class="site-nav"></nav></aside>
+    <div class="page-column">
+      <header class="topbar"><button class="icon-button mobile-only" id="menu-button" type="button">☰</button><button class="back-button" id="back-button" type="button">← 返回</button><nav class="breadcrumbs" id="breadcrumbs"></nav><a class="home-button" href="./index.html">首页</a></header>
+      <main class="article-wrap">
+        <article class="prose">
+          <h1>HTML 知识站维护说明</h1>
+          <blockquote><p>从本次迁移开始，<strong><code>personal/exam/site/</code> 中的 HTML 是考试资料唯一维护源</strong>。后续新增、修改、插图、纠错和目录调整都直接维护 HTML；不再回写、同步或新增考试内容 Markdown。原 Markdown 文件仅作为迁移前的历史资料保留。</p></blockquote>
+          <div class="callout warning"><strong>唯一来源规则：</strong>如果 HTML 与旧 Markdown 内容不一致，一律以 HTML 为准。维护任务不得为了“同步”而修改旧 Markdown，也不得先写 Markdown 再生成 HTML。</div>
+          <h2>目录约定</h2>
+          <pre><code>site/
+├── index.html              # 网站首页
+├── assets/
+│   ├── styles.css          # 全站视觉与响应式布局
+│   └── site.js             # 目录、返回、面包屑、前后翻页
+└── pages/                  # 与原资料目录对应的正文 HTML
+    ├── 言语理解/技巧方法/
+    ├── 数量关系/题型方法/
+    └── 资料分析/速算技巧/</code></pre>
+          <h2>以后新增或修改内容</h2>
+          <ol>
+            <li>直接打开 <code>site/pages/</code> 中对应的 HTML 修改正文。</li>
+            <li>新增专题时，复制一个同层页面，保留外层页面骨架，只替换 <code>&lt;article class="prose"&gt;</code> 内的内容。</li>
+            <li>在 <code>assets/site.js</code> 的 <code>pages</code> 数组中添加标题和路径，侧边目录、面包屑与前后翻页会自动出现。</li>
+            <li>共享颜色、字号和移动端布局统一修改 <code>assets/styles.css</code>。</li>
+            <li>不要修改或新增考试内容 Markdown，也不要再次运行 Markdown 转 HTML 的批量迁移流程覆盖现有网页。</li>
+          </ol>
+          <h2>插图建议</h2>
+          <p>公式关系、几何图形、集合关系和时间线优先使用内嵌 SVG。它可以直接写进 HTML，不依赖外部图片，离线可用且放大不失真。</p>
+          <pre><code>&lt;figure class="diagram-card"&gt;
+  &lt;svg viewBox="0 0 400 240" role="img" aria-label="图示说明"&gt;…&lt;/svg&gt;
+  &lt;figcaption&gt;图示标题&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+          <p>照片或扫描图再使用 PNG/JPEG，统一放在 <code>site/assets/images/</code>，正文使用相对路径。</p>
+          <h2>打开方式</h2>
+          <p>可以直接双击 <code>site/index.html</code>。为了让浏览器历史记录、中文路径与调试行为更稳定，也可以在 <code>personal/exam/site</code> 目录启动静态服务器：</p>
+          <pre><code>python3 -m http.server 4173</code></pre>
+          <p>然后访问 <code>http://127.0.0.1:4173/</code>。</p>
+          <h2>维护原则</h2>
+          <ul>
+            <li>一页只解决一组高度相关的问题；</li>
+            <li>每页至少说明识别信号、操作步骤、例题、易错点和止损条件；</li>
+            <li>图示必须服务于关系理解，不为装饰而添加；</li>
+            <li>任何近似方法都写清误差方向与禁用条件；</li>
+            <li>新页面同时加入全站目录，避免成为孤立文件。</li>
+          </ul>
+        </article>
+        <nav class="pager" id="page-pager"></nav><footer class="article-footer"><span>HTML 为当前维护版本</span><button id="scroll-top">回到顶部 ↑</button></footer>
+      </main>
+    </div>
+  </div><div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

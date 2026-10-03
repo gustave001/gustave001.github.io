@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/07-十字交叉与混合增长率.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析速算技巧
+07：十字交叉与混合增长率 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1
+id="行测资料分析速算技巧-07十字交叉与混合增长率">行测资料分析速算技巧
+07：十字交叉与混合增长率</h1>
+<blockquote>
+<p>核心用途：整体由两个部分相加而成，已知其中若干增长率、平均数或比重，快速判断整体值、权重比或未知部分值。<br />
+最重要的前提：先确认是“加总型整体”，再找真正的权重分母。</p>
+</blockquote>
+<hr />
+<h2 id="1-混合问题的统一结构">1. 混合问题的统一结构</h2>
+<p>若两个部分的比值分别为 <code>r₁、r₂</code>，对应分母权重为
+<code>B₁、B₂</code>，整体比值为 <code>r</code>：</p>
+<pre class="text"><code>r = (B₁r₁ + B₂r₂)/(B₁+B₂)</code></pre>
+<p>因此整体值必有两个性质：</p>
+<ol type="1">
+<li><code>r</code> 一定介于 <code>r₁</code> 和 <code>r₂</code>
+之间；</li>
+<li><code>r</code> 更靠近分母权重较大的那一方。</li>
+</ol>
+<p>这不仅适用于增长率，也适用于平均数、浓度、比重等加权平均结构。</p>
+<hr />
+<h2 id="2-十字交叉关系">2. 十字交叉关系</h2>
+<p>假设：</p>
+<pre class="text"><code>r₁ &gt; r &gt; r₂</code></pre>
+<p>则：</p>
+<pre class="text"><code>B₁/B₂ = (r-r₂)/(r₁-r)</code></pre>
+<p>可以画成：</p>
+<pre class="text"><code>部分1：r₁       r-r₂   ← 对应 B₁
+          \     /
+           整体r
+          /     \
+部分2：r₂       r₁-r   ← 对应 B₂</code></pre>
+<p>记忆：<strong>交叉作差，横向对应权重。</strong></p>
+<hr />
+<h2 id="3-例题一由增长率求基期量之比">3.
+例题一：由增长率求基期量之比</h2>
+<p>甲、乙两部分同比增长率分别为 <code>18%</code> 和
+<code>6%</code>，合计同比增长
+<code>10%</code>。甲、乙基期量之比是多少？</p>
+<p>整体增长率 <code>10%</code> 介于两者之间。十字交叉：</p>
+<pre class="text"><code>甲基期量/乙基期量
+= (10%-6%)/(18%-10%)
+= 4%/8%
+= 1/2</code></pre>
+<p>所以甲、乙基期量之比为 <code>1:2</code>。</p>
+<p>验证：</p>
+<pre class="text"><code>(1×18% + 2×6%)/(1+2) = 10%</code></pre>
+<hr />
+<h2 id="4-例题二已知权重求未知增速">4. 例题二：已知权重求未知增速</h2>
+<p>甲、乙基期量之比为 <code>2:3</code>。甲增长
+<code>15%</code>，合计增长 <code>9%</code>，求乙的增长率。</p>
+<p>设乙增长率为 <code>x</code>：</p>
+<pre class="text"><code>(2×15% + 3x)/(2+3) = 9%
+30% + 3x = 45%
+x = 5%</code></pre>
+<p>也可用十字距离理解：整体 <code>9%</code> 更靠近乙的
+<code>5%</code>，因为乙基期量更大。</p>
+<hr />
+<h2 id="5-例题三只用范围秒杀">5. 例题三：只用范围秒杀</h2>
+<p>某地区城镇人口增长 <code>8%</code>，乡村人口下降
+<code>2%</code>，总人口增长率可能是：</p>
+<pre class="text"><code>A. -5%  B. 1%  C. 9%  D. 13%</code></pre>
+<p>总人口是城镇人口与乡村人口之和，所以总增速一定介于 <code>-2%</code>
+和 <code>8%</code> 之间。只有 <code>1%</code> 符合，直接选择 B。</p>
+<p>这类题根本不需要画十字。</p>
+<hr />
+<h2 id="6-增长率的权重为什么是基期量">6. 增长率的权重为什么是基期量</h2>
+<p>各部分增长量为：</p>
+<pre class="text"><code>Δ₁ = B₁r₁
+Δ₂ = B₂r₂</code></pre>
+<p>整体增长率：</p>
+<pre class="text"><code>r = (Δ₁+Δ₂)/(B₁+B₂)
+  = (B₁r₁+B₂r₂)/(B₁+B₂)</code></pre>
+<p>所以增长率混合的权重是基期量，不是现期量。</p>
+<p>当两部分增长率都不大、也比较接近时，可以用现期量之比近似基期量之比；但选项接近或增长率差异大时，必须还原基期量。</p>
+<hr />
+<h2 id="7-不止能混合增长率">7. 不止能混合增长率</h2>
+<h3 id="71-混合平均数">7.1 混合平均数</h3>
+<p>甲组平均数 <code>80</code>，乙组平均数 <code>70</code>，合计平均数
+<code>76</code>：</p>
+<pre class="text"><code>甲人数/乙人数
+= (76-70)/(80-76)
+= 6/4
+= 3/2</code></pre>
+<p>平均数的权重是人数。</p>
+<h3 id="72-混合比重">7.2 混合比重</h3>
+<p>甲地区某类人口占比 <code>60%</code>，乙地区占比
+<code>40%</code>，两地合计占比 <code>45%</code>：</p>
+<pre class="text"><code>甲总人口/乙总人口
+= (45%-40%)/(60%-45%)
+= 5/15
+= 1/3</code></pre>
+<p>比重的权重是各地区的整体量，不是该类人口数。</p>
+<h3 id="统一规律">统一规律</h3>
+<pre class="text"><code>混合谁，权重就是谁的分母。</code></pre>
+<table>
+<thead>
+<tr>
+<th>混合指标</th>
+<th>权重分母</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增长率</td>
+<td>基期量</td>
+</tr>
+<tr>
+<td>平均数</td>
+<td>份数/人数</td>
+</tr>
+<tr>
+<td>比重</td>
+<td>各部分的整体量</td>
+</tr>
+<tr>
+<td>单价</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>通常不能直接套，需先看时间或路程结构</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-时间混合也可以用">8. 时间混合也可以用</h2>
+<p>若：</p>
+<pre class="text"><code>1—5月累计量 + 6月当月量 = 上半年累计量</code></pre>
+<p>对应的同比增长率也构成混合增长率，权重分别是上年同期的
+<code>1—5月累计量</code> 和 <code>6月当月量</code>。</p>
+<p>但必须先把时间段拆对。不能把“1—6月累计”与“6月当月”当成互不重叠的两个部分直接混合。</p>
+<hr />
+<h2 id="9-不能使用的情形">9. 不能使用的情形</h2>
+<ul>
+<li>整体不是两个部分的和，而是 <code>A-B</code>；</li>
+<li>两个部分存在重叠，不能相加得到整体；</li>
+<li>口径、时间或单位不一致；</li>
+<li>把现期量直接当作增长率的精确权重；</li>
+<li>三个及以上部分却在没有合并信息时强行画一个十字；</li>
+<li>速度、生产率等关系未必是简单加权平均，没确认分母就套公式。</li>
+</ul>
+<p>若整体为差值，应回到：</p>
+<pre class="text"><code>整体增长量 = A的增长量 - B的增长量
+整体增长率 = 整体增长量 ÷ 整体基期量</code></pre>
+<hr />
+<h2 id="10-草稿模板">10. 草稿模板</h2>
+<pre class="text"><code>先确认：整体 = 部分1 + 部分2
+再确认：混合指标的分母权重是什么
+
+r1 &gt; r &gt; r2
+B1/B2 = (r-r2)/(r1-r)
+
+先用“居中”排除；
+再用“靠近大权重”判断；
+仍不够才十字计算。</code></pre>
+<hr />
+<h2 id="11-参考">11. 参考</h2>
+<ul>
+<li><a
+href="https://www.huatu.com/2021/0701/2227751.html">华图教育：十字交叉法在混合增长率中的应用</a></li>
+<li><a
+href="https://www.eol.cn/gongwuyuan/difang/skxc/201704/t20170401_1503600.shtml">中国教育在线：资料分析中的混合增长率问题</a></li>
+</ul>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

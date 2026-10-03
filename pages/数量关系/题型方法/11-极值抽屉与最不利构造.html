@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/11-极值抽屉与最不利构造.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型
+11：极值、抽屉与最不利构造 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-11极值抽屉与最不利构造">数量关系题型
+11：极值、抽屉与最不利构造</h1>
+<blockquote>
+<p>看到“至少取多少才能保证”“一定有”“最少保证”，不要从幸运情况出发，而要构造目标最晚发生的最坏情况，再加一。</p>
+</blockquote>
+<hr />
+<h2 id="1-抽屉原理">1. 抽屉原理</h2>
+<p>把 <code>N</code> 个对象放入 <code>k</code> 个类别：</p>
+<pre class="text"><code>至少有一类不少于 ceil(N/k) 个</code></pre>
+<h3 id="例题-1">例题 1</h3>
+<p><code>25</code> 名学生按出生月份分成 <code>12</code> 类：</p>
+<pre class="text"><code>ceil(25/12)=3</code></pre>
+<p>至少有 <code>3</code> 人出生在同一个月。</p>
+<hr />
+<h2 id="2-保证至少-m-个同类">2. 保证至少 <code>m</code> 个同类</h2>
+<p>有 <code>k</code> 类，要保证至少一类有 <code>m</code>
+个，最坏情况是每类先放 <code>m-1</code> 个：</p>
+<pre class="text"><code>最少总数=k(m-1)+1</code></pre>
+<h3 id="例题-2">例题 2</h3>
+<p>袜子有 <code>4</code> 种颜色，至少取多少只，才能保证有 <code>5</code>
+只同色？</p>
+<p>最坏情况每种先取 <code>4</code> 只：</p>
+<pre class="text"><code>4×4=16</code></pre>
+<p>再取一只必有一种达到 <code>5</code> 只：</p>
+<pre class="text"><code>答案=17</code></pre>
+<p>前提是每种颜色数量都足够；若库存有限，要结合具体上限调整。</p>
+<hr />
+<h2 id="3-保证出现一对">3. 保证出现一对</h2>
+<p>若有 <code>k</code>
+个互补配对类别，最坏情况先从每对中各取一个而不成对，然后再取一个：</p>
+<pre class="text"><code>最坏不成对数量+1</code></pre>
+<p>例如抽不同颜色袜子保证同色一双，若有 <code>4</code> 种颜色：</p>
+<pre class="text"><code>最坏先抽4只各不相同
+第5只必与某只同色</code></pre>
+<p>如果题目中的“成对”要求左右脚、同号码等多个条件，类别必须按完整条件重新划分。</p>
+<hr />
+<h2 id="4-至少命中目标类别">4. 至少命中目标类别</h2>
+<p>箱中有目标物和非目标物，保证取到一定数量目标物：</p>
+<pre class="text"><code>先把所有非目标物取完
+再取所需目标数量</code></pre>
+<h3 id="例题-3">例题 3</h3>
+<p>箱中有红球 <code>8</code> 个、蓝球 <code>6</code> 个、白球
+<code>5</code> 个。至少取多少个，才能保证取到 <code>3</code>
+个红球？</p>
+<p>最坏先取完所有非红球：</p>
+<pre class="text"><code>6+5=11</code></pre>
+<p>再取 <code>3</code> 个红球：</p>
+<pre class="text"><code>答案=14</code></pre>
+<hr />
+<h2 id="5-和一定时的乘积最值">5. 和一定时的乘积最值</h2>
+<p>正数 <code>x+y=S</code>：</p>
+<pre class="text"><code>xy在x、y尽量接近时最大</code></pre>
+<h3 id="例题-4">例题 4</h3>
+<p>两个正整数和为 <code>20</code>，乘积最大：</p>
+<pre class="text"><code>10×10=100</code></pre>
+<p>若要求两数不同，则取最接近的 <code>9</code> 和 <code>11</code>，乘积
+<code>99</code>。</p>
+<p>多项正数和一定，乘积通常在各项尽量相等时最大。</p>
+<hr />
+<h2 id="6-总量固定时的极端分配">6. 总量固定时的极端分配</h2>
+<p>求最大或最小，先问：</p>
+<ul>
+<li>变量必须为正整数还是非负整数？</li>
+<li>是否有上限、下限？</li>
+<li>是否要求互不相同？</li>
+<li>端点能否取到？</li>
+</ul>
+<p>例如 <code>x+y=20</code>：</p>
+<ul>
+<li>若 <code>x,y</code> 为正整数，最小乘积为 <code>1×19=19</code>；</li>
+<li>若允许 <code>0</code>，最小乘积为 <code>0</code>；</li>
+<li>若要求均不少于 <code>4</code>，最小可取 <code>4×16=64</code>。</li>
+</ul>
+<p>边界条件决定答案。</p>
+<hr />
+<h2 id="7-最不利构造的标准过程">7. 最不利构造的标准过程</h2>
+<pre class="text"><code>第一步：明确“要保证发生”的目标
+第二步：故意让目标尽可能不发生
+第三步：算出还能维持不发生的最大数量
+第四步：再加1</code></pre>
+<p>“最坏情况加一”只适用于第 3
+步求的是最大安全数量。若题目要求保证多个目标，有时需要再加多个，不应机械只加一。</p>
+<hr />
+<h2 id="8-高频错误与止损">8. 高频错误与止损</h2>
+<ul>
+<li>从最幸运情况出发；</li>
+<li>类别划分太粗，例如只按颜色却忽略号码；</li>
+<li>忘记库存上限；</li>
+<li>“保证至少 3 个目标物”仍只加一；</li>
+<li>忽略正整数、非负整数和互不相同条件；</li>
+<li>求最值时没有验证端点能否取到。</li>
+</ul>
+<p>止损：最不利题若类别清楚，通常很快；若目标包含多重配对、库存限制和多个保证条件，先列每类最大安全数，仍无法确定时放第二轮。</p>
+<hr />
+<h2 id="9-草稿模板">9. 草稿模板</h2>
+<pre class="text"><code>保证题：最大不发生数 + 1
+保证m个同类：k(m-1)+1
+保证若干目标：所有非目标 + 所需目标数
+和一定乘积最大：尽量均匀
+极值先检查整数、端点、上下限、是否互异</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/01-方程比例与鸡兔同笼.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型
+01：方程、比例与鸡兔同笼 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-01方程比例与鸡兔同笼">数量关系题型
+01：方程、比例与鸡兔同笼</h1>
+<blockquote>
+<p>这是数量关系的底层模型。很多年龄、利润、工程、车辆和计分题，最后都会落到方程、比例或“两档差额”。</p>
+</blockquote>
+<hr />
+<h2 id="1-识别信号">1. 识别信号</h2>
+<ul>
+<li>总数与总费用、总腿数、总分数同时出现；</li>
+<li>两种对象价格、速度、载重或得分不同；</li>
+<li>已知和、差、倍数或比例；</li>
+<li>问整数个数，条件不足以唯一列普通方程；</li>
+<li>选项都是整数，带明显整除和奇偶特征。</li>
+</ul>
+<hr />
+<h2 id="2-方程法只设最少未知数">2. 方程法：只设最少未知数</h2>
+<p>基本流程：</p>
+<pre class="text"><code>找总量或不变量
+→ 优先设题目所求为x
+→ 用x表达其他量
+→ 按题干顺序列一个主方程
+→ 用整数、范围或选项校验</code></pre>
+<h3 id="例题-1和差">例题 1：和差</h3>
+<p>甲乙合计 <code>86</code> 人，甲比乙多 <code>14</code>
+人，求甲乙人数。</p>
+<pre class="text"><code>甲+乙=86
+甲-乙=14</code></pre>
+<p>所以：</p>
+<pre class="text"><code>甲=(86+14)/2=50
+乙=(86-14)/2=36</code></pre>
+<p>和差题先检查奇偶：和与差必须同奇偶，否则不存在整数解。</p>
+<hr />
+<h2 id="3-比例法先转成份数">3. 比例法：先转成份数</h2>
+<p>若：</p>
+<pre class="text"><code>甲:乙 = m:n</code></pre>
+<p>可设：</p>
+<pre class="text"><code>甲=mk，乙=nk</code></pre>
+<p>若总量为 <code>S</code>：</p>
+<pre class="text"><code>每份=S/(m+n)</code></pre>
+<h3 id="例题-2比例变化">例题 2：比例变化</h3>
+<p>甲乙人数比为 <code>3:5</code>，甲增加 <code>12</code>
+人后，二者人数比变为 <code>1:1</code>，求原总人数。</p>
+<pre class="text"><code>甲=3k，乙=5k
+3k+12=5k
+k=6</code></pre>
+<p>原总人数：</p>
+<pre class="text"><code>8k=48</code></pre>
+<p>比例题不要一开始把甲乙都设成独立未知数，一个份数 <code>k</code>
+通常足够。</p>
+<hr />
+<h2 id="4-鸡兔同笼先假设全是一类">4. 鸡兔同笼：先假设全是一类</h2>
+<p>两类对象：</p>
+<ul>
+<li>总个数为 <code>N</code>；</li>
+<li>第一类每个贡献 <code>a</code>；</li>
+<li>第二类每个贡献 <code>b</code>，且 <code>b&gt;a</code>；</li>
+<li>总贡献为 <code>L</code>。</li>
+</ul>
+<p>先假设全部是第一类：</p>
+<pre class="text"><code>假设总贡献=aN
+实际多出=L-aN
+每替换一个，多出=b-a
+第二类个数=(L-aN)/(b-a)</code></pre>
+<h3 id="例题-3经典模型">例题 3：经典模型</h3>
+<p>鸡兔共 <code>35</code> 只，共 <code>94</code> 条腿，求兔数。</p>
+<p>假设全是鸡：</p>
+<pre class="text"><code>35×2=70条腿
+实际多94-70=24条
+每把一只鸡换成兔，多2条腿
+兔数=24÷2=12</code></pre>
+<p>鸡为 <code>23</code> 只。</p>
+<hr />
+<h2 id="5-鸡兔模型的常见伪装">5. 鸡兔模型的常见伪装</h2>
+<h3 id="两档价格">两档价格</h3>
+<p>买两种票共 <code>40</code> 张，票价分别为 <code>20</code> 元和
+<code>35</code> 元，总价 <code>1100</code> 元。假设全买 <code>20</code>
+元票：</p>
+<pre class="text"><code>假设总价=40×20=800
+多出=1100-800=300
+每张高价票多15元
+高价票=300÷15=20张</code></pre>
+<h3 id="两档得分">两档得分</h3>
+<p>答对得 <code>5</code> 分，答错扣 <code>2</code> 分，共答
+<code>20</code> 题得 <code>65</code> 分。假设全答错：</p>
+<pre class="text"><code>假设总分=20×(-2)=-40
+实际多=65-(-40)=105
+每从错变对提高7分
+答对=105÷7=15题</code></pre>
+<h3 id="两档载重速度或工效">两档载重、速度或工效</h3>
+<p>只要满足：</p>
+<pre class="text"><code>对象总数固定
+每个对象只有两种贡献值
+总贡献已知</code></pre>
+<p>就可以尝试差额法。</p>
+<hr />
+<h2 id="6-不定方程不要执着求通解">6. 不定方程：不要执着求通解</h2>
+<p>典型形式：</p>
+<pre class="text"><code>ax+by=c
+x、y为非负整数</code></pre>
+<p>优先顺序：</p>
+<ol type="1">
+<li>看奇偶；</li>
+<li>看被 <code>3、5、9、11</code> 等整除；</li>
+<li>看尾数；</li>
+<li>看范围；</li>
+<li>代选项。</li>
+</ol>
+<h3 id="例题-4">例题 4</h3>
+<p>购买单价 <code>7</code> 元和 <code>11</code> 元的两种商品共花
+<code>89</code> 元，两种都至少买一件，问 <code>11</code>
+元商品可能买几件？</p>
+<pre class="text"><code>7x+11y=89</code></pre>
+<p>模 <code>7</code>：</p>
+<pre class="text"><code>11y≡89 (mod 7)
+4y≡5 (mod 7)</code></pre>
+<p>试小范围 <code>y=1—8</code>，得到 <code>y=3</code> 时：</p>
+<pre class="text"><code>89-33=56=7×8</code></pre>
+<p>所以可以买 <code>3</code> 件，另一种 <code>8</code> 件。</p>
+<p>考场有选项时，通常直接代 <code>y</code> 的选项更快。</p>
+<hr />
+<h2 id="7-方程与代入怎么选">7. 方程与代入怎么选</h2>
+<p>优先代入：</p>
+<ul>
+<li>选项只有四个整数；</li>
+<li>从选项正向验证很短；</li>
+<li>方程会出现分数或多个未知数；</li>
+<li>选项有序，可以从中间项开始。</li>
+</ul>
+<p>优先方程：</p>
+<ul>
+<li>等量关系一眼可见；</li>
+<li>一个未知数即可表达全部；</li>
+<li>选项代入每次都要重复长计算。</li>
+</ul>
+<hr />
+<h2 id="8-高频错误与止损">8. 高频错误与止损</h2>
+<ul>
+<li>把“比甲多 3 倍”写成乙为甲的 <code>3</code> 倍，实际通常是
+<code>4</code> 倍；</li>
+<li>人数、件数出现小数却不回查；</li>
+<li>鸡兔同笼中差额方向写反；</li>
+<li>不定方程花时间求全部解，而题目只问一个选项；</li>
+<li>设了三个未知数，却没有利用总数消元。</li>
+</ul>
+<p>止损：列式后仍有三个以上独立未知数、又没有整数或选项约束，先跳过或改从选项反推。</p>
+<hr />
+<h2 id="9-草稿模板">9. 草稿模板</h2>
+<pre class="text"><code>比例：甲=mk，乙=nk
+和差：大=(和+差)/2，小=(和-差)/2
+
+两档差额：
+假设全是低档 → 总差额 ÷ 每个差额 = 高档数量
+
+不定方程：先整除、奇偶、尾数、范围，再代选项。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

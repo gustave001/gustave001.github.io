@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../.." data-page-path="pages/判断推理/图形推理分类导航与遍历清单.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>图形推理：分类导航与遍历清单 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script defer src="../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="图形推理分类导航与遍历清单">图形推理：分类导航与遍历清单</h1>
+<blockquote>
+<p>用途：做题时先判断图形属于哪一类，再只遍历对应规律；不要从“平移”一路把所有考点试到“一笔画”。
+使用方式：先看第 1 节总导航；专项学习看第 3—6 节；考前只看第 7 节。
+来源说明：分类思路参考知乎答主“萧萧枝叶”的<a
+href="https://www.zhihu.com/question/13758022993/answer/123051021175">《行测的图推部分怎么提速和总结规律？》</a>，本文件结合个人备考需求重新组织、改写并补充验证与止损规则，未转载原图或大段原文。</p>
+</blockquote>
+<hr />
+<h2 id="0-先记住一句话">0. 先记住一句话</h2>
+<blockquote>
+<p><strong>先看图形之间像不像、重复不重复，再决定查位置、样式还是数量属性。</strong></p>
+</blockquote>
+<p>图推有两套发动机：</p>
+<ul>
+<li><strong>图感直达</strong>：出现强特征时，直接检查高概率规律；</li>
+<li><strong>分类遍历</strong>：没有明显感觉时，按 A/B/C/D
+分类，再在该类内部依次排查。</li>
+</ul>
+<p>“图感”不是玄学，而是大量做题后形成的“特征 →
+考点”条件反射；分类遍历则是图感尚未形成时的保底系统。</p>
+<hr />
+<h2 id="1-总导航图">1. 总导航图</h2>
+<pre class="mermaid"><code>flowchart TD
+    S[拿到图推题] --&gt; T{题目组织形式}
+    T --&gt; T1[一条图形序列：看相邻项或奇偶项]
+    T --&gt; T2[两组图：先找第一组规则，再验证第二组]
+    T --&gt; T3[九宫格：先横看，再竖看，必要时整体看]
+    T1 --&gt; Q{有强特征吗}
+    T2 --&gt; Q
+    T3 --&gt; Q
+
+    Q --&gt;|有| F[按强特征直达高概率考点]
+    Q --&gt;|没有或验证失败| C{按图形关系分类}
+
+    F --&gt; V[至少用两组图验证]
+    V --&gt;|成立且选项唯一| A0[作答]
+    V --&gt;|不成立| C
+
+    C --&gt;|组成相同，只是位置不同| A[A 类：位置变化]
+    C --&gt;|相同元素反复出现| B[B 类：元素复现]
+    C --&gt;|整体相似，仅有增删或叠合| C1[C 类：样式运算]
+    C --&gt;|不相同也不相似| D[D 类：属性、特殊关系、数量]
+
+    A --&gt; A1[平移 → 旋转 → 翻转 → 位置遍历]
+    B --&gt; B1[遍历 → 运算 → 种类数 → 拆分平移 → 相邻复现]
+    C1 --&gt; C2[相加相减 → 去同存异 → 去异存同]
+    D --&gt; D1[属性 → 特殊关系 → 数量]
+
+    A1 --&gt; R[说清规则并验证全部图]
+    B1 --&gt; R
+    C2 --&gt; R
+    D1 --&gt; R
+    R --&gt;|成立且选项唯一| A0
+    R --&gt;|仍不成立且已超时| X[标记并跳过]</code></pre>
+<p>如果当前 Markdown 阅读器不渲染 Mermaid，就使用下面这一行文本版：</p>
+<pre class="text"><code>组成相同 → A 位置｜元素重复 → B 复现｜整体相似有增删 → C 样式｜完全不同 → D 属性/特殊/数量</code></pre>
+<h3 id="分类时只问三个问题">分类时只问三个问题</h3>
+<ol type="1">
+<li>每幅图的“零件”基本一样吗？一样但位置不同，就是 <strong>A
+类</strong>。</li>
+<li>零件不完全一样，但某些元素一直重复出现吗？是，就是 <strong>B
+类</strong>。</li>
+<li>整体轮廓或线条大体相似，只差增删、重合或运算吗？是，就是 <strong>C
+类</strong>；都不是，进入 <strong>D 类</strong>。</li>
+</ol>
+<p>分类不是目的，只是为了缩小搜索范围。若某题同时有两类特征，先查更直观、规则更简单、能覆盖全部图形的那一条。</p>
+<hr />
+<h2 id="2-强特征看到后先查什么">2. 强特征：看到后先查什么</h2>
+<table>
+<thead>
+<tr>
+<th>一眼看到的特征</th>
+<th>第一反应</th>
+<th>第二检查项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图形零件完全相同</td>
+<td>平移、旋转、翻转</td>
+<td>位置遍历</td>
+</tr>
+<tr>
+<td>黑白宫格或分区涂色</td>
+<td>黑白运算、平移</td>
+<td>旋转、翻转</td>
+</tr>
+<tr>
+<td>相同小元素反复出现</td>
+<td>遍历、种类数</td>
+<td>相邻图形共同元素</td>
+</tr>
+<tr>
+<td>两图合成一图或一图拆成两图</td>
+<td>加减、叠加</td>
+<td>去同存异、去异存同</td>
+</tr>
+<tr>
+<td>图形都很对称</td>
+<td>对称轴数量、方向</td>
+<td>轴与点线面的关系</td>
+</tr>
+<tr>
+<td>圆、弧、直线混排</td>
+<td>曲直性</td>
+<td>直曲数量、交点</td>
+</tr>
+<tr>
+<td>封闭区域很多</td>
+<td>面数</td>
+<td>内外面积、封闭性</td>
+</tr>
+<tr>
+<td>交叉线很多</td>
+<td>交点数</td>
+<td>交点类型、内外交点</td>
+</tr>
+<tr>
+<td>五角星、日字、田字及相连线图</td>
+<td>一笔画、奇点</td>
+<td>最少笔画数</td>
+</tr>
+<tr>
+<td>明显凹陷或凸起</td>
+<td>凹凸性</td>
+<td>凹口数量、方向</td>
+</tr>
+<tr>
+<td>每图都有小黑点、箭头或短线</td>
+<td>功能元素的位置关系</td>
+<td>标记的边、角、面属性</td>
+</tr>
+<tr>
+<td>两个图形相交、相离、相压或内含</td>
+<td>位置关系</td>
+<td>交叠部分的点线面属性</td>
+</tr>
+</tbody>
+</table>
+<p>强特征只负责提出假设，不负责证明答案。仍须用至少两组图验证，不能“看到五角星就无条件选一笔画”。</p>
+<hr />
+<h2 id="3-a-类组成相同只是位置不同">3. A 类：组成相同，只是位置不同</h2>
+<h3 id="31-遍历顺序">3.1 遍历顺序</h3>
+<pre class="text"><code>平移 → 旋转 → 翻转 → 位置遍历</code></pre>
+<h3 id="32-平移">3.2 平移</h3>
+<p>必须说清四件事：</p>
+<pre class="text"><code>谁在移动 + 向哪里移动 + 每次几步 + 到边界后如何处理</code></pre>
+<ul>
+<li>方向：上、下、左、右、顺时针、逆时针；</li>
+<li>步数：恒定、递增、递减、周期变化；</li>
+<li>路径：直线、环形、折返；</li>
+<li>边界：循环回到起点、反弹、改变方向；</li>
+<li>多个元素：可能同向、反向或轮流移动。</li>
+</ul>
+<p>黑白宫格题先把每个黑块当作独立元素，比较相邻两图的对应位置；九宫格中间区域变化明显时可先查平移，不变时再查旋转。</p>
+<h3 id="33-旋转">3.3 旋转</h3>
+<ul>
+<li>方向：顺时针或逆时针；</li>
+<li>角度：固定角度，或按一定数列增减；</li>
+<li>中心：整图绕中心转，还是局部元素各自转；</li>
+<li>内外元素：同向、反向或交替旋转。</li>
+</ul>
+<h3 id="34-翻转">3.4 翻转</h3>
+<ul>
+<li>左右翻转：相当于照竖直镜子；</li>
+<li>上下翻转：相当于照水平镜子；</li>
+<li>判断旋转还是翻转：盯住不对称标志，如缺口、箭头、长短边或“手性”。</li>
+</ul>
+<p>若旋转与翻转都能解释前一组，优先选规则更统一、步骤更少，并能解释所有图形者。</p>
+<h3 id="35-位置遍历">3.5 位置遍历</h3>
+<p>同一元素在一组图中把若干位置各走一次，不重复、不遗漏。九宫格常见：每行或每列的元素位置恰好齐全。</p>
+<hr />
+<h2 id="4-b-类相同元素反复出现">4. B 类：相同元素反复出现</h2>
+<h3 id="41-遍历顺序">4.1 遍历顺序</h3>
+<pre class="text"><code>遍历 → 运算 → 种类数 → 拆分后平移 → 相邻复现</code></pre>
+<h3 id="42-遍历">4.2 遍历</h3>
+<ul>
+<li><strong>数量遍历</strong>：同类元素在每幅图出现次数满足齐全、恒定或周期；</li>
+<li><strong>位置遍历</strong>：某种元素在各位置各出现一次；</li>
+<li>九宫格优先检查每行、每列是否“种类齐全且不重复”。</li>
+</ul>
+<h3 id="43-运算">4.3 运算</h3>
+<ul>
+<li>黑白区域逐位置运算；</li>
+<li>每图都含相同种类、不同数量元素时，检查数量加减、差值、倍数或奇偶；</li>
+<li>运算顺序必须在所有对应位置一致，不能为了迁就选项临时换规则。</li>
+</ul>
+<h3 id="44-元素种类数">4.4 元素种类数</h3>
+<p>不要只数总个数，还要分开看：</p>
+<ul>
+<li>每图元素种类数是否恒定；</li>
+<li>某一元素的个数是否递增、递减或周期变化；</li>
+<li>不同元素之间是否存在数量和、差或替换关系。</li>
+</ul>
+<h3 id="45-拆分后平移">4.5 拆分后平移</h3>
+<p>当图形像被分成左右、上下或内外两部分时，分别追踪各部分，不要把整图绑在一起观察。</p>
+<h3 id="46-相邻复现">4.6 相邻复现</h3>
+<p>相邻两图可能共享一个元素，或前图的某个元素传递到后图。检查：</p>
+<pre class="text"><code>图 1 与图 2 的共同元素
+图 2 与图 3 的共同元素
+共同元素是否按统一规则变化</code></pre>
+<hr />
+<h2 id="5-c-类整体相似只有线条或局部不同">5. C
+类：整体相似，只有线条或局部不同</h2>
+<h3 id="51-遍历顺序">5.1 遍历顺序</h3>
+<pre class="text"><code>相加/相减 → 去同存异 → 去异存同</code></pre>
+<p>这一类常见外观：</p>
+<ul>
+<li>图形大体相似，只增减了个别线条；</li>
+<li>含有明显相同轮廓；</li>
+<li>一个复杂图形可由两个简单图形组合；</li>
+<li>九宫格前两图运算得到第三图。</li>
+</ul>
+<h3 id="52-相加或相减">5.2 相加或相减</h3>
+<ul>
+<li>相加：把前两图全部线条或区域合并；</li>
+<li>相减：从复杂图形中减去某些线条或元素；</li>
+<li>拆分：复杂图形能否分解成另外两个图形。</li>
+</ul>
+<h3 id="53-去同存异">5.3 去同存异</h3>
+<p>两图共同部分消失，只保留不同部分。</p>
+<h3 id="54-去异存同">5.4 去异存同</h3>
+<p>不同部分消失，只保留共同部分。</p>
+<h3 id="55-验证动作">5.5 验证动作</h3>
+<p>不要用“整体看起来差不多”验证。任选两个明确位置，写出局部运算表，再检查剩余位置。若同样输入产生不同输出，当前规则立即作废。</p>
+<hr />
+<h2 id="6-d-类不相同也不相似">6. D 类：不相同也不相似</h2>
+<p>D 类看起来最乱，但不代表要把所有数字都数一遍。顺序是：</p>
+<pre class="text"><code>先看整体属性 → 再看图形关系或功能元素 → 最后选择一个有依据的对象计数</code></pre>
+<h3 id="61-属性规律">6.1 属性规律</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>具体检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>封闭性</td>
+<td>开放、封闭、半封闭，或封闭部分数量</td>
+</tr>
+<tr>
+<td>对称性</td>
+<td>轴对称、中心对称、对称轴数量与方向</td>
+</tr>
+<tr>
+<td>曲直性</td>
+<td>全直、全曲、直曲混合，内外是否同曲直</td>
+</tr>
+<tr>
+<td>面积关系</td>
+<td>内外、左右或上下区域面积大小关系</td>
+</tr>
+<tr>
+<td>包含性</td>
+<td>是否都含某种多边形、圆、直角、星形等元素</td>
+</tr>
+<tr>
+<td>凹凸性</td>
+<td>凹或凸，凹口数量及方向</td>
+</tr>
+</tbody>
+</table>
+<p>注意：“有或没有”还可能升级为“有几个”。例如每图都含封闭区域只是第一层，封闭区域数量可能才是真正规律。</p>
+<h3 id="62-特殊规律">6.2 特殊规律</h3>
+<h4 id="图形连接">图形连接</h4>
+<ul>
+<li>公共边连接、点连接、线连接；</li>
+<li>有公共边：再看公共边属性、两侧面积或其他属性关系；</li>
+<li>无公共边：看连接点的有无、数量和位置。</li>
+</ul>
+<h4 id="位置关系">位置关系</h4>
+<ul>
+<li>相交：检查交叠部分的形状、边、角、面；</li>
+<li>相离：检查对应方向上的边或图形属性；</li>
+<li>相压：检查上下图形的对应属性；</li>
+<li>内外：检查内外图形的曲直、开闭、对称或数量关系。</li>
+</ul>
+<h4 id="功能元素">功能元素</h4>
+<p>小黑点、箭头、短线、阴影块不一定用于计数，更可能在标记：</p>
+<ul>
+<li>内部、外部或边界；</li>
+<li>长边、短边、直边或曲边；</li>
+<li>锐角、直角、钝角；</li>
+<li>最大面、最小面；</li>
+<li>相邻面或相对面；</li>
+<li>某元素的移动路径。</li>
+</ul>
+<h3 id="63-数量规律">6.3 数量规律</h3>
+<table>
+<thead>
+<tr>
+<th>计数对象</th>
+<th>细分方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>点</td>
+<td>线线交点、直曲交点、切点、端点、奇点、内外交点</td>
+</tr>
+<tr>
+<td>线</td>
+<td>直线数、曲线数、线段数、直曲和差或比例</td>
+</tr>
+<tr>
+<td>笔画</td>
+<td>一笔画、最少笔画数、奇点数、连通部分数</td>
+</tr>
+<tr>
+<td>对称轴</td>
+<td>数量、方向、是否与其他元素重合或垂直</td>
+</tr>
+<tr>
+<td>角</td>
+<td>锐角、直角、钝角，小于 180° 的内角</td>
+</tr>
+<tr>
+<td>面</td>
+<td>总面数、直线面、曲线面、内外面</td>
+</tr>
+<tr>
+<td>元素</td>
+<td>种类数、个数、部分数、相同元素的位置</td>
+</tr>
+</tbody>
+</table>
+<p>数量序列常见关系：恒定、等差、递增递减、奇偶交替、周期、分组，以及九宫格行列间的加减。</p>
+<h4 id="一笔画最低限度">一笔画最低限度</h4>
+<ul>
+<li>连通图有 <code>0</code> 或 <code>2</code> 个奇点：可以一笔画；</li>
+<li>连通图有 <code>2n</code> 个奇点且大于 <code>2</code>：最少通常需要
+<code>n</code> 笔；</li>
+<li>图形不连通：各连通部分分别判断后相加。</li>
+</ul>
+<p>先确认连通，再数奇点；不能只看到星形或日字形就直接下结论。</p>
+<hr />
+<h2 id="7-考场一页版">7. 考场一页版</h2>
+<h3 id="71-十秒分类">7.1 十秒分类</h3>
+<pre class="text"><code>A 组成相同：平移 → 旋转 → 翻转 → 位置遍历
+B 元素重复：遍历 → 运算 → 种类 → 拆分平移 → 相邻复现
+C 整体相似：加减 → 去同存异 → 去异存同
+D 完全不同：属性 → 特殊关系 → 有依据地计数</code></pre>
+<h3 id="72-强特征直达">7.2 强特征直达</h3>
+<pre class="text"><code>多面 → 面数
+多交叉 → 交点
+星、日、田、相连线图 → 笔画/奇点
+小黑点、箭头 → 功能位置
+明显对称 → 对称轴
+明显凹口 → 凹凸
+两图合一图 → 样式运算</code></pre>
+<h3 id="73-验证标准">7.3 验证标准</h3>
+<p>一个合格规律必须同时满足：</p>
+<ol type="1">
+<li>能解释至少两组图，而不是只解释一处；</li>
+<li>对全部关键元素有效；</li>
+<li>不需要频繁增加例外；</li>
+<li>能得到唯一选项。</li>
+</ol>
+<h3 id="74-止损标准">7.4 止损标准</h3>
+<ul>
+<li>约 10 秒仍未完成分类：先看强特征；</li>
+<li>一个方向验证失败：立即换同类中的下一规则，不修补旧假设；</li>
+<li>约 50—60 秒仍没有稳定路径：标记并跳过；</li>
+<li>第二轮只回收“已有明确思路、差一步”的题，不重新从头穷举。</li>
+</ul>
+<p>时间不是绝对值，要按个人限时数据调整；关键是避免在一道陌生图推上持续沉没成本。</p>
+<hr />
+<h2 id="8-专项训练把导航图练成图感">8. 专项训练：把导航图练成图感</h2>
+<p>每次训练建议做同来源真题 10—15 题。每题完成后只补一条记录：</p>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>A/B/C/D</th>
+<th>具体规律</th>
+<th>应看到的触发特征</th>
+<th style="text-align: right;">首次用时</th>
+<th>是否误判入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>例</td>
+<td>D</td>
+<td>交点数等差</td>
+<td>多条线反复交叉</td>
+<td style="text-align: right;">72 秒</td>
+<td>是，先数了面</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>错题复盘只回答四个问题：</p>
+<ol type="1">
+<li>我应该把它分到哪一类？</li>
+<li>题面最明显的触发特征是什么？</li>
+<li>我是没学会规律，还是入口选错？</li>
+<li>下次看到什么特征，要立刻想到什么？</li>
+</ol>
+<p>不要把解析整段抄进错题本。真正有用的是一条个人触发语，例如：</p>
+<pre class="text"><code>看到很多交叉线，先数交点类型，不先数总线条。
+看到相同零件只换位置，先查位置，不碰数量。</code></pre>
+<p>每累计 30—50
+道真题，再按自己的错题数据调整分支优先级。导航图是起点，最终版本必须由你的正确率和耗时共同决定。</p>
+<hr />
+<h2 id="9-个人导航修订区">9. 个人导航修订区</h2>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>我当前的第一反应</th>
+<th style="text-align: right;">正确率/样本量</th>
+<th>是否调整优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>黑白宫格</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>相同元素复现</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>线条大体相似</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>多交点</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>多封闭区域</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>对称图形</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>小黑点/箭头</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+<tr>
+<td>星、日、田字结构</td>
+<td></td>
+<td style="text-align: right;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

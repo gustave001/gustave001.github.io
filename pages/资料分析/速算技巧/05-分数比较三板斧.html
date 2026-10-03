@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/05-分数比较三板斧.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析速算技巧
+05：分数比较三板斧 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="行测资料分析速算技巧-05分数比较三板斧">行测资料分析速算技巧
+05：分数比较三板斧</h1>
+<blockquote>
+<p>资料分析中的增长率、比重、平均数和倍数，本质上经常都是分数比较。<br />
+目标：只判断大小时，不把每个分数都算成小数。</p>
+</blockquote>
+<hr />
+<h2 id="1-第一板斧先看分子分母方向">1. 第一板斧：先看分子、分母方向</h2>
+<p>对于正数分数：</p>
+<pre class="text"><code>分子越大，分数越大；
+分母越大，分数越小。</code></pre>
+<p>因此：</p>
+<ul>
+<li>若甲分子更大、分母更小，则甲一定更大，直接结束；</li>
+<li>若甲分子、分母都更大，才需要进一步比较；</li>
+<li>若分母相同，只比分子；分子相同，只反比分母。</li>
+</ul>
+<h3 id="例题-1">例题 1</h3>
+<p>比较：</p>
+<pre class="text"><code>甲：528/1200
+乙：510/1250</code></pre>
+<p>甲的分子更大、分母更小，所以甲一定更大，无需除法。</p>
+<hr />
+<h2 id="2-第二板斧交叉相乘">2. 第二板斧：交叉相乘</h2>
+<p>比较：</p>
+<pre class="text"><code>a/b 与 c/d</code></pre>
+<p>在分母均为正时，只需比较：</p>
+<pre class="text"><code>a×d 与 c×b</code></pre>
+<ul>
+<li><code>a×d &gt; c×b</code>，则 <code>a/b &gt; c/d</code>；</li>
+<li><code>a×d &lt; c×b</code>，则 <code>a/b &lt; c/d</code>。</li>
+</ul>
+<h3 id="例题-2">例题 2</h3>
+<p>比较：</p>
+<pre class="text"><code>347/1280 与 281/1050</code></pre>
+<p>交叉相乘：</p>
+<pre class="text"><code>347 × 1050 = 364350
+281 × 1280 = 359680</code></pre>
+<p>所以：</p>
+<pre class="text"><code>347/1280 &gt; 281/1050</code></pre>
+<h3 id="什么时候用">什么时候用</h3>
+<ul>
+<li>只比较两个分数；</li>
+<li>数字相乘并不复杂；</li>
+<li>两个结果很接近，估算不稳。</li>
+</ul>
+<p>如果要比较四五个分数，全部交叉相乘可能很慢，应先用方向、数量级和截位淘汰大多数。</p>
+<hr />
+<h2 id="3-第三板斧差分法">3. 第三板斧：差分法</h2>
+<p>当两个分数满足：</p>
+<pre class="text"><code>a/b 与 c/d
+a &gt; c，b &gt; d</code></pre>
+<p>构造差分数：</p>
+<pre class="text"><code>(a-c)/(b-d)</code></pre>
+<p>然后比较差分数与较小分数 <code>c/d</code>：</p>
+<ul>
+<li>若差分数大于 <code>c/d</code>，则 <code>a/b &gt; c/d</code>；</li>
+<li>若差分数小于 <code>c/d</code>，则 <code>a/b &lt; c/d</code>；</li>
+<li>若相等，则两个原分数相等。</li>
+</ul>
+<h3 id="原理">原理</h3>
+<p>可以把大分数理解为：</p>
+<pre class="text"><code>a/b = [c + (a-c)] / [d + (b-d)]</code></pre>
+<p>它是原有部分 <code>c/d</code> 与新增部分 <code>(a-c)/(b-d)</code>
+的混合。新增部分更大，混合后变大；新增部分更小，混合后变小。</p>
+<h3 id="例题-3">例题 3</h3>
+<p>比较：</p>
+<pre class="text"><code>648/1250 与 521/1000</code></pre>
+<p>构造差分数：</p>
+<pre class="text"><code>(648-521)/(1250-1000)
+= 127/250
+= 50.8%</code></pre>
+<p>较小分数：</p>
+<pre class="text"><code>521/1000 = 52.1%</code></pre>
+<p>差分数更小，所以：</p>
+<pre class="text"><code>648/1250 &lt; 521/1000</code></pre>
+<p>实际二者分别为 <code>51.84%</code> 和 <code>52.1%</code>。</p>
+<h3 id="差分法最适合什么数据">差分法最适合什么数据</h3>
+<ul>
+<li>两个分数的分子、分母都一大一小同向变化；</li>
+<li>原数很大，但相减后变成好算的小数；</li>
+<li>两个分数非常接近。</li>
+</ul>
+<p>若差分后的数字仍然很难算，就改用交叉相乘。</p>
+<hr />
+<h2 id="4-增长率比较的降维">4. 增长率比较的降维</h2>
+<p>若给出现期量 <code>A</code> 和基期量 <code>B</code>：</p>
+<pre class="text"><code>增长率 = (A-B)/B = A/B - 1</code></pre>
+<p>所有对象都减去同一个
+<code>1</code>，不影响排序。因此比较增长率，可以直接比较：</p>
+<pre class="text"><code>现期量/基期量</code></pre>
+<p>也可以比较：</p>
+<pre class="text"><code>增长量/基期量</code></pre>
+<p>哪组数字更方便就用哪组。</p>
+<h3 id="例题-4">例题 4</h3>
+<p>甲从 <code>800</code> 增至 <code>920</code>，乙从 <code>660</code>
+增至 <code>770</code>，谁的增长率更高？</p>
+<p>增长量分别为：</p>
+<pre class="text"><code>甲：120
+乙：110</code></pre>
+<p>比较：</p>
+<pre class="text"><code>120/800 与 110/660</code></pre>
+<p>前者 <code>15%</code>，后者约
+<code>16.7%</code>，所以乙的增长率更高。不能因为甲增长量更大，就说甲增长率更高。</p>
+<hr />
+<h2 id="5-同比增速的双线判断">5. 同比增速的“双线判断”</h2>
+<p>比较多期增长率：</p>
+<pre class="text"><code>r = 增长量/基期量</code></pre>
+<p>若某一期增长量更大、基期量更小，则该期增速一定更大。</p>
+<p>例如：</p>
+<pre class="text"><code>甲：增长量 18，基期量 200
+乙：增长量 15，基期量 230</code></pre>
+<p>甲分子大、分母小，所以甲增速必然更高。</p>
+<p>只有当增长量和基期量同向变化时，才需要继续计算。</p>
+<hr />
+<h2 id="6-方法选择顺序">6. 方法选择顺序</h2>
+<pre class="text"><code>1. 分子大、分母小能否直接判断？
+2. 能否用整倍数、百分数锚点判断？
+3. 相减后是否明显变简单？是 → 差分法
+4. 仍很接近 → 交叉相乘
+5. 选项问具体数值 → 截位直除</code></pre>
+<hr />
+<h2 id="7-高频错误">7. 高频错误</h2>
+<ul>
+<li>分子分母都大，就凭感觉认为分数更大；</li>
+<li>交叉相乘后把对应方向写反；</li>
+<li>差分法比较的是“差分数与原来的较小分数”，不是直接把差分数当成两分数之差；</li>
+<li>比较增长率时只比较增长量；</li>
+<li>为比较大小，把所有分数都做完整除法。</li>
+</ul>
+<hr />
+<h2 id="8-草稿模板">8. 草稿模板</h2>
+<pre class="text"><code>a/b ? c/d
+
+先看方向；
+交叉：ad ? bc；
+若a&gt;c且b&gt;d，可看差分：(a-c)/(b-d) ? c/d。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

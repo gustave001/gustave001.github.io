@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/00-技巧导航与选择顺序.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析：速算技巧导航与选择顺序 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1
+id="行测资料分析速算技巧导航与选择顺序">行测资料分析：速算技巧导航与选择顺序</h1>
+<blockquote>
+<p>目标：看到题目后，不是问“我会哪些技巧”，而是问“这道题最短的路径是什么”。<br />
+原则：先定性、再估算、后精算；先看选项差距，再决定保留几位。</p>
+</blockquote>
+<hr />
+<h2 id="1-七个母技巧">1. 七个母技巧</h2>
+<table>
+<thead>
+<tr>
+<th>技巧</th>
+<th>最适合解决什么</th>
+<th>识别信号</th>
+<th>一句话动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./01-假设分配法.html">假设分配法</a></td>
+<td>已知现期量和增长率，求基期量或增长量</td>
+<td><code>A</code> 和 <code>r</code> 已知，除法不好算</td>
+<td>假设好算的基期量，配出增量，再分余量</td>
+</tr>
+<tr>
+<td><a href="./02-百化分与份数法.html">百化分与份数法</a></td>
+<td>基期量、增长量，尤其增长率接近常见分数</td>
+<td><code>20%、16.7%、14.3%……</code></td>
+<td>把百分数化成分数，直接按份数拆</td>
+</tr>
+<tr>
+<td><a href="./03-截位直除与误差控制.html">截位直除与误差控制</a></td>
+<td>比重、平均数、倍数、基期量</td>
+<td>本质是一个除法，选项首位或前两位不同</td>
+<td>截取足够的有效数字后直接除</td>
+</tr>
+<tr>
+<td><a href="./04-化除为乘与小增长率近似.html">化除为乘</a></td>
+<td>小增长率下的基期量</td>
+<td>`</td>
+<td>r</td>
+</tr>
+<tr>
+<td><a href="./05-分数比较三板斧.html">分数比较</a></td>
+<td>比重、增速、平均数、倍数的大小比较</td>
+<td>只问最大/最小，不要求具体值</td>
+<td>先看方向，再用交叉相乘或差分</td>
+</tr>
+<tr>
+<td><a href="./06-增长量比较速判.html">增长量比较</a></td>
+<td>比较谁增加得最多</td>
+<td>多组 <code>A+r</code></td>
+<td>比较 <code>Ar/(1+r)</code>，先定性后补算</td>
+</tr>
+<tr>
+<td><a href="./07-十字交叉与混合增长率.html">十字交叉法</a></td>
+<td>混合增长率、混合平均数、混合比重</td>
+<td>整体由两个部分加总而成</td>
+<td>整体居中，距离之比对应分母权重之比</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-看到题型后的选择顺序">2. 看到题型后的选择顺序</h2>
+<h3 id="21-求基期量-b--a1r">2.1 求基期量 <code>B = A/(1+r)</code></h3>
+<pre class="text"><code>r 接近常见分数？
+├─ 是 → 百化分与份数法
+└─ 否
+   ├─ |r| 很小且选项差距大 → 化除为乘
+   ├─ 能找到好算的整百/整千基期 → 假设分配
+   └─ 选项很近、要高精度 → 截位直除</code></pre>
+<h3 id="22-求增长量-δ--ar1r">2.2 求增长量 <code>Δ = Ar/(1+r)</code></h3>
+<pre class="text"><code>r 接近 1/n？
+├─ 是 → Δ ≈ A/(n+1)
+└─ 否
+   ├─ r 很小、选项差距大 → 先用 Ar 粗估
+   ├─ 数据适合拆整百/整千 → 假设分配
+   └─ 选项接近 → 精算 Ar/(1+r)</code></pre>
+<h3 id="23-求比重平均数或倍数">2.3 求比重、平均数或倍数</h3>
+<pre class="text"><code>只问大小 → 分数比较
+问具体值 → 截位直除
+属于两个部分的混合值 → 十字交叉</code></pre>
+<h3 id="24-求整体增长率">2.4 求整体增长率</h3>
+<pre class="text"><code>整体 = 部分1 + 部分2
+├─ 选项可用范围排除 → 整体增速介于两部分增速之间
+├─ 还需判断偏向 → 靠近基期量较大的部分
+└─ 需要求权重或未知增速 → 十字交叉</code></pre>
+<hr />
+<h2 id="3-考场三级计算制度">3. 考场三级计算制度</h2>
+<h3 id="第一级定性">第一级：定性</h3>
+<p>先判断：</p>
+<ul>
+<li>正负；</li>
+<li>大于还是小于；</li>
+<li>整体值落在哪个区间；</li>
+<li>数量级是一百、一千还是一万；</li>
+<li>分子增速和分母增速谁更大。</li>
+</ul>
+<p>如果能唯一确定选项，到此停止。</p>
+<h3 id="第二级粗算">第二级：粗算</h3>
+<p>使用：</p>
+<ul>
+<li>截前两三位；</li>
+<li>百化分；</li>
+<li><code>Ar</code> 近似增长量；</li>
+<li><code>A(1-r)</code> 近似基期量；</li>
+<li>现期量近似替代相近增速下的基期权重。</li>
+</ul>
+<p>如果能拉开选项，到此停止。</p>
+<h3 id="第三级精算">第三级：精算</h3>
+<p>只在选项接近时使用：</p>
+<ul>
+<li>多保留一位；</li>
+<li>精确公式；</li>
+<li>交叉相乘；</li>
+<li>对近似结果做误差方向校正。</li>
+</ul>
+<blockquote>
+<p>资料分析的计算精度由选项决定，不由完美主义决定。</p>
+</blockquote>
+<hr />
+<h2 id="4-技巧之间的替换关系">4. 技巧之间的替换关系</h2>
+<p>同一道题经常有多条路径。例如已知现期量 <code>720</code>、增长率
+<code>20%</code>，求增长量：</p>
+<ul>
+<li>公式：<code>720 × 20% ÷ 1.2 = 120</code>；</li>
+<li>份数法：<code>20%=1/5</code>，基期 : 增量 : 现期 =
+<code>5:1:6</code>，增量为 <code>720÷6=120</code>；</li>
+<li>假设分配：假设基期 <code>600</code>，配增量
+<code>120</code>，恰好合计 <code>720</code>。</li>
+</ul>
+<p>三种方法数学上完全一致。考场只选当下最顺手的一种，不必刻意使用“高级技巧”。</p>
+<hr />
+<h2 id="5-训练顺序">5. 训练顺序</h2>
+<p>建议按以下顺序练：</p>
+<ol type="1">
+<li>百化分与份数法：建立百分数和份数的直觉；</li>
+<li>截位直除：覆盖最多的普通计算题；</li>
+<li>分数比较：解决大量“最大、最小”题；</li>
+<li>增长量比较：形成定性优先意识；</li>
+<li>假设分配：处理除法不顺的数据；</li>
+<li>化除为乘：掌握小增长率的误差边界；</li>
+<li>十字交叉：处理混合问题。</li>
+</ol>
+<p>每种方法不要只看例题。至少连续做 <code>10</code>
+道同类题，并记录两件事：</p>
+<pre class="text"><code>我为什么识别出它？
+我在什么条件下不该用它？</code></pre>
+<hr />
+<h2 id="6-总口诀">6. 总口诀</h2>
+<pre class="text"><code>先口径，后列式；先定性，后计算。
+能范围，不求值；能估算，不精算。
+百化分看份数，普通除法用直除。
+小率化除为乘，难除尝试假设分配。
+只比大小看分数，整体混合看十字。
+选项若近，回归精确公式。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

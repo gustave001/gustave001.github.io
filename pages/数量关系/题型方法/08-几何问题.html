@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/08-几何问题.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型 08：几何问题 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-08几何问题">数量关系题型 08：几何问题</h1>
+<blockquote>
+<p>几何题先看比例、割补和平移，最后才考虑复杂方程或坐标。很多行测几何题并不要求证明，只要求迅速找到面积、体积或路径关系。</p>
+</blockquote>
+<hr />
+<h2 id="图解速览">图解速览：先看关系，再套公式</h2>
+<div class="diagram-grid">
+  <figure class="diagram-card">
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="equal-height-title equal-height-desc">
+      <title id="equal-height-title">等高三角形面积比</title>
+      <desc id="equal-height-desc">两个三角形高度相同，底边分别为二份和三份，所以面积比为二比三。</desc>
+      <line x1="35" y1="205" x2="385" y2="205" stroke="#9aa69d" stroke-width="3"/>
+      <path d="M55 205 L150 55 L190 205 Z" fill="#dcebe1" stroke="#2d5b46" stroke-width="3"/>
+      <path d="M205 205 L300 55 L370 205 Z" fill="#f5dfd1" stroke="#c96d3b" stroke-width="3"/>
+      <line x1="150" y1="55" x2="150" y2="205" stroke="#677066" stroke-width="2" stroke-dasharray="6 5"/>
+      <line x1="300" y1="55" x2="300" y2="205" stroke="#677066" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="105" y="232" text-anchor="middle" fill="#183d2d" font-size="16">底 2 份</text>
+      <text x="288" y="232" text-anchor="middle" fill="#8a4727" font-size="16">底 3 份</text>
+      <text x="225" y="28" text-anchor="middle" fill="#20251f" font-size="17" font-weight="700">同高 h → 面积比 = 底边比 = 2:3</text>
+    </svg>
+    <figcaption>等高三角形无需计算高：面积比直接等于底边比。</figcaption>
+  </figure>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="similar-title similar-desc">
+      <title id="similar-title">相似图形的边长、面积和体积比例</title>
+      <desc id="similar-desc">两个相似正方形边长比二比三，面积比四比九；立体图形体积比则为八比二十七。</desc>
+      <rect x="55" y="87" width="100" height="100" rx="4" fill="#dcebe1" stroke="#2d5b46" stroke-width="3"/>
+      <rect x="220" y="37" width="150" height="150" rx="4" fill="#f5dfd1" stroke="#c96d3b" stroke-width="3"/>
+      <text x="105" y="78" text-anchor="middle" fill="#183d2d" font-size="16">边长 2</text>
+      <text x="295" y="28" text-anchor="middle" fill="#8a4727" font-size="16">边长 3</text>
+      <text x="105" y="142" text-anchor="middle" fill="#183d2d" font-size="22" font-weight="700">面积 4</text>
+      <text x="295" y="118" text-anchor="middle" fill="#8a4727" font-size="22" font-weight="700">面积 9</text>
+      <text x="210" y="226" text-anchor="middle" fill="#20251f" font-size="17" font-weight="700">边 2:3 → 面积 4:9 → 体积 8:27</text>
+    </svg>
+    <figcaption>相似图形：长度一次方，面积平方，体积立方。</figcaption>
+  </figure>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="pythagoras-title pythagoras-desc">
+      <title id="pythagoras-title">三四五直角三角形</title>
+      <desc id="pythagoras-desc">直角边为三和四，斜边为五，展示勾股定理关系。</desc>
+      <path d="M90 205 L90 65 L300 205 Z" fill="#e7efe9" stroke="#2d5b46" stroke-width="4"/>
+      <path d="M90 185 L110 185 L110 205" fill="none" stroke="#c96d3b" stroke-width="3"/>
+      <text x="68" y="140" text-anchor="middle" fill="#183d2d" font-size="20" font-weight="700">3</text>
+      <text x="194" y="231" text-anchor="middle" fill="#183d2d" font-size="20" font-weight="700">4</text>
+      <text x="212" y="124" text-anchor="middle" fill="#8a4727" font-size="20" font-weight="700" transform="rotate(34 212 124)">5</text>
+      <text x="210" y="34" text-anchor="middle" fill="#20251f" font-size="18" font-weight="700">3² + 4² = 5²</text>
+    </svg>
+    <figcaption>看到 3:4 的直角边比例，优先想到 3-4-5 勾股组。</figcaption>
+  </figure>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="unfold-title unfold-desc">
+      <title id="unfold-title">长方体表面展开后的最短路径</title>
+      <desc id="unfold-desc">相邻两个面展开成矩形，表面折线路径转化为平面中的直线。</desc>
+      <rect x="45" y="55" width="155" height="130" fill="#dcebe1" stroke="#2d5b46" stroke-width="3"/>
+      <rect x="200" y="55" width="175" height="130" fill="#f5dfd1" stroke="#c96d3b" stroke-width="3"/>
+      <line x1="65" y1="165" x2="350" y2="75" stroke="#7f3f25" stroke-width="4"/>
+      <circle cx="65" cy="165" r="7" fill="#2d5b46"/>
+      <circle cx="350" cy="75" r="7" fill="#c96d3b"/>
+      <text x="52" y="205" fill="#183d2d" font-size="16">A</text>
+      <text x="358" y="65" fill="#8a4727" font-size="16">B</text>
+      <text x="210" y="224" text-anchor="middle" fill="#20251f" font-size="17" font-weight="700">表面最短路 → 展开后连接直线</text>
+    </svg>
+    <figcaption>空间表面路径先展开；但要核对直线是否跨过题目指定的面。</figcaption>
+  </figure>
+</div>
+<h2 id="1-基础公式">1. 基础公式</h2>
+<h3 id="平面图形">平面图形</h3>
+<table>
+<thead>
+<tr>
+<th>图形</th>
+<th>周长/面积</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长方形</td>
+<td><code>C=2(a+b)</code>，<code>S=ab</code></td>
+</tr>
+<tr>
+<td>正方形</td>
+<td><code>C=4a</code>，<code>S=a²</code></td>
+</tr>
+<tr>
+<td>三角形</td>
+<td><code>S=底×高/2</code></td>
+</tr>
+<tr>
+<td>平行四边形</td>
+<td><code>S=底×高</code></td>
+</tr>
+<tr>
+<td>梯形</td>
+<td><code>S=(上底+下底)×高/2</code></td>
+</tr>
+<tr>
+<td>圆</td>
+<td><code>C=2πr</code>，<code>S=πr²</code></td>
+</tr>
+<tr>
+<td>扇形</td>
+<td><code>弧长=圆心角/360°×2πr</code>，<code>面积=圆心角/360°×πr²</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="立体图形">立体图形</h3>
+<table>
+<thead>
+<tr>
+<th>图形</th>
+<th>体积</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长方体</td>
+<td><code>V=abc</code></td>
+</tr>
+<tr>
+<td>正方体</td>
+<td><code>V=a³</code></td>
+</tr>
+<tr>
+<td>柱体</td>
+<td><code>V=底面积×高</code></td>
+</tr>
+<tr>
+<td>锥体</td>
+<td><code>V=底面积×高/3</code></td>
+</tr>
+<tr>
+<td>球</td>
+<td><code>V=4πr³/3</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-相似图形边面积体积逐次乘方">2.
+相似图形：边、面积、体积逐次乘方</h2>
+<p>边长比为 <code>k</code>：</p>
+<pre class="text"><code>周长比=k
+面积比=k²
+体积比=k³</code></pre>
+<h3 id="例题-1">例题 1</h3>
+<p>两个相似三角形边长比为 <code>2:3</code>，面积比为：</p>
+<pre class="text"><code>2²:3²=4:9</code></pre>
+<p>两个相似立方体边长比为 <code>2:3</code>，体积比为：</p>
+<pre class="text"><code>2³:3³=8:27</code></pre>
+<p>不要把面积比、体积比也写成边长比。</p>
+<hr />
+<h2 id="3-等高三角形与等底三角形">3. 等高三角形与等底三角形</h2>
+<ul>
+<li>等高三角形面积比等于底边比；</li>
+<li>等底三角形面积比等于高之比；</li>
+<li>同一条直线上取顶点、共用同一底边时，注意高是否相同。</li>
+</ul>
+<p>这类题经常可以只比较比例，不求具体高。</p>
+<hr />
+<h2 id="4-割补和平移">4. 割补和平移</h2>
+<p>阴影面积优先考虑：</p>
+<pre class="text"><code>整体-空白</code></pre>
+<p>不规则图形优先尝试：</p>
+<ul>
+<li>切成三角形、矩形、扇形；</li>
+<li>将碎片平移或旋转拼成规则图形；</li>
+<li>找等底等高造成的等面积；</li>
+<li>用对称性把复杂区域成对。</li>
+</ul>
+<p>如果辅助线无法直接产生已知公式，继续画线往往收益低。</p>
+<hr />
+<h2 id="5-周长一定的面积最值">5. 周长一定的面积最值</h2>
+<p>长方形周长固定：</p>
+<pre class="text"><code>a+b=定值
+面积ab在a=b时最大</code></pre>
+<h3 id="例题-2">例题 2</h3>
+<p>长方形周长为 <code>40</code>：</p>
+<pre class="text"><code>a+b=20</code></pre>
+<p>面积最大时：</p>
+<pre class="text"><code>a=b=10
+最大面积=100</code></pre>
+<p>本质是和一定时，两数越接近，乘积越大。</p>
+<hr />
+<h2 id="6-勾股与常见直角三角形">6. 勾股与常见直角三角形</h2>
+<pre class="text"><code>a²+b²=c²</code></pre>
+<p>常见勾股数：</p>
+<pre class="text"><code>3-4-5
+5-12-13
+6-8-10
+8-15-17
+7-24-25</code></pre>
+<p>看到 <code>3:4</code> 的直角边比例，应立刻想到斜边为 <code>5</code>
+份。</p>
+<hr />
+<h2 id="7-路径最短展开与对称">7. 路径最短：展开与对称</h2>
+<ul>
+<li>长方体、圆柱侧面上的最短路径，可尝试展开成平面直线；</li>
+<li>经过一条边或直线的折线路径，可把一个点关于该直线对称，再连接直线；</li>
+<li>平面两点之间直线最短。</li>
+</ul>
+<p>但展开方式可能不止一种，应核对路径是否真的跨过指定面。</p>
+<hr />
+<h2 id="8-体积变化">8. 体积变化</h2>
+<p>若所有线性尺寸同时扩大 <code>r%</code>，体积系数为：</p>
+<pre class="text"><code>(1+r)³</code></pre>
+<p>不是简单增长 <code>3r%</code>。面积系数为 <code>(1+r)²</code>。</p>
+<p>例如边长增加 <code>10%</code>：</p>
+<pre class="text"><code>面积增加=1.1²-1=21%
+体积增加=1.1³-1=33.1%</code></pre>
+<hr />
+<h2 id="9-高频错误与止损">9. 高频错误与止损</h2>
+<ul>
+<li>周长比、面积比、体积比混淆；</li>
+<li>圆的直径与半径混用；</li>
+<li>锥体体积漏除以 <code>3</code>；</li>
+<li>只凭图形比例作答，而题图未必按比例绘制；</li>
+<li>阴影区域重复计算或漏减；</li>
+<li>展开图路径跨错表面。</li>
+</ul>
+<p>止损：无法在 <code>20</code>
+秒内判断用哪个公式、比例或割补关系的陌生图形，先跳过；复杂坐标或多条辅助线通常放第二轮。</p>
+<hr />
+<h2 id="10-草稿模板">10. 草稿模板</h2>
+<pre class="text"><code>先标已知长度和单位
+再问：比例？割补？平移？相似？
+边长比k → 周长k、面积k²、体积k³
+阴影=整体-空白
+周长定、面积最大 → 尽量均匀</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

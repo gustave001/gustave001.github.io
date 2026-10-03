@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/12-数字特性余数与数列.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型
+12：数字特性、余数与数列 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-12数字特性余数与数列">数量关系题型
+12：数字特性、余数与数列</h1>
+<blockquote>
+<p>数字特性既是一类题，也是所有数量题的加速器。先用奇偶、整除、尾数和范围筛选，再决定是否计算。数列则坚持“低复杂度优先”和及时止损。</p>
+</blockquote>
+<hr />
+<h2 id="1-奇偶性">1. 奇偶性</h2>
+<pre class="text"><code>奇±奇=偶
+偶±偶=偶
+奇±偶=奇
+奇×奇=奇
+乘积中有偶数则为偶数</code></pre>
+<p>应用：</p>
+<ul>
+<li>和差方程判断整数解；</li>
+<li>排除选项；</li>
+<li>判断平方数：奇数平方仍奇，偶数平方仍偶；</li>
+<li>多个整数和的奇偶取决于奇数项个数。</li>
+</ul>
+<hr />
+<h2 id="2-高频整除规则">2. 高频整除规则</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">除数</th>
+<th>判断规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td>末位为偶数</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>各位数字和能被 3 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>末两位能被 4 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>末位为 0 或 5</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>同时能被 2 和 3 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>末三位能被 8 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>各位数字和能被 9 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>奇数位和与偶数位和之差能被 11 整除</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>末两位为 00、25、50、75</td>
+</tr>
+</tbody>
+</table>
+<p>若题目中的人数按每组 <code>6</code> 人恰好分完，答案必须同时能被
+<code>2</code> 和 <code>3</code> 整除，先筛选项。</p>
+<hr />
+<h2 id="3-余数与同余">3. 余数与同余</h2>
+<pre class="text"><code>a除以m余r  ⇔  a=km+r
+0≤r&lt;m</code></pre>
+<p>若：</p>
+<pre class="text"><code>a≡r₁ (mod m)
+b≡r₂ (mod m)</code></pre>
+<p>则：</p>
+<pre class="text"><code>a+b≡r₁+r₂
+a-b≡r₁-r₂
+ab≡r₁r₂</code></pre>
+<p>最后把余数调整到 <code>0—m-1</code>。</p>
+<h3 id="例题-1">例题 1</h3>
+<p>一个数除以 <code>7</code> 余 <code>5</code>，其两倍除以
+<code>7</code> 余多少？</p>
+<pre class="text"><code>2×5=10≡3 (mod 7)</code></pre>
+<p>所以余 <code>3</code>。</p>
+<hr />
+<h2 id="4-同余条件与选项代入">4. 同余条件与选项代入</h2>
+<p>题目说某数：</p>
+<pre class="text"><code>除以3余1
+除以5余2</code></pre>
+<p>若有选项，直接逐项检查通常最快。</p>
+<p>没有选项时，可从第一个条件枚举：</p>
+<pre class="text"><code>1、4、7、10、13、16、……</code></pre>
+<p>再筛除以 <code>5</code> 余 <code>2</code> 的数，最小正整数为
+<code>7</code>。</p>
+<p>范围较小时，有序枚举比写复杂通式更稳。</p>
+<hr />
+<h2 id="5-最大公约数与最小公倍数">5. 最大公约数与最小公倍数</h2>
+<p>两个正整数 <code>a、b</code>：</p>
+<pre class="text"><code>gcd(a,b)×lcm(a,b)=ab</code></pre>
+<p>识别：</p>
+<ul>
+<li>周期再次同时发生 → 最小公倍数；</li>
+<li>把长度分成尽量大的相等小段 → 最大公约数；</li>
+<li>若干物品等量分组且无剩余 → 公约数；</li>
+<li>不同周期同步 → 公倍数。</li>
+</ul>
+<hr />
+<h2 id="6-尾数周期">6. 尾数周期</h2>
+<p>常见个位循环：</p>
+<pre class="text"><code>2ⁿ：2、4、8、6，周期4
+3ⁿ：3、9、7、1，周期4
+7ⁿ：7、9、3、1，周期4
+8ⁿ：8、4、2、6，周期4
+4ⁿ：4、6，周期2
+9ⁿ：9、1，周期2</code></pre>
+<p>指数除以周期看余数；余数为 <code>0</code> 时取周期最后一项。</p>
+<h3 id="例题-2">例题 2</h3>
+<p><code>3^2026</code> 的个位数：</p>
+<pre class="text"><code>2026÷4余2
+3的平方个位为9</code></pre>
+<p>所以个位是 <code>9</code>。</p>
+<hr />
+<h2 id="7-数列观察顺序">7. 数列观察顺序</h2>
+<p>遇到数列，按低复杂度顺序试：</p>
+<pre class="text"><code>1. 相邻作差
+2. 相邻作商
+3. 二级差
+4. 奇偶项分组
+5. 递推：前项之间加减乘除
+6. 平方、立方、质数、阶乘等特殊数列
+7. 分数数列分别观察分子分母</code></pre>
+<h3 id="例题-3递推">例题 3：递推</h3>
+<pre class="text"><code>2，5，11，23，？</code></pre>
+<p>规律：</p>
+<pre class="text"><code>前项×2+1</code></pre>
+<p>下一项：</p>
+<pre class="text"><code>23×2+1=47</code></pre>
+<h3 id="例题-4二级差">例题 4：二级差</h3>
+<pre class="text"><code>2，5，10，17，26，？</code></pre>
+<p>一级差：</p>
+<pre class="text"><code>3，5，7，9</code></pre>
+<p>下一差为 <code>11</code>，所以答案：</p>
+<pre class="text"><code>26+11=37</code></pre>
+<hr />
+<h2 id="8-分数数列">8. 分数数列</h2>
+<p>先观察：</p>
+<ul>
+<li>分子单独成列；</li>
+<li>分母单独成列；</li>
+<li>是否约分后隐藏简单规律；</li>
+<li>分子与分母是否交叉递推；</li>
+<li>整体是否接近固定值。</li>
+</ul>
+<p>不要一开始通分所有项，通分可能掩盖规律。</p>
+<hr />
+<h2 id="9-数列止损">9. 数列止损</h2>
+<p>数列规律理论上可以被无限构造。行测默认选择相对简单、能解释全部相邻关系的规律。</p>
+<p>出现以下情况应止损：</p>
+<ul>
+<li>同时混用三种以上互不相关运算；</li>
+<li>只能解释后半段，解释不了前半段；</li>
+<li>需要任意加入常数才能凑出答案；</li>
+<li>多个规律都成立且选项不能区分；</li>
+<li><code>30—40</code> 秒仍没有稳定方向。</li>
+</ul>
+<hr />
+<h2 id="10-草稿模板">10. 草稿模板</h2>
+<pre class="text"><code>普通题先查：奇偶、整除、尾数、范围
+余数写成：a=km+r
+同步周期→lcm；最大等分→gcd
+
+数列：差→商→二级差→分组→递推→特殊数
+复杂规律不恋战。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

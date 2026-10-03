@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/10-植树方阵排队与比赛.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型
+10：植树、方阵、排队与比赛 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-10植树方阵排队与比赛">数量关系题型
+10：植树、方阵、排队与比赛</h1>
+<blockquote>
+<p>这组题看似杂，核心都是离散计数：点与间隔差一、方阵边与层数、排队位置重复一人、比赛双方重复计数。</p>
+</blockquote>
+<hr />
+<h2 id="1-直线植树先数间隔">1. 直线植树：先数间隔</h2>
+<p>一段长 <code>L</code>，相邻两棵间距 <code>d</code>：</p>
+<pre class="text"><code>间隔数=L/d</code></pre>
+<p>再根据端点判断棵数：</p>
+<table>
+<thead>
+<tr>
+<th>端点情况</th>
+<th style="text-align: right;">棵数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两端都种</td>
+<td style="text-align: right;"><code>间隔数+1</code></td>
+</tr>
+<tr>
+<td>只种一端</td>
+<td style="text-align: right;"><code>间隔数</code></td>
+</tr>
+<tr>
+<td>两端都不种</td>
+<td style="text-align: right;"><code>间隔数-1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="例题-1">例题 1</h3>
+<p>长 <code>120</code> 米的道路，每隔 <code>10</code> 米种一棵树：</p>
+<pre class="text"><code>间隔数=120÷10=12</code></pre>
+<ul>
+<li>两端都种：<code>13</code> 棵；</li>
+<li>只种一端：<code>12</code> 棵；</li>
+<li>两端都不种：<code>11</code> 棵。</li>
+</ul>
+<p>若道路两侧都种，最后再乘 <code>2</code>。</p>
+<hr />
+<h2 id="2-封闭路线植树">2. 封闭路线植树</h2>
+<p>环形、湖边、封闭围墙：</p>
+<pre class="text"><code>棵数=间隔数=L/d</code></pre>
+<p>因为首尾相接，不再加一。</p>
+<p>若两种树按不同间距种在同一环线上，重合位置通常由最小公倍数确定。</p>
+<hr />
+<h2 id="3-方阵">3. 方阵</h2>
+<p>每边 <code>n</code> 人的实心正方形方阵：</p>
+<pre class="text"><code>总人数=n²
+最外层人数=4n-4</code></pre>
+<p>之所以减 <code>4</code>，是因为四个角在四条边相加时各重复一次。</p>
+<h3 id="例题-2">例题 2</h3>
+<p>每边 <code>10</code> 人：</p>
+<pre class="text"><code>总人数=100
+最外层人数=4×10-4=36</code></pre>
+<p>去掉最外一层后，每边减少 <code>2</code>，剩余：</p>
+<pre class="text"><code>(10-2)²=64人</code></pre>
+<p>第 <code>k</code> 层对应的边长为：</p>
+<pre class="text"><code>n-2(k-1)</code></pre>
+<hr />
+<h2 id="4-排队位置">4. 排队位置</h2>
+<p>某人从前数第 <code>a</code>、从后数第 <code>b</code>：</p>
+<pre class="text"><code>总人数=a+b-1</code></pre>
+<p>减 <code>1</code> 是因为这个人被前后各数了一次。</p>
+<h3 id="例题-3">例题 3</h3>
+<p>小王从前数第 <code>12</code>，从后数第 <code>9</code>：</p>
+<pre class="text"><code>总人数=12+9-1=20</code></pre>
+<p>两人之间人数：先确定两人的绝对位置，再用：</p>
+<pre class="text"><code>位置差-1</code></pre>
+<hr />
+<h2 id="5-单循环与双循环比赛">5. 单循环与双循环比赛</h2>
+<p><code>n</code> 支队伍：</p>
+<h3 id="单循环">单循环</h3>
+<p>每两队比赛一次：</p>
+<pre class="text"><code>C(n,2)=n(n-1)/2</code></pre>
+<h3 id="双循环">双循环</h3>
+<p>每两队比赛两次：</p>
+<pre class="text"><code>n(n-1)</code></pre>
+<h3 id="淘汰赛">淘汰赛</h3>
+<p>每场淘汰一支队伍，决出冠军共需：</p>
+<pre class="text"><code>n-1场</code></pre>
+<p>轮空只影响轮次安排，不改变总淘汰场数。</p>
+<hr />
+<h2 id="6-计分问题">6. 计分问题</h2>
+<p>若胜、平、负分别得 <code>a、b、c</code> 分，某队比赛总场数为
+<code>N</code>：</p>
+<pre class="text"><code>胜+平+负=N
+a×胜+b×平+c×负=总积分</code></pre>
+<p>结合整数、奇偶和选项求解，不必追求所有解。</p>
+<h3 id="例题-4">例题 4</h3>
+<p>足球比赛胜 <code>3</code> 分、平 <code>1</code> 分、负 <code>0</code>
+分。某队赛 <code>10</code> 场得 <code>22</code> 分，胜 <code>6</code>
+场，则：</p>
+<pre class="text"><code>胜场得分=18
+剩余积分=4
+所以平4场、负0场</code></pre>
+<hr />
+<h2 id="7-握手与互赠">7. 握手与互赠</h2>
+<p><code>n</code> 人彼此握手一次：</p>
+<pre class="text"><code>C(n,2)</code></pre>
+<p>若每人分别给其他每人一张卡片，方向不同算不同：</p>
+<pre class="text"><code>n(n-1)</code></pre>
+<p>判断关键：甲给乙与乙给甲是否算两件不同事件。</p>
+<hr />
+<h2 id="8-统筹安排">8. 统筹安排</h2>
+<p>目标通常是缩短总时间：</p>
+<ul>
+<li>能同时做的任务并行；</li>
+<li>必须等待的时间用于完成其他任务；</li>
+<li>多台机器分配任务时，避免一台机器最后独自拖尾；</li>
+<li>简单情况下优先把耗时长的任务先安排。</li>
+</ul>
+<h3 id="例题-5烧水统筹">例题 5：烧水统筹</h3>
+<p>洗水壶 <code>1</code> 分钟、烧水 <code>8</code> 分钟、洗茶杯
+<code>3</code> 分钟、取茶叶 <code>1</code> 分钟。</p>
+<pre class="text"><code>先洗壶1分钟并开始烧水；
+烧水的8分钟内洗杯、取茶叶；
+总时间=1+8=9分钟。</code></pre>
+<p>不能把所有步骤机械相加成 <code>13</code> 分钟。</p>
+<hr />
+<h2 id="9-高频错误与止损">9. 高频错误与止损</h2>
+<ul>
+<li>直线植树不先判断端点；</li>
+<li>封闭路线仍然加一；</li>
+<li>方阵最外层写成 <code>4n</code>，重复四个角；</li>
+<li>排队人数忘记减重复的本人；</li>
+<li>单循环把甲对乙和乙对甲算两场；</li>
+<li>淘汰赛被轮空干扰，忘记每场淘汰一队；</li>
+<li>统筹题把可以并行的时间全部相加。</li>
+</ul>
+<p>止损：这组题大多是白名单机械题；若统筹题出现复杂先后依赖和多机器排程，无法快速画出时间轴时放第二轮。</p>
+<hr />
+<h2 id="10-草稿模板">10. 草稿模板</h2>
+<pre class="text"><code>直线：先间隔L/d，再按端点±1
+环形：棵数=间隔数
+方阵：总数n²，外层4n-4
+排队：前+后-1
+单循环：C(n,2)；双循环：n(n-1)；淘汰：n-1</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

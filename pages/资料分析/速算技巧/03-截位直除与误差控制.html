@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/03-截位直除与误差控制.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析速算技巧
+03：截位直除与误差控制 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="行测资料分析速算技巧-03截位直除与误差控制">行测资料分析速算技巧
+03：截位直除与误差控制</h1>
+<blockquote>
+<p>核心：根据选项所需精度，只保留足够区分答案的有效数字。<br />
+它不是“随便砍数字”，而是有目的地控制计算量和误差。</p>
+</blockquote>
+<hr />
+<h2 id="1-适用题型">1. 适用题型</h2>
+<p>看到以下结构，优先想到直除：</p>
+<pre class="text"><code>比重 = 部分量 ÷ 整体量
+平均数 = 总量 ÷ 份数
+倍数 = A ÷ B
+基期量 = 现期量 ÷ (1+r)</code></pre>
+<p>尤其适合：</p>
+<ul>
+<li>选项首位不同；</li>
+<li>选项前两位不同；</li>
+<li>只要求“约为”；</li>
+<li>分子、分母位数很长，但有效信息集中在前几位。</li>
+</ul>
+<hr />
+<h2 id="2-先由选项决定精度">2. 先由选项决定精度</h2>
+<table>
+<thead>
+<tr>
+<th>选项特征</th>
+<th>通常所需精度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首位不同，如 21%、32%、45%、58%</td>
+<td>看首位即可</td>
+</tr>
+<tr>
+<td>前两位不同，如 23.1%、25.7%、28.4%、31.2%</td>
+<td>算到前两位或前三位</td>
+</tr>
+<tr>
+<td>很接近，如 25.6%、25.8%、26.0%、26.2%</td>
+<td>多保留一位，必要时精算</td>
+</tr>
+</tbody>
+</table>
+<p>不要看到四位数就默认保留四位。资料分析要的是选项，不是发表统计年鉴。</p>
+<hr />
+<h2 id="3-基本截位法">3. 基本截位法</h2>
+<h3 id="例题-1求比重">例题 1：求比重</h3>
+<p>某部分为 <code>843</code>，整体为
+<code>3276</code>，比重约为多少？</p>
+<p>若选项是：</p>
+<pre class="text"><code>A. 16%  B. 21%  C. 26%  D. 34%</code></pre>
+<p>可截为：</p>
+<pre class="text"><code>843 ÷ 3276 ≈ 84 ÷ 328</code></pre>
+<p>因为：</p>
+<pre class="text"><code>328 × 0.25 = 82</code></pre>
+<p>结果略大于 <code>25%</code>，选择约 <code>26%</code>。精确值约为
+<code>25.7%</code>。</p>
+<h3 id="例题-2求基期量">例题 2：求基期量</h3>
+<p>现期量为 <code>3864</code>，增长率为 <code>12%</code>，求基期量。</p>
+<pre class="text"><code>3864 ÷ 1.12</code></pre>
+<p>先试选项或凑乘法：</p>
+<pre class="text"><code>3450 × 1.12 = 3450 + 414 = 3864</code></pre>
+<p>所以基期量正好是
+<code>3450</code>。直除不一定真要做竖式，也可以反向乘选项。</p>
+<hr />
+<h2 id="4-截分母还是截分子">4. 截分母还是截分子</h2>
+<p>常见做法：</p>
+<ul>
+<li>选项只看商的首位时，分子保持主要有效数字，分母截前两三位；</li>
+<li>分子和分母位数都很长时，可以同时同比例缩小；</li>
+<li>接近临界选项时，宁可多保留一位。</li>
+</ul>
+<p>例如：</p>
+<pre class="text"><code>12847 ÷ 49362</code></pre>
+<p>可以看成：</p>
+<pre class="text"><code>128 ÷ 494 ≈ 25.9%</code></pre>
+<p>但如果选项是
+<code>25.8%、26.0%、26.2%、26.4%</code>，这个截位精度不够，应保留更多位或交叉验证。</p>
+<hr />
+<h2 id="5-必须知道的误差方向">5. 必须知道的误差方向</h2>
+<p>对正数分数 <code>a/b</code>：</p>
+<ul>
+<li>分子变大，结果变大；</li>
+<li>分子变小，结果变小；</li>
+<li>分母变大，结果变小；</li>
+<li>分母变小，结果变大。</li>
+</ul>
+<p>因此：</p>
+<pre class="text"><code>分子向上取、分母向下取 → 得到上界
+分子向下取、分母向上取 → 得到下界</code></pre>
+<h3 id="区间夹逼例子">区间夹逼例子</h3>
+<p>判断 <code>843/3276</code> 是否大于 <code>26%</code>：</p>
+<pre class="text"><code>3276 × 26% = 851.76
+843 &lt; 851.76</code></pre>
+<p>所以它小于 <code>26%</code>。又因为：</p>
+<pre class="text"><code>3276 × 25% = 819
+843 &gt; 819</code></pre>
+<p>因此结果在 <code>25%—26%</code> 之间。无需做完整除法。</p>
+<hr />
+<h2 id="6-选项反推通常比硬除更快">6. 选项反推通常比硬除更快</h2>
+<p>若题目问：</p>
+<pre class="text"><code>843/3276 约为多少？</code></pre>
+<p>选项给出 <code>24%、26%、28%、30%</code>，可以计算：</p>
+<pre class="text"><code>3276 × 26% ≈ 852</code></pre>
+<p>与分子 <code>843</code> 很接近，因此答案约为 <code>26%</code>。</p>
+<p>这种方法本质上是在问：</p>
+<pre class="text"><code>哪个选项 × 分母 最接近分子？</code></pre>
+<hr />
+<h2 id="7-截位的禁区">7. 截位的禁区</h2>
+<ul>
+<li>分子分母非常接近，且选项也非常接近；</li>
+<li>正负增长率导致分母接近临界值；</li>
+<li>连续做多次近似，误差会叠加；</li>
+<li>题目问精确排序，而两个结果只差很小；</li>
+<li>截位后恰好落在两个选项中点附近。</li>
+</ul>
+<p>遇到这些情况，应多保留一位、交叉相乘，或回到精确公式。</p>
+<hr />
+<h2 id="8-草稿模板">8. 草稿模板</h2>
+<pre class="text"><code>先看选项：要首位、前两位，还是精确到小数？
+原式：________ / ________
+截位：________ / ________
+用乘法验证：选项 × 分母 ≈ 分子
+若接近边界，再补一位。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

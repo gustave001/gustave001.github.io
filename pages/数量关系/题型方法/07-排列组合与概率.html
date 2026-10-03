@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/07-排列组合与概率.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型 07：排列组合与概率 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-07排列组合与概率">数量关系题型
+07：排列组合与概率</h1>
+<blockquote>
+<p>排列组合先判断“顺序是否重要”，概率先确认“基本结果是否等可能”。复杂题最容易重复计数，必须明确每一步在选什么。</p>
+</blockquote>
+<hr />
+<h2 id="1-加法与乘法原理">1. 加法与乘法原理</h2>
+<ul>
+<li>分类完成：各种互斥方案相加；</li>
+<li>分步完成：必须依次完成的各步相乘。</li>
+</ul>
+<p>例如从甲地到乙地，可乘汽车 <code>3</code> 条线路或火车 <code>2</code>
+个班次：</p>
+<pre class="text"><code>3+2=5种</code></pre>
+<p>若先从甲到乙有 <code>3</code> 种，再从乙到丙有 <code>4</code>
+种：</p>
+<pre class="text"><code>3×4=12种</code></pre>
+<p>先判断是“选一种路径”还是“每一步都要做”。</p>
+<hr />
+<h2 id="2-排列还是组合">2. 排列还是组合</h2>
+<p>从 <code>n</code> 个不同元素中选 <code>m</code> 个：</p>
+<pre class="text"><code>排列 A(n,m)=n!/(n-m)!      顺序重要
+组合 C(n,m)=n!/[m!(n-m)!]  顺序不重要</code></pre>
+<p>判断方法：把选出的两个对象交换位置，结果是否算新方案？</p>
+<ul>
+<li>算新方案 → 排列；</li>
+<li>不算新方案 → 组合。</li>
+</ul>
+<h3 id="例题-1">例题 1</h3>
+<p>从 <code>8</code> 人中选正、副组长：</p>
+<pre class="text"><code>A(8,2)=8×7=56</code></pre>
+<p>从 <code>8</code> 人中选两名代表：</p>
+<pre class="text"><code>C(8,2)=8×7/2=28</code></pre>
+<hr />
+<h2 id="3-相邻捆绑法">3. 相邻：捆绑法</h2>
+<p>要求若干对象必须相邻，把它们视为一个整体，再乘内部排列。</p>
+<h3 id="例题-2">例题 2</h3>
+<p>5 人排队，A、B 必须相邻：</p>
+<pre class="text"><code>把AB视为一个整体，与其他3人共4个单位：4!
+AB内部顺序：2!
+总数=4!×2!=48</code></pre>
+<p>若三个指定对象必须相邻，内部排列为 <code>3!</code>。</p>
+<hr />
+<h2 id="4-不相邻插空法">4. 不相邻：插空法</h2>
+<p>先排不受限制的对象，再把需要分开的对象放入空位。</p>
+<h3 id="例题-3">例题 3</h3>
+<p>4 名男生、3 名女生排队，女生互不相邻：</p>
+<pre class="text"><code>先排男生：4!
+形成5个空位：_男_男_男_男_
+从5个空位选3个：C(5,3)
+排列3名女生：3!
+总数=4!×C(5,3)×3!=1440</code></pre>
+<p>若插入对象相同，则不再乘其内部排列。</p>
+<hr />
+<h2 id="5-至少与至多优先看补集">5. 至少与至多：优先看补集</h2>
+<pre class="text"><code>至少一个 = 总数 - 一个都没有</code></pre>
+<h3 id="例题-4">例题 4</h3>
+<p>从 5 名男生、4 名女生中选 3 人，至少有 1 名女生：</p>
+<pre class="text"><code>总选法=C(9,3)
+全是男生=C(5,3)
+答案=C(9,3)-C(5,3)=84-10=74</code></pre>
+<p>当反面只有一种简单情况时，补集通常远快于分类相加。</p>
+<hr />
+<h2 id="6-环形排列">6. 环形排列</h2>
+<p><code>n</code> 个不同对象围成一圈，只把旋转视为相同：</p>
+<pre class="text"><code>(n-1)!</code></pre>
+<p>固定一个人，其余 <code>n-1</code> 人线性排列即可。</p>
+<p>普通圆桌排列不自动把镜像视为相同；只有题目明确正反方向也相同，才考虑再除以
+<code>2</code>。</p>
+<hr />
+<h2 id="7-分组与分配">7. 分组与分配</h2>
+<ul>
+<li>分到甲、乙等有名称的组：组可区分；</li>
+<li>分成若干无名称、规模相同的组：组交换会造成重复；</li>
+<li>先分组再分配给不同任务时，后续分配可能重新区分组。</li>
+</ul>
+<h3 id="例题-5">例题 5</h3>
+<p>将 6 人平均分成无名称的两组：</p>
+<p>先选 3 人：</p>
+<pre class="text"><code>C(6,3)=20</code></pre>
+<p>但选出 A 组后，剩余为 B 组；交换两组并不是新方案，所以：</p>
+<pre class="text"><code>20÷2!=10种</code></pre>
+<p>若明确分给“甲组、乙组”，则是 <code>20</code> 种，不除以
+<code>2</code>。</p>
+<hr />
+<h2 id="8-等可能概率">8. 等可能概率</h2>
+<pre class="text"><code>概率 = 满足条件的基本结果数 / 全部等可能基本结果数</code></pre>
+<h3 id="至少一次">至少一次</h3>
+<p>每次独立成功概率为 <code>p</code>，重复 <code>n</code> 次：</p>
+<pre class="text"><code>至少成功一次=1-(1-p)^n</code></pre>
+<h3 id="例题-6">例题 6</h3>
+<p>投掷一枚公平硬币 3 次，至少一次正面：</p>
+<pre class="text"><code>1-P(全反面)=1-(1/2)^3=7/8</code></pre>
+<hr />
+<h2 id="9-独立互斥与无放回">9. 独立、互斥与无放回</h2>
+<p>独立事件：</p>
+<pre class="text"><code>P(A且B)=P(A)P(B)</code></pre>
+<p>互斥事件：</p>
+<pre class="text"><code>P(A或B)=P(A)+P(B)</code></pre>
+<p>一般事件：</p>
+<pre class="text"><code>P(A或B)=P(A)+P(B)-P(A且B)</code></pre>
+<p>无放回抽取时，后一次概率随前一次变化，不能机械使用同一个概率相乘。</p>
+<h3 id="例题-7">例题 7</h3>
+<p>袋中 3 红 2 蓝，不放回抽两球均为红球：</p>
+<pre class="text"><code>3/5×2/4=3/10</code></pre>
+<p>也可以组合计数：</p>
+<pre class="text"><code>C(3,2)/C(5,2)=3/10</code></pre>
+<hr />
+<h2 id="10-高频错误与止损">10. 高频错误与止损</h2>
+<ul>
+<li>没判断顺序就套排列或组合；</li>
+<li>分组时重复除、漏除相同组交换；</li>
+<li>相同元素仍按不同元素排列；</li>
+<li>至少问题逐类相加，漏项或重复；</li>
+<li>无放回仍把每次概率当作不变；</li>
+<li>基本结果不等可能，却直接用“有利数/总数”。</li>
+</ul>
+<p>止损：若需要四层以上分类、还要排除多种相邻与分组重复，先放第二轮。数量关系不值得用一题检验整本组合数学。</p>
+<hr />
+<h2 id="11-草稿模板">11. 草稿模板</h2>
+<pre class="text"><code>交换位置算不算新方案？算→排列，不算→组合
+相邻→捆绑；不相邻→插空
+至少→优先总数减一个都没有
+无名同组→检查是否除组交换
+概率→先确认基本结果等可能</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

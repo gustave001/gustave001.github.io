@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../.." data-page-path="pages/资料分析/资料分析公式与概念速查卡.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析：公式与概念速查卡 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script defer src="../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1
+id="行测资料分析公式与概念速查卡">行测资料分析：公式与概念速查卡</h1>
+<blockquote>
+<p>目标：常见概念尽量全，公式尽量少。先判断题型和口径，再代公式。<br />
+使用方法：先掌握“核心四式”，其余公式都从它们推导；刷题时只记录自己反复混淆的口径。</p>
+</blockquote>
+<p>配套专题：<a
+href="./速算技巧/00-技巧导航与选择顺序.html">资料分析速算技巧导航</a>。速查卡负责“记公式和口径”，技巧库负责“如何更快算出来”。</p>
+<hr />
+<h2 id="0-统一符号">0. 统一符号</h2>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>现期量：题目所考察的较后时期数值</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>基期量：与现期比较的较前时期数值</td>
+</tr>
+<tr>
+<td><code>Δ</code></td>
+<td>增长量，<code>Δ = A - B</code></td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>增长率，计算时把百分数化成小数</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>部分量</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>整体量/总量</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>比重，<code>q = P ÷ T</code></td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>平均数，<code>M = 总量 ÷ 份数</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="正负号约定">正负号约定</h3>
+<ul>
+<li>增长 20%：<code>r = 20% = 0.2</code>。</li>
+<li>下降 20%：可以统一写成 <code>r = -20% = -0.2</code>。</li>
+<li>若题目明确说“下降率为 20%”，也可以把 <code>20%</code> 当正数，再使用
+<code>A = B × (1 - 20%)</code>。</li>
+<li>同一道题只采用一种写法，不要正负号混用。</li>
+</ul>
+<hr />
+<h2 id="1-必须背熟的核心四式">1. 必须背熟的核心四式</h2>
+<p>已知任意两项，通常就能求另外两项：</p>
+<table>
+<thead>
+<tr>
+<th>求什么</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>现期量</td>
+<td><code>A = B × (1 + r)</code></td>
+</tr>
+<tr>
+<td>基期量</td>
+<td><code>B = A ÷ (1 + r)</code></td>
+</tr>
+<tr>
+<td>增长量</td>
+<td><code>Δ = A - B = B × r = A × r ÷ (1 + r)</code></td>
+</tr>
+<tr>
+<td>增长率</td>
+<td><code>r = Δ ÷ B = (A - B) ÷ B = A ÷ B - 1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="最小例子">最小例子</h3>
+<p>2026 年产量为 120 万吨，比 2025 年增长 20%。</p>
+<ul>
+<li><code>A = 120</code></li>
+<li><code>r = 20%</code></li>
+<li><code>B = 120 ÷ 1.2 = 100</code></li>
+<li><code>Δ = 120 - 100 = 20</code></li>
+</ul>
+<h3 id="下降时">下降时</h3>
+<p>2026 年产量为 80 万吨，比 2025 年下降 20%。</p>
+<ul>
+<li><code>A = 80</code></li>
+<li><code>B = 80 ÷ (1 - 20%) = 100</code></li>
+<li>减少量为 <code>100 - 80 = 20</code></li>
+</ul>
+<hr />
+<h2 id="2-时间口径">2. 时间口径</h2>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>现期</td>
+<td>被考察的较后时期</td>
+<td>2026 年相对 2025 年，2026 年是现期</td>
+</tr>
+<tr>
+<td>基期</td>
+<td>用来比较的较前时期</td>
+<td>2025 年是基期</td>
+</tr>
+<tr>
+<td>同比</td>
+<td>与上年同一时期相比</td>
+<td>2026 年 3 月同比：和 2025 年 3 月比</td>
+</tr>
+<tr>
+<td>环比</td>
+<td>与紧邻的上一个统计周期相比</td>
+<td>2026 年 3 月环比：和 2026 年 2 月比</td>
+</tr>
+<tr>
+<td>年初至今/累计</td>
+<td>从本年年初累计到报告期</td>
+<td>1—8 月累计不是“8 月当月”</td>
+</tr>
+<tr>
+<td>同比增量</td>
+<td>现期量减上年同期量</td>
+<td>2026 年 1—8 月减 2025 年 1—8 月</td>
+</tr>
+</tbody>
+</table>
+<h3 id="时间陷阱">时间陷阱</h3>
+<ul>
+<li>“2021—2025 年增长了几年”：间隔数是
+<code>2025 - 2021 = 4</code>，不是 5。</li>
+<li>“截至 8 月累计”与“8 月当月”不是一个口径。</li>
+<li>求当月量：<code>本月量 = 本期累计量 - 上期累计量</code>。</li>
+</ul>
+<p>最小例子：1—8 月累计 80，1—7 月累计 68，则 8 月当月为
+<code>80 - 68 = 12</code>。</p>
+<hr />
+<h2 id="3-增长量">3. 增长量</h2>
+<h3 id="31-已知现期量和增长率">3.1 已知现期量和增长率</h3>
+<p><code>增长量 = A × r ÷ (1 + r)</code></p>
+<p>最小例子：现期 120，增长 20%，增长量为
+<code>120 × 20% ÷ 1.2 = 20</code>。</p>
+<h3 id="32-已知基期量和增长率">3.2 已知基期量和增长率</h3>
+<p><code>增长量 = B × r</code></p>
+<p>最小例子：基期 100，增长 20%，增长量为
+<code>100 × 20% = 20</code>。</p>
+<h3 id="33-增长量比较">3.3 增长量比较</h3>
+<p>若各选项均给出现期量 <code>A</code> 和增长率
+<code>r</code>，比较：</p>
+<p><code>A × r ÷ (1 + r)</code></p>
+<ul>
+<li>增长率都较小时，可先粗看 <code>A × r</code>。</li>
+<li>结果接近时必须补除以 <code>(1 + r)</code>，不能只比较
+<code>A × r</code>。</li>
+<li>下降量比较时比较绝对值，不要被负号干扰。</li>
+</ul>
+<h3 id="34-增长最多可能问两种东西">3.4 “增长最多”可能问两种东西</h3>
+<ul>
+<li>增长量最大：比较增加了多少单位。</li>
+<li>增长率最高：比较增长的百分比。</li>
+</ul>
+<p>两者通常不是同一对象。</p>
+<hr />
+<h2 id="4-增长率增幅降幅">4. 增长率、增幅、降幅</h2>
+<h3 id="41-基本增长率">4.1 基本增长率</h3>
+<p><code>增长率 = (现期量 - 基期量) ÷ 基期量</code></p>
+<p>最小例子：从 100 增至 120，增长率为
+<code>(120 - 100) ÷ 100 = 20%</code>。</p>
+<h3 id="42-降幅">4.2 降幅</h3>
+<p><code>降幅 = (基期量 - 现期量) ÷ 基期量</code></p>
+<p>最小例子：从 100 降至 80，降幅为
+<code>(100 - 80) ÷ 100 = 20%</code>。</p>
+<h3 id="43-增幅提高回落">4.3 增幅提高/回落</h3>
+<p>比较的是两个增长率之差，单位一般是“个百分点”。</p>
+<p>最小例子：增速由 8% 提高到 12%，提高
+<code>12% - 8% = 4 个百分点</code>，不是增长 4%。</p>
+<h3 id="44-变化幅度">4.4 变化幅度</h3>
+<p>通常看变化的绝对值。</p>
+<ul>
+<li>从 10% 变为 4%，变化幅度是 <code>6 个百分点</code>。</li>
+<li>从 <code>-3%</code> 变为 <code>2%</code>，变化幅度是
+<code>5 个百分点</code>。</li>
+</ul>
+<p>具体题目若另有定义，以题干为准。</p>
+<hr />
+<h2 id="5-百分数百分点成数和倍数">5. 百分数、百分点、成数和倍数</h2>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>含义</th>
+<th>最小例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>百分数</td>
+<td>表示相对比例</td>
+<td>增长 20%</td>
+</tr>
+<tr>
+<td>百分点</td>
+<td>两个百分数直接相减的单位</td>
+<td>30% 比 20% 高 10 个百分点</td>
+</tr>
+<tr>
+<td>成数</td>
+<td>十分之几</td>
+<td>三成为 30%，七成五为 75%</td>
+</tr>
+<tr>
+<td>翻一番</td>
+<td>变为原来的 2 倍</td>
+<td>100 变 200</td>
+</tr>
+<tr>
+<td>翻两番</td>
+<td>变为原来的 4 倍</td>
+<td>100 变 400</td>
+</tr>
+<tr>
+<td>是几倍</td>
+<td><code>A ÷ B</code></td>
+<td>150 是 50 的 3 倍</td>
+</tr>
+<tr>
+<td>多几倍</td>
+<td><code>A ÷ B - 1</code></td>
+<td>150 比 50 多 2 倍，即多 200%</td>
+</tr>
+<tr>
+<td>增长到</td>
+<td>现期是结果</td>
+<td>增长到原来的 1.2 倍 = 增长 20%</td>
+</tr>
+<tr>
+<td>增长了</td>
+<td>强调增加部分</td>
+<td>增长了原来的 1.2 倍 = 现期为 2.2 倍；实际考试需结合原文</td>
+</tr>
+</tbody>
+</table>
+<h3 id="最容易错的一组">最容易错的一组</h3>
+<ul>
+<li>A 是 B 的 3 倍：<code>A = 3B</code>。</li>
+<li>A 比 B 多 3 倍：<code>A - B = 3B</code>，所以
+<code>A = 4B</code>。</li>
+<li>A 比 B 多 300%：<code>A = 4B</code>。</li>
+</ul>
+<hr />
+<h2 id="6-连续增长与年均增长">6. 连续增长与年均增长</h2>
+<h3 id="61-连续两期增长">6.1 连续两期增长</h3>
+<p>先增长 <code>r₁</code>，再增长 <code>r₂</code>：</p>
+<p><code>总增长率 = (1 + r₁)(1 + r₂) - 1</code></p>
+<p>展开为：</p>
+<p><code>总增长率 = r₁ + r₂ + r₁r₂</code></p>
+<p>最小例子：先增长 10%，再增长 20%，总增长率为
+<code>1.1 × 1.2 - 1 = 32%</code>，不是 30%。</p>
+<h3 id="62-先增后降不能直接抵消">6.2 先增后降不能直接抵消</h3>
+<p>先增长 20%，再下降 20%：</p>
+<p><code>1.2 × 0.8 = 0.96</code></p>
+<p>最终比原来下降 4%。</p>
+<h3 id="63-间隔增长率">6.3 间隔增长率</h3>
+<p>若 2026 年同比增长 <code>r₁</code>，2025 年同比增长
+<code>r₂</code>，则 2026 年相对 2024 年：</p>
+<p><code>间隔增长率 = r₁ + r₂ + r₁r₂</code></p>
+<h3 id="64-年均增长率">6.4 年均增长率</h3>
+<p><code>末期量 = 初期量 × (1 + 年均增长率)^n</code></p>
+<p>所以：</p>
+<p><code>年均增长率 = (末期量 ÷ 初期量)^(1/n) - 1</code></p>
+<p>其中 <code>n</code> 是年份间隔数。</p>
+<p>最小例子：2021 年至 2025 年，<code>n = 4</code>。</p>
+<h3 id="65-年均增长量">6.5 年均增长量</h3>
+<p><code>年均增长量 = (末期量 - 初期量) ÷ 年份间隔数</code></p>
+<p>注意：年均增长量与年均增长率不是一回事。</p>
+<hr />
+<h2 id="7-比重">7. 比重</h2>
+<h3 id="71-基本公式">7.1 基本公式</h3>
+<table>
+<thead>
+<tr>
+<th>求什么</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比重</td>
+<td><code>q = P ÷ T</code></td>
+</tr>
+<tr>
+<td>部分量</td>
+<td><code>P = T × q</code></td>
+</tr>
+<tr>
+<td>整体量</td>
+<td><code>T = P ÷ q</code></td>
+</tr>
+</tbody>
+</table>
+<p>最小例子：总量 200，其中部分 50，比重为
+<code>50 ÷ 200 = 25%</code>。</p>
+<h3 id="72-基期比重">7.2 基期比重</h3>
+<p>现期部分量为 <code>P</code>，部分增长率为
+<code>rₚ</code>；现期整体量为 <code>T</code>，整体增长率为
+<code>rₜ</code>：</p>
+<p><code>基期比重 = (P ÷ T) × (1 + rₜ) ÷ (1 + rₚ)</code></p>
+<p>即：</p>
+<p><code>基期比重 = 现期比重 × (1 + 整体增长率) ÷ (1 + 部分增长率)</code></p>
+<h3 id="73-判断比重上升还是下降">7.3 判断比重上升还是下降</h3>
+<p>只比较增长率：</p>
+<ul>
+<li><code>部分增长率 &gt; 整体增长率</code>：比重上升。</li>
+<li><code>部分增长率 &lt; 整体增长率</code>：比重下降。</li>
+<li>两者相等：比重不变。</li>
+</ul>
+<h3 id="74-比重变化量">7.4 比重变化量</h3>
+<p><code>比重变化量 = 现期比重 - 基期比重</code></p>
+<p>精确式：</p>
+<p><code>比重变化量 = (P ÷ T) × (rₚ - rₜ) ÷ (1 + rₚ)</code></p>
+<p>结果一般用“个百分点”表达。</p>
+<p>最小例子：现期比重 30%，基期比重 25%，比重上升
+<code>5 个百分点</code>。</p>
+<h3 id="75-比重差的上限速判">7.5 比重差的上限速判</h3>
+<p>比重变化量的绝对值通常小于
+<code>|rₚ - rₜ|</code>。可用于快速排除明显过大的选项，但不能代替精算。</p>
+<hr />
+<h2 id="8-平均数">8. 平均数</h2>
+<h3 id="81-基本公式">8.1 基本公式</h3>
+<p><code>平均数 = 总量 ÷ 份数</code></p>
+<p><code>总量 = 平均数 × 份数</code></p>
+<p><code>份数 = 总量 ÷ 平均数</code></p>
+<p>最小例子：总产量 120 吨，企业 6 家，平均每家
+<code>120 ÷ 6 = 20 吨</code>。</p>
+<h3 id="82-基期平均数">8.2 基期平均数</h3>
+<p>现期总量为 <code>T</code>、增长率为 <code>rₜ</code>；现期份数为
+<code>N</code>、增长率为 <code>rₙ</code>：</p>
+<p><code>基期平均数 = (T ÷ N) × (1 + rₙ) ÷ (1 + rₜ)</code></p>
+<p>即：</p>
+<p><code>基期平均数 = 现期平均数 × (1 + 份数增长率) ÷ (1 + 总量增长率)</code></p>
+<h3 id="83-判断平均数上升还是下降">8.3 判断平均数上升还是下降</h3>
+<ul>
+<li><code>总量增长率 &gt; 份数增长率</code>：平均数上升。</li>
+<li><code>总量增长率 &lt; 份数增长率</code>：平均数下降。</li>
+<li>两者相等：平均数不变。</li>
+</ul>
+<h3 id="84-平均数的增长率">8.4 平均数的增长率</h3>
+<p><code>平均数增长率 = (rₜ - rₙ) ÷ (1 + rₙ)</code></p>
+<p>注意分母是 <code>(1 + 份数增长率)</code>。</p>
+<h3 id="85-平均数变化量">8.5 平均数变化量</h3>
+<p><code>变化量 = 现期平均数 - 基期平均数</code></p>
+<p>也可写成：</p>
+<p><code>平均数变化量 = 现期平均数 × (rₜ - rₙ) ÷ (1 + rₜ)</code></p>
+<hr />
+<h2 id="9-倍数与比值">9. 倍数与比值</h2>
+<h3 id="91-现期倍数">9.1 现期倍数</h3>
+<p><code>现期倍数 = A ÷ B</code></p>
+<h3 id="92-基期倍数">9.2 基期倍数</h3>
+<p>若 A 的增长率为 <code>rₐ</code>，B 的增长率为 <code>rᵦ</code>：</p>
+<p><code>基期倍数 = 现期倍数 × (1 + rᵦ) ÷ (1 + rₐ)</code></p>
+<h3 id="93-倍数的增长率">9.3 倍数的增长率</h3>
+<p><code>倍数增长率 = (rₐ - rᵦ) ÷ (1 + rᵦ)</code></p>
+<p>这和平均数增长率结构相同，因为平均数本质上也是一个比值。</p>
+<h3 id="94-判断倍数上升还是下降">9.4 判断倍数上升还是下降</h3>
+<ul>
+<li>分子增长率大于分母增长率：倍数上升。</li>
+<li>分子增长率小于分母增长率：倍数下降。</li>
+<li>两者相等：倍数不变。</li>
+</ul>
+<hr />
+<h2 id="10-混合增长率与整体增长率">10. 混合增长率与整体增长率</h2>
+<h3 id="101-加总型整体增长率">10.1 加总型整体增长率</h3>
+<p>多个部分组成整体：</p>
+<p><code>整体增长率 = 各部分增长量之和 ÷ 各部分基期量之和</code></p>
+<p>也等于各部分增长率按“基期量”加权后的平均数。</p>
+<h3 id="102-混合增长率的范围">10.2 混合增长率的范围</h3>
+<p>若整体由若干部分构成，则整体增长率一定介于各部分增长率的最小值和最大值之间。</p>
+<p>最小例子：甲增长 10%，乙增长 20%，甲乙合计增长率一定在 10%—20%
+之间。</p>
+<h3 id="103-两部分混合的距离规律">10.3 两部分混合的距离规律</h3>
+<p>整体增长率更靠近基期量较大的那一部分增长率。</p>
+<p>若甲、乙基期量之比为 <code>B甲 : B乙</code>，则：</p>
+<p><code>(整体增速 - 乙增速) : (甲增速 - 整体增速) = B甲 : B乙</code></p>
+<p>只需掌握方向：<strong>谁的基期量大，整体增速就更靠近谁。</strong></p>
+<h3 id="104-总量为差值时">10.4 总量为差值时</h3>
+<p>若 <code>整体 = A - B</code>，整体增长率不能直接说在 <code>rₐ</code>
+和 <code>rᵦ</code> 之间，应回到：</p>
+<p><code>整体增长量 = A 的增长量 - B 的增长量</code></p>
+<p><code>整体增长率 = 整体增长量 ÷ 整体基期量</code></p>
+<p>加总型整体的范围判断、权重与未知增速计算见：<a
+href="./速算技巧/07-十字交叉与混合增长率.html">十字交叉与混合增长率</a>。</p>
+<hr />
+<h2 id="11-贡献率与拉动增长">11. 贡献率与拉动增长</h2>
+<h3 id="111-增长贡献率">11.1 增长贡献率</h3>
+<p><code>某部分增长贡献率 = 某部分增长量 ÷ 整体增长量</code></p>
+<p>回答的是：整体增加的量中，有多少由该部分贡献。</p>
+<p>最小例子：整体增长 20，甲增长 8，甲的增长贡献率为
+<code>8 ÷ 20 = 40%</code>。</p>
+<p>注意：</p>
+<ul>
+<li>贡献率可能超过 100%，也可能为负；例如一部分大增、另一部分下降。</li>
+<li>贡献率不是比重，分母是整体增长量，不是整体总量。</li>
+</ul>
+<h3 id="112-拉动增长率">11.2 拉动增长率</h3>
+<p><code>某部分拉动整体增长 = 某部分增长量 ÷ 整体基期量</code></p>
+<p>也可写成：</p>
+<p><code>拉动百分点 = 该部分基期比重 × 该部分增长率</code></p>
+<p>最小例子：甲基期占整体 30%，甲增长 20%，则甲拉动整体增长
+<code>30% × 20% = 6 个百分点</code>。</p>
+<h3 id="113-三者区别">11.3 三者区别</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>分母</th>
+<th>回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比重</td>
+<td>整体量</td>
+<td>部分占整体多少</td>
+</tr>
+<tr>
+<td>增长贡献率</td>
+<td>整体增长量</td>
+<td>整体增量中部分贡献多少</td>
+</tr>
+<tr>
+<td>拉动增长</td>
+<td>整体基期量</td>
+<td>部分使整体增速提高多少个百分点</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-指数">12. 指数</h2>
+<p>指数通常把某个基期设为 100。</p>
+<p><code>现期指数 = 现期量 ÷ 基期量 × 100</code></p>
+<p><code>相对基期增长率 = 指数 ÷ 100 - 1</code></p>
+<p>最小例子：指数为 120，表示现期是基期的 1.2 倍，比基期增长 20%。</p>
+<p>若指数从 120 变为 126：</p>
+<ul>
+<li>指数提高 6 点；</li>
+<li>实际相对增幅为 <code>126 ÷ 120 - 1 = 5%</code>，不是 6%。</li>
+</ul>
+<hr />
+<h2 id="13-高频单位换算">13. 高频单位换算</h2>
+<table>
+<thead>
+<tr>
+<th>换算</th>
+<th style="text-align: right;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 亿</td>
+<td style="text-align: right;">10,000 万</td>
+</tr>
+<tr>
+<td>1 万亿</td>
+<td style="text-align: right;">10,000 亿</td>
+</tr>
+<tr>
+<td>1 万</td>
+<td style="text-align: right;">10,000</td>
+</tr>
+<tr>
+<td>1 吨</td>
+<td style="text-align: right;">1,000 千克</td>
+</tr>
+<tr>
+<td>1 千米</td>
+<td style="text-align: right;">1,000 米</td>
+</tr>
+<tr>
+<td>1 平方千米</td>
+<td style="text-align: right;">100 公顷 = 1,500 亩</td>
+</tr>
+<tr>
+<td>1 公顷</td>
+<td style="text-align: right;">10,000 平方米 = 15 亩</td>
+</tr>
+<tr>
+<td>1%</td>
+<td style="text-align: right;">0.01 = 10‰</td>
+</tr>
+<tr>
+<td>1‰</td>
+<td style="text-align: right;">0.001 = 0.1%</td>
+</tr>
+</tbody>
+</table>
+<p>单位规则：</p>
+<ul>
+<li>相加、相减和直接比较前，单位必须统一。</li>
+<li>相除求比重时，分子分母单位相同才能直接约掉。</li>
+<li>“亿元/万人”“吨/公顷”等平均指标，先按题目要求保留复合单位，不要无意义地全部化为最小单位。</li>
+<li>选项单位可能与材料不同，读完题干后先在草稿上圈出目标单位。</li>
+</ul>
+<hr />
+<h2 id="14-常见统计口径">14. 常见统计口径</h2>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义/公式</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>增加值</td>
+<td>一定时期新增的价值</td>
+<td>不是总产值，也不是增长量</td>
+</tr>
+<tr>
+<td>产值</td>
+<td>生产活动成果按价格计算的价值</td>
+<td>与增加值口径不同</td>
+</tr>
+<tr>
+<td>顺差</td>
+<td>出口额大于进口额</td>
+<td><code>顺差 = 出口 - 进口</code></td>
+</tr>
+<tr>
+<td>逆差</td>
+<td>进口额大于出口额</td>
+<td><code>逆差 = 进口 - 出口</code></td>
+</tr>
+<tr>
+<td>进出口总额</td>
+<td>出口额与进口额之和</td>
+<td><code>总额 = 出口 + 进口</code></td>
+</tr>
+<tr>
+<td>人均指标</td>
+<td>总量除以人数</td>
+<td>人数口径要对应</td>
+</tr>
+<tr>
+<td>每单位指标</td>
+<td>总量除以对应单位数</td>
+<td>本质是平均数</td>
+</tr>
+<tr>
+<td>同比增长</td>
+<td>与上年同期比较</td>
+<td>不等于环比</td>
+</tr>
+<tr>
+<td>占同期全国比重</td>
+<td>地区同期量除以全国同期量</td>
+<td>分子分母时期必须一致</td>
+</tr>
+</tbody>
+</table>
+<h3 id="顺差逆差最小例子">顺差/逆差最小例子</h3>
+<p>进出口总额为 100，顺差为 20：</p>
+<ul>
+<li><code>出口 + 进口 = 100</code></li>
+<li><code>出口 - 进口 = 20</code></li>
+<li>出口为 <code>(100 + 20) ÷ 2 = 60</code></li>
+<li>进口为 <code>(100 - 20) ÷ 2 = 40</code></li>
+</ul>
+<hr />
+<h2 id="15-多段材料常用拆分公式">15. 多段材料常用拆分公式</h2>
+<h3 id="151-累计量求当期量">15.1 累计量求当期量</h3>
+<p><code>当期量 = 本期累计量 - 上期累计量</code></p>
+<h3 id="152-总量求其中一部分">15.2 总量求其中一部分</h3>
+<p><code>其他部分 = 总量 - 已知部分之和</code></p>
+<h3 id="153-合计增长量">15.3 合计增长量</h3>
+<p><code>合计增长量 = 各部分增长量之和</code></p>
+<h3 id="154-合计基期量">15.4 合计基期量</h3>
+<p><code>合计基期量 = 各部分基期量之和</code></p>
+<h3 id="155-两类占比互补">15.5 两类占比互补</h3>
+<p>若整体只分 A、B 两类：</p>
+<p><code>A 比重 + B 比重 = 100%</code></p>
+<p>若类别不止两类，不能直接用互补关系。</p>
+<hr />
+<h2 id="16-计算与比较技巧">16. 计算与比较技巧</h2>
+<h3 id="161-分数大小先看数量级再交叉相乘">16.1
+分数大小：先看数量级，再交叉相乘</h3>
+<p>比较 <code>a/b</code> 与 <code>c/d</code>：比较 <code>a × d</code> 和
+<code>c × b</code>。</p>
+<p>仅在两者很接近时精确交叉相乘；差距明显时先估算。</p>
+<p>方向判断、交叉相乘和差分法的完整选择顺序见：<a
+href="./速算技巧/05-分数比较三板斧.html">分数比较三板斧</a>。</p>
+<h3 id="162-截位直除">16.2 截位直除</h3>
+<ul>
+<li>选项差距大：保留前 2—3 位有效数字。</li>
+<li>选项差距小：多保留一位，再计算。</li>
+<li>截位应尽量让分子、分母误差方向可控。</li>
+</ul>
+<p>完整方法见：<a
+href="./速算技巧/03-截位直除与误差控制.html">截位直除与误差控制</a>。</p>
+<h3 id="163-百分数与常用分数">16.3 百分数与常用分数</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">百分数</th>
+<th style="text-align: right;">近似分数</th>
+<th style="text-align: right;">百分数</th>
+<th style="text-align: right;">近似分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">1/2</td>
+<td style="text-align: right;">33.3%</td>
+<td style="text-align: right;">1/3</td>
+</tr>
+<tr>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">1/4</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1/5</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">1/6</td>
+<td style="text-align: right;">14.3%</td>
+<td style="text-align: right;">1/7</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.5%</td>
+<td style="text-align: right;">1/8</td>
+<td style="text-align: right;">11.1%</td>
+<td style="text-align: right;">1/9</td>
+</tr>
+<tr>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">1/10</td>
+<td style="text-align: right;">8.3%</td>
+<td style="text-align: right;">1/12</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.25%</td>
+<td style="text-align: right;">1/16</td>
+<td style="text-align: right;">5%</td>
+<td style="text-align: right;">1/20</td>
+</tr>
+</tbody>
+</table>
+<p>如何把增长、下降分别转成份数关系，见：<a
+href="./速算技巧/02-百化分与份数法.html">百化分与份数法</a>。</p>
+<h3 id="164-基期量速算">16.4 基期量速算</h3>
+<p><code>B = A ÷ (1 + r)</code></p>
+<ul>
+<li><code>r</code> 较小且选项差距大时，可用
+<code>1 ÷ (1 + r) ≈ 1 - r</code> 粗估。</li>
+<li>例如 <code>A ÷ 1.1</code> 约等于 <code>A × 0.91</code>。</li>
+<li>这是估算，不是精确恒等式；选项接近时必须提高精度。</li>
+</ul>
+<p>误差方向、误差量级和二阶修正见：<a
+href="./速算技巧/04-化除为乘与小增长率近似.html">化除为乘与小增长率近似</a>。</p>
+<h3 id="165-增长量速算">16.5 增长量速算</h3>
+<p><code>Δ = A × r ÷ (1 + r)</code></p>
+<p>当 <code>r</code> 较小时，增长量略小于 <code>A × r</code>。</p>
+<p>多对象增长量的淘汰与排序方法见：<a
+href="./速算技巧/06-增长量比较速判.html">增长量比较速判</a>。</p>
+<h3 id="166-特殊分数法">16.6 特殊分数法</h3>
+<p>若 <code>r ≈ 1/n</code>，则：</p>
+<p><code>增长量 = A × r ÷ (1 + r) ≈ A ÷ (n + 1)</code></p>
+<p>最小例子：增长率约为 <code>1/5 = 20%</code>，增长量约为现期量的
+<code>1/6</code>。</p>
+<p>若下降率约为 <code>1/n</code>：</p>
+<p><code>减少量 = A × r ÷ (1 - r) ≈ A ÷ (n - 1)</code></p>
+<p>这里的 <code>r</code> 取下降率的正数。</p>
+<h3 id="167-尾数法">16.7 尾数法</h3>
+<p>用于加减乘的尾数排除，尤其适合选项尾数不同的题。遇到除法、单位换算或四舍五入时需谨慎。</p>
+<h3 id="168-假设分配法">16.8 假设分配法</h3>
+<p>已知现期量和增长率，求基期量或增长量时，可先假设一个好算的基期量，按增长率配出增长量，再把未分配的现期量按同一比例继续修正。</p>
+<pre class="text"><code>现期量 = 基期量 + 增长量
+基期量 : 增长量 = 1 : 增长率</code></pre>
+<p>本方法的完整推导、增长与下降的不同处理、四个例题及自测题见：<a
+href="./速算技巧/01-假设分配法.html">假设分配法</a>。更多方法见：<a
+href="./速算技巧/00-技巧导航与选择顺序.html">资料分析速算技巧导航</a>。</p>
+<hr />
+<h2 id="17-看到问法立刻选公式">17. 看到问法，立刻选公式</h2>
+<table>
+<thead>
+<tr>
+<th>题目问法</th>
+<th>第一反应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>比上年增加多少</td>
+<td><code>增长量 = A - B</code> 或 <code>A × r ÷ (1 + r)</code></td>
+</tr>
+<tr>
+<td>上年是多少</td>
+<td><code>基期量 = A ÷ (1 + r)</code></td>
+</tr>
+<tr>
+<td>增长/下降百分之多少</td>
+<td><code>变化量 ÷ 基期量</code></td>
+</tr>
+<tr>
+<td>占总体的比重</td>
+<td><code>部分 ÷ 整体</code></td>
+</tr>
+<tr>
+<td>上年同期占比</td>
+<td><code>现期比重 × (1 + 整体增速) ÷ (1 + 部分增速)</code></td>
+</tr>
+<tr>
+<td>比重上升还是下降</td>
+<td>比较部分增速和整体增速</td>
+</tr>
+<tr>
+<td>比重变化几个百分点</td>
+<td><code>现期比重 - 基期比重</code></td>
+</tr>
+<tr>
+<td>平均每个/人均/单位面积</td>
+<td><code>总量 ÷ 份数</code></td>
+</tr>
+<tr>
+<td>上年平均数</td>
+<td><code>现期平均数 × (1 + 份数增速) ÷ (1 + 总量增速)</code></td>
+</tr>
+<tr>
+<td>平均数增速</td>
+<td><code>(总量增速 - 份数增速) ÷ (1 + 份数增速)</code></td>
+</tr>
+<tr>
+<td>A 是 B 的几倍</td>
+<td><code>A ÷ B</code></td>
+</tr>
+<tr>
+<td>A 比 B 多几倍</td>
+<td><code>A ÷ B - 1</code></td>
+</tr>
+<tr>
+<td>两年间隔增长</td>
+<td><code>r₁ + r₂ + r₁r₂</code></td>
+</tr>
+<tr>
+<td>年均增长率</td>
+<td><code>(末期 ÷ 初期)^(1/n) - 1</code></td>
+</tr>
+<tr>
+<td>合计增长率</td>
+<td><code>合计增长量 ÷ 合计基期量</code></td>
+</tr>
+<tr>
+<td>哪项增长量最大</td>
+<td>比较 <code>A × r ÷ (1 + r)</code></td>
+</tr>
+<tr>
+<td>某部分贡献了多少</td>
+<td><code>部分增长量 ÷ 整体增长量</code></td>
+</tr>
+<tr>
+<td>某部分拉动整体增长多少</td>
+<td><code>部分增长量 ÷ 整体基期量</code></td>
+</tr>
+<tr>
+<td>指数代表增长多少</td>
+<td><code>指数 ÷ 100 - 1</code></td>
+</tr>
+<tr>
+<td>某月当月量</td>
+<td><code>本月累计 - 上月累计</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-做题前的五步口径检查">18. 做题前的五步口径检查</h2>
+<p>每道资料分析题先问：</p>
+<ol type="1">
+<li>**时间一致吗？**当月、累计、同比、环比分清了吗？</li>
+<li>**单位一致吗？**元/万元/亿元，吨/万吨，百分数/百分点是否需要转换？</li>
+<li>**主体一致吗？**全国、地区、某行业、规模以上企业有没有偷换？</li>
+<li>**求的是量还是率？**增长量、增长率、比重变化、倍数有没有混淆？</li>
+<li>**分母找对了吗？**增长率除基期，比重除整体，平均数除份数，贡献率除整体增量。</li>
+</ol>
+<hr />
+<h2 id="19-高频错误清单">19. 高频错误清单</h2>
+<ul class="task-list">
+<li><label><input
+type="checkbox" />用现期量作增长率分母；正确分母通常是基期量。</label></li>
+<li><label><input type="checkbox" />把“高 5 个百分点”写成“高
+5%”。</label></li>
+<li><label><input type="checkbox" />把“是 3 倍”和“多 3
+倍”混为一谈。</label></li>
+<li><label><input
+type="checkbox" />年均增长率把年份个数当作间隔数。</label></li>
+<li><label><input type="checkbox" />求基期量时误乘
+<code>(1 + r)</code>，正确是除。</label></li>
+<li><label><input type="checkbox" />下降题忘记使用
+<code>(1 - 下降率)</code>。</label></li>
+<li><label><input
+type="checkbox" />比重变化只比较现期比重，忘记求基期比重。</label></li>
+<li><label><input
+type="checkbox" />平均数题把总量增长率和份数增长率位置放反。</label></li>
+<li><label><input
+type="checkbox" />贡献率、拉动增长和比重使用了同一个分母。</label></li>
+<li><label><input
+type="checkbox" />看到“增长最多”没分清增长量还是增长率。</label></li>
+<li><label><input type="checkbox" />累计量直接当成当月量。</label></li>
+<li><label><input
+type="checkbox" />单位未统一就相加、相除或比较。</label></li>
+<li><label><input
+type="checkbox" />选项差距很小时仍粗暴估算。</label></li>
+<li><label><input
+type="checkbox" />为精确计算浪费时间，没先看选项差距。</label></li>
+</ul>
+<hr />
+<h2 id="20-一页背诵版">20. 一页背诵版</h2>
+<pre class="text"><code>核心关系：A = B(1+r)
+
+基期量：B = A/(1+r)
+增长量：Δ = A-B = Br = Ar/(1+r)
+增长率：r = Δ/B = A/B-1
+
+比重：q = 部分/整体
+基期比重 = 现期比重 × (1+整体增速)/(1+部分增速)
+部分增速 &gt; 整体增速 → 比重上升
+
+平均数 = 总量/份数
+基期平均数 = 现期平均数 × (1+份数增速)/(1+总量增速)
+平均数增速 = (总量增速-份数增速)/(1+份数增速)
+
+倍数 = A/B
+基期倍数 = 现期倍数 × (1+B增速)/(1+A增速)
+倍数增速 = (A增速-B增速)/(1+B增速)
+
+间隔增长率 = r1+r2+r1r2
+年均增长率 = (末期/初期)^(1/间隔数)-1
+
+增长贡献率 = 部分增长量/整体增长量
+拉动整体增长 = 部分增长量/整体基期量
+
+累计求当期 = 本期累计-上期累计
+顺差 = 出口-进口；总额 = 出口+进口
+
+百分数描述比例；百分点描述两个百分数之差。
+增长率分母找基期；比重分母找整体；平均数分母找份数。</code></pre>
+<p>最后只记一句：<strong>先看时间、单位、主体和问法，再找分母；能估算就不硬算，选项接近才提高精度。</strong></p>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

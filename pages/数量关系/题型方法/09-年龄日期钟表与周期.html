@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/09-年龄日期钟表与周期.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型
+09：年龄、日期、钟表与周期 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-09年龄日期钟表与周期">数量关系题型
+09：年龄、日期、钟表与周期</h1>
+<blockquote>
+<p>这组题的共同点是时间推进规则固定。年龄题抓“差不变”，日期和周期题抓“除以周期看余数”，钟表题抓两根指针的相对速度。</p>
+</blockquote>
+<hr />
+<h2 id="1-年龄问题的不变量">1. 年龄问题的不变量</h2>
+<pre class="text"><code>两人的年龄差永远不变</code></pre>
+<p>经过 <code>n</code> 年：</p>
+<ul>
+<li>每个人年龄增加 <code>n</code>；</li>
+<li><code>k</code> 个人年龄和增加 <code>kn</code>；</li>
+<li>年龄倍数通常改变；</li>
+<li>年龄差保持不变。</li>
+</ul>
+<h3 id="例题-1">例题 1</h3>
+<p>父亲比儿子大 <code>24</code> 岁，<code>6</code> 年后父亲年龄是儿子的
+<code>3</code> 倍，问现在年龄。</p>
+<p>设儿子现在 <code>x</code> 岁，父亲 <code>x+24</code> 岁：</p>
+<pre class="text"><code>x+24+6=3(x+6)
+x+30=3x+18
+x=6</code></pre>
+<p>所以儿子 <code>6</code> 岁，父亲 <code>30</code> 岁。</p>
+<p>也可以直接用 6 年后年龄差仍为 <code>24</code>：倍数为
+<code>3:1</code>，相差 <code>2</code> 份，所以一份 <code>12</code>，6
+年后儿子 <code>12</code>，现在 <code>6</code>。</p>
+<hr />
+<h2 id="2-多人年龄和">2. 多人年龄和</h2>
+<p>一家 <code>4</code> 口经过 <code>5</code> 年，年龄和增加：</p>
+<pre class="text"><code>4×5=20岁</code></pre>
+<p>但若期间有人出生、去世或成员变化，不能直接套用，必须分时间段。</p>
+<p>年龄必须符合现实边界，出现负数或出生前年龄要回查。</p>
+<hr />
+<h2 id="3-星期问题模-7">3. 星期问题：模 7</h2>
+<p>经过 <code>n</code> 天，星期移动：</p>
+<pre class="text"><code>n mod 7</code></pre>
+<h3 id="例题-2">例题 2</h3>
+<p>今天星期二，<code>100</code> 天后星期几？</p>
+<pre class="text"><code>100÷7余2
+星期二向后2天=星期四</code></pre>
+<p>“过 <code>100</code> 天”不包含今天；“第 <code>100</code>
+天”是否从今天算第 1 天，需要按题干口径判断。</p>
+<hr />
+<h2 id="4-平年闰年和月份">4. 平年、闰年和月份</h2>
+<p>公历闰年规则：</p>
+<pre class="text"><code>普通年份能被4整除 → 闰年
+整百年份必须能被400整除 → 闰年</code></pre>
+<p>例如：</p>
+<ul>
+<li><code>2024</code> 是闰年；</li>
+<li><code>1900</code> 不是闰年；</li>
+<li><code>2000</code> 是闰年。</li>
+</ul>
+<p>月份天数：</p>
+<pre class="text"><code>大月31天：1、3、5、7、8、10、12月
+小月30天：4、6、9、11月
+2月：平年28天，闰年29天</code></pre>
+<p>平年 <code>365 mod 7=1</code>，同一日期下一年星期通常后移
+<code>1</code> 天；跨过闰日时需结合具体日期判断是否多移一天。</p>
+<hr />
+<h2 id="5-周期问题">5. 周期问题</h2>
+<p>某现象每 <code>a</code> 天一次，另一现象每 <code>b</code>
+天一次，同时发生的周期通常是：</p>
+<pre class="text"><code>lcm(a,b)</code></pre>
+<h3 id="例题-3">例题 3</h3>
+<p>甲每 <code>6</code> 天值班一次，乙每 <code>8</code>
+天值班一次，今天同时值班，下次同时值班：</p>
+<pre class="text"><code>lcm(6,8)=24天后</code></pre>
+<p>问“第几次同时发生”时，要判断今天是否计作第一次。</p>
+<hr />
+<h2 id="6-钟表角度">6. 钟表角度</h2>
+<p>从 <code>h:m</code> 出发：</p>
+<pre class="text"><code>分针角度=6m°
+时针角度=30h+0.5m°
+夹角绝对值=|30h-5.5m|</code></pre>
+<p>若结果大于 <code>180°</code>，较小夹角为：</p>
+<pre class="text"><code>360°-该角</code></pre>
+<h3 id="例题-4">例题 4</h3>
+<p><code>3:20</code> 时：</p>
+<pre class="text"><code>分针角度=120°
+时针角度=90°+10°=100°
+夹角=20°</code></pre>
+<p>不能把时针固定在数字 <code>3</code> 上；它在 20 分钟内已经走了
+<code>10°</code>。</p>
+<hr />
+<h2 id="7-指针相对速度">7. 指针相对速度</h2>
+<pre class="text"><code>分针速度=6°/分
+时针速度=0.5°/分
+相对速度=5.5°/分</code></pre>
+<p>因此分针追上时针一次所需时间：</p>
+<pre class="text"><code>360÷5.5=720/11分≈65.45分</code></pre>
+<p>求重合、垂直、相反，本质上都是相对角度分别达到
+<code>0°、90°、180°</code>。</p>
+<hr />
+<h2 id="8-高频错误与止损">8. 高频错误与止损</h2>
+<ul>
+<li>年龄倍数当成不变量；</li>
+<li>多人年龄和忘记乘人数；</li>
+<li>星期题包含起始日造成差一天；</li>
+<li>整百年份只看能否被 4 整除；</li>
+<li>求共同周期误用最大公约数；</li>
+<li>钟表题忘记时针每分钟走 <code>0.5°</code>；</li>
+<li>夹角大于 <code>180°</code> 时没取较小角。</li>
+</ul>
+<p>止损：普通年龄、星期、周期、单时刻夹角属于机械题，应优先；若涉及多个生日节点、跨闰日边界或钟表多次相遇区间，再放第二轮。</p>
+<hr />
+<h2 id="9-草稿模板">9. 草稿模板</h2>
+<pre class="text"><code>年龄：差不变；k人过n年，年龄和加kn
+星期：天数 mod 7
+共同周期：最小公倍数
+钟表：夹角=|30h-5.5m|，必要时用360°取小角</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

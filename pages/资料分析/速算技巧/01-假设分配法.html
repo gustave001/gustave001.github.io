@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/资料分析/速算技巧/01-假设分配法.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>行测资料分析速算技巧
+01：假设分配法 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="行测资料分析速算技巧-01假设分配法">行测资料分析速算技巧
+01：假设分配法</h1>
+<blockquote>
+<p>用途：已知现期量和增长率，快速估算基期量或增长量。<br />
+核心：先把现期量的一大部分“分给”基期量，再按增长率配出增长量；剩余部分继续按同样的关系修正。<br />
+定位：这是基期量、增长量公式的口算展开，不是一个需要额外死记的新公式。</p>
+</blockquote>
+<hr />
+<h2 id="1-它到底在分配什么">1. 它到底在“分配”什么</h2>
+<p>统一记号：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code></td>
+<td>现期量</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>基期量</td>
+</tr>
+<tr>
+<td><code>Δ</code></td>
+<td>增长量</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>增长率，计算时写成小数</td>
+</tr>
+</tbody>
+</table>
+<p>增长时有：</p>
+<pre class="text"><code>A = B + Δ
+Δ = B × r</code></pre>
+<p>所以，现期量 <code>A</code> 本来就是由两部分拼成的：</p>
+<pre class="text"><code>现期量 = 基期量 + 增长量</code></pre>
+<p>而这两部分的比例是：</p>
+<pre class="text"><code>基期量 : 增长量 = 1 : r</code></pre>
+<p>例如增长率是 8%，每分配 <code>100</code> 给基期量，就要同时分配
+<code>8</code> 给增长量，两者合计占用现期量 <code>108</code>。</p>
+<pre class="text"><code>基期量 100  →  增长量 8  →  现期量 108
+基期量 850  →  增长量 68 →  现期量 918</code></pre>
+<p>这就是“假设分配”的本质：<strong>不用一上来硬算
+<code>A ÷ (1+r)</code>，而是先找一组好算的 <code>B₀</code> 和
+<code>B₀r</code>，再修正余量。</strong></p>
+<hr />
+<h2 id="2-标准四步">2. 标准四步</h2>
+<p>已知现期量 <code>A</code>、增长率 <code>r</code>，求基期量
+<code>B</code> 或增长量 <code>Δ</code>：</p>
+<h3 id="第一步假设一个好算的基期量-b₀">第一步：假设一个好算的基期量
+<code>B₀</code></h3>
+<p><code>B₀</code> 最好满足：</p>
+<ul>
+<li>大致接近真实基期量；</li>
+<li>乘以增长率容易口算；</li>
+<li>尽量一次分掉现期量的大部分。</li>
+</ul>
+<p>增长时，真实基期量一定小于现期量，可先根据选项或
+<code>A ÷ (1+r)</code> 的大致范围选择整百、整千数。</p>
+<h3 id="第二步配出假设增长量">第二步：配出假设增长量</h3>
+<pre class="text"><code>Δ₀ = B₀ × r</code></pre>
+<p>这一轮共分掉：</p>
+<pre class="text"><code>B₀ + Δ₀</code></pre>
+<h3 id="第三步求未分配量">第三步：求未分配量</h3>
+<pre class="text"><code>E = A - (B₀ + Δ₀)</code></pre>
+<ul>
+<li><code>E &gt; 0</code>：第一轮分少了，要继续往基期量和增长量中加；</li>
+<li><code>E &lt; 0</code>：第一轮分多了，要从两者中一起减；</li>
+<li><code>E = 0</code>：刚好分完，直接得到答案。</li>
+</ul>
+<h3
+id="第四步把余量按同一关系继续分配">第四步：把余量按同一关系继续分配</h3>
+<p>余量仍然必须满足：</p>
+<pre class="text"><code>基期修正量 : 增长修正量 = 1 : r</code></pre>
+<p>若基期修正量为 <code>x</code>，则增长修正量为
+<code>xr</code>，两者合计应等于 <code>E</code>：</p>
+<pre class="text"><code>x + xr = E
+x = E ÷ (1+r)</code></pre>
+<p>考场不一定写这个除法。通常先估一个好算的 <code>x</code>，算出
+<code>xr</code>，看二者之和与 <code>E</code>
+还差多少，再微调一次即可。</p>
+<p>最后：</p>
+<pre class="text"><code>B ≈ B₀ + x
+Δ ≈ Δ₀ + xr</code></pre>
+<hr />
+<h2 id="3-例题一求增长量演示完整分配过程">3.
+例题一：求增长量，演示完整分配过程</h2>
+<h3 id="题目">题目</h3>
+<p>某地区 2025 年粮食产量为 <code>936</code> 万吨，同比增长
+<code>8%</code>。2025 年比 2024 年约增加多少万吨？</p>
+<pre class="text"><code>A = 936
+r = 8%
+求 Δ</code></pre>
+<h3 id="假设分配">假设分配</h3>
+<p>先假设基期量为 <code>850</code>：</p>
+<pre class="text"><code>假设基期量：850
+假设增长量：850 × 8% = 68
+第一轮合计：850 + 68 = 918
+未分配量：936 - 918 = 18</code></pre>
+<p>剩下的 <code>18</code> 也要分成“基期量 + 它的 8%”。先试着给基期量
+<code>17</code>：</p>
+<pre class="text"><code>基期修正：17
+增长修正：17 × 8% = 1.36
+修正合计：18.36</code></pre>
+<p>比需要的 <code>18</code> 多了
+<code>0.36</code>，把基期修正略微调小到约 <code>16.67</code>：</p>
+<pre class="text"><code>基期量 ≈ 850 + 16.67 = 866.67
+增长量 ≈ 68 + 1.33 = 69.33</code></pre>
+<h3 id="答案">答案</h3>
+<p>约增加 <code>69.3</code> 万吨。</p>
+<h3 id="验算">验算</h3>
+<pre class="text"><code>866.67 × 8% ≈ 69.33
+866.67 + 69.33 = 936</code></pre>
+<h3 id="草稿纸最简写法">草稿纸最简写法</h3>
+<pre class="text"><code>850 → 68 → 918
+余18 ≈ 16.7 + 1.3
+增量 ≈ 68 + 1.3 = 69.3</code></pre>
+<hr />
+<h2 id="4-例题二增长率较大时怎样分">4. 例题二：增长率较大时怎样分</h2>
+<h3 id="题目-1">题目</h3>
+<p>某行业本期利润为 <code>73.9</code> 亿元，同比增长
+<code>70.3%</code>。上期利润约为多少亿元？</p>
+<pre class="text"><code>A = 73.9
+r = 70.3%
+求 B</code></pre>
+<h3 id="假设分配-1">假设分配</h3>
+<p>先假设基期量为 <code>40</code>：</p>
+<pre class="text"><code>假设增长量：40 × 70.3% = 28.12
+第一轮合计：40 + 28.12 = 68.12
+未分配量：73.9 - 68.12 = 5.78</code></pre>
+<p>增长率较大，余量不能几乎全部分给基期。每给基期量
+<code>1</code>，还要给增长量约 <code>0.703</code>，合计约
+<code>1.703</code>。</p>
+<p>试分 <code>3.4</code> 给基期量：</p>
+<pre class="text"><code>基期修正：3.4
+增长修正：3.4 × 70.3% ≈ 2.39
+修正合计：3.4 + 2.39 = 5.79</code></pre>
+<p>与余量 <code>5.78</code> 几乎相同，所以：</p>
+<pre class="text"><code>基期量 ≈ 40 + 3.4 = 43.4
+增长量 ≈ 28.12 + 2.39 = 30.51</code></pre>
+<h3 id="答案-1">答案</h3>
+<p>上期利润约为 <code>43.4</code> 亿元。</p>
+<h3 id="这道题说明什么">这道题说明什么</h3>
+<p>增长率越大，增长量在现期量中占得越多。此时不能使用“余量几乎全给基期量”的粗略想法，必须按
+<code>1:r</code> 明显分成两块。</p>
+<hr />
+<h2 id="5-例题三下降时不能照搬加法">5. 例题三：下降时不能照搬加法</h2>
+<p>下降 <code>d</code> 时，关系变为：</p>
+<pre class="text"><code>A = B - D
+D = B × d</code></pre>
+<p>其中 <code>D</code> 是减少量，取正数。因此：</p>
+<pre class="text"><code>现期量 = 基期量 - 减少量</code></pre>
+<h3 id="题目-2">题目</h3>
+<p>某企业本期营业收入为 <code>820</code> 万元，同比下降
+<code>6%</code>。上期营业收入约为多少万元？</p>
+<pre class="text"><code>A = 820
+d = 6%
+求 B</code></pre>
+<h3 id="假设分配-2">假设分配</h3>
+<p>先假设基期量为 <code>850</code>：</p>
+<pre class="text"><code>假设减少量：850 × 6% = 51
+假设现期量：850 - 51 = 799
+与实际现期量相差：820 - 799 = 21</code></pre>
+<p>基期量每增加 <code>10</code>，减少量也增加
+<code>0.6</code>，现期量实际只增加：</p>
+<pre class="text"><code>10 - 0.6 = 9.4</code></pre>
+<p>要让现期量增加 <code>21</code>，基期量应增加约：</p>
+<pre class="text"><code>21 ÷ 0.94 ≈ 22.3</code></pre>
+<p>所以：</p>
+<pre class="text"><code>基期量 ≈ 850 + 22.3 = 872.3
+减少量 ≈ 51 + 22.3 × 6% = 52.3</code></pre>
+<h3 id="答案-2">答案</h3>
+<p>上期营业收入约为 <code>872.3</code> 万元。</p>
+<h3 id="验算-1">验算</h3>
+<pre class="text"><code>872.3 - 872.3 × 6% ≈ 820</code></pre>
+<h3 id="下降题的关键区别">下降题的关键区别</h3>
+<pre class="text"><code>增长：现期 = 基期 + 增长量
+下降：现期 = 基期 - 减少量</code></pre>
+<p>下降题里，基期量向上修正时，减少量也向上修正；但二者在现期关系式中一加一减，不能再把它们相加凑现期量。</p>
+<hr />
+<h2 id="6-例题四求两个基期量的差">6. 例题四：求两个基期量的差</h2>
+<h3 id="题目-3">题目</h3>
+<p>本期甲行业产值为 <code>1240</code> 亿元，同比增长
+<code>12%</code>；乙行业产值为 <code>1080</code> 亿元，同比增长
+<code>8%</code>。上期甲行业产值比乙行业约多多少亿元？</p>
+<h3 id="甲行业">甲行业</h3>
+<p>假设甲的基期量为 <code>1100</code>：</p>
+<pre class="text"><code>增长量：1100 × 12% = 132
+合计：1100 + 132 = 1232
+未分配量：1240 - 1232 = 8</code></pre>
+<p><code>8</code> 中约有 <code>7.14</code> 属于基期量，约有
+<code>0.86</code> 属于增长量：</p>
+<pre class="text"><code>甲的基期量 ≈ 1100 + 7.14 = 1107.14</code></pre>
+<h3 id="乙行业">乙行业</h3>
+<pre class="text"><code>1000 + 1000 × 8% = 1080</code></pre>
+<p>所以乙的基期量正好是 <code>1000</code>。</p>
+<h3 id="作差">作差</h3>
+<pre class="text"><code>1107.14 - 1000 = 107.14</code></pre>
+<h3 id="答案-3">答案</h3>
+<p>上期甲行业产值比乙行业约多 <code>107</code> 亿元。</p>
+<h3 id="题型提醒">题型提醒</h3>
+<p>遇到“基期和、基期差、基期倍数”，先分别用假设分配求出各自基期量，再按题目要求相加、相减或相除。不要直接拿两个现期量作差后统一除以某个增长率，因为两个对象的增长率可能不同。</p>
+<hr />
+<h2 id="7-为什么这种方法可行">7. 为什么这种方法可行</h2>
+<p>假设的基期量为 <code>B₀</code>，与真实基期量相差 <code>x</code>：</p>
+<pre class="text"><code>B = B₀ + x</code></pre>
+<p>那么真实增长量就是：</p>
+<pre class="text"><code>Δ = B × r
+  = B₀r + xr</code></pre>
+<p>真实现期量为：</p>
+<pre class="text"><code>A = B + Δ
+  = (B₀ + B₀r) + (x + xr)</code></pre>
+<p>这说明：第一轮假设之后剩下的误差，仍然由一份基期修正量 <code>x</code>
+和一份增长修正量 <code>xr</code> 组成，比例仍然是
+<code>1:r</code>。所以可以一轮一轮继续分配，直到精度足够。</p>
+<p>它与精确公式完全一致：</p>
+<pre class="text"><code>x + xr = E
+x = E ÷ (1+r)</code></pre>
+<p>假设分配法只是把除法变成了更适合草稿纸和口算的“先分大块、再补小块”。</p>
+<hr />
+<h2 id="8-什么时候优先使用">8. 什么时候优先使用</h2>
+<p>适合：</p>
+<ul>
+<li>已知现期量和增长率，求基期量或增长量；</li>
+<li>选项有一定差距，只需算到能区分选项；</li>
+<li>能迅速找到整百、整千等好算的假设基期量；</li>
+<li>求两个基期量之和、之差时，分别分配比连续做复杂除法更顺手；</li>
+<li>增长率不是特别适合直接化成简单分数。</li>
+</ul>
+<p>不一定优先：</p>
+<ul>
+<li>增长率接近 <code>1/2、1/3、1/4、1/5、1/8</code>
+等简单分数，直接用份数法更快；</li>
+<li>增长率很小、选项差距又大，只求增长量时可先用 <code>A × r</code>
+粗估；</li>
+<li>选项极近，需要较高精度，直除或精确公式更稳；</li>
+<li>第一轮很难找到好算且接近的假设值，强行分配反而增加步骤。</li>
+</ul>
+<p>经验上，小增长率更容易一两轮完成；大增长率也能使用，但余量必须明显分给“基期量”和“增长量”两部分，不能把余量几乎全塞给基期量。这里没有必须死记的增长率界线，应以数据是否好算、选项差距是否允许为准。</p>
+<hr />
+<h2 id="9-与相似方法的区别">9. 与相似方法的区别</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>主要用途</th>
+<th>核心动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>假设分配法</td>
+<td>已知现期量、增长率，求基期量或增长量</td>
+<td>把现期量拆成基期量和增长量</td>
+</tr>
+<tr>
+<td>特殊分数法/份数法</td>
+<td>增长率接近常见分数</td>
+<td>把 <code>r</code> 化成 <code>m/n</code>，按份数计算</td>
+</tr>
+<tr>
+<td>直除法</td>
+<td>求基期量、比重、平均数等</td>
+<td>对分子分母截位后直接除</td>
+</tr>
+<tr>
+<td>十字交叉法</td>
+<td>两部分混合得到整体增长率、浓度、均价等</td>
+<td>利用整体值与两个部分值的距离求权重比</td>
+</tr>
+</tbody>
+</table>
+<p>假设分配法不是混合增长率的十字交叉法。前者拆的是同一个指标的“基期量和增长量”，后者比较的是两个部分对整体的加权作用。</p>
+<hr />
+<h2 id="10-考场草稿模板">10. 考场草稿模板</h2>
+<h3 id="增长">增长</h3>
+<pre class="text"><code>A，r，求B/Δ
+
+假设B₀ = ______
+配Δ₀ = B₀r = ______
+已分 = B₀ + Δ₀ = ______
+余量E = A - 已分 = ______
+再分：x + xr ≈ E
+
+B ≈ B₀ + x
+Δ ≈ Δ₀ + xr</code></pre>
+<h3 id="下降">下降</h3>
+<pre class="text"><code>A，下降d，求B/D
+
+假设B₀ = ______
+配D₀ = B₀d = ______
+假设现期 = B₀ - D₀ = ______
+与实际A的差 = ______
+再调：x - xd ≈ 差值
+
+B ≈ B₀ + x
+D ≈ D₀ + xd</code></pre>
+<hr />
+<h2 id="11-高频错误">11. 高频错误</h2>
+<ul>
+<li>把增长题写成 <code>现期量 = 基期量 - 增长量</code>；</li>
+<li>把下降题的减少量与基期量相加；</li>
+<li>第一轮只假设基期量，却忘记同步配出 <code>B₀r</code>；</li>
+<li>修正基期量后，没有同步修正增长量或减少量；</li>
+<li>增长率较大时，仍把全部余量近似当作基期修正量；</li>
+<li>为追求小数点后多位反复修正，忽略选项其实已经可以区分；</li>
+<li>两个对象增长率不同，却先拿现期量作差再统一还原基期；</li>
+<li>忘记把百分数化为小数，如把 <code>8%</code> 当成
+<code>8</code>。</li>
+</ul>
+<hr />
+<h2 id="12-自测题">12. 自测题</h2>
+<h3 id="题-1">题 1</h3>
+<p>某产品本期销售额为 <code>742</code> 万元，同比增长
+<code>6%</code>。上期销售额和本期增长量分别约为多少？</p>
+<h3 id="题-2">题 2</h3>
+<p>某景区本期接待游客 <code>845</code> 万人次，同比增长
+<code>13%</code>。本期约增加多少万人次？</p>
+<h3 id="题-3">题 3</h3>
+<p>某商品本期出口额为 <code>846</code> 万元，同比下降
+<code>6%</code>。上期出口额和减少量分别约为多少？</p>
+<details>
+<summary>展开答案</summary>
+
+<ol type="1">
+<li>假设基期量为 <code>700</code>，增长量为 <code>42</code>，合计正好是
+<code>742</code>。所以上期为 <code>700</code> 万元，本期增长
+<code>42</code> 万元。</li>
+<li>假设基期量为 <code>750</code>，增长量为 <code>97.5</code>，合计为
+<code>847.5</code>，比实际多 <code>2.5</code>。向下修正后，基期量约为
+<code>747.8</code>，增长量约为 <code>97.2</code> 万人次。</li>
+<li>假设基期量为 <code>900</code>，减少量为
+<code>54</code>，<code>900 - 54 = 846</code>。所以上期为
+<code>900</code> 万元，减少 <code>54</code> 万元。</li>
+</ol>
+</details>
+
+<hr />
+<h2 id="13-一句话记忆">13. 一句话记忆</h2>
+<pre class="text"><code>增长：先假设基期，再按增长率配增量，两者相加凑现期；余量继续按 1:r 分。
+下降：先假设基期，再按下降率配减量，两者相减凑现期；修正时注意一加一减。</code></pre>
+<p>最后提醒：<strong>假设只是选择一个好算的起点，比例关系必须始终真实。算到足以排除选项就停，不必追求无意义的精确。</strong></p>
+<hr />
+<h2 id="14-参考">14. 参考</h2>
+<ul>
+<li><a
+href="https://www.huatu.com/2021/0803/2254166.html">华图教育：假设比例法巧解基期量与增长量</a>：用于核对方法名称、基本步骤以及例题二的数据口径；本文补充了代数推导、下降情形、适用边界和自测题。</li>
+</ul>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

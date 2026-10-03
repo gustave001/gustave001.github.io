@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/03-行程问题.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型 03：行程问题 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-03行程问题">数量关系题型 03：行程问题</h1>
+<blockquote>
+<p>行程题先画方向和时间线，再列
+<code>S=vt</code>。不画图时，最容易把速度和、速度差、车长与桥长混淆。</p>
+</blockquote>
+<hr />
+<h2 id="1-三量关系">1. 三量关系</h2>
+<pre class="text"><code>路程S = 速度v × 时间t</code></pre>
+<p>同一路程：</p>
+<pre class="text"><code>速度与时间成反比</code></pre>
+<p>同一时间：</p>
+<pre class="text"><code>路程与速度成正比</code></pre>
+<hr />
+<h2 id="2-相遇与追及">2. 相遇与追及</h2>
+<h3 id="相向相遇">相向相遇</h3>
+<pre class="text"><code>初始距离 = (v₁+v₂)t</code></pre>
+<h3 id="同向追及">同向追及</h3>
+<pre class="text"><code>初始距离 = (v快-v慢)t</code></pre>
+<h3 id="例题-1">例题 1</h3>
+<p>甲乙相距 <code>300</code> 千米，相向而行，速度分别为 <code>60</code>
+和 <code>40</code> 千米/小时：</p>
+<pre class="text"><code>t=300÷(60+40)=3小时</code></pre>
+<p>若同向、甲在乙后方 <code>60</code> 千米：</p>
+<pre class="text"><code>t=60÷(60-40)=3小时</code></pre>
+<p>同样是 <code>3</code> 小时，但相遇用速度和，追及用速度差。</p>
+<hr />
+<h2 id="3-比例法共同时间或共同路程">3. 比例法：共同时间或共同路程</h2>
+<p>相同时间：</p>
+<pre class="text"><code>路程比=速度比</code></pre>
+<p>相同路程：</p>
+<pre class="text"><code>时间比=速度的反比</code></pre>
+<h3 id="例题-2">例题 2</h3>
+<p>甲乙走相同路程，速度比为 <code>3:4</code>，甲用时比乙多
+<code>20</code> 分钟。</p>
+<p>时间比为：</p>
+<pre class="text"><code>4:3</code></pre>
+<p>相差 <code>1</code> 份为 <code>20</code> 分钟，所以甲 <code>80</code>
+分钟，乙 <code>60</code> 分钟。</p>
+<p>不必设路程。</p>
+<hr />
+<h2 id="4-等距离往返平均速度">4. 等距离往返平均速度</h2>
+<p>去程速度 <code>v₁</code>、返程速度 <code>v₂</code>，等距离往返：</p>
+<pre class="text"><code>平均速度 = 2v₁v₂/(v₁+v₂)</code></pre>
+<h3 id="例题-3">例题 3</h3>
+<p>去程 <code>60</code>，返程 <code>40</code>：</p>
+<pre class="text"><code>平均速度=2×60×40/(60+40)=48</code></pre>
+<p>不是 <code>50</code>。因为低速阶段花费时间更长。</p>
+<p>只有两段时间相等时，平均速度才是 <code>(v₁+v₂)/2</code>。</p>
+<hr />
+<h2 id="5-流水行船">5. 流水行船</h2>
+<pre class="text"><code>顺水速度=船速+水速
+逆水速度=船速-水速</code></pre>
+<p>所以：</p>
+<pre class="text"><code>船速=(顺水速度+逆水速度)/2
+水速=(顺水速度-逆水速度)/2</code></pre>
+<p>漂流物只随水移动，速度等于水速。</p>
+<hr />
+<h2 id="6-火车过人过桥与错车">6. 火车过人、过桥与错车</h2>
+<p>先找“完全通过”所需的相对路程：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th style="text-align: right;">相对路程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>火车过一个静止的人/杆</td>
+<td style="text-align: right;">车长</td>
+</tr>
+<tr>
+<td>火车完全过桥</td>
+<td style="text-align: right;">车长+桥长</td>
+</tr>
+<tr>
+<td>两车完全错开</td>
+<td style="text-align: right;">两车长度之和</td>
+</tr>
+<tr>
+<td>火车经过同向行走的人</td>
+<td style="text-align: right;">车长</td>
+</tr>
+</tbody>
+</table>
+<p>速度：</p>
+<ul>
+<li>相向用速度和；</li>
+<li>同向用速度差；</li>
+<li>单位常需把千米/小时换成米/秒：除以 <code>3.6</code>。</li>
+</ul>
+<h3 id="例题-4">例题 4</h3>
+<p>一列长 <code>180</code> 米的火车以 <code>72</code> 千米/小时通过长
+<code>220</code> 米的桥：</p>
+<pre class="text"><code>72千米/小时=20米/秒
+相对路程=180+220=400米
+时间=400÷20=20秒</code></pre>
+<hr />
+<h2 id="7-环形跑道">7. 环形跑道</h2>
+<ul>
+<li>相向首次相遇：路程和为一圈；</li>
+<li>同向首次追上：路程差为一圈；</li>
+<li>从同一点同向出发再次回到一起：看两人跑圈周期的最小公倍数；</li>
+<li>多次相遇时，注意起点是否算一次。</li>
+</ul>
+<hr />
+<h2 id="8-提前与迟到">8. 提前与迟到</h2>
+<p>同一路程用慢速、快速分别行驶：</p>
+<pre class="text"><code>S/v慢 - S/v快 = 两方案用时差</code></pre>
+<p>若慢速迟到 <code>a</code> 分钟、快速早到 <code>b</code>
+分钟，则两方案实际用时相差：</p>
+<pre class="text"><code>a+b</code></pre>
+<h3 id="例题-5">例题 5</h3>
+<p>以 <code>4</code> 千米/小时走会迟到 <code>10</code> 分钟，以
+<code>6</code> 千米/小时走会早到 <code>10</code> 分钟，求路程。</p>
+<pre class="text"><code>S/4-S/6=20/60
+S/12=1/3
+S=4千米</code></pre>
+<hr />
+<h2 id="9-分段行程">9. 分段行程</h2>
+<p>按时间段：</p>
+<pre class="text"><code>总路程=Σ(vᵢtᵢ)</code></pre>
+<p>按路程段：</p>
+<pre class="text"><code>总时间=Σ(Sᵢ/vᵢ)</code></pre>
+<p>平均速度永远是：</p>
+<pre class="text"><code>总路程/总时间</code></pre>
+<p>不能机械平均各段速度。</p>
+<hr />
+<h2 id="10-止损与错误">10. 止损与错误</h2>
+<ul>
+<li>相遇和追及速度关系写反；</li>
+<li>完全过桥只用桥长，漏掉车长；</li>
+<li>等距离往返误用算术平均；</li>
+<li>千米/小时与米/秒混用；</li>
+<li>“早到+迟到”没有相加；</li>
+<li>分段过多仍不画时间线。</li>
+</ul>
+<p>止损：若人物超过三个、折返多次且起止时间不统一，先看能否比例或代选项；画完图仍无法确定每段共同时间，放第二轮。</p>
+<hr />
+<h2 id="11-草稿模板">11. 草稿模板</h2>
+<pre class="text"><code>先画箭头和起点终点
+相遇：S=(v1+v2)t
+追及：差距=(v快-v慢)t
+等距平均：2v1v2/(v1+v2)
+过桥：相对路程÷相对速度</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

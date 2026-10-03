@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN" data-site-root="../../.." data-page-path="pages/数量关系/题型方法/06-容斥原理.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>数量关系题型 06：容斥原理 · Gustave 行测知识站</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232d5b46'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='white'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script defer src="../../../assets/site.js"></script>
+</head>
+<body>
+  <div class="site-layout">
+    <aside class="sidebar" id="sidebar" aria-label="知识站导航">
+      <div class="brand">
+        <a href="../../../index.html" aria-label="返回知识站首页">
+          <span class="brand-mark">G</span>
+          <span><strong>行测知识站</strong><small>江西省考 · 个人体系</small></span>
+        </a>
+      </div>
+      <div class="sidebar-search">
+        <label for="nav-search">搜索目录</label>
+        <input id="nav-search" type="search" placeholder="输入题型或技巧…" autocomplete="off">
+      </div>
+      <nav id="site-nav" class="site-nav"></nav>
+    </aside>
+
+    <div class="page-column">
+      <header class="topbar">
+        <button class="icon-button mobile-only" id="menu-button" type="button" aria-label="打开目录" aria-expanded="false">☰</button>
+        <button class="back-button" id="back-button" type="button" aria-label="返回上一页">← 返回</button>
+        <nav class="breadcrumbs" id="breadcrumbs" aria-label="面包屑"></nav>
+        <a class="home-button" href="../../../index.html">首页</a>
+      </header>
+
+      <main class="article-wrap">
+        <article class="prose" id="article-content">
+<h1 id="数量关系题型-06容斥原理">数量关系题型 06：容斥原理</h1>
+<blockquote>
+<p>容斥的本质是纠正重复计数。先把题干中的“只参加”“同时参加”“至少参加”口径翻译清楚，再套公式。</p>
+</blockquote>
+<hr />
+<h2 id="1-识别信号">1. 识别信号</h2>
+<ul>
+<li>参加甲、乙活动；</li>
+<li>至少会一种语言；</li>
+<li>两项都参加、三项都参加；</li>
+<li>只属于一类；</li>
+<li>一项都不参加；</li>
+<li>满足多个条件的人数。</li>
+</ul>
+<hr />
+<h2 id="2-两集合容斥">2. 两集合容斥</h2>
+<pre class="text"><code>|A∪B|=|A|+|B|-|A∩B|</code></pre>
+<p>若总人数为 <code>N</code>：</p>
+<pre class="text"><code>两项都不参加=N-|A∪B|</code></pre>
+<h3 id="例题-1">例题 1</h3>
+<p>某班 <code>50</code> 人，会游泳的 <code>32</code> 人，会打球的
+<code>28</code> 人，两项都会的 <code>15</code> 人。至少会一项的有：</p>
+<pre class="text"><code>32+28-15=45人</code></pre>
+<p>两项都不会：</p>
+<pre class="text"><code>50-45=5人</code></pre>
+<hr />
+<h2 id="3-至少重合">3. 至少重合</h2>
+<p>总人数为 <code>N</code>，A 有 <code>a</code> 人，B 有 <code>b</code>
+人，两集合至少重合：</p>
+<pre class="text"><code>max(0,a+b-N)</code></pre>
+<h3 id="例题-2">例题 2</h3>
+<p><code>100</code> 人中，喜欢甲项目的 <code>70</code> 人，喜欢乙项目的
+<code>55</code> 人，至少多少人两项都喜欢？</p>
+<p>为了让重合尽量少，尽量把两群人错开：</p>
+<pre class="text"><code>至少重合=70+55-100=25人</code></pre>
+<hr />
+<h2 id="4-三集合标准公式">4. 三集合标准公式</h2>
+<pre class="text"><code>|A∪B∪C|
+=|A|+|B|+|C|
+-|A∩B|-|A∩C|-|B∩C|
++|A∩B∩C|</code></pre>
+<p>逻辑：</p>
+<ol type="1">
+<li>三个单项相加时，两项重合者被算两次、三项重合者被算三次；</li>
+<li>减去三个两两交集；</li>
+<li>三项重合者因此被减多了，再加回来一次。</li>
+</ol>
+<hr />
+<h2 id="5-最危险的口径两项都参加">5. 最危险的口径：两项都参加</h2>
+<p>“A、B 都参加的人”在数学上通常包括三项都参加者。</p>
+<p>但题目可能给的是：</p>
+<ul>
+<li><code>A∩B</code>：包含三项都参加；</li>
+<li>“只参加 A、B 两项”：不包含 C；</li>
+<li>“恰好参加两项”：三个两项区域之和，不包含三项区域。</li>
+</ul>
+<p>必须按原文区分，不能只看到“都参加”就机械代公式。</p>
+<hr />
+<h2 id="6-三集合画区法">6. 三集合画区法</h2>
+<p>信息涉及“只参加”“恰好两项”时，画三个相交圆，并按以下顺序填：</p>
+<pre class="text"><code>1. 最中央：三项都参加
+2. 三个两项交集专属区
+3. 三个只参加一项区
+4. 圈外：一项都不参加</code></pre>
+<p>从重叠最多的中心向外填，可以避免重复扣减。</p>
+<h3 id="例题-3">例题 3</h3>
+<p>有 <code>60</code> 人，参加 A、B、C 的分别为 <code>30、28、25</code>
+人；只参加 AB、AC、BC 的分别为 <code>8、6、5</code> 人；三项都参加
+<code>4</code> 人。问至少参加一项的人数还需要什么信息？</p>
+<p>这里给的是“只参加两项”，不是完整两两交集。还缺三个“只参加一项”的人数，无法直接确定并集。</p>
+<p>这类题的考点往往就是口径，而不是计算。</p>
+<hr />
+<h2 id="7-计数总人次法">7. 计数总人次法</h2>
+<p>若题目给出参加一项、两项、三项的人数，可用总人次：</p>
+<pre class="text"><code>活动总人次
+=只参加一项人数
++2×恰好参加两项人数
++3×参加三项人数</code></pre>
+<p>至少参加一项的人数：</p>
+<pre class="text"><code>=只参加一项+恰好参加两项+参加三项</code></pre>
+<p>二者不要混淆。</p>
+<hr />
+<h2 id="8-高频错误与止损">8. 高频错误与止损</h2>
+<ul>
+<li>两集合相加忘记减交集；</li>
+<li>三集合最后忘记加三项交集；</li>
+<li>把“只参加两项”当作普通两两交集；</li>
+<li>把活动人次当人数；</li>
+<li>至少重合结果为负时不取 <code>0</code>；</li>
+<li>圈外人数没有计入总人数。</li>
+</ul>
+<p>止损：三集合文字口径含糊时，先写出每个数字代表哪个区域；若无法唯一落区，不要急着套公式。超过三个集合的复杂容斥通常计算收益低，放第二轮。</p>
+<hr />
+<h2 id="9-草稿模板">9. 草稿模板</h2>
+<pre class="text"><code>两集合：A+B-交集
+都不：总数-并集
+至少重合：max(0,A+B-总数)
+
+三集合：单项和-两两交集和+三项交集
+有“只、恰好” → 画圈，从中心向外填。</code></pre>
+        </article>
+        <nav class="pager" id="page-pager" aria-label="上一篇和下一篇"></nav>
+        <footer class="article-footer">
+          <span>HTML 为当前维护版本</span>
+          <button type="button" id="scroll-top">回到顶部 ↑</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+</body>
+</html>

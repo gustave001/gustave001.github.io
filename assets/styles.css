@@ -138,6 +138,26 @@ button, input { font: inherit; }
 .callout.warning { border-color: #ecd2be; background: #fff4eb; }
 .callout strong { color: var(--brand-strong); }
 
+.score-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 24px 0; }
+.score-card { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, #f8faf4, #fffef9); }
+.score-card span, .score-card small { display: block; color: var(--muted); }
+.score-card span { font-size: 13px; font-weight: 700; }
+.score-card strong { display: block; margin: 4px 0; color: var(--brand-strong); font: 700 clamp(25px, 4vw, 35px)/1.1 Georgia, serif; }
+.score-card small { font-size: 12px; line-height: 1.45; }
+.status-tag { display: inline-block; margin-right: 4px; padding: 1px 7px; border-radius: 999px; font-size: 12px; font-weight: 800; white-space: nowrap; }
+.status-tag.green { background: #dfeee3; color: #215238; }
+.status-tag.amber { background: #f7ead8; color: #84502d; }
+.status-tag.red { background: #f6ded9; color: #8a3f35; }
+.priority-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+.priority-card { padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fbfcf7; }
+.priority-card h4 { margin: 4px 0 8px; }
+.priority-card p { margin: 0; color: var(--muted); font-size: 14px; }
+.priority-kicker { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.evidence-image { max-width: 440px; margin: 22px auto; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: #fbfcf7; }
+.evidence-image.wide { max-width: 100%; }
+.evidence-image img { display: block; width: 100%; height: auto; border-radius: 7px; }
+.evidence-image figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; text-align: center; }
+
 .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
 .pager a { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); text-decoration: none; }
 .pager a:last-child { text-align: right; }
@@ -184,6 +204,7 @@ button, input { font: inherit; }
   .pager { grid-template-columns: 1fr; }
   .pager a:last-child { text-align: left; }
   .module-grid { grid-template-columns: 1fr; }
+  .score-grid, .priority-grid { grid-template-columns: 1fr; }
   .home-hero { padding-top: 42px; }
 }
 
